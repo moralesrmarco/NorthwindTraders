@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,24 @@ namespace NorthwindTraders
             MDIPrincipal mDIPrincipal = (MDIPrincipal)form.MdiParent;
             mDIPrincipal.ToolStripEstado.Text = mensaje;
             mDIPrincipal.Refresh();
+        }
+
+        public static void CerrarFormularios(string formDebeQuedarAbierto)
+        {
+            //Declaramos una lista de tipo Form
+            List<Form> formularios = new List<Form>();
+            //Recorremos Application.OpenForms el cual tiene la lista de formularios y metemos todos los forms en la lista que declaramos
+            foreach (Form f in Application.OpenForms)
+                formularios.Add(f);
+            //recorremos la lista de formularios
+            for(int i = 0; i < formularios.Count; i++)
+            {
+                //validamos que el nombre de los formularios sean distintos al unico formulario que queremos abierto, en este caso que se cierren todos los formularios que no sean FormLogin
+                if (formularios[i].Name != formDebeQuedarAbierto)
+                {
+                    formularios[i].Close();
+                }
+            }
         }
 
         public static void ValidarDigitosSinPunto(object sender, KeyPressEventArgs e)

@@ -112,6 +112,7 @@ namespace NorthwindTraders
 
         private void listarProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Utils.CerrarFormularios("MDIPrincipal");
             frmProductosListarDap frmProductosListarDap = new frmProductosListarDap
             {
                 MdiParent = this
