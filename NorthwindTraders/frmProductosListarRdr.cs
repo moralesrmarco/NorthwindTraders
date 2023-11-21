@@ -91,7 +91,11 @@ namespace NorthwindTraders
                 bs.DataSource = dr;
                 dgvLista.DataSource = bs;
                 dgvLista.AutoResizeColumns();
-                dgvLista.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
+                dgvLista.EnableHeadersVisualStyles = false;
+                //dgvLista.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
+                //dgvLista.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+                dgvLista.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
+                dgvLista.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
                 dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
                 dgvLista.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLista.Font, FontStyle.Bold);
                 dgvLista.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

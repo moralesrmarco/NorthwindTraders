@@ -103,7 +103,9 @@ namespace NorthwindTraders
                 dap.Fill(tbl);
                 dgvLista.DataSource = tbl;
                 dgvLista.AutoResizeColumns();
-                dgvLista.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
+                dgvLista.EnableHeadersVisualStyles = false;
+                dgvLista.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
+                dgvLista.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
                 dgvLista.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLista.Font, FontStyle.Bold);
                 dgvLista.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvLista.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
