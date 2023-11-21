@@ -52,6 +52,12 @@
     <Compile Include="frmProductosListarDap.Designer.cs">
       <DependentUpon>frmProductosListarDap.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProductosListarRdr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProductosListarRdr.Designer.cs">
+      <DependentUpon>frmProductosListarRdr.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDIPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="frmProductosListarDap.resx">
       <DependentUpon>frmProductosListarDap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProductosListarRdr.resx">
+      <DependentUpon>frmProductosListarRdr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIPrincipal.resx">
       <DependentUpon>MDIPrincipal.cs</DependentUpon>

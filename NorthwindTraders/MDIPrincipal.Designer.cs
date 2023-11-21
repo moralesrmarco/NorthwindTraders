@@ -91,8 +91,12 @@
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tsslEstado = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.accesoConDataReaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.aToolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.listarProductosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -473,7 +477,7 @@
             // categoríasToolStripMenuItem
             // 
             this.categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
-            this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.categoríasToolStripMenuItem.Text = "Categorías";
             // 
             // productosToolStripMenuItem1
@@ -481,9 +485,13 @@
             this.productosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.accesoConDataAdapterToolStripMenuItem,
             this.aToolStripMenuItem,
-            this.listarProductosToolStripMenuItem});
+            this.listarProductosToolStripMenuItem,
+            this.aToolStripMenuItem1,
+            this.accesoConDataReaderToolStripMenuItem,
+            this.aToolStripMenuItem2,
+            this.listarProductosToolStripMenuItem1});
             this.productosToolStripMenuItem1.Name = "productosToolStripMenuItem1";
-            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
+            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.productosToolStripMenuItem1.Text = "Productos";
             // 
             // accesoConDataAdapterToolStripMenuItem
@@ -607,7 +615,7 @@
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 17);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 19);
             this.toolStripStatusLabel.Text = "Estado";
             // 
             // tsslEstado
@@ -619,6 +627,29 @@
             this.tsslEstado.Name = "tsslEstado";
             this.tsslEstado.Size = new System.Drawing.Size(45, 19);
             this.tsslEstado.Text = "Activo";
+            // 
+            // accesoConDataReaderToolStripMenuItem
+            // 
+            this.accesoConDataReaderToolStripMenuItem.Name = "accesoConDataReaderToolStripMenuItem";
+            this.accesoConDataReaderToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.accesoConDataReaderToolStripMenuItem.Text = "Acceso con DataReader";
+            // 
+            // aToolStripMenuItem1
+            // 
+            this.aToolStripMenuItem1.Name = "aToolStripMenuItem1";
+            this.aToolStripMenuItem1.Size = new System.Drawing.Size(201, 6);
+            // 
+            // aToolStripMenuItem2
+            // 
+            this.aToolStripMenuItem2.Name = "aToolStripMenuItem2";
+            this.aToolStripMenuItem2.Size = new System.Drawing.Size(201, 6);
+            // 
+            // listarProductosToolStripMenuItem1
+            // 
+            this.listarProductosToolStripMenuItem1.Name = "listarProductosToolStripMenuItem1";
+            this.listarProductosToolStripMenuItem1.Size = new System.Drawing.Size(204, 22);
+            this.listarProductosToolStripMenuItem1.Text = "Listar productos";
+            this.listarProductosToolStripMenuItem1.Click += new System.EventHandler(this.listarProductosToolStripMenuItem1_Click);
             // 
             // MDIPrincipal
             // 
@@ -710,6 +741,10 @@
         private System.Windows.Forms.ToolStripSeparator aToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listarProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel tsslEstado;
+        private System.Windows.Forms.ToolStripSeparator aToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem accesoConDataReaderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator aToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem listarProductosToolStripMenuItem1;
     }
 }
 

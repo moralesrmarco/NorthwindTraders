@@ -119,5 +119,15 @@ namespace NorthwindTraders
             };
             frmProductosListarDap.Show();
         }
+
+        private void listarProductosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            frmProductosListarRdr frmProductosListarRdr = new frmProductosListarRdr
+            {
+                MdiParent = this
+            };
+            frmProductosListarRdr.Show();
+        }
     }
 }
