@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,6 +52,8 @@
             this.chkbDescontinuado = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -162,6 +165,7 @@
             this.btnRegistrar.TabIndex = 10;
             this.btnRegistrar.Text = "Registrar producto";
             this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // txtId
             // 
@@ -212,6 +216,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(148, 20);
             this.txtPrecio.TabIndex = 15;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // txtUInventario
             // 
@@ -220,6 +225,8 @@
             this.txtUInventario.Name = "txtUInventario";
             this.txtUInventario.Size = new System.Drawing.Size(100, 20);
             this.txtUInventario.TabIndex = 16;
+            this.txtUInventario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUInventario_KeyPress);
+            this.txtUInventario.Validating += new System.ComponentModel.CancelEventHandler(this.txtUInventario_Validating);
             // 
             // txtUPedido
             // 
@@ -228,6 +235,8 @@
             this.txtUPedido.Name = "txtUPedido";
             this.txtUPedido.Size = new System.Drawing.Size(100, 20);
             this.txtUPedido.TabIndex = 17;
+            this.txtUPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUPedido_KeyPress);
+            this.txtUPedido.Validating += new System.ComponentModel.CancelEventHandler(this.txtUPedido_Validating);
             // 
             // txtPPedido
             // 
@@ -236,6 +245,8 @@
             this.txtPPedido.Name = "txtPPedido";
             this.txtPPedido.Size = new System.Drawing.Size(100, 20);
             this.txtPPedido.TabIndex = 18;
+            this.txtPPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPPedido_KeyPress);
+            this.txtPPedido.Validating += new System.ComponentModel.CancelEventHandler(this.txtPPedido_Validating);
             // 
             // chkbDescontinuado
             // 
@@ -265,11 +276,15 @@
             this.label12.TabIndex = 20;
             this.label12.Text = "Cantidad mínima que se debe solicitar en un nuevo pedido";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FrmProductosRegistrarDap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 413);
+            this.ClientSize = new System.Drawing.Size(619, 409);
             this.ControlBox = false;
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -300,6 +315,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar productos";
             this.Load += new System.EventHandler(this.FrmProductosRegistrarDap_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,5 +346,6 @@
         private System.Windows.Forms.CheckBox chkbDescontinuado;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
