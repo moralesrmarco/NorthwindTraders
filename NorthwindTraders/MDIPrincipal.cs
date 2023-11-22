@@ -110,7 +110,7 @@ namespace NorthwindTraders
             }
         }
 
-        private void listarProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmiListarProductosDap_Click(object sender, EventArgs e)
         {
             Utils.CerrarFormularios("MDIPrincipal");
             frmProductosListarDap frmProductosListarDap = new frmProductosListarDap
@@ -120,7 +120,7 @@ namespace NorthwindTraders
             frmProductosListarDap.Show();
         }
 
-        private void listarProductosToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void tsmiListarProductosRdr_Click(object sender, EventArgs e)
         {
             Utils.CerrarFormularios("MDIPrincipal");
             frmProductosListarRdr frmProductosListarRdr = new frmProductosListarRdr
@@ -128,6 +128,21 @@ namespace NorthwindTraders
                 MdiParent = this
             };
             frmProductosListarRdr.Show();
+        }
+
+        private void tsmiRegistrarProductos_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmProductosRegistrarDap frmProductosRegistrarDap = new FrmProductosRegistrarDap
+            {
+                MdiParent = this
+            };
+            frmProductosRegistrarDap.Show();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
         }
     }
 }

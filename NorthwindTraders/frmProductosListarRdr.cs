@@ -51,7 +51,7 @@ namespace NorthwindTraders
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Ocurrio un error con la base de datos:" + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -108,7 +108,7 @@ namespace NorthwindTraders
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Ocurrio un error con la base de datos:" + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Utils.ActualizarBarraDeEstado("Activo", this);
             }
             catch (Exception ex)

@@ -232,9 +232,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.dgvLista);
             this.Controls.Add(this.tabSeleccion);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "frmProductosListarRdr";
             this.ShowIcon = false;
             this.Text = "Listado de productos";
