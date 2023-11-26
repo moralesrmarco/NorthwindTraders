@@ -65,7 +65,10 @@ namespace NorthwindTraders
                     cmd.Parameters.AddWithValue("Categoria", cboCategoria.SelectedValue);
                     cmd.Parameters.AddWithValue("Proveedor", cboProveedor.SelectedValue);
                     cmd.Parameters.AddWithValue("Producto", txtProducto.Text);
-                    cmd.Parameters.AddWithValue("Cantidad", txtCantidadxU.Text);
+                    if (txtCantidadxU.Text.Trim() == "")
+                        cmd.Parameters.AddWithValue("Cantidad", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("Cantidad", txtCantidadxU.Text);
                     cmd.Parameters.AddWithValue("Precio", txtPrecio.Text);
                     cmd.Parameters.AddWithValue("UInventario", txtUInventario.Text);
                     cmd.Parameters.AddWithValue("UPedido", txtUPedido.Text);

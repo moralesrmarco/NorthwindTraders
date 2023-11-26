@@ -144,5 +144,15 @@ namespace NorthwindTraders
         {
             Utils.CerrarFormularios("MDIPrincipal");
         }
+
+        private void tsmiEditarProductos_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmProductosCrudDap frmProductosCrudDap = new FrmProductosCrudDap
+            {
+                MdiParent = this
+            };
+            frmProductosCrudDap.Show();
+        }
     }
 }
