@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -12,6 +11,8 @@ namespace NorthwindTraders
 
         SqlConnection cn = new SqlConnection(NorthwindTraders.Properties.Settings.Default.NWCn);
 
+        bool boolEventoCargado = true; // esta variable es necesaria para controlar el manejador de eventos de la celda del dgv ojo no quitar
+
         public FrmProductosCrudDap()
         {
             InitializeComponent();
@@ -20,7 +21,11 @@ namespace NorthwindTraders
         private void FrmProductosCrudDap_Load(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Maximized;
-            dgvLista.CellClick -= new DataGridViewCellEventHandler(dgvLista_CellClick);
+            if (boolEventoCargado)
+            {
+                dgvLista.CellClick -= new DataGridViewCellEventHandler(dgvLista_CellClick);
+                boolEventoCargado = false;
+            }
             try
             {
                 Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
@@ -128,8 +133,6 @@ namespace NorthwindTraders
             txtBNombre.Text = "";
             cboBCategoria.SelectedIndex = 0;
             cboBProveedor.SelectedIndex = 0;
-            //dgvLista.DataSource = null;
-            //Utils.ActualizarBarraDeEstado("Activo", this);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -349,12 +352,12 @@ namespace NorthwindTraders
         private bool ValidarControles()
         {
             bool validacion = true;
-            if (cboCategoria.SelectedIndex == 0)
+            if (cboCategoria.SelectedIndex == 0 || cboCategoria.SelectedIndex == -1)
             {
                 validacion = false;
                 errorProvider1.SetError(cboCategoria, "Seleccione una categoría");
             }
-            if (cboProveedor.SelectedIndex == 0)
+            if (cboProveedor.SelectedIndex == 0 || cboProveedor.SelectedIndex == -1)
             {
                 validacion = false;
                 errorProvider1.SetError(cboProveedor, "Seleccione un proveedor");
@@ -495,7 +498,11 @@ namespace NorthwindTraders
         {
             if (tabOperacion.SelectedTab == tbpRegistrar)
             {
-                dgvLista.CellClick -= new DataGridViewCellEventHandler(dgvLista_CellClick);
+                if (boolEventoCargado)
+                {
+                    dgvLista.CellClick -= new DataGridViewCellEventHandler(dgvLista_CellClick);
+                    boolEventoCargado = false;
+                }
                 btnAccion.Text = "Registrar producto";
                 BorrarDatosProducto();
                 LlenarDgvLista(null);
@@ -503,19 +510,23 @@ namespace NorthwindTraders
             }
             else if (tabOperacion.SelectedTab == tbpModificar)
             {
-                //EventHandlerList events =this.Events;
-                //Delegate[] cellClickHandlers = events[typeof(DataGridViewCellEventHandler)].GetInvocationList();
-
-                dgvLista.CellClick += new DataGridViewCellEventHandler(dgvLista_CellClick);
+                if (!boolEventoCargado)
+                {
+                    dgvLista.CellClick += new DataGridViewCellEventHandler(dgvLista_CellClick);
+                    boolEventoCargado = true;
+                }
                 btnAccion.Text = "Actualizar producto";
                 BorrarDatosProducto();
                 DeshabilitarControles(); 
             }
             else if (tabOperacion.SelectedTab == tbpEliminar)
             {
-                
-                dgvLista.CellClick += new DataGridViewCellEventHandler(dgvLista_CellClick);
-                btnAccion.Text = "Elimiinar producto";
+                if (!boolEventoCargado)
+                {
+                    dgvLista.CellClick += new DataGridViewCellEventHandler(dgvLista_CellClick);
+                    boolEventoCargado = true;
+                }
+                btnAccion.Text = "Eliminar producto";
                 BorrarDatosProducto();
                 DeshabilitarControles();
             }
