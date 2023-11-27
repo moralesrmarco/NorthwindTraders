@@ -64,6 +64,12 @@
     <Compile Include="frmProductosListarRdr.Designer.cs">
       <DependentUpon>frmProductosListarRdr.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmProductosModificarDap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProductosModificarDap.Designer.cs">
+      <DependentUpon>FrmProductosModificarDap.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProductosRegistrarDap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProductosListarRdr.resx">
       <DependentUpon>frmProductosListarRdr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProductosModificarDap.resx">
+      <DependentUpon>FrmProductosModificarDap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductosRegistrarDap.resx">
       <DependentUpon>FrmProductosRegistrarDap.cs</DependentUpon>

@@ -148,6 +148,16 @@ namespace NorthwindTraders
         private void tsmiEditarProductos_Click(object sender, EventArgs e)
         {
             Utils.CerrarFormularios("MDIPrincipal");
+            FrmProductosModificarDap frmProductosModificarDap = new FrmProductosModificarDap
+            {
+                MdiParent = this
+            };
+            frmProductosModificarDap.Show();
+        }
+
+        private void tsmiMantenimientoProductosCrud_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
             FrmProductosCrudDap frmProductosCrudDap = new FrmProductosCrudDap
             {
                 MdiParent = this

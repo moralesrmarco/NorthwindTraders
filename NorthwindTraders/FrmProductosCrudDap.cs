@@ -185,7 +185,7 @@ namespace NorthwindTraders
                 dgvLista.Columns["Unidades en pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvLista.Columns["Punto de pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 if (sender == null)
-                    Utils.ActualizarBarraDeEstado("Se muestran los últimos 20 productos registrados.", this);
+                    Utils.ActualizarBarraDeEstado("Se muestran los últimos 20 productos registrados", this);
                 else
                     Utils.ActualizarBarraDeEstado($"Se encontraron: {tblProductos.Rows.Count} registros", this);
             }
@@ -260,6 +260,7 @@ namespace NorthwindTraders
                 {
                     try
                     {
+                        DeshabilitarControles();
                         Utils.ActualizarBarraDeEstado("Actualizando base de datos...", this);
                         SqlCommand cmd = new SqlCommand("Sp_Productos_Actualizar", cn);
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -282,7 +283,6 @@ namespace NorthwindTraders
                             btnBuscar.PerformClick();
                             BorrarDatosProducto();
                             btnLimpiar.PerformClick();
-                            DeshabilitarControles();
                         }
                     }
                     catch (SqlException ex)

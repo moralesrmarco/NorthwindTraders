@@ -39,11 +39,11 @@ namespace NorthwindTraders
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Ocurrio un error con la base de datos: ", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrio un error: ", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
