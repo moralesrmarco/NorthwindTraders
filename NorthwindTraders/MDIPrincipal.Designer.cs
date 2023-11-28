@@ -82,6 +82,7 @@
             this.tsmiRegistrarProductos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEditarProductos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEliminarProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMantenimientoProductosCrud = new System.Windows.Forms.ToolStripMenuItem();
             this.aToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.accesoConDataReaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aToolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -102,7 +103,6 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tsmiMantenimientoProductosCrud = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -541,6 +541,14 @@
             this.tsmiEliminarProductos.Name = "tsmiEliminarProductos";
             this.tsmiEliminarProductos.Size = new System.Drawing.Size(247, 22);
             this.tsmiEliminarProductos.Text = "Eliminar productos";
+            this.tsmiEliminarProductos.Click += new System.EventHandler(this.tsmiEliminarProductos_Click);
+            // 
+            // tsmiMantenimientoProductosCrud
+            // 
+            this.tsmiMantenimientoProductosCrud.Name = "tsmiMantenimientoProductosCrud";
+            this.tsmiMantenimientoProductosCrud.Size = new System.Drawing.Size(247, 22);
+            this.tsmiMantenimientoProductosCrud.Text = "Mantenimiento productos CRUD";
+            this.tsmiMantenimientoProductosCrud.Click += new System.EventHandler(this.tsmiMantenimientoProductosCrud_Click);
             // 
             // aToolStripMenuItem1
             // 
@@ -697,13 +705,6 @@
             this.tsslEstado.Name = "tsslEstado";
             this.tsslEstado.Size = new System.Drawing.Size(45, 19);
             this.tsslEstado.Text = "Activo";
-            // 
-            // tsmiMantenimientoProductosCrud
-            // 
-            this.tsmiMantenimientoProductosCrud.Name = "tsmiMantenimientoProductosCrud";
-            this.tsmiMantenimientoProductosCrud.Size = new System.Drawing.Size(247, 22);
-            this.tsmiMantenimientoProductosCrud.Text = "Mantenimiento productos CRUD";
-            this.tsmiMantenimientoProductosCrud.Click += new System.EventHandler(this.tsmiMantenimientoProductosCrud_Click);
             // 
             // MDIPrincipal
             // 

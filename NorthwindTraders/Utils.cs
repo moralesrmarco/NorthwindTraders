@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace NorthwindTraders
 {
-    internal class Utils
+    public class Utils
     {
 
         public static void ActualizarBarraDeEstado(string mensaje, Form form)

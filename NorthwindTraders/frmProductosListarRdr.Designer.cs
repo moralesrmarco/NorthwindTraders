@@ -89,7 +89,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(925, 4);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(62, 23);
-            this.btnLimpiar.TabIndex = 10;
+            this.btnLimpiar.TabIndex = 0;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -99,7 +99,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(864, 4);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(55, 23);
-            this.btnBuscar.TabIndex = 9;
+            this.btnBuscar.TabIndex = 10;
             this.btnBuscar.Tag = "Buscar";
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -113,7 +113,7 @@
             this.cboProveedor.Location = new System.Drawing.Point(704, 6);
             this.cboProveedor.Name = "cboProveedor";
             this.cboProveedor.Size = new System.Drawing.Size(154, 21);
-            this.cboProveedor.TabIndex = 8;
+            this.cboProveedor.TabIndex = 9;
             // 
             // cboCategoria
             // 
@@ -130,7 +130,7 @@
             this.txtNombre.MaxLength = 40;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(160, 20);
-            this.txtNombre.TabIndex = 6;
+            this.txtNombre.TabIndex = 5;
             // 
             // txtId
             // 
@@ -138,7 +138,7 @@
             this.txtId.MaxLength = 10;
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(75, 20);
-            this.txtId.TabIndex = 5;
+            this.txtId.TabIndex = 3;
             this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // label5
@@ -147,7 +147,7 @@
             this.label5.Location = new System.Drawing.Point(647, 10);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 13);
-            this.label5.TabIndex = 4;
+            this.label5.TabIndex = 8;
             this.label5.Text = "Proveedor:";
             // 
             // label4
@@ -156,7 +156,7 @@
             this.label4.Location = new System.Drawing.Point(426, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
-            this.label4.TabIndex = 3;
+            this.label4.TabIndex = 6;
             this.label4.Text = "Categoría:";
             // 
             // label3
@@ -165,7 +165,7 @@
             this.label3.Location = new System.Drawing.Point(219, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 4;
             this.label3.Text = "Nombre:";
             // 
             // label2
@@ -174,7 +174,7 @@
             this.label2.Location = new System.Drawing.Point(124, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 13);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 2;
             this.label2.Text = "Id:";
             // 
             // label1
@@ -231,7 +231,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1048, 450);
+            this.ClientSize = new System.Drawing.Size(1044, 446);
             this.ControlBox = false;
             this.Controls.Add(this.dgvLista);
             this.Controls.Add(this.tabSeleccion);

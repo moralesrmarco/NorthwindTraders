@@ -73,7 +73,7 @@
             this.label2.Location = new System.Drawing.Point(146, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Proveedor:";
             // 
             // label3
@@ -83,7 +83,7 @@
             this.label3.Location = new System.Drawing.Point(153, 125);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Producto:";
             // 
             // label4
@@ -93,7 +93,7 @@
             this.label4.Location = new System.Drawing.Point(193, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(22, 13);
-            this.label4.TabIndex = 3;
+            this.label4.TabIndex = 0;
             this.label4.Text = "Id:";
             // 
             // label5
@@ -103,7 +103,7 @@
             this.label5.Location = new System.Drawing.Point(90, 158);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(125, 13);
-            this.label5.TabIndex = 4;
+            this.label5.TabIndex = 0;
             this.label5.Text = "Cantidad por unidad:";
             // 
             // label6
@@ -113,7 +113,7 @@
             this.label6.Location = new System.Drawing.Point(168, 191);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
-            this.label6.TabIndex = 5;
+            this.label6.TabIndex = 0;
             this.label6.Text = "Precio:";
             // 
             // label7
@@ -123,7 +123,7 @@
             this.label7.Location = new System.Drawing.Point(73, 224);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(142, 13);
-            this.label7.TabIndex = 6;
+            this.label7.TabIndex = 0;
             this.label7.Text = "Unidades en inventario:";
             // 
             // label8
@@ -133,7 +133,7 @@
             this.label8.Location = new System.Drawing.Point(91, 257);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(124, 13);
-            this.label8.TabIndex = 7;
+            this.label8.TabIndex = 0;
             this.label8.Text = "Unidades en pedido:";
             // 
             // label9
@@ -143,7 +143,7 @@
             this.label9.Location = new System.Drawing.Point(111, 290);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(104, 13);
-            this.label9.TabIndex = 8;
+            this.label9.TabIndex = 0;
             this.label9.Text = "Punto de pedido:";
             // 
             // label10
@@ -153,7 +153,7 @@
             this.label10.Location = new System.Drawing.Point(119, 323);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 13);
-            this.label10.TabIndex = 9;
+            this.label10.TabIndex = 0;
             this.label10.Text = "Descontinuado:";
             // 
             // btnRegistrar
@@ -182,7 +182,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(224, 56);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(269, 21);
-            this.cboCategoria.TabIndex = 12;
+            this.cboCategoria.TabIndex = 1;
             // 
             // cboProveedor
             // 
@@ -191,7 +191,7 @@
             this.cboProveedor.Location = new System.Drawing.Point(224, 89);
             this.cboProveedor.Name = "cboProveedor";
             this.cboProveedor.Size = new System.Drawing.Size(269, 21);
-            this.cboProveedor.TabIndex = 12;
+            this.cboProveedor.TabIndex = 2;
             // 
             // txtProducto
             // 
@@ -199,7 +199,7 @@
             this.txtProducto.MaxLength = 40;
             this.txtProducto.Name = "txtProducto";
             this.txtProducto.Size = new System.Drawing.Size(269, 20);
-            this.txtProducto.TabIndex = 13;
+            this.txtProducto.TabIndex = 3;
             // 
             // txtCantidadxU
             // 
@@ -207,7 +207,7 @@
             this.txtCantidadxU.MaxLength = 20;
             this.txtCantidadxU.Name = "txtCantidadxU";
             this.txtCantidadxU.Size = new System.Drawing.Size(208, 20);
-            this.txtCantidadxU.TabIndex = 14;
+            this.txtCantidadxU.TabIndex = 4;
             // 
             // txtPrecio
             // 
@@ -215,7 +215,7 @@
             this.txtPrecio.MaxLength = 21;
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(148, 20);
-            this.txtPrecio.TabIndex = 15;
+            this.txtPrecio.TabIndex = 5;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // txtUInventario
@@ -224,7 +224,7 @@
             this.txtUInventario.MaxLength = 5;
             this.txtUInventario.Name = "txtUInventario";
             this.txtUInventario.Size = new System.Drawing.Size(100, 20);
-            this.txtUInventario.TabIndex = 16;
+            this.txtUInventario.TabIndex = 6;
             this.txtUInventario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUInventario_KeyPress);
             this.txtUInventario.Validating += new System.ComponentModel.CancelEventHandler(this.txtUInventario_Validating);
             // 
@@ -234,7 +234,7 @@
             this.txtUPedido.MaxLength = 5;
             this.txtUPedido.Name = "txtUPedido";
             this.txtUPedido.Size = new System.Drawing.Size(100, 20);
-            this.txtUPedido.TabIndex = 17;
+            this.txtUPedido.TabIndex = 7;
             this.txtUPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUPedido_KeyPress);
             this.txtUPedido.Validating += new System.ComponentModel.CancelEventHandler(this.txtUPedido_Validating);
             // 
@@ -244,7 +244,7 @@
             this.txtPPedido.MaxLength = 5;
             this.txtPPedido.Name = "txtPPedido";
             this.txtPPedido.Size = new System.Drawing.Size(100, 20);
-            this.txtPPedido.TabIndex = 18;
+            this.txtPPedido.TabIndex = 8;
             this.txtPPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPPedido_KeyPress);
             this.txtPPedido.Validating += new System.ComponentModel.CancelEventHandler(this.txtPPedido_Validating);
             // 
@@ -254,7 +254,7 @@
             this.chkbDescontinuado.Location = new System.Drawing.Point(227, 323);
             this.chkbDescontinuado.Name = "chkbDescontinuado";
             this.chkbDescontinuado.Size = new System.Drawing.Size(15, 14);
-            this.chkbDescontinuado.TabIndex = 19;
+            this.chkbDescontinuado.TabIndex = 9;
             this.chkbDescontinuado.UseVisualStyleBackColor = true;
             // 
             // label11
@@ -263,7 +263,7 @@
             this.label11.Location = new System.Drawing.Point(330, 284);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(171, 31);
-            this.label11.TabIndex = 20;
+            this.label11.TabIndex = 0;
             this.label11.Text = "Cantidad de unidades en el inventario en la cual se debe realizar un nuevo pedido" +
     "";
             // 
@@ -273,7 +273,7 @@
             this.label12.Location = new System.Drawing.Point(330, 252);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(171, 30);
-            this.label12.TabIndex = 20;
+            this.label12.TabIndex = 0;
             this.label12.Text = "Cantidad mínima que se debe solicitar en un nuevo pedido";
             // 
             // errorProvider1
@@ -284,7 +284,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 405);
+            this.ClientSize = new System.Drawing.Size(611, 401);
             this.ControlBox = false;
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);

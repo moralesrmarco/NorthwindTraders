@@ -52,6 +52,12 @@
     <Compile Include="FrmProductosCrudDap.Designer.cs">
       <DependentUpon>FrmProductosCrudDap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmProductosEliminarDap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProductosEliminarDap.Designer.cs">
+      <DependentUpon>FrmProductosEliminarDap.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProductosListarDap.cs">
       <SubType>Form</SubType>
     </Compile>

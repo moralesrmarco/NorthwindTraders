@@ -110,7 +110,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(99, 305);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(95, 23);
-            this.btnLimpiar.TabIndex = 8;
+            this.btnLimpiar.TabIndex = 5;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -121,7 +121,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(99, 265);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(95, 23);
-            this.btnBuscar.TabIndex = 8;
+            this.btnBuscar.TabIndex = 4;
             this.btnBuscar.Tag = "Buscar";
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -135,7 +135,7 @@
             this.cboBProveedor.Location = new System.Drawing.Point(14, 220);
             this.cboBProveedor.Name = "cboBProveedor";
             this.cboBProveedor.Size = new System.Drawing.Size(180, 21);
-            this.cboBProveedor.TabIndex = 7;
+            this.cboBProveedor.TabIndex = 3;
             // 
             // label4
             // 
@@ -144,7 +144,7 @@
             this.label4.Location = new System.Drawing.Point(11, 204);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
-            this.label4.TabIndex = 6;
+            this.label4.TabIndex = 0;
             this.label4.Text = "Proveedor:";
             // 
             // cboBCategoria
@@ -155,7 +155,7 @@
             this.cboBCategoria.Location = new System.Drawing.Point(14, 159);
             this.cboBCategoria.Name = "cboBCategoria";
             this.cboBCategoria.Size = new System.Drawing.Size(180, 21);
-            this.cboBCategoria.TabIndex = 5;
+            this.cboBCategoria.TabIndex = 2;
             // 
             // label3
             // 
@@ -164,7 +164,7 @@
             this.label3.Location = new System.Drawing.Point(11, 143);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Categoría:";
             // 
             // txtBNombre
@@ -173,7 +173,7 @@
             this.txtBNombre.Location = new System.Drawing.Point(14, 101);
             this.txtBNombre.Name = "txtBNombre";
             this.txtBNombre.Size = new System.Drawing.Size(180, 20);
-            this.txtBNombre.TabIndex = 3;
+            this.txtBNombre.TabIndex = 1;
             // 
             // label2
             // 
@@ -182,7 +182,7 @@
             this.label2.Location = new System.Drawing.Point(11, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Nombre:";
             // 
             // txtBId
@@ -191,7 +191,7 @@
             this.txtBId.Location = new System.Drawing.Point(14, 48);
             this.txtBId.Name = "txtBId";
             this.txtBId.Size = new System.Drawing.Size(100, 20);
-            this.txtBId.TabIndex = 1;
+            this.txtBId.TabIndex = 0;
             // 
             // label1
             // 
@@ -331,7 +331,7 @@
             this.label12.Location = new System.Drawing.Point(415, 213);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(171, 30);
-            this.label12.TabIndex = 43;
+            this.label12.TabIndex = 0;
             this.label12.Text = "Cantidad mínima que se debe solicitar en un nuevo pedido";
             // 
             // label11
@@ -340,7 +340,7 @@
             this.label11.Location = new System.Drawing.Point(415, 240);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(171, 31);
-            this.label11.TabIndex = 42;
+            this.label11.TabIndex = 0;
             this.label11.Text = "Cantidad de unidades en el inventario en la cual se debe realizar un nuevo pedido" +
     "";
             // 
@@ -351,7 +351,7 @@
             this.chkbDescontinuado.Location = new System.Drawing.Point(309, 272);
             this.chkbDescontinuado.Name = "chkbDescontinuado";
             this.chkbDescontinuado.Size = new System.Drawing.Size(15, 14);
-            this.chkbDescontinuado.TabIndex = 41;
+            this.chkbDescontinuado.TabIndex = 9;
             this.chkbDescontinuado.UseVisualStyleBackColor = true;
             // 
             // txtPPedido
@@ -361,7 +361,7 @@
             this.txtPPedido.MaxLength = 5;
             this.txtPPedido.Name = "txtPPedido";
             this.txtPPedido.Size = new System.Drawing.Size(100, 20);
-            this.txtPPedido.TabIndex = 40;
+            this.txtPPedido.TabIndex = 8;
             this.txtPPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPPedido_KeyPress);
             this.txtPPedido.Validating += new System.ComponentModel.CancelEventHandler(this.txtPPedido_Validating);
             // 
@@ -372,7 +372,7 @@
             this.txtUPedido.MaxLength = 5;
             this.txtUPedido.Name = "txtUPedido";
             this.txtUPedido.Size = new System.Drawing.Size(100, 20);
-            this.txtUPedido.TabIndex = 39;
+            this.txtUPedido.TabIndex = 7;
             this.txtUPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUPedido_KeyPress);
             this.txtUPedido.Validating += new System.ComponentModel.CancelEventHandler(this.txtUPedido_Validating);
             // 
@@ -383,7 +383,7 @@
             this.txtUInventario.MaxLength = 5;
             this.txtUInventario.Name = "txtUInventario";
             this.txtUInventario.Size = new System.Drawing.Size(100, 20);
-            this.txtUInventario.TabIndex = 38;
+            this.txtUInventario.TabIndex = 6;
             this.txtUInventario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUInventario_KeyPress);
             this.txtUInventario.Validating += new System.ComponentModel.CancelEventHandler(this.txtUInventario_Validating);
             // 
@@ -394,7 +394,7 @@
             this.txtPrecio.MaxLength = 21;
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(148, 20);
-            this.txtPrecio.TabIndex = 37;
+            this.txtPrecio.TabIndex = 5;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // txtCantidadxU
@@ -404,7 +404,7 @@
             this.txtCantidadxU.MaxLength = 20;
             this.txtCantidadxU.Name = "txtCantidadxU";
             this.txtCantidadxU.Size = new System.Drawing.Size(208, 20);
-            this.txtCantidadxU.TabIndex = 36;
+            this.txtCantidadxU.TabIndex = 4;
             // 
             // txtProducto
             // 
@@ -413,7 +413,7 @@
             this.txtProducto.MaxLength = 40;
             this.txtProducto.Name = "txtProducto";
             this.txtProducto.Size = new System.Drawing.Size(269, 20);
-            this.txtProducto.TabIndex = 35;
+            this.txtProducto.TabIndex = 3;
             // 
             // cboProveedor
             // 
@@ -423,7 +423,7 @@
             this.cboProveedor.Location = new System.Drawing.Point(306, 75);
             this.cboProveedor.Name = "cboProveedor";
             this.cboProveedor.Size = new System.Drawing.Size(269, 21);
-            this.cboProveedor.TabIndex = 33;
+            this.cboProveedor.TabIndex = 2;
             // 
             // cboCategoria
             // 
@@ -433,7 +433,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(306, 47);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(269, 21);
-            this.cboCategoria.TabIndex = 34;
+            this.cboCategoria.TabIndex = 1;
             // 
             // txtId
             // 
@@ -442,7 +442,7 @@
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 32;
+            this.txtId.TabIndex = 11;
             // 
             // btnAccion
             // 
@@ -450,7 +450,7 @@
             this.btnAccion.Location = new System.Drawing.Point(417, 291);
             this.btnAccion.Name = "btnAccion";
             this.btnAccion.Size = new System.Drawing.Size(185, 23);
-            this.btnAccion.TabIndex = 31;
+            this.btnAccion.TabIndex = 10;
             this.btnAccion.Text = "Registrar producto";
             this.btnAccion.UseVisualStyleBackColor = true;
             this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
@@ -462,7 +462,7 @@
             this.label10.Location = new System.Drawing.Point(201, 272);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 13);
-            this.label10.TabIndex = 30;
+            this.label10.TabIndex = 0;
             this.label10.Text = "Descontinuado:";
             // 
             // label9
@@ -472,7 +472,7 @@
             this.label9.Location = new System.Drawing.Point(196, 246);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(104, 13);
-            this.label9.TabIndex = 29;
+            this.label9.TabIndex = 0;
             this.label9.Text = "Punto de pedido:";
             // 
             // label8
@@ -482,7 +482,7 @@
             this.label8.Location = new System.Drawing.Point(176, 218);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(124, 13);
-            this.label8.TabIndex = 28;
+            this.label8.TabIndex = 0;
             this.label8.Text = "Unidades en pedido:";
             // 
             // label13
@@ -492,7 +492,7 @@
             this.label13.Location = new System.Drawing.Point(158, 191);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(142, 13);
-            this.label13.TabIndex = 27;
+            this.label13.TabIndex = 0;
             this.label13.Text = "Unidades en inventario:";
             // 
             // label14
@@ -502,7 +502,7 @@
             this.label14.Location = new System.Drawing.Point(253, 163);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(47, 13);
-            this.label14.TabIndex = 26;
+            this.label14.TabIndex = 0;
             this.label14.Text = "Precio:";
             // 
             // label15
@@ -512,7 +512,7 @@
             this.label15.Location = new System.Drawing.Point(172, 135);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(125, 13);
-            this.label15.TabIndex = 25;
+            this.label15.TabIndex = 0;
             this.label15.Text = "Cantidad por unidad:";
             // 
             // label16
@@ -522,7 +522,7 @@
             this.label16.Location = new System.Drawing.Point(275, 22);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(22, 13);
-            this.label16.TabIndex = 24;
+            this.label16.TabIndex = 0;
             this.label16.Text = "Id:";
             // 
             // label17
@@ -532,7 +532,7 @@
             this.label17.Location = new System.Drawing.Point(235, 107);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(62, 13);
-            this.label17.TabIndex = 23;
+            this.label17.TabIndex = 0;
             this.label17.Text = "Producto:";
             // 
             // label18
@@ -542,7 +542,7 @@
             this.label18.Location = new System.Drawing.Point(228, 78);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(69, 13);
-            this.label18.TabIndex = 22;
+            this.label18.TabIndex = 0;
             this.label18.Text = "Proveedor:";
             // 
             // label19
@@ -552,7 +552,7 @@
             this.label19.Location = new System.Drawing.Point(230, 50);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(67, 13);
-            this.label19.TabIndex = 21;
+            this.label19.TabIndex = 0;
             this.label19.Text = "Categoría:";
             // 
             // errorProvider1

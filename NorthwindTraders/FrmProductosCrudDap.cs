@@ -133,10 +133,19 @@ namespace NorthwindTraders
             txtBNombre.Text = "";
             cboBCategoria.SelectedIndex = 0;
             cboBProveedor.SelectedIndex = 0;
+
+            BorrarMensajesError();
+            BorrarDatosProducto();
+            if (tabOperacion.SelectedTab != tbpRegistrar)
+                DeshabilitarControles();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            BorrarMensajesError();
+            BorrarDatosProducto();
+            if (tabOperacion.SelectedTab != tbpRegistrar)
+                DeshabilitarControles();
             LlenarDgvLista(sender);
         }
 

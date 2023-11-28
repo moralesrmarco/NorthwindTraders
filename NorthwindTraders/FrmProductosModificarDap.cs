@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NorthwindTraders
@@ -22,7 +16,7 @@ namespace NorthwindTraders
             InitializeComponent();
         }
 
-        private void FrmProductosModificarDap_Load(object sender, EventArgs e)
+        protected void FrmProductosModificarDap_Load(object sender, EventArgs e)
         {
             try
             {
@@ -81,18 +75,24 @@ namespace NorthwindTraders
             }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            DeshabilitarControles();
+            BorrarMensajesError();
+            BorrarDatosProducto();
             LlenarDgv(sender);
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
+        protected void btnLimpiar_Click(object sender, EventArgs e)
         {
-            txtProducto.Text = txtBId.Text = "";
+            txtBProducto.Text = txtBId.Text = "";
             cboBProveedor.SelectedIndex = cboBCategoria.SelectedIndex = 0;
+            DeshabilitarControles();
+            BorrarMensajesError();
+            BorrarDatosProducto();
         }
         
-        private void LlenarDgv(object sender)
+        protected void LlenarDgv(object sender)
         {
             try
             {
@@ -160,7 +160,7 @@ namespace NorthwindTraders
             }
         }
 
-        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        protected void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow dgvr = dgv.CurrentRow;
             txtId.Text = dgvr.Cells["Id"].Value.ToString();
@@ -181,7 +181,7 @@ namespace NorthwindTraders
             HabilitarControles();
         }
 
-        private void HabilitarControles()
+        protected void HabilitarControles()
         {
             txtProducto.Enabled = true;
             cboCategoria.Enabled = true;
@@ -195,7 +195,7 @@ namespace NorthwindTraders
             btnActualizar.Enabled = true;
         }
 
-        private void DeshabilitarControles()
+        protected void DeshabilitarControles()
         {
             txtProducto.Enabled = false;
             cboCategoria.Enabled = false;
@@ -209,7 +209,7 @@ namespace NorthwindTraders
             btnActualizar.Enabled = false;
         }
 
-        private void btnActualizar_Click(object sender, EventArgs e)
+        protected void btnActualizar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -258,7 +258,7 @@ namespace NorthwindTraders
             }
         }
 
-        private void BorrarDatosProducto()
+        protected void BorrarDatosProducto()
         {
             BorrarMensajesError();
             txtId.Text = "";
@@ -274,7 +274,7 @@ namespace NorthwindTraders
         }
 
 
-        private bool ValidarControles()
+        protected bool ValidarControles()
         {
             bool validacion = true;
             if (cboCategoria.SelectedIndex == 0 || cboCategoria.SelectedIndex == -1)
@@ -315,7 +315,7 @@ namespace NorthwindTraders
             return validacion;
         }
 
-        private void BorrarMensajesError()
+        protected void BorrarMensajesError()
         {
             errorProvider1.SetError(cboCategoria, "");
             errorProvider1.SetError(cboProveedor, "");
@@ -324,6 +324,68 @@ namespace NorthwindTraders
             errorProvider1.SetError(txtUInventario, "");
             errorProvider1.SetError(txtUPedido, "");
             errorProvider1.SetError(txtPPedido, "");
+        }
+
+        protected void txtUInventario_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txtUInventario.Text.Trim() != "")
+            {
+                if (int.Parse(txtUInventario.Text) > 32767)
+                {
+                    errorProvider1.SetError(txtUInventario, "La cantidad no puede ser mayor a 32767");
+                    e.Cancel = true;
+                }
+                else
+                    errorProvider1.SetError(txtUInventario, "");
+            }
+        }
+
+        protected void txtUPedido_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txtUPedido.Text.Trim() != "")
+            {
+                if (int.Parse(txtUPedido.Text) > 32767)
+                {
+                    errorProvider1.SetError(txtUPedido, "La cantidad no puede ser mayor a 32767");
+                    e.Cancel = true;
+                }
+                else
+                    errorProvider1.SetError(txtUPedido, "");
+            }
+        }
+
+        protected void txtPPedido_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txtPPedido.Text.Trim() != "")
+            {
+                if (int.Parse(txtPPedido.Text) > 32767)
+                {
+                    errorProvider1.SetError(txtPPedido, "La cantidad no puede ser mayor a 32767");
+                    e.Cancel = true;
+                }
+                else
+                    errorProvider1.SetError(txtPPedido, "");
+            }
+        }
+
+        protected void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utils.ValidarDigitosConPunto(sender, e);
+        }
+
+        protected void txtUInventario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utils.ValidarDigitosSinPunto(sender, e);
+        }
+
+        protected void txtUPedido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utils.ValidarDigitosSinPunto(sender, e);
+        }
+
+        protected void txtPPedido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utils.ValidarDigitosSinPunto(sender, e);
         }
     }
 }
