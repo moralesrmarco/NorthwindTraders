@@ -459,7 +459,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 553);
+            this.ClientSize = new System.Drawing.Size(822, 549);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -485,7 +485,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgv;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -496,15 +495,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox chkDescontinuado;
-        private System.Windows.Forms.ComboBox cboProveedor;
-        private System.Windows.Forms.ComboBox cboCategoria;
-        private System.Windows.Forms.TextBox txtPPedido;
-        private System.Windows.Forms.TextBox txtUPedido;
-        private System.Windows.Forms.TextBox txtUInventario;
-        private System.Windows.Forms.TextBox txtPrecio;
-        private System.Windows.Forms.TextBox txtCantidadxU;
-        private System.Windows.Forms.TextBox txtProducto;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label11;
@@ -520,5 +510,15 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         protected System.Windows.Forms.Button btnActualizar;
+        protected System.Windows.Forms.CheckBox chkDescontinuado;
+        protected System.Windows.Forms.ComboBox cboProveedor;
+        protected System.Windows.Forms.ComboBox cboCategoria;
+        protected System.Windows.Forms.TextBox txtPPedido;
+        protected System.Windows.Forms.TextBox txtUPedido;
+        protected System.Windows.Forms.TextBox txtUInventario;
+        protected System.Windows.Forms.TextBox txtPrecio;
+        protected System.Windows.Forms.TextBox txtCantidadxU;
+        protected System.Windows.Forms.TextBox txtProducto;
+        protected System.Windows.Forms.GroupBox groupBox2;
     }
 }

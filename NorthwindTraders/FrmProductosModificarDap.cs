@@ -71,7 +71,7 @@ namespace NorthwindTraders
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Utils.ActualizarBarraDeEstado("Activo", this);
+                //Utils.ActualizarBarraDeEstado("Activo", this);
             }
         }
 
@@ -162,6 +162,7 @@ namespace NorthwindTraders
 
         protected void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            BorrarMensajesError();
             DataGridViewRow dgvr = dgv.CurrentRow;
             txtId.Text = dgvr.Cells["Id"].Value.ToString();
             txtProducto.Text = dgvr.Cells["Producto"].Value.ToString();

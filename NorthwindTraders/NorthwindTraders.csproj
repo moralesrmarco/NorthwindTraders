@@ -94,6 +94,9 @@
     <EmbeddedResource Include="FrmProductosCrudDap.resx">
       <DependentUpon>FrmProductosCrudDap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmProductosEliminarDap.resx">
+      <DependentUpon>FrmProductosEliminarDap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProductosListarDap.resx">
       <DependentUpon>frmProductosListarDap.cs</DependentUpon>
     </EmbeddedResource>
