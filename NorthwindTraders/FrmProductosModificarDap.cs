@@ -393,5 +393,11 @@ namespace NorthwindTraders
         {
             Utils.ValidarDigitosSinPunto(sender, e);
         }
+
+        private void groupBox_Paint(object sender, PaintEventArgs e)
+        {
+            GroupBox groupBox = sender as GroupBox;
+            Utils.DrawGroupBox(groupBox, e.Graphics, Color.Black, Color.Black, this);
+        }
     }
 }
