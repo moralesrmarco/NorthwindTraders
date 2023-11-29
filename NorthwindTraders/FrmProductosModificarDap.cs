@@ -9,7 +9,9 @@ namespace NorthwindTraders
     public partial class FrmProductosModificarDap : Form
     {
 
-        SqlConnection cn = new SqlConnection(NorthwindTraders.Properties.Settings.Default.NWCn);
+        protected SqlConnection cn = new SqlConnection(NorthwindTraders.Properties.Settings.Default.NWCn);
+
+        protected bool habilitarConts = true; // esta propiedad es util para que al heredar el formulario al FrmProductosEliminarDap no se habiliten los controles del producto.
 
         public FrmProductosModificarDap()
         {
@@ -71,7 +73,7 @@ namespace NorthwindTraders
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //Utils.ActualizarBarraDeEstado("Activo", this);
+                Utils.ActualizarBarraDeEstado("Activo", this);
             }
         }
 
@@ -179,7 +181,10 @@ namespace NorthwindTraders
             cboCategoria.SelectedIndex = indexCategoria;
             int indexProveedor = cboProveedor.FindStringExact(dgvr.Cells["Proveedor"].Value.ToString());
             cboProveedor.SelectedIndex = indexProveedor;
-            HabilitarControles();
+            if (habilitarConts)
+                HabilitarControles();
+            else
+                DeshabilitarControles();
         }
 
         protected void HabilitarControles()

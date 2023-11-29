@@ -60,12 +60,14 @@
             this.btnEliminar.TabIndex = 12;
             this.btnEliminar.Text = "Eliminar producto";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // FrmProductosEliminarDap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(822, 549);
             this.Name = "FrmProductosEliminarDap";
+            this.Load += new System.EventHandler(this.FrmProductosEliminarDap_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);

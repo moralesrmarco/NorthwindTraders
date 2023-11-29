@@ -459,7 +459,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 549);
+            this.ClientSize = new System.Drawing.Size(818, 545);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -495,19 +495,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtBProducto;
-        private System.Windows.Forms.TextBox txtBId;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox cboBProveedor;
-        private System.Windows.Forms.ComboBox cboBCategoria;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button btnLimpiar;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         protected System.Windows.Forms.Button btnActualizar;
         protected System.Windows.Forms.CheckBox chkDescontinuado;
@@ -520,5 +513,12 @@
         protected System.Windows.Forms.TextBox txtCantidadxU;
         protected System.Windows.Forms.TextBox txtProducto;
         protected System.Windows.Forms.GroupBox groupBox2;
+        protected System.Windows.Forms.TextBox txtId;
+        protected System.Windows.Forms.TextBox txtBProducto;
+        protected System.Windows.Forms.TextBox txtBId;
+        protected System.Windows.Forms.ComboBox cboBProveedor;
+        protected System.Windows.Forms.ComboBox cboBCategoria;
+        protected System.Windows.Forms.Button btnLimpiar;
+        protected System.Windows.Forms.Button btnBuscar;
     }
 }
