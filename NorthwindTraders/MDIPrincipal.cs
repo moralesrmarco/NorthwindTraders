@@ -174,5 +174,35 @@ namespace NorthwindTraders
             };
             frmProductosEliminarDap.Show();
         }
+
+        private void tsmiRegistrarProductosRdr_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmProductosRegistrarRdr frmProductosRegistrarRdr = new FrmProductosRegistrarRdr
+            {
+                MdiParent = this
+            };
+            frmProductosRegistrarRdr.Show();
+        }
+
+        private void tsmiModificarProductosRdr_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmProductosModificarRdr frmProductosModificarRdr = new FrmProductosModificarRdr
+            {
+                MdiParent = this
+            };
+            frmProductosModificarRdr.Show();
+        }
+
+        private void tsmiEliminarProductosRdr_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmProductosEliminarRdr frmProductosEliminarRdr = new FrmProductosEliminarRdr
+            {
+                MdiParent = this
+            };
+            frmProductosEliminarRdr.Show();
+        }
     }
 }

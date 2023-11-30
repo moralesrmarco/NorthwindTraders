@@ -74,13 +74,10 @@ namespace NorthwindTraders
                                                box.ClientRectangle.Y + (int)(strSize.Height / 2),
                                                box.ClientRectangle.Width - 1,
                                                box.ClientRectangle.Height - (int)(strSize.Height / 2) - 1);
-
                 // Clear text and border
                 g.Clear(form.BackColor);
-
                 // Draw text
                 g.DrawString(box.Text, box.Font, textBrush, box.Padding.Left, 0);
-
                 // Drawing Border
                 //Left
                 g.DrawLine(borderPen, rect.Location, new Point(rect.X, rect.Y + rect.Height));
