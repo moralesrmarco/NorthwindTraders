@@ -145,10 +145,11 @@ namespace NorthwindTraders
                 dgv.Columns["Unidades en pedido"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dgv.Columns["Punto de pedido"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dgv.Columns["Descontinuado"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgv.Columns["Categoría"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 if (sender == null)
                     Utils.ActualizarBarraDeEstado("Se muestran los últimos 20 productos registrados", this);
                 else
-                    Utils.ActualizarBarraDeEstado($"Se encontraron: {tbl.Rows.Count} registros", this);
+                    Utils.ActualizarBarraDeEstado($"Se encontraron: {dgv.Rows.Count} registros", this);
             }
             catch (SqlException ex)
             {

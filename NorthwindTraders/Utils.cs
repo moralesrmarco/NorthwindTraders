@@ -10,12 +10,15 @@ namespace NorthwindTraders
         public static void ActualizarBarraDeEstado(string mensaje, Form form)
         {
             MDIPrincipal mDIPrincipal = (MDIPrincipal)form.MdiParent;
-            if (mensaje != "Activo")
-                mDIPrincipal.ToolStripEstado.BackColor = SystemColors.ActiveCaption;
-            else
-                mDIPrincipal.ToolStripEstado.BackColor = SystemColors.Control;
-            mDIPrincipal.ToolStripEstado.Text = mensaje;
-            mDIPrincipal.Refresh();
+            if (mDIPrincipal != null)
+            {
+                if (mensaje != "Activo")
+                    mDIPrincipal.ToolStripEstado.BackColor = SystemColors.ActiveCaption;
+                else 
+                    mDIPrincipal.ToolStripEstado.BackColor = SystemColors.Control;
+                mDIPrincipal.ToolStripEstado.Text = mensaje;
+                mDIPrincipal.Refresh();
+            }
         }
 
         public static void CerrarFormularios(string formDebeQuedarAbierto)
