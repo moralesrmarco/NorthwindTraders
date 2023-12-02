@@ -198,7 +198,6 @@ namespace NorthwindTraders
 
         protected void BorrarDatosProducto()
         {
-            // BorrarMensajesError();
             txtId.Text = "";
             txtProducto.Text = "";
             txtCantidadxU.Text = "";
@@ -298,6 +297,10 @@ namespace NorthwindTraders
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            if (nameForm == "FrmProductosModificarRdr")
+                btnModificar.Enabled = false;
+            else if (nameForm == "FrmProductosEliminarRdr")
+                btnEliminar.Enabled = false;
             BorrarMensajesError();
             DeshabilitarControles();
             BorrarDatosProducto();
@@ -311,6 +314,7 @@ namespace NorthwindTraders
             DeshabilitarControles();
             BorrarMensajesError();
             BorrarDatosProducto();
+
         }
 
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -340,7 +344,10 @@ namespace NorthwindTraders
                     btnModificar.Enabled = true;
                 }
                 else if (nameForm == "FrmProductosEliminarRdr")
+                {
                     DeshabilitarControles();
+                    btnEliminar.Enabled = true;
+                }
             }
         }
 

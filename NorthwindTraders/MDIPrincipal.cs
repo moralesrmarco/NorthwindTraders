@@ -198,11 +198,11 @@ namespace NorthwindTraders
         private void tsmiEliminarProductosRdr_Click(object sender, EventArgs e)
         {
             Utils.CerrarFormularios("MDIPrincipal");
-            //FrmProductosEliminarRdr frmProductosEliminarRdr = new FrmProductosEliminarRdr
-            //{
-            //    MdiParent = this
-            //};
-            //frmProductosEliminarRdr.Show();
+            FrmProductosEliminarRdr frmProductosEliminarRdr = new FrmProductosEliminarRdr
+            {
+                MdiParent = this
+            };
+            frmProductosEliminarRdr.Show();
         }
     }
 }

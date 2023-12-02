@@ -46,17 +46,16 @@ namespace NorthwindTraders
                 catch (SqlException ex)
                 {
                     MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Utils.ActualizarBarraDeEstado("Activo", this);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Utils.ActualizarBarraDeEstado("Activo", this);
                 }
                 finally
                 {
                     cn.Close();
                 }
+                Utils.ActualizarBarraDeEstado("Activo", this);
                 if (numRegs > 0)
                 {
                     txtBId.Text = txtId.Text;
