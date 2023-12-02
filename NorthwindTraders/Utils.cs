@@ -7,15 +7,28 @@ namespace NorthwindTraders
     public class Utils
     {
 
-        public static void ActualizarBarraDeEstado(string mensaje, Form form)
+        public static void ActualizarBarraDeEstado(string mensaje, Form form, bool error = false)
         {
             MDIPrincipal mDIPrincipal = (MDIPrincipal)form.MdiParent;
-            if (mDIPrincipal != null)
+            if (mDIPrincipal != null) // esta comprobación se requiere para que no marque error en los formularios heredados en el tiempo de diseño.
             {
                 if (mensaje != "Activo")
-                    mDIPrincipal.ToolStripEstado.BackColor = SystemColors.ActiveCaption;
+                    if (error)
+                        mDIPrincipal.ToolStripEstado.BackColor = Color.Red;
+                    else
+                        mDIPrincipal.ToolStripEstado.BackColor = SystemColors.ActiveCaption;
                 else 
                     mDIPrincipal.ToolStripEstado.BackColor = SystemColors.Control;
+                if (error)
+                {
+                    mDIPrincipal.ToolStripEstado.ForeColor = Color.White;
+                    mDIPrincipal.ToolStripEstado.Font = new Font(mDIPrincipal.ToolStripEstado.Font, FontStyle.Bold);
+                }
+                else
+                {
+                    mDIPrincipal.ToolStripEstado.ForeColor = SystemColors.ControlText;
+                    mDIPrincipal.ToolStripEstado.Font = new Font(mDIPrincipal.ToolStripEstado.Font, FontStyle.Regular);
+                }
                 mDIPrincipal.ToolStripEstado.Text = mensaje;
                 mDIPrincipal.Refresh();
             }

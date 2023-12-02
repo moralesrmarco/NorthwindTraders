@@ -58,12 +58,6 @@
     <Compile Include="FrmProductosEliminarDap.Designer.cs">
       <DependentUpon>FrmProductosEliminarDap.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmProductosEliminarRdr.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmProductosEliminarRdr.Designer.cs">
-      <DependentUpon>FrmProductosEliminarRdr.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmProductosListarDap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductosModificarDap.resx">
       <DependentUpon>FrmProductosModificarDap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProductosModificarRdr.resx">
+      <DependentUpon>FrmProductosModificarRdr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductosRegistrarDap.resx">
       <DependentUpon>FrmProductosRegistrarDap.cs</DependentUpon>
