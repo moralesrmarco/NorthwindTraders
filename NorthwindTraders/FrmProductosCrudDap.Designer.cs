@@ -192,6 +192,7 @@
             this.txtBId.Name = "txtBId";
             this.txtBId.Size = new System.Drawing.Size(100, 20);
             this.txtBId.TabIndex = 0;
+            this.txtBId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBId_KeyPress);
             // 
             // label1
             // 

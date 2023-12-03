@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NorthwindTraders
@@ -87,24 +82,32 @@ namespace NorthwindTraders
                 }
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.SingleResult);
-                BindingSource bs = new BindingSource();
-                bs.DataSource = dr;
-                dgvLista.DataSource = bs;
-                dgvLista.AutoResizeColumns();
-                dgvLista.EnableHeadersVisualStyles = false;
-                //dgvLista.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
-                //dgvLista.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
-                dgvLista.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
-                dgvLista.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
-                dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-                dgvLista.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLista.Font, FontStyle.Bold);
-                dgvLista.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvLista.Columns["Precio"].DefaultCellStyle.Format = "c";
-                dgvLista.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvLista.Columns["Unidades en inventario"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvLista.Columns["Unidades en pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvLista.Columns["Punto de pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                Utils.ActualizarBarraDeEstado($"Se encontraron: {dgvLista.RowCount} registros", this);
+                if (dr.HasRows)
+                {
+                    BindingSource bs = new BindingSource();
+                    bs.DataSource = dr;
+                    dgvLista.DataSource = bs;
+                    dgvLista.AutoResizeColumns();
+                    dgvLista.EnableHeadersVisualStyles = false;
+                    //dgvLista.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
+                    //dgvLista.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+                    dgvLista.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
+                    dgvLista.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
+                    dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                    dgvLista.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLista.Font, FontStyle.Bold);
+                    dgvLista.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvLista.Columns["Precio"].DefaultCellStyle.Format = "c";
+                    dgvLista.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvLista.Columns["Unidades en inventario"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvLista.Columns["Unidades en pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dgvLista.Columns["Punto de pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    Utils.ActualizarBarraDeEstado($"Se encontraron: {dgvLista.RowCount} registros", this);
+                }
+                else
+                {
+                    dgvLista.DataSource = null;
+                    Utils.ActualizarBarraDeEstado("No se encontraron registros con el criterio de buqueda proporcionado", this, true);
+                }
             }
             catch (SqlException ex)
             {

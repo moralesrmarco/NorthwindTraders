@@ -419,6 +419,7 @@
             this.txtBId.Name = "txtBId";
             this.txtBId.Size = new System.Drawing.Size(100, 20);
             this.txtBId.TabIndex = 0;
+            this.txtBId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBId_KeyPress);
             // 
             // label14
             // 
@@ -464,7 +465,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 553);
+            this.ClientSize = new System.Drawing.Size(806, 549);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);

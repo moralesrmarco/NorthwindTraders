@@ -552,6 +552,11 @@ namespace NorthwindTraders
         {
             Utils.ActualizarBarraDeEstado("Activo", this);
         }
+
+        private void txtBId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utils.ValidarDigitosSinPunto(sender, e);
+        }
     }
 }
 /*
