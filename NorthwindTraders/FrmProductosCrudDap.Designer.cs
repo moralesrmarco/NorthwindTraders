@@ -574,6 +574,8 @@
             this.Name = "FrmProductosCrudDap";
             this.ShowIcon = false;
             this.Text = "Mantenimiento de productos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmProductosCrudDap_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductosCrudDap_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductosCrudDap_Load);
             this.grbBuscar.ResumeLayout(false);
             this.grbBuscar.PerformLayout();

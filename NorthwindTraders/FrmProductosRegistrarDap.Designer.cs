@@ -284,7 +284,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 401);
+            this.ClientSize = new System.Drawing.Size(607, 397);
             this.ControlBox = false;
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -314,6 +314,8 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar productos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmProductosRegistrarDap_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductosRegistrarDap_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductosRegistrarDap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);

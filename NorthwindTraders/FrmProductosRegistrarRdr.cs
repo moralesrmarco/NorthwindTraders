@@ -474,5 +474,22 @@ namespace NorthwindTraders
         {
             Utils.ValidarDigitosSinPunto(sender, e);
         }
+
+        private void FrmProductosRegistrarRdr_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (cboCategoria.SelectedIndex != 0 || cboProveedor.SelectedIndex != 0 || txtProducto.Text.Trim() != "" || txtCantidadxU.Text.Trim() != "" || txtPrecio.Text.Trim() != "" || txtUInventario.Text.Trim() != "" || txtUPedido.Text.Trim() != "" || txtPPedido.Text.Trim() != "")
+            {
+                DialogResult respuesta = MessageBox.Show("¿Esta seguro de querer cerrar el formulario?, si responde Si se perderan los datos no guardados", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (respuesta == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void FrmProductosRegistrarRdr_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Utils.ActualizarBarraDeEstado("Activo", this);
+        }
     }
 }
