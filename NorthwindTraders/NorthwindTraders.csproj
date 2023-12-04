@@ -52,6 +52,12 @@
     <Compile Include="FrmProductosCrudDap.Designer.cs">
       <DependentUpon>FrmProductosCrudDap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmProductosCrudRdr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProductosCrudRdr.Designer.cs">
+      <DependentUpon>FrmProductosCrudRdr.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProductosEliminarDap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="FrmProductosCrudDap.resx">
       <DependentUpon>FrmProductosCrudDap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProductosCrudRdr.resx">
+      <DependentUpon>FrmProductosCrudRdr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductosEliminarDap.resx">
       <DependentUpon>FrmProductosEliminarDap.cs</DependentUpon>
