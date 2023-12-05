@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBId = new System.Windows.Forms.TextBox();
@@ -71,6 +72,7 @@
             this.chkDescontinuado = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.tabOperacion.SuspendLayout();
             this.tbpRegistrar.SuspendLayout();
@@ -78,6 +80,7 @@
             this.tbpEliminar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -121,7 +124,7 @@
             this.txtBId.Name = "txtBId";
             this.txtBId.Size = new System.Drawing.Size(100, 20);
             this.txtBId.TabIndex = 0;
-            this.txtBId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBId_KeyPress);
+            this.txtBId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidarDigitosSinPunto);
             // 
             // label2
             // 
@@ -187,6 +190,7 @@
             this.btnBuscar.TabIndex = 4;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnLimpiar
             // 
@@ -197,6 +201,7 @@
             this.btnLimpiar.TabIndex = 5;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // tabOperacion
             // 
@@ -211,6 +216,7 @@
             this.tabOperacion.SelectedIndex = 0;
             this.tabOperacion.Size = new System.Drawing.Size(728, 56);
             this.tabOperacion.TabIndex = 1;
+            this.tabOperacion.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabOperacion_Selected);
             // 
             // tbpRegistrar
             // 
@@ -285,6 +291,7 @@
             this.dgv.Name = "dgv";
             this.dgv.Size = new System.Drawing.Size(724, 196);
             this.dgv.TabIndex = 2;
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // groupBox2
             // 
@@ -420,6 +427,7 @@
             this.btnAccion.TabIndex = 1;
             this.btnAccion.Text = "Registrar producto";
             this.btnAccion.UseVisualStyleBackColor = true;
+            this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
             // 
             // txtId
             // 
@@ -427,6 +435,7 @@
             this.txtId.Location = new System.Drawing.Point(304, 21);
             this.txtId.MaxLength = 15;
             this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(100, 20);
             this.txtId.TabIndex = 2;
             // 
@@ -476,6 +485,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(100, 20);
             this.txtPrecio.TabIndex = 6;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // txtUInventario
             // 
@@ -485,6 +495,8 @@
             this.txtUInventario.Name = "txtUInventario";
             this.txtUInventario.Size = new System.Drawing.Size(100, 20);
             this.txtUInventario.TabIndex = 7;
+            this.txtUInventario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidarDigitosSinPunto);
+            this.txtUInventario.Validating += new System.ComponentModel.CancelEventHandler(this.txtUInventario_Validating);
             // 
             // txtUPedido
             // 
@@ -494,6 +506,8 @@
             this.txtUPedido.Name = "txtUPedido";
             this.txtUPedido.Size = new System.Drawing.Size(100, 20);
             this.txtUPedido.TabIndex = 8;
+            this.txtUPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidarDigitosSinPunto);
+            this.txtUPedido.Validating += new System.ComponentModel.CancelEventHandler(this.txtUPedido_Validating);
             // 
             // txtPPedido
             // 
@@ -503,6 +517,8 @@
             this.txtPPedido.Name = "txtPPedido";
             this.txtPPedido.Size = new System.Drawing.Size(100, 20);
             this.txtPPedido.TabIndex = 9;
+            this.txtPPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidarDigitosSinPunto);
+            this.txtPPedido.Validating += new System.ComponentModel.CancelEventHandler(this.txtPPedido_Validating);
             // 
             // chkDescontinuado
             // 
@@ -533,6 +549,10 @@
             this.label19.Text = "Cantidad de unidades en el inventario en la cual se debe realizar un nuevo pedido" +
     "";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FrmProductosCrudRdr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -547,6 +567,8 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmProductosCrudRdr";
             this.Text = "Mantenimiento de productos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmProductosCrudRdr_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductosCrudRdr_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductosCrudRdr_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -560,6 +582,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -609,5 +632,6 @@
         private System.Windows.Forms.TextBox txtUInventario;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
