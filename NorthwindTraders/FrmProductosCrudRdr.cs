@@ -583,6 +583,8 @@ namespace NorthwindTraders
                         numRegs = 0;
                     }
                 }
+                BorrarDatosProducto();
+                btnAccion.Enabled = false;
             }
         }
     }

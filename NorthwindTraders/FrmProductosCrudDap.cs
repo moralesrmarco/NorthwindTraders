@@ -281,21 +281,26 @@ namespace NorthwindTraders
             {
                 try
                 {
-                    Utils.ActualizarBarraDeEstado("Actualizando base de datos...", this);
-                    SqlCommand cmd = new SqlCommand("Sp_Productos_Eliminar", cn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("Id", txtId.Text);
-                    cn.Open();
-                    int numRegs = cmd.ExecuteNonQuery();
-                    if (numRegs > 0)
+                    DialogResult respuesta = MessageBox.Show($"¿Esta seguro de eliminar el producto con Id: {txtId.Text} y Nombre: {txtProducto.Text}?", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    if (respuesta == DialogResult.Yes)
                     {
-                        MessageBox.Show($"El producto con Id: {txtId.Text} y Nombre: {txtProducto.Text} se eliminó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtBId.Text = txtId.Text;
-                        btnBuscar.PerformClick();
-                        BorrarDatosProducto();
-                        btnLimpiar.PerformClick();
-                        DeshabilitarControles();
+                        Utils.ActualizarBarraDeEstado("Actualizando base de datos...", this);
+                        SqlCommand cmd = new SqlCommand("Sp_Productos_Eliminar", cn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("Id", txtId.Text);
+                        cn.Open();
+                        int numRegs = cmd.ExecuteNonQuery();
+                        if (numRegs > 0)
+                        {
+                            MessageBox.Show($"El producto con Id: {txtId.Text} y Nombre: {txtProducto.Text} se eliminó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtBId.Text = txtId.Text;
+                            btnBuscar.PerformClick();
+                            btnLimpiar.PerformClick();
+                            DeshabilitarControles();
+                        }
                     }
+                    BorrarDatosProducto();
+                    btnAccion.Enabled = false;
                 }
                 catch (SqlException ex)
                 {
