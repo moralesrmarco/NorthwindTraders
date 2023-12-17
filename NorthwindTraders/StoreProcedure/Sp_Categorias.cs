@@ -56,5 +56,35 @@ BEGIN
 	ORDER BY Categories.CategoryID DESC
 END
 ---------------------------------------------------------------------------------------------------
+USE [Northwind]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_CATEGORIAS_ELIMINAR]
+	@Id int
+as
+	Delete Categories
+	where CategoryID = @Id
+---------------------------------------------------------------------------------------------------
+USE [Northwind]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_CATEGORIAS_INSERTAR]
+    @Categoria NVARCHAR(15),
+    @Descripcion NVARCHAR(max),
+	@Foto image,
+    @Id INT OUTPUT
+as
+	INSERT INTO Categories
+	(CategoryName, Description, Picture)
+	VALUES(@Categoria, @Descripcion, @Foto)
+    SET @Id = @@IDENTITY
+---------------------------------------------------------------------------------------------------
+
 
  */

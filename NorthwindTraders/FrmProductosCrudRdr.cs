@@ -435,7 +435,6 @@ namespace NorthwindTraders
                     DeshabilitarControles();
                     try
                     {
-                        Utils.ActualizarBarraDeEstado("Activo", this);
                         SqlCommand cmd = new SqlCommand("Sp_Productos_Insertar", cn);
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("Categoria", cboCategoria.SelectedValue);
@@ -485,6 +484,7 @@ namespace NorthwindTraders
                         btnLimpiar.PerformClick();
                         numRegs = 0;
                     }
+                    Utils.ActualizarBarraDeEstado("Activo", this);
                 }
             }
             else if (tabOperacion.SelectedTab == tbpModificar)

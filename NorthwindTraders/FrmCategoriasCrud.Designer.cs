@@ -47,16 +47,18 @@
             this.txtBCategoria = new System.Windows.Forms.TextBox();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.grbDetalle = new System.Windows.Forms.GroupBox();
+            this.btnOperacion = new System.Windows.Forms.Button();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.picFoto = new System.Windows.Forms.PictureBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtCategoria = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnOperacion = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnCargar = new System.Windows.Forms.Button();
             this.tabcOperacion.SuspendLayout();
             this.tbpListar.SuspendLayout();
             this.tbpRegistrar.SuspendLayout();
@@ -82,6 +84,7 @@
             this.tabcOperacion.SelectedIndex = 0;
             this.tabcOperacion.Size = new System.Drawing.Size(950, 56);
             this.tabcOperacion.TabIndex = 0;
+            this.tabcOperacion.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabcOperacion_Selected);
             // 
             // tbpListar
             // 
@@ -257,6 +260,7 @@
             this.grbDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbDetalle.Controls.Add(this.btnCargar);
             this.grbDetalle.Controls.Add(this.btnOperacion);
             this.grbDetalle.Controls.Add(this.txtId);
             this.grbDetalle.Controls.Add(this.label10);
@@ -275,11 +279,44 @@
             this.grbDetalle.Text = "»   Detalle de la categoría:   «";
             this.grbDetalle.Paint += new System.Windows.Forms.PaintEventHandler(this.grb_Paint);
             // 
+            // btnOperacion
+            // 
+            this.btnOperacion.Location = new System.Drawing.Point(560, 281);
+            this.btnOperacion.Name = "btnOperacion";
+            this.btnOperacion.Size = new System.Drawing.Size(158, 23);
+            this.btnOperacion.TabIndex = 7;
+            this.btnOperacion.Text = "Registrar categoría";
+            this.btnOperacion.UseVisualStyleBackColor = true;
+            this.btnOperacion.Visible = false;
+            this.btnOperacion.Click += new System.EventHandler(this.btnOperacion_Click);
+            // 
+            // txtId
+            // 
+            this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtId.Location = new System.Drawing.Point(181, 20);
+            this.txtId.MaxLength = 15;
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(100, 20);
+            this.txtId.TabIndex = 6;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(153, 23);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(22, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Id:";
+            // 
             // picFoto
             // 
+            this.picFoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.picFoto.Location = new System.Drawing.Point(181, 101);
             this.picFoto.Name = "picFoto";
             this.picFoto.Size = new System.Drawing.Size(363, 203);
+            this.picFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picFoto.TabIndex = 4;
             this.picFoto.TabStop = false;
             // 
@@ -329,38 +366,24 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Categoría:";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(153, 23);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(22, 13);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Id:";
-            // 
-            // txtId
-            // 
-            this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(181, 20);
-            this.txtId.MaxLength = 15;
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 6;
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // btnOperacion
+            // openFileDialog1
             // 
-            this.btnOperacion.Location = new System.Drawing.Point(560, 281);
-            this.btnOperacion.Name = "btnOperacion";
-            this.btnOperacion.Size = new System.Drawing.Size(158, 23);
-            this.btnOperacion.TabIndex = 7;
-            this.btnOperacion.Text = "Registrar categoría";
-            this.btnOperacion.UseVisualStyleBackColor = true;
-            this.btnOperacion.Visible = false;
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnCargar
+            // 
+            this.btnCargar.Location = new System.Drawing.Point(560, 252);
+            this.btnCargar.Name = "btnCargar";
+            this.btnCargar.Size = new System.Drawing.Size(158, 23);
+            this.btnCargar.TabIndex = 8;
+            this.btnCargar.Text = "Cargar imagen ...";
+            this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnCargar.Visible = false;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
             // FrmCategoriasCrud
             // 
@@ -375,6 +398,8 @@
             this.Name = "FrmCategoriasCrud";
             this.ShowIcon = false;
             this.Text = "Mantenimiento de categorías";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCategoriasCrud_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCategoriasCrud_FormClosed);
             this.Load += new System.EventHandler(this.FrmCategoriasCrud_Load);
             this.tabcOperacion.ResumeLayout(false);
             this.tbpListar.ResumeLayout(false);
@@ -426,5 +451,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnOperacion;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnCargar;
     }
 }
