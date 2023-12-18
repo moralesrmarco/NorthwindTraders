@@ -93,7 +93,7 @@ as
 	VALUES(@Producto, @Proveedor, @Categoria, @Cantidad, @Precio, @UInventario, @UPedido, @PPedido, @Descontinuado)
 
 
-    SET @Id = @@IDENTITY
+    SET @Id = SCOPE_IDENTITY()
 ---------------------------------------------------------------------------------------------------
 USE [Northwind]
 GO

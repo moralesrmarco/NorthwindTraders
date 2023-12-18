@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NorthwindTraders
@@ -17,6 +13,7 @@ namespace NorthwindTraders
 
         SqlConnection cn = new SqlConnection(NorthwindTraders.Properties.Settings.Default.NWCn);
         bool EventoCargado = true; // esta variable es necesaria para controlar el manejador de eventos de la celda del dgv, ojo no quitar
+        OpenFileDialog openFileDialog;
 
         public FrmCategoriasCrud()
         {
@@ -104,7 +101,16 @@ namespace NorthwindTraders
                 if (dgvr.Cells["Foto"].Value != DBNull.Value)
                 {
                     byte[] foto = (byte[])dgvr.Cells["Foto"].Value;
-                    MemoryStream ms = new MemoryStream(foto, 78, foto.Length - 78);
+                    MemoryStream ms;
+                    if (int.Parse(txtId.Text) <= 8)
+                    {
+                        ms = new MemoryStream(foto, 78, foto.Length - 78);
+                    }
+                    else
+                    {
+                        ms = new MemoryStream(foto);
+                    }
+
                     picFoto.Image = Image.FromStream(ms);
                 }
                 else
@@ -194,7 +200,7 @@ namespace NorthwindTraders
             if (picFoto.Image == null)
             {
                 valida = false;
-                errorProvider1.SetError(btnCargar, "Ingresa la imagen");
+                errorProvider1.SetError(btnCargar, "Ingrese la imagen");
             }
             return valida;
         }
@@ -265,18 +271,24 @@ namespace NorthwindTraders
                     DeshabilitarControles();
                     btnOperacion.Enabled = false;
                     btnCargar.Enabled = false;
-                    byte[] imageBytes;
+                    byte[] fileFoto = null;
+                    Stream stream = openFileDialog.OpenFile();
                     using (MemoryStream ms = new MemoryStream())
                     {
-                        imageBytes = ms.ToArray();
+                        stream.CopyTo(ms);
+                        fileFoto = ms.ToArray();
                     }
+                    // La siguiente forma no me gusto por que es forzoso solo formato jpeg
+                    //MemoryStream ms = new MemoryStream();
+                    //picFoto.Image.Save(ms, ImageFormat.Jpeg);
                     try
                     {
                         SqlCommand cmd = new SqlCommand("Sp_Categorias_Insertar", cn);
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("Categoria", txtCategoria.Text);
                         cmd.Parameters.AddWithValue("Descripcion", txtDescripcion.Text);
-                        cmd.Parameters.AddWithValue("Foto",imageBytes);
+                        //cmd.Parameters.AddWithValue("Foto", ms.GetBuffer());
+                        cmd.Parameters.AddWithValue("Foto", fileFoto);
                         cmd.Parameters.AddWithValue("Id", 0);
                         cmd.Parameters["Id"].Direction = ParameterDirection.Output;
                         cn.Open();
@@ -312,14 +324,66 @@ namespace NorthwindTraders
                         txtBId.Text = txtId.Text;
                         btnBuscar.PerformClick();
                         btnLimpiar.PerformClick();
-                        numRegs = 0;
                     }
                     Utils.ActualizarBarraDeEstado("Activo", this);
                 }
             }
             else if (tabcOperacion.SelectedTab == tbpModificar)
             {
-
+                if (ValidarControles())
+                {
+                    Utils.ActualizarBarraDeEstado("Actualizando la base de datos...", this);
+                    DeshabilitarControles();
+                    btnOperacion.Enabled = false;
+                    btnCargar.Enabled = false;
+                    byte[] fileFoto = null;
+                    Stream stream = openFileDialog.OpenFile();
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        stream.CopyTo(ms);
+                        fileFoto = ms.ToArray();
+                    }
+                    // La siguiente forma no me gusto por que es forzoso solo formato jpeg
+                    //MemoryStream ms = new MemoryStream();
+                    //picFoto.Image.Save(ms, ImageFormat.Jpeg);
+                    try
+                    {
+                        SqlCommand cmd = new SqlCommand("Sp_Categorias_Actualizar", cn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("Id", txtId.Text);
+                        cmd.Parameters.AddWithValue("Categoria", txtCategoria.Text);
+                        cmd.Parameters.AddWithValue("Descripcion", txtDescripcion.Text);
+                        cmd.Parameters.AddWithValue("Foto", fileFoto);
+                        //cmd.Parameters.AddWithValue("Foto", ms.GetBuffer());
+                        cn.Open();
+                        numRegs = cmd.ExecuteNonQuery();
+                        if (numRegs > 0)
+                            MessageBox.Show($"La categoría con Id: {txtId.Text} y Nombre: {txtCategoria.Text} se actualizó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show($"La categoría con Id: {txtId.Text} y Nombre: {txtCategoria.Text} NO fue registrado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    finally
+                    {
+                        cn.Close();
+                    }
+                    if (numRegs > 0)
+                    {
+                        BorrarDatosBusqueda();
+                        txtBId.Text = txtId.Text;
+                        btnBuscar.PerformClick();
+                        btnLimpiar.PerformClick();
+                    }
+                }
             }
             else if (tabcOperacion.SelectedTab == tbpEliminar)
             {
@@ -361,7 +425,6 @@ namespace NorthwindTraders
                         txtBId.Text = txtId.Text;
                         btnBuscar.PerformClick();
                         btnLimpiar.PerformClick();
-                        numRegs = 0;
                     }
                 }
                 BorrarDatosCategoria();
@@ -390,9 +453,14 @@ namespace NorthwindTraders
         private void btnCargar_Click(object sender, EventArgs e)
         {
             // Mostrar el cuadro de diálogo OpenFileDialog
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            //La instrucción siguiente es para que nos muestre todos los tipos juntos
+            openFileDialog = new OpenFileDialog();
             //openFileDialog.Filter = "Archivos de imagen (*.jpg, *.jpeg, *.png, *.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
-            openFileDialog.Filter = "Archivos de imagen (*.jpg)|*.jpg";
+            openFileDialog.InitialDirectory = "c:\\Imágenes\\";
+            //La instrucción siguiente es para que nos muestre varias filas en el openfiledialog que nos permita abrir por un tipo especifico
+            openFileDialog.Filter = "Archivos jpg (*.jpg)|*.jpg|Archivos jpeg (*.jpeg)|*.jpeg|Archivos png (*.png)|*.png|Archivos bmp (*.bmp)|*.bmp";
+            openFileDialog.FilterIndex = 1;
+            openFileDialog.RestoreDirectory = true;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 // Cargar la imagen seleccionada en un objeto Image
@@ -400,23 +468,8 @@ namespace NorthwindTraders
 
                 // Mostrar la imagen en un control PictureBox
                 picFoto.Image = image;
+                errorProvider1.SetError(btnCargar, "");
             }
         }
-
-        //private void dgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    if (dgv.Columns[e.ColumnIndex].Name.Equals("Foto"))
-        //    {
-        //        if (e.Value != null)
-        //        {
-        //            byte[] bytes = (byte[])e.Value;
-        //            using (MemoryStream ms = new MemoryStream(bytes, 78, bytes.Length - 78))
-        //            {
-        //                Image image = Image.FromStream(ms);
-        //                e.Value = new Bitmap(image, new Size(200, 200));
-        //            }
-        //        }
-        //    }
-        //}
     }
 }

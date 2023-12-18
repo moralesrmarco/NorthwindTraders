@@ -83,8 +83,24 @@ as
 	INSERT INTO Categories
 	(CategoryName, Description, Picture)
 	VALUES(@Categoria, @Descripcion, @Foto)
-    SET @Id = @@IDENTITY
+	SET @Id = SCOPE_IDENTITY()
 ---------------------------------------------------------------------------------------------------
-
-
+USE [Northwind]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_CATEGORIAS_ACTUALIZAR]
+	@Id Int,
+    @Categoria NVARCHAR(15),
+    @Descripcion NVARCHAR(max),
+	@Foto image
+AS
+	UPDATE Categories
+	SET CategoryName = @Categoria,
+	Description = @Descripcion,
+	Picture = @Foto
+	where CategoryID = @Id
+---------------------------------------------------------------------------------------------------
  */
