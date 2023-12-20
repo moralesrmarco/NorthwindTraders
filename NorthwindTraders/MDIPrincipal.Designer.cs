@@ -75,6 +75,7 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoríasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMantCategorias = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.accesoConDataAdapterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
@@ -107,7 +108,7 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tsmiMantCategorias = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCategoríasProductos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -488,10 +489,18 @@
             // categoríasToolStripMenuItem
             // 
             this.categoríasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiMantCategorias});
+            this.tsmiMantCategorias,
+            this.tsmiCategoríasProductos});
             this.categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
             this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.categoríasToolStripMenuItem.Text = "Categorías";
+            // 
+            // tsmiMantCategorias
+            // 
+            this.tsmiMantCategorias.Name = "tsmiMantCategorias";
+            this.tsmiMantCategorias.Size = new System.Drawing.Size(229, 22);
+            this.tsmiMantCategorias.Text = "Mantenimiento de categorías";
+            this.tsmiMantCategorias.Click += new System.EventHandler(this.tsmiMantCategorias_Click);
             // 
             // productosToolStripMenuItem1
             // 
@@ -745,12 +754,12 @@
             this.tsslEstado.Size = new System.Drawing.Size(45, 19);
             this.tsslEstado.Text = "Activo";
             // 
-            // tsmiMantCategorias
+            // tsmiCategoríasProductos
             // 
-            this.tsmiMantCategorias.Name = "tsmiMantCategorias";
-            this.tsmiMantCategorias.Size = new System.Drawing.Size(229, 22);
-            this.tsmiMantCategorias.Text = "Mantenimiento de categorías";
-            this.tsmiMantCategorias.Click += new System.EventHandler(this.tsmiMantCategorias_Click);
+            this.tsmiCategoríasProductos.Name = "tsmiCategoríasProductos";
+            this.tsmiCategoríasProductos.Size = new System.Drawing.Size(229, 22);
+            this.tsmiCategoríasProductos.Text = "Categorías-->Productos";
+            this.tsmiCategoríasProductos.Click += new System.EventHandler(this.tsmiCategoríasProductos_Click);
             // 
             // MDIPrincipal
             // 
@@ -857,6 +866,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiEliminarProductosRdr;
         private System.Windows.Forms.ToolStripMenuItem tsmiMantenimientoProductosCrudRdr;
         private System.Windows.Forms.ToolStripMenuItem tsmiMantCategorias;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCategoríasProductos;
     }
 }
 

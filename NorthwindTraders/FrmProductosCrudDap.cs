@@ -124,42 +124,24 @@ namespace NorthwindTraders
                 SqlCommand cmd;
                 if (sender == null)
                 {
-                    cmd = new SqlCommand("SELECT TOP 20 Products.ProductID AS Id, Products.ProductName AS Producto, Products.QuantityPerUnit AS [Cantidad por unidad], Products.UnitPrice AS Precio, Products.UnitsInStock AS [Unidades en inventario], Products.UnitsOnOrder AS [Unidades en pedido], Products.ReorderLevel AS [Punto de pedido], Products.Discontinued AS Descontinuado, Categories.CategoryName AS Categoría, Categories.Description As [Descripción de categoría],  Suppliers.CompanyName AS Proveedor FROM Products LEFT OUTER JOIN Categories ON Products.CategoryID = Categories.CategoryID LEFT OUTER JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID ORDER BY Products.ProductID Desc", cn);
-                    cmd.CommandType = CommandType.Text;
+                    cmd = new SqlCommand("SP_Productos_All", cn);
                 }
                 else
                 {
                     cmd = new SqlCommand("Sp_Productos_Buscar", cn);
-                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("Id", txtBId.Text);
                     cmd.Parameters.AddWithValue("Producto", txtBNombre.Text);
                     cmd.Parameters.AddWithValue("Categoria", cboBCategoria.SelectedValue);
                     cmd.Parameters.AddWithValue("Proveedor", cboBProveedor.SelectedValue);
                 }
+                cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter dap;
                 dap = new SqlDataAdapter(cmd);
                 DataTable tblProductos = new DataTable();
                 dap.Fill(tblProductos);
                 dgvLista.DataSource = tblProductos;
-                dgvLista.EnableHeadersVisualStyles = false;
-                dgvLista.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
-                dgvLista.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
-                dgvLista.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLista.Font, FontStyle.Bold);
-                dgvLista.AllowUserToAddRows = false;
-                dgvLista.AllowUserToDeleteRows = false;
-                dgvLista.AllowUserToOrderColumns = true;
-                dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvLista.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                dgvLista.MultiSelect = false;
-                dgvLista.ReadOnly = true;
-                dgvLista.Enabled = true;
-                dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-                dgvLista.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvLista.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvLista.Columns["Precio"].DefaultCellStyle.Format = "c";
-                dgvLista.Columns["Unidades en inventario"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvLista.Columns["Unidades en pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvLista.Columns["Punto de pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Utils.ConfDataGridView(dgvLista);
+                Utils.ConfDgvProductos(dgvLista);
                 if (sender == null)
                     Utils.ActualizarBarraDeEstado("Se muestran los últimos 20 productos registrados", this);
                 else

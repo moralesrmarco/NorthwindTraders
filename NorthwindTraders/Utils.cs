@@ -7,6 +7,50 @@ namespace NorthwindTraders
     public class Utils
     {
 
+        public static void ConfDataGridView (DataGridView dgv)
+        {
+            dgv.AllowUserToAddRows = false;
+            dgv.AllowUserToDeleteRows = false;
+            dgv.AllowUserToOrderColumns = false;
+            dgv.MultiSelect = false;
+            dgv.ReadOnly = true;
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
+            dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
+            dgv.DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Regular);
+            dgv.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgv.AutoResizeColumns();
+        }
+
+        public static void ConfDgvProductos(DataGridView dgv)
+        {
+            dgv.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.Columns["Precio"].DefaultCellStyle.Format = "c";
+            dgv.Columns["Unidades en inventario"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.Columns["Unidades en pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.Columns["Punto de pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgv.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv.Columns["Producto"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv.Columns["Cantidad por unidad"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgv.Columns["Precio"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv.Columns["Unidades en inventario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgv.Columns["Unidades en pedido"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgv.Columns["Punto de pedido"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dgv.Columns["Descontinuado"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv.Columns["Categoría"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dgv.Columns["Descripción de categoría"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dgv.Columns["Proveedor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+
+            dgv.Columns["IdCategoria"].Visible = false;
+            dgv.Columns["IdProveedor"].Visible = false;
+        }
+
         public static void ActualizarBarraDeEstado(string mensaje, Form form, bool error = false)
         {
             MDIPrincipal mDIPrincipal = (MDIPrincipal)form.MdiParent;

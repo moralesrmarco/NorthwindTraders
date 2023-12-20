@@ -102,17 +102,15 @@ namespace NorthwindTraders
                 DataTable tbl = new DataTable();
                 dap.Fill(tbl);
                 dgvLista.DataSource = tbl;
-                dgvLista.AutoResizeColumns();
-                dgvLista.EnableHeadersVisualStyles = false;
-                dgvLista.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
-                dgvLista.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
-                dgvLista.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLista.Font, FontStyle.Bold);
-                dgvLista.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvLista.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvLista.Columns["Precio"].DefaultCellStyle.Format = "c";
-                dgvLista.Columns["Unidades en inventario"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvLista.Columns["Unidades en pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvLista.Columns["Punto de pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Utils.ConfDataGridView(dgvLista);
+                Utils.ConfDgvProductos(dgvLista);
+                //dgvLista.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dgvLista.Columns["Precio"].DefaultCellStyle.Format = "c";
+                //dgvLista.Columns["Unidades en inventario"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dgvLista.Columns["Unidades en pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dgvLista.Columns["Punto de pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dgvLista.Columns["IdCategoria"].Visible = false;
+                //dgvLista.Columns["IdProveedor"].Visible = false;
                 Utils.ActualizarBarraDeEstado($"Se encontraron: {tbl.Rows.Count} registros", this);
             }
             catch (SqlException ex)

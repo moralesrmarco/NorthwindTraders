@@ -87,20 +87,8 @@ namespace NorthwindTraders
                     BindingSource bs = new BindingSource();
                     bs.DataSource = dr;
                     dgvLista.DataSource = bs;
-                    dgvLista.AutoResizeColumns();
-                    dgvLista.EnableHeadersVisualStyles = false;
-                    //dgvLista.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
-                    //dgvLista.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
-                    dgvLista.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
-                    dgvLista.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
-                    dgvLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-                    dgvLista.ColumnHeadersDefaultCellStyle.Font = new Font(dgvLista.Font, FontStyle.Bold);
-                    dgvLista.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvLista.Columns["Precio"].DefaultCellStyle.Format = "c";
-                    dgvLista.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvLista.Columns["Unidades en inventario"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvLista.Columns["Unidades en pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvLista.Columns["Punto de pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    Utils.ConfDataGridView(dgvLista);
+                    Utils.ConfDgvProductos(dgvLista);
                     Utils.ActualizarBarraDeEstado($"Se encontraron: {dgvLista.RowCount} registros", this);
                 }
                 else
