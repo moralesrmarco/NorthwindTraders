@@ -58,6 +58,12 @@
     <Compile Include="FrmCategoriasProductos.Designer.cs">
       <DependentUpon>FrmCategoriasProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmClientesCrud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClientesCrud.Designer.cs">
+      <DependentUpon>FrmClientesCrud.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProductosCrudDap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCategoriasProductos.resx">
       <DependentUpon>FrmCategoriasProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClientesCrud.resx">
+      <DependentUpon>FrmClientesCrud.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductosCrudDap.resx">
       <DependentUpon>FrmProductosCrudDap.cs</DependentUpon>

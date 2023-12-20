@@ -2,7 +2,6 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 

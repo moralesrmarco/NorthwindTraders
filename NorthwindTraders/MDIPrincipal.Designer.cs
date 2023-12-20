@@ -52,6 +52,29 @@
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEmpleados = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiProveedores = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCategorias = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMantenimientoDeCategorías = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCategoriasProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.accesoConDataAdapterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiListarProductosDap = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRegistrarProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEditarProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEliminarProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMantenimientoProductosCrud = new System.Windows.Forms.ToolStripMenuItem();
+            this.aToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.accesoConDataReaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aToolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiListarProductosRdr = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRegistrarProductosRdr = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiModificarProductosRdr = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEliminarProductosRdr = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMantenimientoProductosCrudRdr = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPedidos = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,27 +93,6 @@
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clieneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.productosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.accesoConDataAdapterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiListarProductosDap = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiRegistrarProductos = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiEditarProductos = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiEliminarProductos = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMantenimientoProductosCrud = new System.Windows.Forms.ToolStripMenuItem();
-            this.aToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.accesoConDataReaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aToolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiListarProductosRdr = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiRegistrarProductosRdr = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiModificarProductosRdr = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiEliminarProductosRdr = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMantenimientoProductosCrudRdr = new System.Windows.Forms.ToolStripMenuItem();
-            this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -106,9 +108,7 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMantenimientoDeCategorías = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCategoriasProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMantenimientoDeClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -119,12 +119,12 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
             this.editMenu,
-            this.empleadosToolStripMenuItem,
-            this.clieneToolStripMenuItem,
-            this.proveedoresToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.productosToolStripMenuItem,
-            this.pedidosToolStripMenuItem,
+            this.tsmiEmpleados,
+            this.tsmiClientes,
+            this.tsmiProveedores,
+            this.tsmiCategorias,
+            this.tsmiProductos,
+            this.tsmiPedidos,
             this.viewMenu,
             this.toolsMenu,
             this.windowsMenu,
@@ -316,6 +316,174 @@
             this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.selectAllToolStripMenuItem.Text = "Seleccionar &todo";
             // 
+            // tsmiEmpleados
+            // 
+            this.tsmiEmpleados.Name = "tsmiEmpleados";
+            this.tsmiEmpleados.Size = new System.Drawing.Size(77, 20);
+            this.tsmiEmpleados.Text = "Empleados";
+            // 
+            // tsmiClientes
+            // 
+            this.tsmiClientes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiMantenimientoDeClientes});
+            this.tsmiClientes.Name = "tsmiClientes";
+            this.tsmiClientes.Size = new System.Drawing.Size(61, 20);
+            this.tsmiClientes.Text = "Clientes";
+            // 
+            // tsmiProveedores
+            // 
+            this.tsmiProveedores.Name = "tsmiProveedores";
+            this.tsmiProveedores.Size = new System.Drawing.Size(84, 20);
+            this.tsmiProveedores.Text = "Proveedores";
+            // 
+            // tsmiCategorias
+            // 
+            this.tsmiCategorias.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiMantenimientoDeCategorías,
+            this.tsmiCategoriasProductos});
+            this.tsmiCategorias.Name = "tsmiCategorias";
+            this.tsmiCategorias.Size = new System.Drawing.Size(75, 20);
+            this.tsmiCategorias.Text = "Categorías";
+            // 
+            // tsmiMantenimientoDeCategorías
+            // 
+            this.tsmiMantenimientoDeCategorías.Name = "tsmiMantenimientoDeCategorías";
+            this.tsmiMantenimientoDeCategorías.Size = new System.Drawing.Size(229, 22);
+            this.tsmiMantenimientoDeCategorías.Text = "Mantenimiento de categorías";
+            this.tsmiMantenimientoDeCategorías.Click += new System.EventHandler(this.tsmiMantenimientoDeCategorías_Click);
+            // 
+            // tsmiCategoriasProductos
+            // 
+            this.tsmiCategoriasProductos.Name = "tsmiCategoriasProductos";
+            this.tsmiCategoriasProductos.Size = new System.Drawing.Size(229, 22);
+            this.tsmiCategoriasProductos.Text = "Categorías --> productos";
+            this.tsmiCategoriasProductos.Click += new System.EventHandler(this.tsmiCategoriasProductos_Click);
+            // 
+            // tsmiProductos
+            // 
+            this.tsmiProductos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.accesoConDataAdapterToolStripMenuItem,
+            this.aToolStripMenuItem,
+            this.tsmiListarProductosDap,
+            this.tsmiRegistrarProductos,
+            this.tsmiEditarProductos,
+            this.tsmiEliminarProductos,
+            this.tsmiMantenimientoProductosCrud,
+            this.aToolStripMenuItem1,
+            this.accesoConDataReaderToolStripMenuItem,
+            this.aToolStripMenuItem2,
+            this.tsmiListarProductosRdr,
+            this.tsmiRegistrarProductosRdr,
+            this.tsmiModificarProductosRdr,
+            this.tsmiEliminarProductosRdr,
+            this.tsmiMantenimientoProductosCrudRdr});
+            this.tsmiProductos.Name = "tsmiProductos";
+            this.tsmiProductos.Size = new System.Drawing.Size(73, 20);
+            this.tsmiProductos.Text = "Productos";
+            // 
+            // accesoConDataAdapterToolStripMenuItem
+            // 
+            this.accesoConDataAdapterToolStripMenuItem.Name = "accesoConDataAdapterToolStripMenuItem";
+            this.accesoConDataAdapterToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.accesoConDataAdapterToolStripMenuItem.Text = "Acceso con DataAdapter";
+            // 
+            // aToolStripMenuItem
+            // 
+            this.aToolStripMenuItem.Name = "aToolStripMenuItem";
+            this.aToolStripMenuItem.Size = new System.Drawing.Size(244, 6);
+            // 
+            // tsmiListarProductosDap
+            // 
+            this.tsmiListarProductosDap.Name = "tsmiListarProductosDap";
+            this.tsmiListarProductosDap.Size = new System.Drawing.Size(247, 22);
+            this.tsmiListarProductosDap.Text = "Listar productos";
+            this.tsmiListarProductosDap.Click += new System.EventHandler(this.tsmiListarProductosDap_Click);
+            // 
+            // tsmiRegistrarProductos
+            // 
+            this.tsmiRegistrarProductos.Name = "tsmiRegistrarProductos";
+            this.tsmiRegistrarProductos.Size = new System.Drawing.Size(247, 22);
+            this.tsmiRegistrarProductos.Text = "Registrar productos";
+            this.tsmiRegistrarProductos.Click += new System.EventHandler(this.tsmiRegistrarProductos_Click);
+            // 
+            // tsmiEditarProductos
+            // 
+            this.tsmiEditarProductos.Name = "tsmiEditarProductos";
+            this.tsmiEditarProductos.Size = new System.Drawing.Size(247, 22);
+            this.tsmiEditarProductos.Text = "Editar productos";
+            this.tsmiEditarProductos.Click += new System.EventHandler(this.tsmiEditarProductos_Click);
+            // 
+            // tsmiEliminarProductos
+            // 
+            this.tsmiEliminarProductos.Name = "tsmiEliminarProductos";
+            this.tsmiEliminarProductos.Size = new System.Drawing.Size(247, 22);
+            this.tsmiEliminarProductos.Text = "Eliminar productos";
+            this.tsmiEliminarProductos.Click += new System.EventHandler(this.tsmiEliminarProductos_Click);
+            // 
+            // tsmiMantenimientoProductosCrud
+            // 
+            this.tsmiMantenimientoProductosCrud.Name = "tsmiMantenimientoProductosCrud";
+            this.tsmiMantenimientoProductosCrud.Size = new System.Drawing.Size(247, 22);
+            this.tsmiMantenimientoProductosCrud.Text = "Mantenimiento productos CRUD";
+            this.tsmiMantenimientoProductosCrud.Click += new System.EventHandler(this.tsmiMantenimientoProductosCrud_Click);
+            // 
+            // aToolStripMenuItem1
+            // 
+            this.aToolStripMenuItem1.Name = "aToolStripMenuItem1";
+            this.aToolStripMenuItem1.Size = new System.Drawing.Size(244, 6);
+            // 
+            // accesoConDataReaderToolStripMenuItem
+            // 
+            this.accesoConDataReaderToolStripMenuItem.Name = "accesoConDataReaderToolStripMenuItem";
+            this.accesoConDataReaderToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.accesoConDataReaderToolStripMenuItem.Text = "Acceso con DataReader";
+            // 
+            // aToolStripMenuItem2
+            // 
+            this.aToolStripMenuItem2.Name = "aToolStripMenuItem2";
+            this.aToolStripMenuItem2.Size = new System.Drawing.Size(244, 6);
+            // 
+            // tsmiListarProductosRdr
+            // 
+            this.tsmiListarProductosRdr.Name = "tsmiListarProductosRdr";
+            this.tsmiListarProductosRdr.Size = new System.Drawing.Size(247, 22);
+            this.tsmiListarProductosRdr.Text = "Listar productos";
+            this.tsmiListarProductosRdr.Click += new System.EventHandler(this.tsmiListarProductosRdr_Click);
+            // 
+            // tsmiRegistrarProductosRdr
+            // 
+            this.tsmiRegistrarProductosRdr.Name = "tsmiRegistrarProductosRdr";
+            this.tsmiRegistrarProductosRdr.Size = new System.Drawing.Size(247, 22);
+            this.tsmiRegistrarProductosRdr.Text = "Registrar productos";
+            this.tsmiRegistrarProductosRdr.Click += new System.EventHandler(this.tsmiRegistrarProductosRdr_Click);
+            // 
+            // tsmiModificarProductosRdr
+            // 
+            this.tsmiModificarProductosRdr.Name = "tsmiModificarProductosRdr";
+            this.tsmiModificarProductosRdr.Size = new System.Drawing.Size(247, 22);
+            this.tsmiModificarProductosRdr.Text = "Modificar productos";
+            this.tsmiModificarProductosRdr.Click += new System.EventHandler(this.tsmiModificarProductosRdr_Click);
+            // 
+            // tsmiEliminarProductosRdr
+            // 
+            this.tsmiEliminarProductosRdr.Name = "tsmiEliminarProductosRdr";
+            this.tsmiEliminarProductosRdr.Size = new System.Drawing.Size(247, 22);
+            this.tsmiEliminarProductosRdr.Text = "Eliminar productos";
+            this.tsmiEliminarProductosRdr.Click += new System.EventHandler(this.tsmiEliminarProductosRdr_Click);
+            // 
+            // tsmiMantenimientoProductosCrudRdr
+            // 
+            this.tsmiMantenimientoProductosCrudRdr.Name = "tsmiMantenimientoProductosCrudRdr";
+            this.tsmiMantenimientoProductosCrudRdr.Size = new System.Drawing.Size(247, 22);
+            this.tsmiMantenimientoProductosCrudRdr.Text = "Mantenimiento productos CRUD";
+            this.tsmiMantenimientoProductosCrudRdr.Click += new System.EventHandler(this.tsmiMantenimientoProductosCrudRdr_Click);
+            // 
+            // tsmiPedidos
+            // 
+            this.tsmiPedidos.Name = "tsmiPedidos";
+            this.tsmiPedidos.Size = new System.Drawing.Size(61, 20);
+            this.tsmiPedidos.Text = "Pedidos";
+            // 
             // viewMenu
             // 
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -430,7 +598,7 @@
             // 
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
             this.contentsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.contentsToolStripMenuItem.Text = "&Contenido";
             // 
             // indexToolStripMenuItem
@@ -438,7 +606,7 @@
             this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
             this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.indexToolStripMenuItem.Text = "&Índice";
             // 
             // searchToolStripMenuItem
@@ -446,170 +614,19 @@
             this.searchToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchToolStripMenuItem.Image")));
             this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.searchToolStripMenuItem.Text = "&Buscar";
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(173, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(177, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "&Acerca de... ...";
-            // 
-            // empleadosToolStripMenuItem
-            // 
-            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
-            this.empleadosToolStripMenuItem.Text = "Empleados";
-            // 
-            // clieneToolStripMenuItem
-            // 
-            this.clieneToolStripMenuItem.Name = "clieneToolStripMenuItem";
-            this.clieneToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.clieneToolStripMenuItem.Text = "Clientes";
-            // 
-            // proveedoresToolStripMenuItem
-            // 
-            this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.proveedoresToolStripMenuItem.Text = "Proveedores";
-            // 
-            // productosToolStripMenuItem
-            // 
-            this.productosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.productosToolStripMenuItem1});
-            this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-            this.productosToolStripMenuItem.Text = "Productos";
-            // 
-            // productosToolStripMenuItem1
-            // 
-            this.productosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.accesoConDataAdapterToolStripMenuItem,
-            this.aToolStripMenuItem,
-            this.tsmiListarProductosDap,
-            this.tsmiRegistrarProductos,
-            this.tsmiEditarProductos,
-            this.tsmiEliminarProductos,
-            this.tsmiMantenimientoProductosCrud,
-            this.aToolStripMenuItem1,
-            this.accesoConDataReaderToolStripMenuItem,
-            this.aToolStripMenuItem2,
-            this.tsmiListarProductosRdr,
-            this.tsmiRegistrarProductosRdr,
-            this.tsmiModificarProductosRdr,
-            this.tsmiEliminarProductosRdr,
-            this.tsmiMantenimientoProductosCrudRdr});
-            this.productosToolStripMenuItem1.Name = "productosToolStripMenuItem1";
-            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.productosToolStripMenuItem1.Text = "Productos";
-            // 
-            // accesoConDataAdapterToolStripMenuItem
-            // 
-            this.accesoConDataAdapterToolStripMenuItem.Name = "accesoConDataAdapterToolStripMenuItem";
-            this.accesoConDataAdapterToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.accesoConDataAdapterToolStripMenuItem.Text = "Acceso con DataAdapter";
-            // 
-            // aToolStripMenuItem
-            // 
-            this.aToolStripMenuItem.Name = "aToolStripMenuItem";
-            this.aToolStripMenuItem.Size = new System.Drawing.Size(244, 6);
-            // 
-            // tsmiListarProductosDap
-            // 
-            this.tsmiListarProductosDap.Name = "tsmiListarProductosDap";
-            this.tsmiListarProductosDap.Size = new System.Drawing.Size(247, 22);
-            this.tsmiListarProductosDap.Text = "Listar productos";
-            this.tsmiListarProductosDap.Click += new System.EventHandler(this.tsmiListarProductosDap_Click);
-            // 
-            // tsmiRegistrarProductos
-            // 
-            this.tsmiRegistrarProductos.Name = "tsmiRegistrarProductos";
-            this.tsmiRegistrarProductos.Size = new System.Drawing.Size(247, 22);
-            this.tsmiRegistrarProductos.Text = "Registrar productos";
-            this.tsmiRegistrarProductos.Click += new System.EventHandler(this.tsmiRegistrarProductos_Click);
-            // 
-            // tsmiEditarProductos
-            // 
-            this.tsmiEditarProductos.Name = "tsmiEditarProductos";
-            this.tsmiEditarProductos.Size = new System.Drawing.Size(247, 22);
-            this.tsmiEditarProductos.Text = "Editar productos";
-            this.tsmiEditarProductos.Click += new System.EventHandler(this.tsmiEditarProductos_Click);
-            // 
-            // tsmiEliminarProductos
-            // 
-            this.tsmiEliminarProductos.Name = "tsmiEliminarProductos";
-            this.tsmiEliminarProductos.Size = new System.Drawing.Size(247, 22);
-            this.tsmiEliminarProductos.Text = "Eliminar productos";
-            this.tsmiEliminarProductos.Click += new System.EventHandler(this.tsmiEliminarProductos_Click);
-            // 
-            // tsmiMantenimientoProductosCrud
-            // 
-            this.tsmiMantenimientoProductosCrud.Name = "tsmiMantenimientoProductosCrud";
-            this.tsmiMantenimientoProductosCrud.Size = new System.Drawing.Size(247, 22);
-            this.tsmiMantenimientoProductosCrud.Text = "Mantenimiento productos CRUD";
-            this.tsmiMantenimientoProductosCrud.Click += new System.EventHandler(this.tsmiMantenimientoProductosCrud_Click);
-            // 
-            // aToolStripMenuItem1
-            // 
-            this.aToolStripMenuItem1.Name = "aToolStripMenuItem1";
-            this.aToolStripMenuItem1.Size = new System.Drawing.Size(244, 6);
-            // 
-            // accesoConDataReaderToolStripMenuItem
-            // 
-            this.accesoConDataReaderToolStripMenuItem.Name = "accesoConDataReaderToolStripMenuItem";
-            this.accesoConDataReaderToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.accesoConDataReaderToolStripMenuItem.Text = "Acceso con DataReader";
-            // 
-            // aToolStripMenuItem2
-            // 
-            this.aToolStripMenuItem2.Name = "aToolStripMenuItem2";
-            this.aToolStripMenuItem2.Size = new System.Drawing.Size(244, 6);
-            // 
-            // tsmiListarProductosRdr
-            // 
-            this.tsmiListarProductosRdr.Name = "tsmiListarProductosRdr";
-            this.tsmiListarProductosRdr.Size = new System.Drawing.Size(247, 22);
-            this.tsmiListarProductosRdr.Text = "Listar productos";
-            this.tsmiListarProductosRdr.Click += new System.EventHandler(this.tsmiListarProductosRdr_Click);
-            // 
-            // tsmiRegistrarProductosRdr
-            // 
-            this.tsmiRegistrarProductosRdr.Name = "tsmiRegistrarProductosRdr";
-            this.tsmiRegistrarProductosRdr.Size = new System.Drawing.Size(247, 22);
-            this.tsmiRegistrarProductosRdr.Text = "Registrar productos";
-            this.tsmiRegistrarProductosRdr.Click += new System.EventHandler(this.tsmiRegistrarProductosRdr_Click);
-            // 
-            // tsmiModificarProductosRdr
-            // 
-            this.tsmiModificarProductosRdr.Name = "tsmiModificarProductosRdr";
-            this.tsmiModificarProductosRdr.Size = new System.Drawing.Size(247, 22);
-            this.tsmiModificarProductosRdr.Text = "Modificar productos";
-            this.tsmiModificarProductosRdr.Click += new System.EventHandler(this.tsmiModificarProductosRdr_Click);
-            // 
-            // tsmiEliminarProductosRdr
-            // 
-            this.tsmiEliminarProductosRdr.Name = "tsmiEliminarProductosRdr";
-            this.tsmiEliminarProductosRdr.Size = new System.Drawing.Size(247, 22);
-            this.tsmiEliminarProductosRdr.Text = "Eliminar productos";
-            this.tsmiEliminarProductosRdr.Click += new System.EventHandler(this.tsmiEliminarProductosRdr_Click);
-            // 
-            // tsmiMantenimientoProductosCrudRdr
-            // 
-            this.tsmiMantenimientoProductosCrudRdr.Name = "tsmiMantenimientoProductosCrudRdr";
-            this.tsmiMantenimientoProductosCrudRdr.Size = new System.Drawing.Size(247, 22);
-            this.tsmiMantenimientoProductosCrudRdr.Text = "Mantenimiento productos CRUD";
-            this.tsmiMantenimientoProductosCrudRdr.Click += new System.EventHandler(this.tsmiMantenimientoProductosCrudRdr_Click);
-            // 
-            // pedidosToolStripMenuItem
-            // 
-            this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.pedidosToolStripMenuItem.Text = "Pedidos";
             // 
             // toolStrip
             // 
@@ -738,28 +755,12 @@
             this.tsslEstado.Size = new System.Drawing.Size(45, 19);
             this.tsslEstado.Text = "Activo";
             // 
-            // toolStripMenuItem1
+            // tsmiMantenimientoDeClientes
             // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiMantenimientoDeCategorías,
-            this.tsmiCategoriasProductos});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(75, 20);
-            this.toolStripMenuItem1.Text = "Categorías";
-            // 
-            // tsmiMantenimientoDeCategorías
-            // 
-            this.tsmiMantenimientoDeCategorías.Name = "tsmiMantenimientoDeCategorías";
-            this.tsmiMantenimientoDeCategorías.Size = new System.Drawing.Size(229, 22);
-            this.tsmiMantenimientoDeCategorías.Text = "Mantenimiento de categorías";
-            this.tsmiMantenimientoDeCategorías.Click += new System.EventHandler(this.tsmiMantenimientoDeCategorías_Click);
-            // 
-            // tsmiCategoriasProductos
-            // 
-            this.tsmiCategoriasProductos.Name = "tsmiCategoriasProductos";
-            this.tsmiCategoriasProductos.Size = new System.Drawing.Size(229, 22);
-            this.tsmiCategoriasProductos.Text = "Categorías --> productos";
-            this.tsmiCategoriasProductos.Click += new System.EventHandler(this.tsmiCategoriasProductos_Click);
+            this.tsmiMantenimientoDeClientes.Name = "tsmiMantenimientoDeClientes";
+            this.tsmiMantenimientoDeClientes.Size = new System.Drawing.Size(215, 22);
+            this.tsmiMantenimientoDeClientes.Text = "Mantenimiento de clientes";
+            this.tsmiMantenimientoDeClientes.Click += new System.EventHandler(this.tsmiMantenimientoDeClientes_Click);
             // 
             // MDIPrincipal
             // 
@@ -840,12 +841,11 @@
         private System.Windows.Forms.ToolStripButton printPreviewToolStripButton;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clieneToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEmpleados;
+        private System.Windows.Forms.ToolStripMenuItem tsmiClientes;
+        private System.Windows.Forms.ToolStripMenuItem tsmiProveedores;
+        private System.Windows.Forms.ToolStripMenuItem tsmiProductos;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPedidos;
         private System.Windows.Forms.ToolStripMenuItem accesoConDataAdapterToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator aToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiListarProductosDap;
@@ -864,9 +864,10 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiModificarProductosRdr;
         private System.Windows.Forms.ToolStripMenuItem tsmiEliminarProductosRdr;
         private System.Windows.Forms.ToolStripMenuItem tsmiMantenimientoProductosCrudRdr;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCategorias;
         private System.Windows.Forms.ToolStripMenuItem tsmiMantenimientoDeCategorías;
         private System.Windows.Forms.ToolStripMenuItem tsmiCategoriasProductos;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMantenimientoDeClientes;
     }
 }
 
