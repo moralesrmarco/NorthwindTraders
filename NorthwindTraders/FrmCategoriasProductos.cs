@@ -43,7 +43,7 @@ namespace NorthwindTraders
             dgvCategorias.Columns["Foto"].Width = 50;
             dgvCategorias.Columns["Foto"].DefaultCellStyle.Padding = new Padding(4, 4, 4, 4);
             ((DataGridViewImageColumn)dgvCategorias.Columns["Foto"]).ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvCategorias.RowCount} registros en categorias y {dgvProductos.RowCount} registros de productos en la categoria {dgvCategorias.CurrentRow.Cells["Categoría"].Value.ToString()}", this);
+            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvCategorias.RowCount} registros en categorias y {dgvProductos.RowCount} registros de productos en la categoria {dgvCategorias.CurrentRow.Cells["Categoría"].Value}", this);
         }
 
         private void GetData()
@@ -83,7 +83,7 @@ namespace NorthwindTraders
 
         private void dgvCategorias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvCategorias.RowCount} registros en categorias y {dgvProductos.RowCount} registros de productos en la categoria {dgvCategorias.CurrentRow.Cells["Categoría"].Value.ToString()}", this);
+            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvCategorias.RowCount} registros en categorias y {dgvProductos.RowCount} registros de productos en la categoria {dgvCategorias.CurrentRow.Cells["Categoría"].Value}", this);
         }
     }
 }

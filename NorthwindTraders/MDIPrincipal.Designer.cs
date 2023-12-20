@@ -74,8 +74,6 @@
             this.clieneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoríasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMantCategorias = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.accesoConDataAdapterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
@@ -108,7 +106,9 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tsmiCategoríasProductos = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMantenimientoDeCategorías = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCategoriasProductos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -119,15 +119,16 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
             this.editMenu,
-            this.viewMenu,
-            this.toolsMenu,
-            this.windowsMenu,
-            this.helpMenu,
             this.empleadosToolStripMenuItem,
             this.clieneToolStripMenuItem,
             this.proveedoresToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.productosToolStripMenuItem,
-            this.pedidosToolStripMenuItem});
+            this.pedidosToolStripMenuItem,
+            this.viewMenu,
+            this.toolsMenu,
+            this.windowsMenu,
+            this.helpMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
@@ -480,27 +481,10 @@
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.categoríasToolStripMenuItem,
             this.productosToolStripMenuItem1});
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
             this.productosToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.productosToolStripMenuItem.Text = "Productos";
-            // 
-            // categoríasToolStripMenuItem
-            // 
-            this.categoríasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiMantCategorias,
-            this.tsmiCategoríasProductos});
-            this.categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
-            this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.categoríasToolStripMenuItem.Text = "Categorías";
-            // 
-            // tsmiMantCategorias
-            // 
-            this.tsmiMantCategorias.Name = "tsmiMantCategorias";
-            this.tsmiMantCategorias.Size = new System.Drawing.Size(229, 22);
-            this.tsmiMantCategorias.Text = "Mantenimiento de categorías";
-            this.tsmiMantCategorias.Click += new System.EventHandler(this.tsmiMantCategorias_Click);
             // 
             // productosToolStripMenuItem1
             // 
@@ -754,12 +738,28 @@
             this.tsslEstado.Size = new System.Drawing.Size(45, 19);
             this.tsslEstado.Text = "Activo";
             // 
-            // tsmiCategoríasProductos
+            // toolStripMenuItem1
             // 
-            this.tsmiCategoríasProductos.Name = "tsmiCategoríasProductos";
-            this.tsmiCategoríasProductos.Size = new System.Drawing.Size(229, 22);
-            this.tsmiCategoríasProductos.Text = "Categorías-->Productos";
-            this.tsmiCategoríasProductos.Click += new System.EventHandler(this.tsmiCategoríasProductos_Click);
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiMantenimientoDeCategorías,
+            this.tsmiCategoriasProductos});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(75, 20);
+            this.toolStripMenuItem1.Text = "Categorías";
+            // 
+            // tsmiMantenimientoDeCategorías
+            // 
+            this.tsmiMantenimientoDeCategorías.Name = "tsmiMantenimientoDeCategorías";
+            this.tsmiMantenimientoDeCategorías.Size = new System.Drawing.Size(229, 22);
+            this.tsmiMantenimientoDeCategorías.Text = "Mantenimiento de categorías";
+            this.tsmiMantenimientoDeCategorías.Click += new System.EventHandler(this.tsmiMantenimientoDeCategorías_Click);
+            // 
+            // tsmiCategoriasProductos
+            // 
+            this.tsmiCategoriasProductos.Name = "tsmiCategoriasProductos";
+            this.tsmiCategoriasProductos.Size = new System.Drawing.Size(229, 22);
+            this.tsmiCategoriasProductos.Text = "Categorías --> productos";
+            this.tsmiCategoriasProductos.Click += new System.EventHandler(this.tsmiCategoriasProductos_Click);
             // 
             // MDIPrincipal
             // 
@@ -844,7 +844,6 @@
         private System.Windows.Forms.ToolStripMenuItem clieneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem categoríasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accesoConDataAdapterToolStripMenuItem;
@@ -865,8 +864,9 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiModificarProductosRdr;
         private System.Windows.Forms.ToolStripMenuItem tsmiEliminarProductosRdr;
         private System.Windows.Forms.ToolStripMenuItem tsmiMantenimientoProductosCrudRdr;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMantCategorias;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCategoríasProductos;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMantenimientoDeCategorías;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCategoriasProductos;
     }
 }
 
