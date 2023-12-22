@@ -359,7 +359,7 @@ namespace NorthwindTraders
                         if (numRegs > 0)
                             MessageBox.Show($"La categoría con Id: {txtId.Text} y Nombre: {txtCategoria.Text} se actualizó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
-                            MessageBox.Show($"La categoría con Id: {txtId.Text} y Nombre: {txtCategoria.Text} NO fue registrado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"La categoría con Id: {txtId.Text} y Nombre: {txtCategoria.Text} NO fue modificado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (SqlException ex)
                     {
@@ -386,7 +386,11 @@ namespace NorthwindTraders
             }
             else if (tabcOperacion.SelectedTab == tbpEliminar)
             {
-                //no valido los controles porque los datos son directamente de la base de datos y en su debido momento ya fueron validados
+                if (txtId.Text.Trim() == "")
+                {
+                    MessageBox.Show("Seleccione la categoría a eliminar", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 DialogResult respuesta = MessageBox.Show($"¿Esta seguro de eliminar la categoría con Id: {txtId.Text} y Nombre: {txtCategoria.Text}?", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (respuesta == DialogResult.Yes)
                 {

@@ -228,11 +228,11 @@ namespace NorthwindTraders
         private void tsmiCategoriasProductos_Click(object sender, EventArgs e)
         {
             Utils.CerrarFormularios("MDIPrincipal");
-            FrmCategoriasCrud frmCategoriasCrud = new FrmCategoriasCrud
+            FrmCategoriasProductos frmCategoriasProductos = new FrmCategoriasProductos
             {
                 MdiParent = this
             };
-            frmCategoriasCrud.Show();
+            frmCategoriasProductos.Show();
         }
 
         private void tsmiMantenimientoDeClientes_Click(object sender, EventArgs e)
