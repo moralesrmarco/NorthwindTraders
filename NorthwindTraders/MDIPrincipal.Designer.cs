@@ -54,6 +54,7 @@
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEmpleados = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMantenimientoDeClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProveedores = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCategorias = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMantenimientoDeCategorías = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,7 +109,7 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tsmiMantenimientoDeClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMantenimientoDeEmpleados = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -318,6 +319,8 @@
             // 
             // tsmiEmpleados
             // 
+            this.tsmiEmpleados.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiMantenimientoDeEmpleados});
             this.tsmiEmpleados.Name = "tsmiEmpleados";
             this.tsmiEmpleados.Size = new System.Drawing.Size(77, 20);
             this.tsmiEmpleados.Text = "Empleados";
@@ -329,6 +332,13 @@
             this.tsmiClientes.Name = "tsmiClientes";
             this.tsmiClientes.Size = new System.Drawing.Size(61, 20);
             this.tsmiClientes.Text = "Clientes";
+            // 
+            // tsmiMantenimientoDeClientes
+            // 
+            this.tsmiMantenimientoDeClientes.Name = "tsmiMantenimientoDeClientes";
+            this.tsmiMantenimientoDeClientes.Size = new System.Drawing.Size(215, 22);
+            this.tsmiMantenimientoDeClientes.Text = "Mantenimiento de clientes";
+            this.tsmiMantenimientoDeClientes.Click += new System.EventHandler(this.tsmiMantenimientoDeClientes_Click);
             // 
             // tsmiProveedores
             // 
@@ -598,7 +608,7 @@
             // 
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
             this.contentsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.contentsToolStripMenuItem.Text = "&Contenido";
             // 
             // indexToolStripMenuItem
@@ -606,7 +616,7 @@
             this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
             this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.indexToolStripMenuItem.Text = "&Índice";
             // 
             // searchToolStripMenuItem
@@ -614,18 +624,18 @@
             this.searchToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchToolStripMenuItem.Image")));
             this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.searchToolStripMenuItem.Text = "&Buscar";
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(173, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutToolStripMenuItem.Text = "&Acerca de... ...";
             // 
             // toolStrip
@@ -755,12 +765,12 @@
             this.tsslEstado.Size = new System.Drawing.Size(45, 19);
             this.tsslEstado.Text = "Activo";
             // 
-            // tsmiMantenimientoDeClientes
+            // tsmiMantenimientoDeEmpleados
             // 
-            this.tsmiMantenimientoDeClientes.Name = "tsmiMantenimientoDeClientes";
-            this.tsmiMantenimientoDeClientes.Size = new System.Drawing.Size(215, 22);
-            this.tsmiMantenimientoDeClientes.Text = "Mantenimiento de clientes";
-            this.tsmiMantenimientoDeClientes.Click += new System.EventHandler(this.tsmiMantenimientoDeClientes_Click);
+            this.tsmiMantenimientoDeEmpleados.Name = "tsmiMantenimientoDeEmpleados";
+            this.tsmiMantenimientoDeEmpleados.Size = new System.Drawing.Size(233, 22);
+            this.tsmiMantenimientoDeEmpleados.Text = "Mantenimiento de empleados";
+            this.tsmiMantenimientoDeEmpleados.Click += new System.EventHandler(this.tsmiMantenimientoDeEmpleados_Click);
             // 
             // MDIPrincipal
             // 
@@ -868,6 +878,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiMantenimientoDeCategorías;
         private System.Windows.Forms.ToolStripMenuItem tsmiCategoriasProductos;
         private System.Windows.Forms.ToolStripMenuItem tsmiMantenimientoDeClientes;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMantenimientoDeEmpleados;
     }
 }
 
