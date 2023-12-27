@@ -28,6 +28,8 @@ namespace NorthwindTraders
 
         private void FrmCategoriasCrud_Load(object sender, EventArgs e)
         {
+            DeshabilitarControles();
+            BorrarDatosCategoria();
             LlenarDgv(null);
         }
 
@@ -73,7 +75,10 @@ namespace NorthwindTraders
                 dgv.Columns["Foto"].DefaultCellStyle.Padding = new Padding(4, 4, 4, 4);
                 ((DataGridViewImageColumn)dgv.Columns["Foto"]).ImageLayout = DataGridViewImageCellLayout.Zoom;
                 if (sender == null)
-                    Utils.ActualizarBarraDeEstado("Se muestran las últimas 20 categorías registradas", this);
+                    if (dgv.RowCount < 20)
+                        Utils.ActualizarBarraDeEstado($"Se muestran las últimas {dgv.RowCount} categorías registradas", this);
+                    else
+                        Utils.ActualizarBarraDeEstado("Se muestran las últimas 20 categorías registradas", this);
                 else
                     Utils.ActualizarBarraDeEstado($"Se encontraron {dgv.RowCount} registros", this);
             }
@@ -93,6 +98,7 @@ namespace NorthwindTraders
         {
             if (tabcOperacion.SelectedTab != tbpRegistrar)
             {
+                DeshabilitarControles();
                 DataGridViewRow dgvr = dgv.CurrentRow;
                 txtId.Text = dgvr.Cells["Id"].Value.ToString();
                 txtCategoria.Text = dgvr.Cells["Categoría"].Value.ToString();
@@ -104,17 +110,17 @@ namespace NorthwindTraders
                     if (int.Parse(txtId.Text) <= 8)
                     {
                         ms = new MemoryStream(foto, 78, foto.Length - 78);
+                        btnCargar.Enabled = false; // no se permite modificar porque desconozco el formato de la imagen
                     }
                     else
                     {
                         ms = new MemoryStream(foto);
+                        btnCargar.Enabled = true;
                     }
-
                     picFoto.Image = Image.FromStream(ms);
                 }
                 else
                     picFoto.Image = null;
-                DeshabilitarControles();
                 if (tabcOperacion.SelectedTab == tbpListar)
                 {
                     btnCargar.Visible = false;
@@ -125,7 +131,6 @@ namespace NorthwindTraders
                     HabilitarControles();
                     btnOperacion.Enabled = true;
                     btnCargar.Visible = true;
-                    btnCargar.Enabled = true;
                 }
                 else if (tabcOperacion.SelectedTab == tbpEliminar)
                 {
@@ -168,6 +173,7 @@ namespace NorthwindTraders
         {
             txtCategoria.ReadOnly = txtDescripcion.ReadOnly = true;
             picFoto.Enabled = false;
+            btnCargar.Enabled = false;
         }
 
         private void HabilitarControles()
@@ -222,7 +228,7 @@ namespace NorthwindTraders
                 btnOperacion.Enabled = true;
                 btnCargar.Visible = true;
                 btnCargar.Enabled = true;
-                LlenarDgv(null);
+                //LlenarDgv(null);
             }
             else
             {
@@ -232,12 +238,13 @@ namespace NorthwindTraders
                     EventoCargado = true;
                 }
                 DeshabilitarControles();
+                btnOperacion.Enabled = false;
+                btnCargar.Enabled = false;
                 if (tabcOperacion.SelectedTab == tbpListar)
                 {
                     btnOperacion.Enabled = false;
                     btnOperacion.Visible = false;
                     btnCargar.Visible = false;
-                    btnCargar.Enabled = false;
                 } 
                 else if (tabcOperacion.SelectedTab == tbpModificar)
                 {
@@ -245,7 +252,6 @@ namespace NorthwindTraders
                     btnOperacion.Enabled = false;
                     btnOperacion.Visible = true;
                     btnCargar.Visible = true;
-                    btnCargar.Enabled = false;
                 } 
                 else if (tabcOperacion.SelectedTab == tbpEliminar)
                 {
@@ -253,7 +259,6 @@ namespace NorthwindTraders
                     btnOperacion.Enabled = false;
                     btnOperacion.Visible = true;
                     btnCargar.Visible = false;
-                    btnCargar.Enabled = false;
                 }
             }
         }
@@ -271,12 +276,15 @@ namespace NorthwindTraders
                     btnOperacion.Enabled = false;
                     btnCargar.Enabled = false;
                     byte[] fileFoto = null;
-                    Stream stream = openFileDialog.OpenFile();
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        stream.CopyTo(ms);
-                        fileFoto = ms.ToArray();
-                    }
+                    //Stream stream = openFileDialog.OpenFile();
+                    //using (MemoryStream ms = new MemoryStream())
+                    //{
+                    //    stream.CopyTo(ms);
+                    //    fileFoto = ms.ToArray();
+                    //}
+                    Image image = picFoto.Image;
+                    ImageConverter converter = new ImageConverter();
+                    fileFoto = (byte[])converter.ConvertTo(image, typeof(byte[]));
                     // La siguiente forma no me gusto por que es forzoso solo formato jpeg
                     //MemoryStream ms = new MemoryStream();
                     //picFoto.Image.Save(ms, ImageFormat.Jpeg);
@@ -316,15 +324,14 @@ namespace NorthwindTraders
                     }
                     HabilitarControles();
                     btnOperacion.Enabled = true;
-                    btnCargar.Enabled = true;
                     if (numRegs > 0)
                     {
-                        BorrarDatosBusqueda();
-                        txtBId.Text = txtId.Text;
-                        btnBuscar.PerformClick();
+                        //BorrarDatosBusqueda();
+                        //txtBId.Text = txtId.Text;
+                        //btnBuscar.PerformClick();
                         btnLimpiar.PerformClick();
+                        LlenarDgv(null);
                     }
-                    Utils.ActualizarBarraDeEstado("Activo", this);
                 }
             }
             else if (tabcOperacion.SelectedTab == tbpModificar)
@@ -333,15 +340,16 @@ namespace NorthwindTraders
                 {
                     Utils.ActualizarBarraDeEstado("Actualizando la base de datos...", this);
                     DeshabilitarControles();
-                    btnOperacion.Enabled = false;
-                    btnCargar.Enabled = false;
                     byte[] fileFoto = null;
-                    Stream stream = openFileDialog.OpenFile();
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        stream.CopyTo(ms);
-                        fileFoto = ms.ToArray();
-                    }
+                    //Stream stream = openFileDialog.OpenFile();
+                    //using (MemoryStream ms = new MemoryStream())
+                    //{
+                    //    stream.CopyTo(ms);
+                    //    fileFoto = ms.ToArray();
+                    //}
+                    Image image = picFoto.Image;
+                    ImageConverter converter = new ImageConverter();
+                    fileFoto = (byte[])converter.ConvertTo(image, typeof(byte[]));
                     // La siguiente forma no me gusto por que es forzoso solo formato jpeg
                     //MemoryStream ms = new MemoryStream();
                     //picFoto.Image.Save(ms, ImageFormat.Jpeg);
@@ -431,7 +439,7 @@ namespace NorthwindTraders
                     }
                 }
                 BorrarDatosCategoria();
-                btnOperacion.Enabled = false;
+                //btnOperacion.Enabled = false;
             }
         }
 
