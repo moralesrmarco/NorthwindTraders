@@ -145,9 +145,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(16, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(214, 13);
+            this.label1.Size = new System.Drawing.Size(385, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Seleccione un empleado para ver su detalle";
+            this.label1.Text = "Busque el empleado y seleccionelo en la lista que se muestra para ver su detalle";
             // 
             // tbpRegistrar
             // 
@@ -528,7 +528,7 @@
             this.btnCargar.Location = new System.Drawing.Point(504, 160);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(112, 23);
-            this.btnCargar.TabIndex = 36;
+            this.btnCargar.TabIndex = 14;
             this.btnCargar.Text = "Cargar imagen...";
             this.btnCargar.UseVisualStyleBackColor = true;
             this.btnCargar.Visible = false;
@@ -559,7 +559,7 @@
             this.txtNotas.Multiline = true;
             this.txtNotas.Name = "txtNotas";
             this.txtNotas.Size = new System.Drawing.Size(352, 80);
-            this.txtNotas.TabIndex = 33;
+            this.txtNotas.TabIndex = 15;
             // 
             // cboReporta
             // 
@@ -569,7 +569,7 @@
             this.cboReporta.Location = new System.Drawing.Point(331, 277);
             this.cboReporta.Name = "cboReporta";
             this.cboReporta.Size = new System.Drawing.Size(144, 21);
-            this.cboReporta.TabIndex = 32;
+            this.cboReporta.TabIndex = 16;
             // 
             // dtpFContratacion
             // 
@@ -579,7 +579,7 @@
             this.dtpFContratacion.Location = new System.Drawing.Point(456, 32);
             this.dtpFContratacion.Name = "dtpFContratacion";
             this.dtpFContratacion.Size = new System.Drawing.Size(112, 20);
-            this.dtpFContratacion.TabIndex = 31;
+            this.dtpFContratacion.TabIndex = 13;
             // 
             // dtpFNacimiento
             // 
@@ -589,7 +589,7 @@
             this.dtpFNacimiento.Location = new System.Drawing.Point(304, 32);
             this.dtpFNacimiento.Name = "dtpFNacimiento";
             this.dtpFNacimiento.Size = new System.Drawing.Size(112, 20);
-            this.dtpFNacimiento.TabIndex = 30;
+            this.dtpFNacimiento.TabIndex = 12;
             // 
             // label30
             // 
@@ -633,7 +633,7 @@
             this.btnOperacion.Location = new System.Drawing.Point(488, 280);
             this.btnOperacion.Name = "btnOperacion";
             this.btnOperacion.Size = new System.Drawing.Size(128, 23);
-            this.btnOperacion.TabIndex = 11;
+            this.btnOperacion.TabIndex = 17;
             this.btnOperacion.Text = "Registrar empleado";
             this.btnOperacion.UseVisualStyleBackColor = true;
             this.btnOperacion.Visible = false;
