@@ -128,9 +128,371 @@ namespace NorthwindTraders
 
         private void DeshabilitarControles()
         {
-            txtId.ReadOnly = txtCompañia.ReadOnly = txtContacto.ReadOnly = txtTitulo.ReadOnly = true;
+            txtCompañia.ReadOnly = txtContacto.ReadOnly = txtTitulo.ReadOnly = true;
             txtDomicilio.ReadOnly = txtCiudad.ReadOnly = txtRegion.ReadOnly = txtCodigoP.ReadOnly = true;
             txtPais.ReadOnly = txtTelefono.ReadOnly = txtFax.ReadOnly = true;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            BorrarDatosProveedor();
+            BorrarMensajesError();
+            if (tabcOperacion.SelectedTab != tbpRegistrar)
+                DeshabilitarControles();
+            LlenarDgv(sender);
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            BorrarDatosProveedor();
+            BorrarMensajesError();
+            BorrarDatosBusqueda();
+            if (tabcOperacion.SelectedTab != tbpRegistrar)
+                DeshabilitarControles();
+        }
+
+        private void BorrarDatosBusqueda()
+        {
+            txtBId.Text = txtBCompañia.Text = txtBContacto.Text = txtBDomicilio.Text = "";
+            txtBCiudad.Text = txtBRegion.Text = txtBCodigoP.Text = "";
+            cboBPais.SelectedIndex = 0;
+            txtBTelefono.Text = txtBFax.Text = "";
+        }
+
+        private void BorrarDatosProveedor()
+        {
+            txtId.Text = txtCompañia.Text = txtContacto.Text = txtTitulo.Text = "";
+            txtDomicilio.Text = txtCiudad.Text = txtRegion.Text = txtCodigoP.Text = "";
+            txtPais.Text = txtTelefono.Text = txtFax.Text = "";
+        }
+
+        private void BorrarMensajesError()
+        {
+            errorProvider1.SetError(txtCompañia, "");
+            errorProvider1.SetError(txtContacto, "");
+            errorProvider1.SetError(txtTitulo, "");
+            errorProvider1.SetError(txtDomicilio, "");
+            errorProvider1.SetError(txtCiudad, "");
+            errorProvider1.SetError(txtPais, "");
+            errorProvider1.SetError(txtTelefono, "");
+        }
+
+        private void HabilitarControles()
+        {
+            txtCompañia.ReadOnly = txtContacto.ReadOnly = txtTitulo.ReadOnly = false;
+            txtDomicilio.ReadOnly = txtCiudad.ReadOnly = txtRegion.ReadOnly = txtCodigoP.ReadOnly = false;
+            txtPais.ReadOnly = txtTelefono.ReadOnly = txtFax.ReadOnly = false;
+        }
+
+        private bool ValidarControles()
+        {
+            bool valida = true;
+            if (txtCompañia.Text == "")
+            {
+                valida = false;
+                errorProvider1.SetError(txtCompañia, "Ingrese el nombre de la compañia");
+            }
+            if (txtContacto.Text == "")
+            {
+                valida = false;
+                errorProvider1.SetError(txtContacto, "Ingrese el nombre del contacto");
+            }
+            if (txtTitulo.Text == "")
+            {
+                valida = false;
+                errorProvider1.SetError(txtTitulo, "Ingrese el título del contacto");
+            } 
+            if (txtDomicilio.Text == "")
+            {
+                valida = false;
+                errorProvider1.SetError(txtDomicilio, "Ingrese el domicilio");
+            }
+            if (txtCiudad.Text == "")
+            {
+                valida = false;
+                errorProvider1.SetError(txtCiudad, "Ingrese la ciudad");
+            }
+            if (txtPais.Text == "")
+            {
+                valida = false;
+                errorProvider1.SetError(txtPais, "Ingrese el país");
+            }
+            if (txtTelefono.Text == "")
+            {
+                valida = false;
+                errorProvider1.SetError(txtTelefono, "Ingrese el teléfono");
+            }
+            return valida;
+        }
+
+        private void FrmProveedoresCrud_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (txtCompañia.Text != "" || txtContacto.Text != "" || txtTitulo.Text != "" || txtDomicilio.Text != "" || txtCiudad.Text != "" || txtRegion.Text != "" || txtCodigoP.Text != "" || txtPais.Text != "" || txtTelefono.Text != "" || txtFax.Text != "")
+            {
+                DialogResult respuesta = MessageBox.Show("¿Esta seguro de querer cerrar el formulario?, si responde Si, se perderan los datos no guardados", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (respuesta == DialogResult.No)
+                    e.Cancel = true;
+            }
+        }
+
+        private void FrmProveedoresCrud_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Utils.ActualizarBarraDeEstado("Activo", this);
+        }
+
+        private void tabcOperacion_Selected(object sender, TabControlEventArgs e)
+        {
+            BorrarDatosProveedor();
+            BorrarMensajesError();
+            if (tabcOperacion.SelectedTab == tbpRegistrar)
+            {
+                if (EventoCargado)
+                {
+                    dgv.CellClick -= new DataGridViewCellEventHandler(dgv_CellClick);
+                    EventoCargado = false;
+                }
+                BorrarDatosBusqueda();
+                HabilitarControles();
+                btnOperacion.Text = "Registrar proveedor";
+                btnOperacion.Visible = true;
+                btnOperacion.Enabled = true;
+            }
+            else
+            {
+                if (!EventoCargado)
+                {
+                    dgv.CellClick += new DataGridViewCellEventHandler(dgv_CellClick);
+                    EventoCargado = true;
+                }
+                DeshabilitarControles();
+                btnOperacion.Enabled = false;
+                if (tabcOperacion.SelectedTab == tbpConsultar)
+                {
+                    btnOperacion.Visible = false;
+                    btnOperacion.Enabled = false;
+                }
+                else if (tabcOperacion.SelectedTab == tbpModificar)
+                {
+                    btnOperacion.Text = "Modificar proveedor";
+                    btnOperacion.Visible = true;
+                    btnOperacion.Enabled = false;
+                }
+                else if (tabcOperacion.SelectedTab == tbpEliminar)
+                {
+                    btnOperacion.Text = "Eliminar proveedor";
+                    btnOperacion.Visible = true;
+                    btnOperacion.Enabled = false;
+                }
+            }
+        }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (tabcOperacion.SelectedTab != tbpRegistrar)
+            {
+                DeshabilitarControles();
+                DataGridViewRow dgvr = dgv.CurrentRow;
+                txtId.Text = dgvr.Cells["Id"].Value.ToString();
+                txtCompañia.Text = dgvr.Cells["Nombre de compañía"].Value.ToString();
+                txtContacto.Text = dgvr.Cells["Nombre de contacto"].Value.ToString();
+                txtTitulo.Text = dgvr.Cells["Título de contacto"].Value.ToString();
+                txtDomicilio.Text = dgvr.Cells["Domicilio"].Value.ToString();
+                txtCiudad.Text = dgvr.Cells["Ciudad"].Value.ToString();
+                txtRegion.Text = dgvr.Cells["Región"].Value.ToString();
+                txtCodigoP.Text = dgvr.Cells["Código postal"].Value.ToString();
+                txtPais.Text = dgvr.Cells["País"].Value.ToString();
+                txtTelefono.Text = dgvr.Cells["Teléfono"].Value.ToString();
+                txtFax.Text = dgvr.Cells["Fax"].Value.ToString();
+                if (tabcOperacion.SelectedTab == tbpModificar)
+                {
+                    HabilitarControles();
+                    btnOperacion.Enabled = true;
+                }
+                else if (tabcOperacion.SelectedTab == tbpEliminar)
+                    btnOperacion.Enabled = true;
+            }
+        }
+
+        private void btnOperacion_Click(object sender, EventArgs e)
+        {
+            int numRegs = 0;
+            BorrarMensajesError();
+            if (tabcOperacion.SelectedTab == tbpRegistrar)
+            {
+                if (ValidarControles())
+                {
+                    Utils.ActualizarBarraDeEstado("Actualizando la base de datos...", this);
+                    DeshabilitarControles();
+                    btnOperacion.Enabled = false;
+                    try
+                    {
+                        SqlCommand cmd = new SqlCommand("Sp_Proveedores_Insertar", cn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("Id", 0);
+                        cmd.Parameters["Id"].Direction = ParameterDirection.Output;
+                        cmd.Parameters.AddWithValue("Compañia", txtCompañia.Text);
+                        cmd.Parameters.AddWithValue("Contacto", txtContacto.Text);
+                        cmd.Parameters.AddWithValue("Titulo", txtTitulo.Text);
+                        cmd.Parameters.AddWithValue("Domicilio", txtDomicilio.Text);
+                        cmd.Parameters.AddWithValue("Ciudad", txtCiudad.Text);
+                        if (txtRegion.Text == "")
+                            cmd.Parameters.AddWithValue("Region", DBNull.Value);
+                        else
+                            cmd.Parameters.AddWithValue("Region", txtRegion.Text);
+                        if (txtCodigoP.Text == "")
+                            cmd.Parameters.AddWithValue("CodigoP", DBNull.Value);
+                        else
+                            cmd.Parameters.AddWithValue("CodigoP", txtCodigoP.Text);
+                        cmd.Parameters.AddWithValue("Pais", txtPais.Text);
+                        cmd.Parameters.AddWithValue("Telefono", txtTelefono.Text);
+                        if (txtFax.Text == "")
+                            cmd.Parameters.AddWithValue("Fax", DBNull.Value);
+                        else
+                            cmd.Parameters.AddWithValue("Fax", txtFax.Text);
+                        cn.Open();
+                        numRegs = cmd.ExecuteNonQuery();
+                        if (numRegs > 0)
+                        {
+                            txtId.Text = cmd.Parameters["Id"].Value.ToString();
+                            MessageBox.Show($"El proveedor con Id: {txtId.Text} y nombre de compañía: {txtCompañia.Text} se registró satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                            MessageBox.Show($"El proveedor con Id: {txtId.Text}  y nombre de compañía:  {txtCompañia.Text} NO fue registrado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    finally
+                    {
+                        cn.Close();
+                    }
+                    LlenarCboPais();
+                    HabilitarControles();
+                    btnOperacion.Enabled = true;
+                    if (numRegs > 0)
+                    {
+                        btnLimpiar.PerformClick();
+                        LlenarDgv(null);
+                    }
+                }
+            }
+            else if (tabcOperacion.SelectedTab == tbpModificar)
+            {
+                if (ValidarControles())
+                {
+                    Utils.ActualizarBarraDeEstado("Actualizando la base de datos...", this);
+                    DeshabilitarControles();
+                    btnOperacion.Enabled = false;
+                    try
+                    {
+                        SqlCommand cmd = new SqlCommand("Sp_Proveedores_Actualizar", cn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("Id", txtId.Text);
+                        cmd.Parameters.AddWithValue("Compañia", txtCompañia.Text);
+                        cmd.Parameters.AddWithValue("Contacto", txtContacto.Text);
+                        cmd.Parameters.AddWithValue("Titulo", txtTitulo.Text);
+                        cmd.Parameters.AddWithValue("Domicilio", txtDomicilio.Text);
+                        cmd.Parameters.AddWithValue("Ciudad", txtCiudad.Text);
+                        if (txtRegion.Text == "")
+                            cmd.Parameters.AddWithValue("Region", DBNull.Value);
+                        else
+                            cmd.Parameters.AddWithValue("Region", txtRegion.Text);
+                        if (txtCodigoP.Text == "")
+                            cmd.Parameters.AddWithValue("CodigoP", DBNull.Value);
+                        else
+                            cmd.Parameters.AddWithValue("CodigoP", txtCodigoP.Text);
+                        cmd.Parameters.AddWithValue("Pais", txtPais.Text);
+                        cmd.Parameters.AddWithValue("Telefono", txtTelefono.Text);
+                        if (txtFax.Text == "")
+                            cmd.Parameters.AddWithValue("Fax", DBNull.Value);
+                        else
+                            cmd.Parameters.AddWithValue("Fax", txtFax.Text);
+                        cn.Open();
+                        numRegs = cmd.ExecuteNonQuery();
+                        if (numRegs > 0)
+                            MessageBox.Show($"El proveedor con Id: {txtId.Text} y nombre de compañía: {txtCompañia.Text} se modificó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show($"El proveedor con Id: {txtId.Text}  y nombre de compañía:  {txtCompañia.Text} NO fue modificado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    finally
+                    {
+                        cn.Close();
+                    }
+                    LlenarCboPais();
+                    if (numRegs > 0)
+                    {
+                        BorrarDatosBusqueda();
+                        txtBId.Text = txtId.Text;
+                        btnBuscar.PerformClick();
+                        btnLimpiar.PerformClick();
+                    }
+                }
+            }
+            else if (tabcOperacion.SelectedTab == tbpEliminar)
+            {
+                if (txtId.Text == "")
+                {
+                    MessageBox.Show("Seleccione el proveedor a eliminar", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                DialogResult respuesta = MessageBox.Show($"¿Esta seguro de eliminar el proveedor con Id: {txtId.Text} y nombre de compañia: {txtCompañia.Text}?", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (respuesta == DialogResult.Yes)
+                {
+                    Utils.ActualizarBarraDeEstado("Actualizando la base de datos...", this);
+                    btnOperacion.Enabled = false;
+                    try
+                    {
+                        SqlCommand cmd = new SqlCommand("Sp_Proveedores_Eliminar", cn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("Id", txtId.Text);
+                        cn.Open();
+                        numRegs = cmd.ExecuteNonQuery();
+                        if (numRegs > 0)
+                            MessageBox.Show($"El proveedor con Id: {txtId.Text} y nombre de compañía: {txtCompañia.Text} se eliminó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show($"El proveedor con Id: {txtId.Text}  y nombre de compañía:  {txtCompañia.Text} NO fue eliminado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    finally
+                    {
+                        cn.Close();
+                    }
+                    LlenarCboPais();
+                    if (numRegs > 0)
+                    {
+                        BorrarDatosBusqueda();
+                        txtBId.Text = txtId.Text;
+                        btnBuscar.PerformClick();
+                        btnLimpiar.PerformClick();
+                    }
+                }
+            }
         }
     }
 }

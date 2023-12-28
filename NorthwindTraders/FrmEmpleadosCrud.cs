@@ -502,7 +502,7 @@ namespace NorthwindTraders
                             MessageBox.Show($"El empleado con Id: {txtId.Text} y Nombre: {txtNombres.Text}  {txtApellidos.Text} se registró satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
-                            MessageBox.Show($"El empleado con Id:  {txtId.Text}  y Nombre:  {txtNombres.Text} {txtApellidos.Text} NO fue registrado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"El empleado con Id: {txtId.Text}  y Nombre:  {txtNombres.Text} {txtApellidos.Text} NO fue registrado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (SqlException ex) 
                     {
@@ -538,6 +538,7 @@ namespace NorthwindTraders
                 {
                     Utils.ActualizarBarraDeEstado("Actualizando la base de datos...", this);
                     DeshabilitarControles();
+                    btnOperacion.Enabled = false;
                     byte[] byteFoto = null;
                     //if (fotoModificada)
                     //{

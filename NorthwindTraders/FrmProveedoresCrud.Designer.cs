@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabcOperacion = new System.Windows.Forms.TabControl();
             this.tbpConsultar = new System.Windows.Forms.TabPage();
-            this.tbpRegistrar = new System.Windows.Forms.TabPage();
-            this.tbpModificar = new System.Windows.Forms.TabPage();
-            this.tbpEliminar = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
+            this.tbpRegistrar = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
+            this.tbpModificar = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
+            this.tbpEliminar = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.grbProveedores = new System.Windows.Forms.GroupBox();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.grbBuscar = new System.Windows.Forms.GroupBox();
-            this.grbProveedor = new System.Windows.Forms.GroupBox();
             this.cboBPais = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -63,6 +63,7 @@
             this.txtBDomicilio = new System.Windows.Forms.TextBox();
             this.txtBContacto = new System.Windows.Forms.TextBox();
             this.txtBCompañia = new System.Windows.Forms.TextBox();
+            this.grbProveedor = new System.Windows.Forms.GroupBox();
             this.btnOperacion = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -86,6 +87,7 @@
             this.txtTitulo = new System.Windows.Forms.TextBox();
             this.txtContacto = new System.Windows.Forms.TextBox();
             this.txtCompañia = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabcOperacion.SuspendLayout();
             this.tbpConsultar.SuspendLayout();
             this.tbpRegistrar.SuspendLayout();
@@ -95,6 +97,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.grbBuscar.SuspendLayout();
             this.grbProveedor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabcOperacion
@@ -110,6 +113,7 @@
             this.tabcOperacion.SelectedIndex = 0;
             this.tabcOperacion.Size = new System.Drawing.Size(960, 56);
             this.tabcOperacion.TabIndex = 0;
+            this.tabcOperacion.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabcOperacion_Selected);
             // 
             // tbpConsultar
             // 
@@ -122,6 +126,16 @@
             this.tbpConsultar.Text = "   Consultar proveedor   ";
             this.tbpConsultar.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(387, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Busque el proveedor y seleccionelo en la lista que se muestra para ver su detalle" +
+    "";
+            // 
             // tbpRegistrar
             // 
             this.tbpRegistrar.Controls.Add(this.label2);
@@ -132,6 +146,15 @@
             this.tbpRegistrar.TabIndex = 1;
             this.tbpRegistrar.Text = "   Registrar proveedor   ";
             this.tbpRegistrar.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(226, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Proporcione los datos del proveedor a registrar";
             // 
             // tbpModificar
             // 
@@ -144,6 +167,16 @@
             this.tbpModificar.Text = "   Modificar proveedor   ";
             this.tbpModificar.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(468, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Busque el proveedor y seleccionelo en la lista que se muestra para que pueda modi" +
+    "ficar sus datos";
+            // 
             // tbpEliminar
             // 
             this.tbpEliminar.Controls.Add(this.label4);
@@ -154,35 +187,6 @@
             this.tbpEliminar.TabIndex = 3;
             this.tbpEliminar.Text = "   Eliminar proveedor   ";
             this.tbpEliminar.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(387, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Busque el proveedor y seleccionelo en la lista que se muestra para ver su detalle" +
-    "";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(226, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Proporcione los datos del proveedor a registrar";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(468, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Busque el proveedor y seleccionelo en la lista que se muestra para que pueda modi" +
-    "ficar sus datos";
             // 
             // label4
             // 
@@ -216,6 +220,7 @@
             this.dgv.Name = "dgv";
             this.dgv.Size = new System.Drawing.Size(946, 221);
             this.dgv.TabIndex = 0;
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // grbBuscar
             // 
@@ -251,43 +256,6 @@
             this.grbBuscar.TabStop = false;
             this.grbBuscar.Text = "»   Buscar un proveedor:   «";
             this.grbBuscar.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
-            // 
-            // grbProveedor
-            // 
-            this.grbProveedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grbProveedor.Controls.Add(this.btnOperacion);
-            this.grbProveedor.Controls.Add(this.label15);
-            this.grbProveedor.Controls.Add(this.label16);
-            this.grbProveedor.Controls.Add(this.label17);
-            this.grbProveedor.Controls.Add(this.label18);
-            this.grbProveedor.Controls.Add(this.label19);
-            this.grbProveedor.Controls.Add(this.label20);
-            this.grbProveedor.Controls.Add(this.label21);
-            this.grbProveedor.Controls.Add(this.label25);
-            this.grbProveedor.Controls.Add(this.label22);
-            this.grbProveedor.Controls.Add(this.label23);
-            this.grbProveedor.Controls.Add(this.txtId);
-            this.grbProveedor.Controls.Add(this.label24);
-            this.grbProveedor.Controls.Add(this.txtFax);
-            this.grbProveedor.Controls.Add(this.txtPais);
-            this.grbProveedor.Controls.Add(this.txtTelefono);
-            this.grbProveedor.Controls.Add(this.txtCodigoP);
-            this.grbProveedor.Controls.Add(this.txtRegion);
-            this.grbProveedor.Controls.Add(this.txtCiudad);
-            this.grbProveedor.Controls.Add(this.txtDomicilio);
-            this.grbProveedor.Controls.Add(this.txtTitulo);
-            this.grbProveedor.Controls.Add(this.txtContacto);
-            this.grbProveedor.Controls.Add(this.txtCompañia);
-            this.grbProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbProveedor.Location = new System.Drawing.Point(344, 312);
-            this.grbProveedor.Name = "grbProveedor";
-            this.grbProveedor.Size = new System.Drawing.Size(624, 304);
-            this.grbProveedor.TabIndex = 3;
-            this.grbProveedor.TabStop = false;
-            this.grbProveedor.Text = "»   Proveedor:   «";
-            this.grbProveedor.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
             // 
             // cboBPais
             // 
@@ -408,6 +376,7 @@
             this.btnLimpiar.TabIndex = 33;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -417,6 +386,7 @@
             this.btnBuscar.TabIndex = 32;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBFax
             // 
@@ -490,6 +460,43 @@
             this.txtBCompañia.Size = new System.Drawing.Size(201, 20);
             this.txtBCompañia.TabIndex = 13;
             // 
+            // grbProveedor
+            // 
+            this.grbProveedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbProveedor.Controls.Add(this.btnOperacion);
+            this.grbProveedor.Controls.Add(this.label15);
+            this.grbProveedor.Controls.Add(this.label16);
+            this.grbProveedor.Controls.Add(this.label17);
+            this.grbProveedor.Controls.Add(this.label18);
+            this.grbProveedor.Controls.Add(this.label19);
+            this.grbProveedor.Controls.Add(this.label20);
+            this.grbProveedor.Controls.Add(this.label21);
+            this.grbProveedor.Controls.Add(this.label25);
+            this.grbProveedor.Controls.Add(this.label22);
+            this.grbProveedor.Controls.Add(this.label23);
+            this.grbProveedor.Controls.Add(this.txtId);
+            this.grbProveedor.Controls.Add(this.label24);
+            this.grbProveedor.Controls.Add(this.txtFax);
+            this.grbProveedor.Controls.Add(this.txtPais);
+            this.grbProveedor.Controls.Add(this.txtTelefono);
+            this.grbProveedor.Controls.Add(this.txtCodigoP);
+            this.grbProveedor.Controls.Add(this.txtRegion);
+            this.grbProveedor.Controls.Add(this.txtCiudad);
+            this.grbProveedor.Controls.Add(this.txtDomicilio);
+            this.grbProveedor.Controls.Add(this.txtTitulo);
+            this.grbProveedor.Controls.Add(this.txtContacto);
+            this.grbProveedor.Controls.Add(this.txtCompañia);
+            this.grbProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbProveedor.Location = new System.Drawing.Point(344, 312);
+            this.grbProveedor.Name = "grbProveedor";
+            this.grbProveedor.Size = new System.Drawing.Size(624, 304);
+            this.grbProveedor.TabIndex = 3;
+            this.grbProveedor.TabStop = false;
+            this.grbProveedor.Text = "»   Proveedor:   «";
+            this.grbProveedor.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
+            // 
             // btnOperacion
             // 
             this.btnOperacion.Enabled = false;
@@ -500,6 +507,7 @@
             this.btnOperacion.Text = "Registrar proveedor";
             this.btnOperacion.UseVisualStyleBackColor = true;
             this.btnOperacion.Visible = false;
+            this.btnOperacion.Click += new System.EventHandler(this.btnOperacion_Click);
             // 
             // label15
             // 
@@ -701,6 +709,10 @@
             this.txtCompañia.Size = new System.Drawing.Size(300, 20);
             this.txtCompañia.TabIndex = 27;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FrmProveedoresCrud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -713,6 +725,8 @@
             this.Controls.Add(this.tabcOperacion);
             this.Name = "FrmProveedoresCrud";
             this.Text = "Mantenimiento de proveedores";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmProveedoresCrud_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProveedoresCrud_FormClosed);
             this.Load += new System.EventHandler(this.FrmProveedoresCrud_Load);
             this.tabcOperacion.ResumeLayout(false);
             this.tbpConsultar.ResumeLayout(false);
@@ -729,6 +743,7 @@
             this.grbBuscar.PerformLayout();
             this.grbProveedor.ResumeLayout(false);
             this.grbProveedor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -793,5 +808,6 @@
         private System.Windows.Forms.TextBox txtTitulo;
         private System.Windows.Forms.TextBox txtContacto;
         private System.Windows.Forms.TextBox txtCompañia;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
