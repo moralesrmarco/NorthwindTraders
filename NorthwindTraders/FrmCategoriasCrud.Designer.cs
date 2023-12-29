@@ -47,6 +47,7 @@
             this.txtBCategoria = new System.Windows.Forms.TextBox();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.grbDetalle = new System.Windows.Forms.GroupBox();
+            this.btnCargar = new System.Windows.Forms.Button();
             this.btnOperacion = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnCargar = new System.Windows.Forms.Button();
             this.tabcOperacion.SuspendLayout();
             this.tbpListar.SuspendLayout();
             this.tbpRegistrar.SuspendLayout();
@@ -94,7 +94,7 @@
             this.tbpListar.Padding = new System.Windows.Forms.Padding(3);
             this.tbpListar.Size = new System.Drawing.Size(942, 30);
             this.tbpListar.TabIndex = 0;
-            this.tbpListar.Text = "   Listado de categorías   ";
+            this.tbpListar.Text = "   Consultar categoría   ";
             this.tbpListar.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -279,6 +279,17 @@
             this.grbDetalle.Text = "»   Detalle de la categoría:   «";
             this.grbDetalle.Paint += new System.Windows.Forms.PaintEventHandler(this.grb_Paint);
             // 
+            // btnCargar
+            // 
+            this.btnCargar.Location = new System.Drawing.Point(560, 252);
+            this.btnCargar.Name = "btnCargar";
+            this.btnCargar.Size = new System.Drawing.Size(158, 23);
+            this.btnCargar.TabIndex = 8;
+            this.btnCargar.Text = "Cargar imagen ...";
+            this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnCargar.Visible = false;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
+            // 
             // btnOperacion
             // 
             this.btnOperacion.Location = new System.Drawing.Point(560, 281);
@@ -373,17 +384,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // btnCargar
-            // 
-            this.btnCargar.Location = new System.Drawing.Point(560, 252);
-            this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(158, 23);
-            this.btnCargar.TabIndex = 8;
-            this.btnCargar.Text = "Cargar imagen ...";
-            this.btnCargar.UseVisualStyleBackColor = true;
-            this.btnCargar.Visible = false;
-            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
             // FrmCategoriasCrud
             // 

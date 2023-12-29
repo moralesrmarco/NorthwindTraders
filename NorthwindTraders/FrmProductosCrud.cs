@@ -26,12 +26,14 @@ namespace NorthwindTraders
 
         private void FrmProductosCrud_Load(object sender, EventArgs e)
         {
-            
-            if (EventoCargado)
-            {
-                dgv.CellClick -= new DataGridViewCellEventHandler(dgvLista_CellClick);
-                EventoCargado = false;
-            }
+            DeshabilitarControles();
+            LlenarCboCategoria();
+            LlenarCboProveedor();
+            LlenarDgv(null);
+        }
+
+        private void LlenarCboCategoria()
+        {
             try
             {
                 Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
@@ -55,8 +57,26 @@ namespace NorthwindTraders
                 cboBCategoria.DataSource = tblBCategoria;
                 cboBCategoria.DisplayMember = "Categoria";
                 cboBCategoria.ValueMember = "IdCategoria";
-                cmd = new SqlCommand("Select 0 As IdProveedor, '»--- Seleccione ---«' As Proveedor Union All Select SupplierId As IdProveedor, CompanyName As Proveedor From Suppliers", cn);
-                dap = new SqlDataAdapter(cmd);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.ActualizarBarraDeEstado("Activo", this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.ActualizarBarraDeEstado("Activo", this);
+            }
+        }
+
+        private void LlenarCboProveedor()
+        {
+            try
+            {
+                Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
+                SqlCommand cmd = new SqlCommand("Select 0 As IdProveedor, '»--- Seleccione ---«' As Proveedor Union All Select SupplierId As IdProveedor, CompanyName As Proveedor From Suppliers", cn);
+                SqlDataAdapter dap = new SqlDataAdapter(cmd);
                 DataTable tblProveedor = new DataTable();
                 dap.Fill(tblProveedor);
                 cboProveedor.DataSource = tblProveedor;
@@ -74,7 +94,6 @@ namespace NorthwindTraders
                 cboBProveedor.DataSource = tblBProveedor;
                 cboBProveedor.DisplayMember = "Proveedor";
                 cboBProveedor.ValueMember = "IdProveedor";
-                LlenarDgvLista(null);
             }
             catch (SqlException ex)
             {
@@ -88,29 +107,7 @@ namespace NorthwindTraders
             }
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            txtBId.Text = "";
-            txtBNombre.Text = "";
-            cboBCategoria.SelectedIndex = 0;
-            cboBProveedor.SelectedIndex = 0;
-
-            BorrarMensajesError();
-            BorrarDatosProducto();
-            if (tabcOperacion.SelectedTab != tbpRegistrar)
-                DeshabilitarControles();
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            BorrarMensajesError();
-            BorrarDatosProducto();
-            if (tabcOperacion.SelectedTab != tbpRegistrar)
-                DeshabilitarControles();
-            LlenarDgvLista(sender);
-        }
-
-        private void LlenarDgvLista(object sender)
+        private void LlenarDgv(object sender)
         {
             try
             {
@@ -119,6 +116,7 @@ namespace NorthwindTraders
                 if (sender == null)
                 {
                     cmd = new SqlCommand("SP_Productos_All", cn);
+                    cmd.Parameters.AddWithValue("top100", 0);
                 }
                 else
                 {
@@ -131,15 +129,18 @@ namespace NorthwindTraders
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter dap;
                 dap = new SqlDataAdapter(cmd);
-                DataTable tblProductos = new DataTable();
-                dap.Fill(tblProductos);
-                dgv.DataSource = tblProductos;
+                DataTable tbl = new DataTable();
+                dap.Fill(tbl);
+                dgv.DataSource = tbl;
                 Utils.ConfDataGridView(dgv);
                 Utils.ConfDgvProductos(dgv);
                 if (sender == null)
-                    Utils.ActualizarBarraDeEstado("Se muestran los últimos 20 productos registrados", this);
+                    if (dgv.RowCount < 20)
+                        Utils.ActualizarBarraDeEstado($"Se muestran los últimos {dgv.RowCount} productos registrados", this);
+                    else
+                        Utils.ActualizarBarraDeEstado("Se muestran los últimos 20 productos registrados", this);
                 else
-                    Utils.ActualizarBarraDeEstado($"Se encontraron: {tblProductos.Rows.Count} registros", this);
+                    Utils.ActualizarBarraDeEstado($"Se encontraron: {tbl.Rows.Count} registros", this);
             }
             catch (SqlException ex)
             {
@@ -153,16 +154,213 @@ namespace NorthwindTraders
             }
         }
 
-        private void btnAccion_Click(object sender, EventArgs e)
+        private void DeshabilitarControles()
         {
+            txtProducto.ReadOnly = txtCantidadxU.ReadOnly = txtPrecio.ReadOnly = true;
+            txtUInventario.ReadOnly = txtUPedido.ReadOnly = txtPPedido.ReadOnly = true;
+            chkbDescontinuado.Enabled = false;
+            cboCategoria.Enabled = cboProveedor.Enabled = false;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            BorrarDatosProducto();
+            BorrarMensajesError();
+            if (tabcOperacion.SelectedTab != tbpRegistrar)
+                DeshabilitarControles();
+            LlenarDgv(sender);
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            BorrarDatosProducto();
+            BorrarMensajesError();
+            BorrarDatosBusqueda();
+            if (tabcOperacion.SelectedTab != tbpRegistrar)
+                DeshabilitarControles();
+        }
+
+        private void BorrarDatosBusqueda()
+        {
+            txtBId.Text = txtBNombre.Text = "";
+            cboBCategoria.SelectedIndex = cboBProveedor.SelectedIndex = 0;
+        }
+
+        private void BorrarDatosProducto()
+        {
+            txtId.Text = txtProducto.Text = txtCantidadxU.Text = txtPrecio.Text = "";
+            txtUInventario.Text = txtUPedido.Text = txtPPedido.Text = "";
+            chkbDescontinuado.Checked = false;
+            cboCategoria.SelectedIndex = cboProveedor.SelectedIndex = 0;
+        }
+
+        private void BorrarMensajesError()
+        {
+            errorProvider1.SetError(cboCategoria, "");
+            errorProvider1.SetError(cboProveedor, "");
+            errorProvider1.SetError(txtProducto, "");
+            errorProvider1.SetError(txtPrecio, "");
+            errorProvider1.SetError(txtUInventario, "");
+            errorProvider1.SetError(txtUPedido, "");
+            errorProvider1.SetError(txtPPedido, "");
+        }
+
+        private void HabilitarControles()
+        {
+            txtProducto.ReadOnly = txtCantidadxU.ReadOnly = txtPrecio.ReadOnly = false;
+            txtUInventario.ReadOnly = txtUPedido.ReadOnly = txtPPedido.ReadOnly = true;
+            chkbDescontinuado.Enabled = true;
+            cboCategoria.Enabled = cboProveedor.Enabled = true;
+        }
+
+        private bool ValidarControles()
+        {
+            bool valida = true;
+            if (cboCategoria.SelectedIndex == 0 || cboCategoria.SelectedIndex == -1)
+            {
+                valida = false;
+                errorProvider1.SetError(cboCategoria, "Seleccione una categoría");
+            }
+            if (cboProveedor.SelectedIndex == 0 || cboProveedor.SelectedIndex == -1)
+            {
+                valida = false;
+                errorProvider1.SetError(cboProveedor, "Seleccione un proveedor");
+            }
+            if (txtProducto.Text == "")
+            {
+                valida = false;
+                errorProvider1.SetError(txtProducto, "Ingrese producto");
+            }
+            if (txtPrecio.Text == "")
+            {
+                valida = false;
+                errorProvider1.SetError(txtPrecio, "Ingrese precio");
+            }
+            if (txtUInventario.Text == "")
+            {
+                valida = false;
+                errorProvider1.SetError(txtUInventario, "Ingrese unidades en inventario");
+            }
+            if (txtUPedido.Text == "")
+            {
+                valida = false;
+                errorProvider1.SetError(txtUPedido, "Ingrese unidades en pedido");
+            }
+            if (txtPPedido.Text == "")
+            {
+                valida = false;
+                errorProvider1.SetError(txtPPedido, "Ingrese punto de pedido");
+            }
+            return valida;
+        }
+
+        private void FrmProductosCrud_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (cboCategoria.SelectedIndex != 0 || cboProveedor.SelectedIndex != 0 || txtId.Text != "" || txtProducto.Text != "" || txtCantidadxU.Text != "" || txtPrecio.Text != "" || txtUInventario.Text != "" || txtUPedido.Text != "" || txtPPedido.Text != "")
+            {
+                DialogResult respuesta = MessageBox.Show("¿Esta seguro de querer cerrar el formulario?, si responde Si, se perderan los datos no guardados", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (respuesta == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void FrmProductosCrud_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Utils.ActualizarBarraDeEstado("Activo", this);
+        }
+
+        private void tabOperacion_Selected(object sender, TabControlEventArgs e)
+        {
+            BorrarDatosProducto();
+            BorrarMensajesError();
             if (tabcOperacion.SelectedTab == tbpRegistrar)
             {
-                BorrarMensajesError();
+                if (EventoCargado)
+                {
+                    dgv.CellClick -= new DataGridViewCellEventHandler(dgv_CellClick);
+                    EventoCargado = false;
+                }
+                BorrarDatosBusqueda();
+                HabilitarControles();
+                btnOperacion.Text = "Registrar producto";
+                btnOperacion.Visible = true;
+                btnOperacion.Enabled = true;
+            }
+            else
+            {
+                if (!EventoCargado)
+                {
+                    dgv.CellClick += new DataGridViewCellEventHandler(dgv_CellClick);
+                    EventoCargado = true;
+                }
+                DeshabilitarControles();
+                btnOperacion.Enabled = false;
+                if (tabcOperacion.SelectedTab == tbpConsultar)
+                {
+                    btnOperacion.Visible = false;
+                    btnOperacion.Enabled = false;
+                } 
+                else if (tabcOperacion.SelectedTab == tbpModificar)
+                {
+                    btnOperacion.Text = "Modificar producto";
+                    btnOperacion.Visible = true;
+                    btnOperacion.Enabled = false;
+                }
+                else if (tabcOperacion.SelectedTab == tbpEliminar)
+                {
+                    btnOperacion.Text = "Eliminar producto";
+                    btnOperacion.Visible = true;
+                    btnOperacion.Enabled = false;
+                }
+            }
+        }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (tabcOperacion.SelectedTab != tbpRegistrar)
+            {
+                DeshabilitarControles();
+                DataGridViewRow dgvrFila = dgv.CurrentRow;
+                txtId.Text = dgvrFila.Cells["Id"].Value.ToString();
+                txtProducto.Text = dgvrFila.Cells["Producto"].Value.ToString();
+                if (dgvrFila.Cells["Cantidad por unidad"].Value == DBNull.Value)
+                    txtCantidadxU.Text = "";
+                else
+                    txtCantidadxU.Text = dgvrFila.Cells["Cantidad por unidad"].Value.ToString();
+                txtPrecio.Text = dgvrFila.Cells["Precio"].Value.ToString();
+                txtUInventario.Text = dgvrFila.Cells["Unidades en inventario"].Value.ToString();
+                txtUPedido.Text = dgvrFila.Cells["Unidades en pedido"].Value.ToString();
+                txtPPedido.Text = dgvrFila.Cells["Punto de pedido"].Value.ToString();
+                chkbDescontinuado.Checked = (bool)dgvrFila.Cells["Descontinuado"].Value;
+                int indexCategoria = cboCategoria.FindStringExact(dgvrFila.Cells["Categoría"].Value.ToString());
+                cboCategoria.SelectedIndex = indexCategoria;
+                int indexProveedor = cboProveedor.FindStringExact(dgvrFila.Cells["Proveedor"].Value.ToString());
+                cboProveedor.SelectedIndex = indexProveedor;
+                if (tabcOperacion.SelectedTab == tbpModificar)
+                {
+                    HabilitarControles();
+                    btnOperacion.Enabled = true;
+                }
+                else if (tabcOperacion.SelectedTab == tbpEliminar)
+                    btnOperacion.Enabled = true;
+            }
+        }
+
+        private void btnOperacion_Click(object sender, EventArgs e)
+        {
+            int numRegs = 0;
+            BorrarMensajesError();
+            if (tabcOperacion.SelectedTab == tbpRegistrar)
+            {
                 if (ValidarControles())
                 {
+                    Utils.ActualizarBarraDeEstado("Actualizando base de datos...", this);
+                    DeshabilitarControles();
+                    btnOperacion.Enabled = false;
                     try
                     {
-                        Utils.ActualizarBarraDeEstado("Actualizando base de datos...", this);
                         SqlCommand cmd = new SqlCommand("Sp_Productos_Insertar", cn);
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("Categoria", cboCategoria.SelectedValue);
@@ -180,14 +378,14 @@ namespace NorthwindTraders
                         cmd.Parameters.AddWithValue("Id", 0);
                         cmd.Parameters["Id"].Direction = ParameterDirection.Output;
                         cn.Open();
-                        int numRegs = cmd.ExecuteNonQuery();
+                        numRegs = cmd.ExecuteNonQuery();
                         if (numRegs > 0)
                         {
                             txtId.Text = cmd.Parameters["Id"].Value.ToString();
-                            MessageBox.Show($"El producto con Id: {txtId.Text} y Nombre: {txtProducto.Text} se registró satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            BorrarDatosProducto();
-                            LlenarDgvLista(null);
+                            MessageBox.Show($"El producto con Id: {txtId.Text} y nombre: {txtProducto.Text} se registró satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
+                        else
+                            MessageBox.Show($"El producto con Id: {txtId.Text} y nombre: {txtProducto.Text} NO fue registrado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (SqlException ex)
                     {
@@ -203,17 +401,24 @@ namespace NorthwindTraders
                     {
                         cn.Close();
                     }
+                    HabilitarControles();
+                    btnOperacion.Enabled = true;
+                    if (numRegs > 0)
+                    {
+                        btnLimpiar.PerformClick();
+                        LlenarDgv(null);
+                    }
                 }
             }
             else if(tabcOperacion.SelectedTab == tbpModificar)
             {
-                BorrarMensajesError();
                 if (ValidarControles())
                 {
+                    Utils.ActualizarBarraDeEstado("Actualizando base de datos...", this);
+                    DeshabilitarControles();
+                    btnOperacion.Enabled = false;
                     try
                     {
-                        DeshabilitarControles();
-                        Utils.ActualizarBarraDeEstado("Actualizando base de datos...", this);
                         SqlCommand cmd = new SqlCommand("Sp_Productos_Actualizar", cn);
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("Id", txtId.Text);
@@ -227,15 +432,11 @@ namespace NorthwindTraders
                         cmd.Parameters.AddWithValue("PPedido", txtPPedido.Text);
                         cmd.Parameters.AddWithValue("Descontinuado", chkbDescontinuado.Checked);
                         cn.Open();
-                        int numRegs = cmd.ExecuteNonQuery();
+                        numRegs = cmd.ExecuteNonQuery();
                         if (numRegs > 0)
-                        {
-                            MessageBox.Show($"El producto con Id: {txtId.Text} y Nombre: {txtProducto.Text} se actualizó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtBId.Text = txtId.Text;
-                            btnBuscar.PerformClick();
-                            BorrarDatosProducto();
-                            btnLimpiar.PerformClick();
-                        }
+                            MessageBox.Show($"El producto con Id: {txtId.Text} y nombre: {txtProducto.Text} se modificó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show($"El producto con Id: {txtId.Text} y nombre: {txtProducto.Text} NO fue modificado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (SqlException ex)
                     {
@@ -251,100 +452,62 @@ namespace NorthwindTraders
                     {
                         cn.Close();
                     }
+                    if (numRegs > 0)
+                    {
+                        BorrarDatosBusqueda();
+                        txtBId.Text = txtId.Text;
+                        btnBuscar.PerformClick();
+                        btnLimpiar.PerformClick();
+                    }
                 }
             }
             else if (tabcOperacion.SelectedTab == tbpEliminar)
             {
-                try
+                if (txtId.Text == "")
                 {
-                    DialogResult respuesta = MessageBox.Show($"¿Esta seguro de eliminar el producto con Id: {txtId.Text} y Nombre: {txtProducto.Text}?", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                    if (respuesta == DialogResult.Yes)
-                    {
-                        Utils.ActualizarBarraDeEstado("Actualizando base de datos...", this);
+                    MessageBox.Show("Seleccione el producto a eliminar", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                DialogResult respuesta = MessageBox.Show($"¿Esta seguro de eliminar el producto con Id: {txtId.Text} y nombre: {txtProducto.Text}?", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (respuesta == DialogResult.Yes)
+                {
+                    Utils.ActualizarBarraDeEstado("Actualizando base de datos...", this);
+                    btnOperacion.Enabled = false;
+                    try
+                    { 
                         SqlCommand cmd = new SqlCommand("Sp_Productos_Eliminar", cn);
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("Id", txtId.Text);
                         cn.Open();
-                        int numRegs = cmd.ExecuteNonQuery();
+                        numRegs = cmd.ExecuteNonQuery();
                         if (numRegs > 0)
-                        {
-                            MessageBox.Show($"El producto con Id: {txtId.Text} y Nombre: {txtProducto.Text} se eliminó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtBId.Text = txtId.Text;
-                            btnBuscar.PerformClick();
-                            btnLimpiar.PerformClick();
-                            DeshabilitarControles();
-                        }
+                            MessageBox.Show($"El producto con Id: {txtId.Text} y nombre: {txtProducto.Text} se eliminó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show($"El producto con Id: {txtId.Text} y nombre: {txtProducto.Text} NO fue eliminado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    BorrarDatosProducto();
-                    btnOperacion.Enabled = false;
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    finally
+                    {
+                        cn.Close();
+                    }
+                    if (numRegs > 0)
+                    {
+                        BorrarDatosBusqueda();
+                        txtBId.Text = txtId.Text;
+                        btnBuscar.PerformClick();
+                        btnLimpiar.PerformClick();
+                    }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Utils.ActualizarBarraDeEstado("Activo", this);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Utils.ActualizarBarraDeEstado("Activo", this);
-                }
-                finally
-                {
-                    cn.Close();
-                }
             }
-        }
-
-        private void BorrarMensajesError()
-        {
-            errorProvider1.SetError(cboCategoria, "");
-            errorProvider1.SetError(cboProveedor, "");
-            errorProvider1.SetError(txtProducto, "");
-            errorProvider1.SetError(txtPrecio, "");
-            errorProvider1.SetError(txtUInventario, "");
-            errorProvider1.SetError(txtUPedido, "");
-            errorProvider1.SetError(txtPPedido, "");
-        }
-
-        private bool ValidarControles()
-        {
-            bool validacion = true;
-            if (cboCategoria.SelectedIndex == 0 || cboCategoria.SelectedIndex == -1)
-            {
-                validacion = false;
-                errorProvider1.SetError(cboCategoria, "Seleccione una categoría");
-            }
-            if (cboProveedor.SelectedIndex == 0 || cboProveedor.SelectedIndex == -1)
-            {
-                validacion = false;
-                errorProvider1.SetError(cboProveedor, "Seleccione un proveedor");
-            }
-            if (txtProducto.Text.Trim() == "")
-            {
-                validacion = false;
-                errorProvider1.SetError(txtProducto, "Ingrese producto");
-            }
-            if (txtPrecio.Text.Trim() == "")
-            {
-                validacion = false;
-                errorProvider1.SetError(txtPrecio, "Ingrese precio");
-            }
-            if (txtUInventario.Text.Trim() == "")
-            {
-                validacion = false;
-                errorProvider1.SetError(txtUInventario, "Ingrese unidades en inventario");
-            }
-            if (txtUPedido.Text.Trim() == "")
-            {
-                validacion = false;
-                errorProvider1.SetError(txtUPedido, "Ingrese unidades en pedido");
-            }
-            if (txtPPedido.Text.Trim() == "")
-            {
-                validacion = false;
-                errorProvider1.SetError(txtPPedido, "Ingrese punto de pedido");
-            }
-            return validacion;
         }
 
         private void txtUInventario_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -407,131 +570,6 @@ namespace NorthwindTraders
         private void txtPPedido_KeyPress(object sender, KeyPressEventArgs e)
         {
             Utils.ValidarDigitosSinPunto(sender, e);
-        }
-
-        private void BorrarDatosProducto()
-        {
-            BorrarMensajesError();
-            txtId.Text = "";
-            txtProducto.Text = "";
-            txtCantidadxU.Text = "";
-            txtPrecio.Text = "";
-            txtUInventario.Text = "";
-            txtUPedido.Text = "";
-            txtPPedido.Text = "";
-            chkbDescontinuado.Checked = false;
-            cboCategoria.SelectedIndex = 0;
-            cboProveedor.SelectedIndex = 0;
-        }
-
-        private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow dgvrFila = dgv.CurrentRow;
-            txtId.Text = Convert.ToInt32(dgvrFila.Cells["Id"].Value).ToString();
-            txtProducto.Text = dgvrFila.Cells["Producto"].Value.ToString();
-            if (dgvrFila.Cells["Cantidad por unidad"].Value == DBNull.Value)
-                txtCantidadxU.Text = "";
-            else
-                txtCantidadxU.Text = dgvrFila.Cells["Cantidad por unidad"].Value.ToString();
-            txtPrecio.Text = dgvrFila.Cells["Precio"].Value.ToString();
-            txtUInventario.Text = dgvrFila.Cells["Unidades en inventario"].Value.ToString();
-            txtUPedido.Text = dgvrFila.Cells["Unidades en pedido"].Value.ToString();
-            txtPPedido.Text = dgvrFila.Cells["Punto de pedido"].Value.ToString();
-            chkbDescontinuado.Checked = (bool)dgvrFila.Cells["Descontinuado"].Value;
-            int indexCategoria = cboCategoria.FindStringExact(dgvrFila.Cells["Categoría"].Value.ToString());
-            cboCategoria.SelectedIndex = indexCategoria;
-            int indexProveedor = cboProveedor.FindStringExact(dgvrFila.Cells["Proveedor"].Value.ToString());
-            cboProveedor.SelectedIndex = indexProveedor;
-            if (tabcOperacion.SelectedTab == tbpModificar)
-                HabilitarControles();
-            else if (tabcOperacion.SelectedTab == tbpEliminar)
-            {
-                DeshabilitarControles();
-                btnOperacion.Enabled = true;
-            }
-        }
-
-        private void tabOperacion_Selected(object sender, TabControlEventArgs e)
-        {
-            if (tabcOperacion.SelectedTab == tbpRegistrar)
-            {
-                if (EventoCargado)
-                {
-                    dgv.CellClick -= new DataGridViewCellEventHandler(dgvLista_CellClick);
-                    EventoCargado = false;
-                }
-                btnOperacion.Text = "Registrar producto";
-                BorrarDatosProducto();
-                LlenarDgvLista(null);
-                HabilitarControles();
-            }
-            else if (tabcOperacion.SelectedTab == tbpModificar)
-            {
-                if (!EventoCargado)
-                {
-                    dgv.CellClick += new DataGridViewCellEventHandler(dgvLista_CellClick);
-                    EventoCargado = true;
-                }
-                btnOperacion.Text = "Actualizar producto";
-                BorrarDatosProducto();
-                DeshabilitarControles(); 
-            }
-            else if (tabcOperacion.SelectedTab == tbpEliminar)
-            {
-                if (!EventoCargado)
-                {
-                    dgv.CellClick += new DataGridViewCellEventHandler(dgvLista_CellClick);
-                    EventoCargado = true;
-                }
-                btnOperacion.Text = "Eliminar producto";
-                BorrarDatosProducto();
-                DeshabilitarControles();
-            }
-        }
-
-        private void HabilitarControles()
-        {
-            txtProducto.Enabled = true;
-            txtCantidadxU.Enabled = true;
-            txtPrecio.Enabled = true;
-            txtUInventario.Enabled = true;
-            txtUPedido.Enabled = true;
-            txtPPedido.Enabled = true;
-            chkbDescontinuado.Enabled = true;
-            cboCategoria.Enabled = true;
-            cboProveedor.Enabled = true;
-            btnOperacion.Enabled = true;
-        }
-
-        private void DeshabilitarControles()
-        {
-            txtProducto.Enabled = false;
-            txtCantidadxU.Enabled = false;
-            txtPrecio.Enabled = false;
-            txtUInventario.Enabled = false;
-            txtUPedido.Enabled = false;
-            txtPPedido.Enabled = false;
-            chkbDescontinuado.Enabled = false;
-            cboCategoria.Enabled = false;
-            cboProveedor.Enabled = false;
-            btnOperacion.Enabled = false;
-        }
-
-        private void FrmProductosCrud_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (cboCategoria.SelectedIndex != 0 || cboProveedor.SelectedIndex != 0 || txtProducto.Text.Trim() != "" || txtCantidadxU.Text.Trim() != "" || txtPrecio.Text.Trim() != "" || txtUInventario.Text.Trim() != "" || txtUPedido.Text.Trim() != "" || txtPPedido.Text.Trim() != "")
-            {
-                DialogResult respuesta = MessageBox.Show("¿Esta seguro de querer cerrar el formulario?, si responde Si, se perderan los datos no guardados", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (respuesta == DialogResult.No)
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-
-        private void FrmProductosCrud_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Utils.ActualizarBarraDeEstado("Activo", this);
         }
 
         private void txtBId_KeyPress(object sender, KeyPressEventArgs e)

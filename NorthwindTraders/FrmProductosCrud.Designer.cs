@@ -41,6 +41,8 @@
             this.txtBId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabcOperacion = new System.Windows.Forms.TabControl();
+            this.tbpConsultar = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
             this.tbpRegistrar = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.tbpModificar = new System.Windows.Forms.TabPage();
@@ -74,10 +76,9 @@
             this.label19 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.grbProductos = new System.Windows.Forms.GroupBox();
-            this.tbpConsultar = new System.Windows.Forms.TabPage();
-            this.label20 = new System.Windows.Forms.Label();
             this.grbBuscar.SuspendLayout();
             this.tabcOperacion.SuspendLayout();
+            this.tbpConsultar.SuspendLayout();
             this.tbpRegistrar.SuspendLayout();
             this.tbpModificar.SuspendLayout();
             this.tbpEliminar.SuspendLayout();
@@ -85,7 +86,6 @@
             this.grbProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.grbProductos.SuspendLayout();
-            this.tbpConsultar.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbBuscar
@@ -228,13 +228,33 @@
             this.tabcOperacion.TabIndex = 1;
             this.tabcOperacion.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabOperacion_Selected);
             // 
+            // tbpConsultar
+            // 
+            this.tbpConsultar.Controls.Add(this.label20);
+            this.tbpConsultar.Location = new System.Drawing.Point(4, 22);
+            this.tbpConsultar.Name = "tbpConsultar";
+            this.tbpConsultar.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpConsultar.Size = new System.Drawing.Size(952, 30);
+            this.tbpConsultar.TabIndex = 3;
+            this.tbpConsultar.Text = "   Consultar producto   ";
+            this.tbpConsultar.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(16, 8);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(381, 13);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Busque el producto y seleccionelo en la lista que se muestra para ver su detalle";
+            // 
             // tbpRegistrar
             // 
             this.tbpRegistrar.Controls.Add(this.label5);
             this.tbpRegistrar.Location = new System.Drawing.Point(4, 22);
             this.tbpRegistrar.Name = "tbpRegistrar";
             this.tbpRegistrar.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpRegistrar.Size = new System.Drawing.Size(960, 30);
+            this.tbpRegistrar.Size = new System.Drawing.Size(952, 30);
             this.tbpRegistrar.TabIndex = 0;
             this.tbpRegistrar.Text = "   Registrar un producto   ";
             this.tbpRegistrar.UseVisualStyleBackColor = true;
@@ -254,7 +274,7 @@
             this.tbpModificar.Location = new System.Drawing.Point(4, 22);
             this.tbpModificar.Name = "tbpModificar";
             this.tbpModificar.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpModificar.Size = new System.Drawing.Size(960, 30);
+            this.tbpModificar.Size = new System.Drawing.Size(952, 30);
             this.tbpModificar.TabIndex = 1;
             this.tbpModificar.Text = "   Modificar un producto   ";
             this.tbpModificar.UseVisualStyleBackColor = true;
@@ -275,7 +295,7 @@
             this.tbpEliminar.Location = new System.Drawing.Point(4, 22);
             this.tbpEliminar.Name = "tbpEliminar";
             this.tbpEliminar.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpEliminar.Size = new System.Drawing.Size(960, 30);
+            this.tbpEliminar.Size = new System.Drawing.Size(952, 30);
             this.tbpEliminar.TabIndex = 2;
             this.tbpEliminar.Text = "   Eliminar un producto   ";
             this.tbpEliminar.UseVisualStyleBackColor = true;
@@ -298,7 +318,7 @@
             this.dgv.Name = "dgv";
             this.dgv.Size = new System.Drawing.Size(946, 221);
             this.dgv.TabIndex = 2;
-            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellClick);
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // grbProducto
             // 
@@ -465,7 +485,8 @@
             this.btnOperacion.TabIndex = 10;
             this.btnOperacion.Text = "Registrar producto";
             this.btnOperacion.UseVisualStyleBackColor = true;
-            this.btnOperacion.Click += new System.EventHandler(this.btnAccion_Click);
+            this.btnOperacion.Visible = false;
+            this.btnOperacion.Click += new System.EventHandler(this.btnOperacion_Click);
             // 
             // label10
             // 
@@ -585,26 +606,6 @@
             this.grbProductos.Text = "»   Productos:   «";
             this.grbProductos.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
             // 
-            // tbpConsultar
-            // 
-            this.tbpConsultar.Controls.Add(this.label20);
-            this.tbpConsultar.Location = new System.Drawing.Point(4, 22);
-            this.tbpConsultar.Name = "tbpConsultar";
-            this.tbpConsultar.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpConsultar.Size = new System.Drawing.Size(952, 30);
-            this.tbpConsultar.TabIndex = 3;
-            this.tbpConsultar.Text = "   Consultar producto   ";
-            this.tbpConsultar.UseVisualStyleBackColor = true;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(16, 8);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(381, 13);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "Busque el producto y seleccionelo en la lista que se muestra para ver su detalle";
-            // 
             // FrmProductosCrud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -626,6 +627,8 @@
             this.grbBuscar.ResumeLayout(false);
             this.grbBuscar.PerformLayout();
             this.tabcOperacion.ResumeLayout(false);
+            this.tbpConsultar.ResumeLayout(false);
+            this.tbpConsultar.PerformLayout();
             this.tbpRegistrar.ResumeLayout(false);
             this.tbpRegistrar.PerformLayout();
             this.tbpModificar.ResumeLayout(false);
@@ -637,8 +640,6 @@
             this.grbProducto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.grbProductos.ResumeLayout(false);
-            this.tbpConsultar.ResumeLayout(false);
-            this.tbpConsultar.PerformLayout();
             this.ResumeLayout(false);
 
         }
