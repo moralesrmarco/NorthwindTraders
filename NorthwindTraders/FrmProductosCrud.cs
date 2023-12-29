@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Ya tiene la ultima versión de la logica
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -256,12 +257,15 @@ namespace NorthwindTraders
 
         private void FrmProductosCrud_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (cboCategoria.SelectedIndex != 0 || cboProveedor.SelectedIndex != 0 || txtId.Text != "" || txtProducto.Text != "" || txtCantidadxU.Text != "" || txtPrecio.Text != "" || txtUInventario.Text != "" || txtUPedido.Text != "" || txtPPedido.Text != "")
+            if (tabcOperacion.SelectedTab != tbpConsultar)
             {
-                DialogResult respuesta = MessageBox.Show("¿Esta seguro de querer cerrar el formulario?, si responde Si, se perderan los datos no guardados", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (respuesta == DialogResult.No)
+                if (cboCategoria.SelectedIndex != 0 || cboProveedor.SelectedIndex != 0 || txtId.Text != "" || txtProducto.Text != "" || txtCantidadxU.Text != "" || txtPrecio.Text != "" || txtUInventario.Text != "" || txtUPedido.Text != "" || txtPPedido.Text != "")
                 {
-                    e.Cancel = true;
+                    DialogResult respuesta = MessageBox.Show("¿Esta seguro de querer cerrar el formulario?, si responde Si, se perderan los datos no guardados", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    if (respuesta == DialogResult.No)
+                    {
+                        e.Cancel = true;
+                    }
                 }
             }
         }

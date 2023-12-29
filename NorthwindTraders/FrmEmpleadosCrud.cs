@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Ya tiene la ultima versión de la logica
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -31,7 +32,6 @@ namespace NorthwindTraders
             DeshabilitarControles();
             LlenarCboPais();
             LlenarCboReporta();
-            BorrarDatosEmpleado();
             LlenarDgv(null);
         }
 
@@ -123,7 +123,7 @@ namespace NorthwindTraders
                     if (dgv.RowCount < 20)
                         Utils.ActualizarBarraDeEstado($"Se muestran los últimos {dgv.RowCount} empleados registrados", this);
                     else
-                        Utils.ActualizarBarraDeEstado("Se muestran los últimos 20 empleados registrados", this);
+                        Utils.ActualizarBarraDeEstado($"Se muestran los últimos {dgv.RowCount} empleados registrados", this);
                 else
                     Utils.ActualizarBarraDeEstado($"Se encontraron {dgv.RowCount} registros", this);
             }
@@ -167,10 +167,22 @@ namespace NorthwindTraders
             dgv.Columns["Fecha de nacimiento"].DefaultCellStyle.Format = "dd \" de \"MMM\" de \"yyyy";
         }
 
+        private void DeshabilitarControles()
+        {
+            txtNombres.ReadOnly = txtApellidos.ReadOnly = txtTitulo.ReadOnly = txtTitCortesia.ReadOnly = true;
+            txtDomicilio.ReadOnly = txtCiudad.ReadOnly = txtRegion.ReadOnly = txtCodigoP.ReadOnly = true;
+            txtPais.ReadOnly = txtTelefono.ReadOnly = txtExtension.ReadOnly = true;
+            dtpFNacimiento.Enabled = dtpFContratacion.Enabled = false;
+            txtNotas.ReadOnly = true;
+            cboReporta.Enabled = false;
+            picFoto.Enabled = false;
+            btnCargar.Enabled = false;
+        }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            BorrarMensajesError();
-            BorrarDatosEmpleado();
+            BorrarDatosEmpleado(); 
+            BorrarMensajesError();            
             if (tabcOperacion.SelectedTab != tbpRegistrar)
                 DeshabilitarControles();
             LlenarDgv(sender);
@@ -219,18 +231,6 @@ namespace NorthwindTraders
             errorProvider1.SetError(btnCargar, "");
             errorProvider1.SetError(dtpFNacimiento, "");
             errorProvider1.SetError(dtpFContratacion, "");
-        }
-
-        private void DeshabilitarControles()
-        {
-            txtNombres.ReadOnly = txtApellidos.ReadOnly = txtTitulo.ReadOnly = txtTitCortesia.ReadOnly = true;
-            txtDomicilio.ReadOnly = txtCiudad.ReadOnly = txtRegion.ReadOnly = txtCodigoP.ReadOnly = true;
-            txtPais.ReadOnly = txtTelefono.ReadOnly = txtExtension.ReadOnly = true;
-            dtpFNacimiento.Enabled = dtpFContratacion.Enabled = false;
-            txtNotas.ReadOnly = true;
-            cboReporta.Enabled = false;
-            picFoto.Enabled = false;
-            btnCargar.Enabled = false;
         }
 
         private void HabilitarControles()
@@ -354,19 +354,25 @@ namespace NorthwindTraders
                 if (tabcOperacion.SelectedTab == tbpListar)
                 {
                     btnOperacion.Visible = false;
+                    btnOperacion.Enabled = false;
                     btnCargar.Visible = false;
+                    btnCargar.Enabled = false;
                 }
                 else if (tabcOperacion.SelectedTab == tbpModificar)
                 {
                     btnOperacion.Text = "Modificar empleado";
                     btnOperacion.Visible = true;
+                    btnOperacion.Enabled = false;
                     btnCargar.Visible = true;
+                    btnCargar.Enabled = false;
                 }
                 else if(tabcOperacion.SelectedTab == tbpEliminar)
                 {
                     btnOperacion.Text = "Eliminar empleado";
                     btnOperacion.Visible = true;
+                    btnOperacion.Enabled = false;
                     btnCargar.Visible = false;
+                    btnCargar.Enabled = false;
                 }
             }
         }
@@ -414,13 +420,7 @@ namespace NorthwindTraders
                     cboReporta.SelectedValue = dgvr.Cells["Reportaa"].Value.ToString();
                 else
                     cboReporta.SelectedValue = -1;
-                if (tabcOperacion.SelectedTab == tbpListar)
-                {
-                    btnOperacion.Visible = false;
-                    btnOperacion.Enabled = false;
-                    btnCargar.Visible = false;
-                }
-                else if (tabcOperacion.SelectedTab == tbpModificar)
+                if (tabcOperacion.SelectedTab == tbpModificar)
                 {
                     HabilitarControles();
                     btnOperacion.Visible = true;
@@ -499,10 +499,10 @@ namespace NorthwindTraders
                         if (numRegs > 0)
                         {
                             txtId.Text = cmd.Parameters["Id"].Value.ToString();
-                            MessageBox.Show($"El empleado con Id: {txtId.Text} y Nombre: {txtNombres.Text}  {txtApellidos.Text} se registró satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show($"El empleado con Id: {txtId.Text} y nombre: {txtNombres.Text}  {txtApellidos.Text} se registró satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
-                            MessageBox.Show($"El empleado con Id: {txtId.Text}  y Nombre:  {txtNombres.Text} {txtApellidos.Text} NO fue registrado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"El empleado con Id: {txtId.Text}  y nombre:  {txtNombres.Text} {txtApellidos.Text} NO fue registrado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (SqlException ex) 
                     {
@@ -524,9 +524,6 @@ namespace NorthwindTraders
                     btnOperacion.Enabled = true;
                     if (numRegs > 0)
                     {
-                        //BorrarDatosBusqueda();
-                        //txtBId.Text = txtId.Text;
-                        //btnBuscar.PerformClick();
                         btnLimpiar.PerformClick();
                         LlenarDgv(null);
                     }
@@ -595,9 +592,9 @@ namespace NorthwindTraders
                         cn.Open();
                         numRegs = cmd.ExecuteNonQuery();
                         if (numRegs > 0)
-                            MessageBox.Show($"El empleado con Id: {txtId.Text} y Nombre: {txtNombres.Text} {txtApellidos.Text} se modificó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show($"El empleado con Id: {txtId.Text} y nombre: {txtNombres.Text} {txtApellidos.Text} se modificó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
-                            MessageBox.Show($"El empleado con Id: {txtId.Text} y Nombre: {txtNombres.Text}  {txtApellidos.Text} NO fue modificado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"El empleado con Id: {txtId.Text} y nombre: {txtNombres.Text}  {txtApellidos.Text} NO fue modificado en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (SqlException ex)
                     {
@@ -626,12 +623,12 @@ namespace NorthwindTraders
             }
             else if (tabcOperacion.SelectedTab == tbpEliminar)
             {
-                if (txtId.Text.Trim() == "")
+                if (txtId.Text == "")
                 {
                     MessageBox.Show("Seleccione el empleado a eliminar", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                DialogResult respuesta = MessageBox.Show($"¿Esta seguro de eliminar el empleado con Id: {txtId.Text} y Nombre: {txtNombres.Text} {txtApellidos.Text}?", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DialogResult respuesta = MessageBox.Show($"¿Esta seguro de eliminar el empleado con Id: {txtId.Text} y nombre: {txtNombres.Text} {txtApellidos.Text}?", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (respuesta == DialogResult.Yes)
                 {
                     btnOperacion.Enabled = false;
@@ -644,9 +641,9 @@ namespace NorthwindTraders
                         cn.Open();
                         numRegs = cmd.ExecuteNonQuery();
                         if (numRegs>0)
-                            MessageBox.Show($"El empleado con Id: {txtId.Text} y Nombre: {txtNombres.Text} {txtApellidos.Text} se eliminó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show($"El empleado con Id: {txtId.Text} y nombre: {txtNombres.Text} {txtApellidos.Text} se eliminó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
-                            MessageBox.Show($"El empleado con Id: {txtId.Text} y Nombre: {txtNombres.Text}  {txtApellidos.Text} NO se eliminó en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"El empleado con Id: {txtId.Text} y nombre: {txtNombres.Text}  {txtApellidos.Text} NO se eliminó en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (SqlException ex)
                     {

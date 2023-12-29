@@ -89,7 +89,10 @@ namespace NorthwindTraders
                 dgv.DataSource = tbl;
                 Utils.ConfDataGridView(dgv);
                 if (sender == null)
-                    Utils.ActualizarBarraDeEstado("Se muestran los primeros 20 clientes registrados", this);
+                    if (dgv.RowCount < 20)
+                        Utils.ActualizarBarraDeEstado($"Se muestran los primeros {dgv.RowCount} clientes registrados", this);
+                    else
+                        Utils.ActualizarBarraDeEstado($"Se muestran los primeros {dgv.RowCount} clientes registrados", this);
                 else
                     Utils.ActualizarBarraDeEstado($"Se encontraron {dgv.RowCount} registros", this);
             }
@@ -103,6 +106,13 @@ namespace NorthwindTraders
                 MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Utils.ActualizarBarraDeEstado("Activo", this);
             }
+        }
+
+        private void DeshabilitarControles()
+        {
+            txtId.ReadOnly = txtCompañia.ReadOnly = txtContacto.ReadOnly = txtTitulo.ReadOnly = true;
+            txtDomicilio.ReadOnly = txtCiudad.ReadOnly = txtRegion.ReadOnly = txtCodigoP.ReadOnly = true;
+            txtPais.ReadOnly = txtTelefono.ReadOnly = txtFax.ReadOnly = true;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -146,13 +156,6 @@ namespace NorthwindTraders
             errorProvider1.SetError(txtCiudad, "");
             errorProvider1.SetError(txtPais, "");
             errorProvider1.SetError(txtTelefono, "");
-        }
-
-        private void DeshabilitarControles()
-        {
-            txtId.ReadOnly = txtCompañia.ReadOnly = txtContacto.ReadOnly = txtTitulo.ReadOnly =  true;
-            txtDomicilio.ReadOnly = txtCiudad.ReadOnly = txtRegion.ReadOnly = txtCodigoP.ReadOnly = true;
-            txtPais.ReadOnly = txtTelefono.ReadOnly = txtFax.ReadOnly = true;
         }
 
         private void HabilitarControles()
@@ -241,7 +244,6 @@ namespace NorthwindTraders
                 btnOperacion.Text = "Registrar cliente";
                 btnOperacion.Visible = true;
                 btnOperacion.Enabled = true;
-                LlenarDgv(null);
             }
             else
             {
@@ -286,12 +288,7 @@ namespace NorthwindTraders
                 txtPais.Text = dgvr.Cells["País"].Value.ToString();
                 txtTelefono.Text = dgvr.Cells["Teléfono"].Value.ToString();
                 txtFax.Text = dgvr.Cells["Fax"].Value.ToString();
-                if (tabcOperacion.SelectedTab == tbpListar)
-                {
-                    btnOperacion.Visible = false;
-                    btnOperacion.Enabled = false;
-                }
-                else if (tabcOperacion.SelectedTab == tbpModificar)
+                if (tabcOperacion.SelectedTab == tbpModificar)
                 {
                     HabilitarControles();
                     txtId.Enabled = false;
@@ -367,12 +364,9 @@ namespace NorthwindTraders
                     btnOperacion.Enabled = true;
                     if (numRegs > 0)
                     {
-                        BorrarDatosBusqueda();
-                        txtBId.Text = txtId.Text;
-                        btnBuscar.PerformClick();
                         btnLimpiar.PerformClick();
+                        LlenarDgv(null);
                     }
-                    Utils.ActualizarBarraDeEstado("Activo", this);
                 }
             }
             else if (tabcOperacion.SelectedTab == tbpModificar)
@@ -439,7 +433,7 @@ namespace NorthwindTraders
             }
             else if (tabcOperacion.SelectedTab == tbpEliminar)
             {
-                if (txtId.Text.Trim() == "")
+                if (txtId.Text == "")
                 {
                     MessageBox.Show("Seleccione el cliente a eliminar", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;

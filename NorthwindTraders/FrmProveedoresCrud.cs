@@ -222,11 +222,14 @@ namespace NorthwindTraders
 
         private void FrmProveedoresCrud_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (txtId.Text != "" || txtCompañia.Text != "" || txtContacto.Text != "" || txtTitulo.Text != "" || txtDomicilio.Text != "" || txtCiudad.Text != "" || txtRegion.Text != "" || txtCodigoP.Text != "" || txtPais.Text != "" || txtTelefono.Text != "" || txtFax.Text != "")
+            if (tabcOperacion.SelectedTab != tbpConsultar)
             {
-                DialogResult respuesta = MessageBox.Show("¿Esta seguro de querer cerrar el formulario?, si responde Si, se perderan los datos no guardados", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (respuesta == DialogResult.No)
-                    e.Cancel = true;
+                if (txtId.Text != "" || txtCompañia.Text != "" || txtContacto.Text != "" || txtTitulo.Text != "" || txtDomicilio.Text != "" || txtCiudad.Text != "" || txtRegion.Text != "" || txtCodigoP.Text != "" || txtPais.Text != "" || txtTelefono.Text != "" || txtFax.Text != "")
+                {
+                    DialogResult respuesta = MessageBox.Show("¿Esta seguro de querer cerrar el formulario?, si responde Si, se perderan los datos no guardados", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    if (respuesta == DialogResult.No)
+                        e.Cancel = true;
+                }
             }
         }
 
@@ -264,19 +267,16 @@ namespace NorthwindTraders
                 if (tabcOperacion.SelectedTab == tbpConsultar)
                 {
                     btnOperacion.Visible = false;
-                    btnOperacion.Enabled = false;
                 }
                 else if (tabcOperacion.SelectedTab == tbpModificar)
                 {
                     btnOperacion.Text = "Modificar proveedor";
                     btnOperacion.Visible = true;
-                    btnOperacion.Enabled = false;
                 }
                 else if (tabcOperacion.SelectedTab == tbpEliminar)
                 {
                     btnOperacion.Text = "Eliminar proveedor";
                     btnOperacion.Visible = true;
-                    btnOperacion.Enabled = false;
                 }
             }
         }
