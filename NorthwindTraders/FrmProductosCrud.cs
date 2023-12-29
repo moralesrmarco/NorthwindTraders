@@ -208,7 +208,7 @@ namespace NorthwindTraders
         private void HabilitarControles()
         {
             txtProducto.ReadOnly = txtCantidadxU.ReadOnly = txtPrecio.ReadOnly = false;
-            txtUInventario.ReadOnly = txtUPedido.ReadOnly = txtPPedido.ReadOnly = true;
+            txtUInventario.ReadOnly = txtUPedido.ReadOnly = txtPPedido.ReadOnly = false;
             chkbDescontinuado.Enabled = true;
             cboCategoria.Enabled = cboProveedor.Enabled = true;
         }
