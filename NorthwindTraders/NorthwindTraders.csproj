@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmpleadosListado.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmpleadosListado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FrmCategoriasCrud.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +78,12 @@
     </Compile>
     <Compile Include="FrmEmpleadosCrud.Designer.cs">
       <DependentUpon>FrmEmpleadosCrud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPedidosCrud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPedidosCrud.Designer.cs">
+      <DependentUpon>FrmPedidosCrud.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmProductosCrud.cs">
       <SubType>Form</SubType>
@@ -153,9 +168,14 @@
     <Compile Include="StoreProcedure\Sp_Categorias.cs" />
     <Compile Include="StoreProcedure\Sp_Clientes.cs" />
     <Compile Include="StoreProcedure\Sp_Empleados.cs" />
+    <Compile Include="StoreProcedure\Sp_Pedidos.cs" />
     <Compile Include="StoreProcedure\Sp_Productos.cs" />
     <Compile Include="StoreProcedure\Sp_Proveedores.cs" />
     <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="EmpleadosListado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EmpleadosListado.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCategoriasCrud.resx">
       <DependentUpon>FrmCategoriasCrud.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEmpleadosCrud.resx">
       <DependentUpon>FrmEmpleadosCrud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPedidosCrud.resx">
+      <DependentUpon>FrmPedidosCrud.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductosCrud.resx">
       <DependentUpon>FrmProductosCrud.cs</DependentUpon>
@@ -228,6 +251,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

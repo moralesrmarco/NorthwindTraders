@@ -120,10 +120,7 @@ namespace NorthwindTraders
                 Utils.ConfDataGridView(dgv);
                 ConfDgvEmpleados(dgv);
                 if (sender == null)
-                    if (dgv.RowCount < 20)
-                        Utils.ActualizarBarraDeEstado($"Se muestran los últimos {dgv.RowCount} empleados registrados", this);
-                    else
-                        Utils.ActualizarBarraDeEstado($"Se muestran los últimos {dgv.RowCount} empleados registrados", this);
+                    Utils.ActualizarBarraDeEstado($"Se muestran los últimos {dgv.RowCount} empleados registrados", this);
                 else
                     Utils.ActualizarBarraDeEstado($"Se encontraron {dgv.RowCount} registros", this);
             }

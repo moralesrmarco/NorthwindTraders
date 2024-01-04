@@ -254,7 +254,7 @@
             this.grbBuscar.Size = new System.Drawing.Size(304, 304);
             this.grbBuscar.TabIndex = 2;
             this.grbBuscar.TabStop = false;
-            this.grbBuscar.Text = "»   Buscar un proveedor:   «";
+            this.grbBuscar.Text = " »   Buscar un proveedor:   « ";
             this.grbBuscar.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
             // 
             // cboBPais

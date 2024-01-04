@@ -89,10 +89,7 @@ namespace NorthwindTraders
                 dgv.DataSource = tbl;
                 Utils.ConfDataGridView(dgv);
                 if (sender == null)
-                    if (dgv.RowCount < 20)
-                        Utils.ActualizarBarraDeEstado($"Se muestran los primeros {dgv.RowCount} clientes registrados", this);
-                    else
-                        Utils.ActualizarBarraDeEstado($"Se muestran los primeros {dgv.RowCount} clientes registrados", this);
+                    Utils.ActualizarBarraDeEstado($"Se muestran los primeros {dgv.RowCount} clientes registrados", this);
                 else
                     Utils.ActualizarBarraDeEstado($"Se encontraron {dgv.RowCount} registros", this);
             }

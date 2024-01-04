@@ -136,10 +136,7 @@ namespace NorthwindTraders
                 Utils.ConfDataGridView(dgv);
                 Utils.ConfDgvProductos(dgv);
                 if (sender == null)
-                    if (dgv.RowCount < 20)
-                        Utils.ActualizarBarraDeEstado($"Se muestran los últimos {dgv.RowCount} productos registrados", this);
-                    else
-                        Utils.ActualizarBarraDeEstado("Se muestran los últimos 20 productos registrados", this);
+                    Utils.ActualizarBarraDeEstado($"Se muestran los últimos {dgv.RowCount} productos registrados", this);
                 else
                     Utils.ActualizarBarraDeEstado($"Se encontraron: {tbl.Rows.Count} registros", this);
             }
