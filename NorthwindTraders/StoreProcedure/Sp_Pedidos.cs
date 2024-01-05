@@ -29,13 +29,16 @@ CREATE OR ALTER PROCEDURE [dbo].[SP_PEDIDOS_BUSCAR]
 	@Id int, 
 	@Cliente nvarchar(40),
 	@FPedido bit,
+	@FPedidoNull bit,
 	@FPedidoIni datetime,
 	@FPedidoFin datetime,
 	@FRequerido bit,
+	@FRequeridoNull bit,
 	--@FRequerido nvarchar(1),
 	@FRequeridoIni datetime,
 	@FRequeridoFin datetime,
 	@FEnvio bit,
+	@FEnvioNull bit,
 	--@FEnvio nvarchar(1),
 	@FEnvioIni datetime,
 	@FEnvioFin datetime,
@@ -55,8 +58,11 @@ BEGIN
 	(@Id = 0 OR Orders.OrderID = @Id) 
 	AND (@Cliente = '' OR Customers.CompanyName LIKE '%' + @Cliente + '%') 
 	AND (@FPedido = 0 OR Orders.OrderDate BETWEEN @FPedidoIni AND @FPedidoFin)
+	AND (@FPedidoNull = 0 OR Orders.OrderDate IS NULL)
 	AND (@FRequerido = 0 OR Orders.RequiredDate BETWEEN @FRequeridoIni AND @FRequeridoFin)
+	AND (@FRequeridoNull = 0 OR Orders.RequiredDate IS NULL)
 	AND (@FEnvio = 0 OR Orders.ShippedDate BETWEEN @FEnvioIni AND @FEnvioFin)
+	AND (@FEnvioNull = 0 OR Orders.ShippedDate IS NULL)
 	AND (@Empleado = '' OR Employees.LastName + ' ' + Employees.FirstName LIKE '%' + @Empleado + '%' ) 
 	AND (@CompañiaT = '' OR Shippers.CompanyName LIKE '%' + @CompañiaT + '%')
 	AND (@Dirigidoa = '' OR Orders.ShipName LIKE '%' + @Dirigidoa + '%')

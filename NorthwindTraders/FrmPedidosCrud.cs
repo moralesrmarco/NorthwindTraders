@@ -68,6 +68,10 @@ namespace NorthwindTraders
                         cmd.Parameters.AddWithValue("FPedidoIni", DBNull.Value);
                         cmd.Parameters.AddWithValue("FPedidoFin", DBNull.Value);
                     }
+                    if (chkBFPedidoNull.Checked)
+                        cmd.Parameters.AddWithValue("FPedidoNull", true);
+                    else
+                        cmd.Parameters.AddWithValue("FPedidoNull", false);
                     if (dtpBFRequeridoIni.Checked && dtpBFRequeridoFin.Checked)
                     {
                         cmd.Parameters.AddWithValue("FRequerido", true);
@@ -84,6 +88,10 @@ namespace NorthwindTraders
                         cmd.Parameters.AddWithValue("FRequeridoIni", DBNull.Value);
                         cmd.Parameters.AddWithValue("FRequeridoFin", DBNull.Value);
                     }
+                    if (chkBFRequeridoNull.Checked)
+                        cmd.Parameters.AddWithValue("FRequeridoNull", true);
+                    else
+                        cmd.Parameters.AddWithValue("FRequeridoNull", false);
                     if (dtpBFEnvioIni.Checked && dtpBFEnvioFin.Checked)
                     {
                         cmd.Parameters.AddWithValue("FEnvio", true);
@@ -100,6 +108,10 @@ namespace NorthwindTraders
                         cmd.Parameters.AddWithValue("FEnvioIni", DBNull.Value);
                         cmd.Parameters.AddWithValue("FEnvioFin", DBNull.Value);
                     }
+                    if (chkBFEnvioNull.Checked)
+                        cmd.Parameters.AddWithValue("FEnvioNull", true);
+                    else
+                        cmd.Parameters.AddWithValue("FEnvioNull", false);
                     cmd.Parameters.AddWithValue("Empleado", txtBEmpleado.Text);
                     cmd.Parameters.AddWithValue("CompañiaT", txtBCompañiaT.Text);
                     cmd.Parameters.AddWithValue("Dirigidoa", txtBDirigidoa.Text);
