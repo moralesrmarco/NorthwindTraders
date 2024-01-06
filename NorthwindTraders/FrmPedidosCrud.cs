@@ -23,12 +23,6 @@ namespace NorthwindTraders
             WindowState = FormWindowState.Maximized;
         }
 
-        private void grbPaint(object sender, PaintEventArgs e)
-        {
-            GroupBox groupBox = sender as GroupBox;
-            Utils.DrawGroupBox(groupBox, e.Graphics, Color.Black, Color.Black, this);
-        }
-
         private void FrmPedidosCrud_Load(object sender, EventArgs e)
         {
             label12.Text = "Fecha\ninicial:";
@@ -38,6 +32,18 @@ namespace NorthwindTraders
             label16.Text = "Fecha\ninicial:";
             label17.Text = "Fecha\nfinal:";
             LlenarDgvPedidos(null);
+        }
+
+        private void grbPaint(object sender, PaintEventArgs e)
+        {
+            GroupBox groupBox = sender as GroupBox;
+            Utils.DrawGroupBox(groupBox, e.Graphics, Color.Black, Color.Black, this);
+        }
+
+        private void grbPaint2(object sender, PaintEventArgs e)
+        {
+            GroupBox groupBox = sender as GroupBox;
+            Utils.DrawGroupBox(groupBox, e.Graphics, Color.Black, Color.LightSlateGray, this);
         }
 
         private void LlenarDgvPedidos(object sender)
@@ -161,6 +167,7 @@ namespace NorthwindTraders
         {
             BorrarDatosBuqueda();
         }
+
         private void BorrarDatosBuqueda()
         {
             txtBId.Text = txtBCliente.Text = txtBEmpleado.Text = txtBCompañiaT.Text = txtBDirigidoa.Text = "";

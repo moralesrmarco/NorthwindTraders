@@ -28,18 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabcOperacion = new System.Windows.Forms.TabControl();
-            this.tbpConsultar = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbpRegistrar = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbpModificar = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbpEliminar = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.grbPedidos = new System.Windows.Forms.GroupBox();
-            this.dgvPedidos = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.grbDetalle = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.grbPedido = new System.Windows.Forms.GroupBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.btnGenerar = new System.Windows.Forms.Button();
+            this.grbProducto = new System.Windows.Forms.GroupBox();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.txtDescuento = new System.Windows.Forms.TextBox();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.cboProducto = new System.Windows.Forms.ComboBox();
+            this.cboCategoria = new System.Windows.Forms.ComboBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.grbTransportista = new System.Windows.Forms.GroupBox();
+            this.txtPais = new System.Windows.Forms.TextBox();
+            this.txtRegion = new System.Windows.Forms.TextBox();
+            this.txtDomicilio = new System.Windows.Forms.TextBox();
+            this.txtFlete = new System.Windows.Forms.TextBox();
+            this.txtCP = new System.Windows.Forms.TextBox();
+            this.txtCiudad = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.cboCompañia = new System.Windows.Forms.ComboBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.dtpHoraEnvio = new System.Windows.Forms.DateTimePicker();
+            this.dtpHoraRequerido = new System.Windows.Forms.DateTimePicker();
+            this.dtpHoraPedido = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnvio = new System.Windows.Forms.DateTimePicker();
+            this.dtpRequerido = new System.Windows.Forms.DateTimePicker();
+            this.dtpPedido = new System.Windows.Forms.DateTimePicker();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cboEmpleado = new System.Windows.Forms.ComboBox();
+            this.cboCliente = new System.Windows.Forms.ComboBox();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.grbBuscar = new System.Windows.Forms.GroupBox();
+            this.chkBFEnvioNull = new System.Windows.Forms.CheckBox();
+            this.chkBFRequeridoNull = new System.Windows.Forms.CheckBox();
+            this.chkBFPedidoNull = new System.Windows.Forms.CheckBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.txtBDirigidoa = new System.Windows.Forms.TextBox();
@@ -67,10 +113,24 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtBEmpleado = new System.Windows.Forms.TextBox();
             this.txtBCliente = new System.Windows.Forms.TextBox();
-            this.grbPedido = new System.Windows.Forms.GroupBox();
-            this.chkBFPedidoNull = new System.Windows.Forms.CheckBox();
-            this.chkBFRequeridoNull = new System.Windows.Forms.CheckBox();
-            this.chkBFEnvioNull = new System.Windows.Forms.CheckBox();
+            this.tabcOperacion = new System.Windows.Forms.TabControl();
+            this.tbpConsultar = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbpRegistrar = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbpModificar = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbpEliminar = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.grbPedidos = new System.Windows.Forms.GroupBox();
+            this.dgvPedidos = new System.Windows.Forms.DataGridView();
+            this.panel1.SuspendLayout();
+            this.grbDetalle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.grbPedido.SuspendLayout();
+            this.grbProducto.SuspendLayout();
+            this.grbTransportista.SuspendLayout();
+            this.grbBuscar.SuspendLayout();
             this.tabcOperacion.SuspendLayout();
             this.tbpConsultar.SuspendLayout();
             this.tbpRegistrar.SuspendLayout();
@@ -78,132 +138,585 @@
             this.tbpEliminar.SuspendLayout();
             this.grbPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
-            this.grbBuscar.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabcOperacion
+            // panel1
             // 
-            this.tabcOperacion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.grbDetalle);
+            this.panel1.Controls.Add(this.grbPedido);
+            this.panel1.Controls.Add(this.grbBuscar);
+            this.panel1.Controls.Add(this.tabcOperacion);
+            this.panel1.Controls.Add(this.grbPedidos);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1184, 931);
+            this.panel1.TabIndex = 0;
+            // 
+            // grbDetalle
+            // 
+            this.grbDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabcOperacion.Controls.Add(this.tbpConsultar);
-            this.tabcOperacion.Controls.Add(this.tbpRegistrar);
-            this.tabcOperacion.Controls.Add(this.tbpModificar);
-            this.tabcOperacion.Controls.Add(this.tbpEliminar);
-            this.tabcOperacion.Location = new System.Drawing.Point(16, 8);
-            this.tabcOperacion.Name = "tabcOperacion";
-            this.tabcOperacion.SelectedIndex = 0;
-            this.tabcOperacion.Size = new System.Drawing.Size(1160, 56);
-            this.tabcOperacion.TabIndex = 0;
+            this.grbDetalle.Controls.Add(this.dataGridView1);
+            this.grbDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbDetalle.Location = new System.Drawing.Point(336, 680);
+            this.grbDetalle.Name = "grbDetalle";
+            this.grbDetalle.Size = new System.Drawing.Size(832, 240);
+            this.grbDetalle.TabIndex = 3;
+            this.grbDetalle.TabStop = false;
+            this.grbDetalle.Text = "»   Detalle del pedido:   «";
+            this.grbDetalle.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
             // 
-            // tbpConsultar
+            // dataGridView1
             // 
-            this.tbpConsultar.Controls.Add(this.label1);
-            this.tbpConsultar.Location = new System.Drawing.Point(4, 22);
-            this.tbpConsultar.Name = "tbpConsultar";
-            this.tbpConsultar.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpConsultar.Size = new System.Drawing.Size(1152, 30);
-            this.tbpConsultar.TabIndex = 0;
-            this.tbpConsultar.Text = "   Consultar pedido   ";
-            this.tbpConsultar.UseVisualStyleBackColor = true;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(826, 221);
+            this.dataGridView1.TabIndex = 10;
             // 
-            // label1
+            // grbPedido
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(368, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Busque el pedido y seleccionelo en la lista que se muesta para ver su detalle";
-            // 
-            // tbpRegistrar
-            // 
-            this.tbpRegistrar.Controls.Add(this.label2);
-            this.tbpRegistrar.Location = new System.Drawing.Point(4, 22);
-            this.tbpRegistrar.Name = "tbpRegistrar";
-            this.tbpRegistrar.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpRegistrar.Size = new System.Drawing.Size(1152, 30);
-            this.tbpRegistrar.TabIndex = 1;
-            this.tbpRegistrar.Text = "   Registrar pedido   ";
-            this.tbpRegistrar.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(210, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Proporcione los datos del pedido a registrar";
-            // 
-            // tbpModificar
-            // 
-            this.tbpModificar.Controls.Add(this.label3);
-            this.tbpModificar.Location = new System.Drawing.Point(4, 22);
-            this.tbpModificar.Name = "tbpModificar";
-            this.tbpModificar.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpModificar.Size = new System.Drawing.Size(1152, 30);
-            this.tbpModificar.TabIndex = 2;
-            this.tbpModificar.Text = "   Modificar pedido   ";
-            this.tbpModificar.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(452, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Busque el pedido y seleccionelo en la lista que se muestra para que pueda modific" +
-    "ar sus datos";
-            // 
-            // tbpEliminar
-            // 
-            this.tbpEliminar.Controls.Add(this.label4);
-            this.tbpEliminar.Location = new System.Drawing.Point(4, 22);
-            this.tbpEliminar.Name = "tbpEliminar";
-            this.tbpEliminar.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpEliminar.Size = new System.Drawing.Size(1152, 30);
-            this.tbpEliminar.TabIndex = 3;
-            this.tbpEliminar.Text = "   Eliminar pedido   ";
-            this.tbpEliminar.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 8);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(328, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Busque el pedido a eliminar y seleccionelo en la lista que se muestra";
-            // 
-            // grbPedidos
-            // 
-            this.grbPedidos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grbPedido.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grbPedidos.Controls.Add(this.dgvPedidos);
-            this.grbPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbPedidos.Location = new System.Drawing.Point(16, 64);
-            this.grbPedidos.Name = "grbPedidos";
-            this.grbPedidos.Size = new System.Drawing.Size(1152, 240);
-            this.grbPedidos.TabIndex = 1;
-            this.grbPedidos.TabStop = false;
-            this.grbPedidos.Text = "»   Pedidos:   «";
-            this.grbPedidos.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
+            this.grbPedido.AutoSize = true;
+            this.grbPedido.Controls.Add(this.txtTotal);
+            this.grbPedido.Controls.Add(this.label41);
+            this.grbPedido.Controls.Add(this.btnGenerar);
+            this.grbPedido.Controls.Add(this.grbProducto);
+            this.grbPedido.Controls.Add(this.grbTransportista);
+            this.grbPedido.Controls.Add(this.dtpHoraEnvio);
+            this.grbPedido.Controls.Add(this.dtpHoraRequerido);
+            this.grbPedido.Controls.Add(this.dtpHoraPedido);
+            this.grbPedido.Controls.Add(this.dtpEnvio);
+            this.grbPedido.Controls.Add(this.dtpRequerido);
+            this.grbPedido.Controls.Add(this.dtpPedido);
+            this.grbPedido.Controls.Add(this.label27);
+            this.grbPedido.Controls.Add(this.label24);
+            this.grbPedido.Controls.Add(this.label26);
+            this.grbPedido.Controls.Add(this.label25);
+            this.grbPedido.Controls.Add(this.label23);
+            this.grbPedido.Controls.Add(this.label22);
+            this.grbPedido.Controls.Add(this.cboEmpleado);
+            this.grbPedido.Controls.Add(this.cboCliente);
+            this.grbPedido.Controls.Add(this.txtId);
+            this.grbPedido.Controls.Add(this.label21);
+            this.grbPedido.Controls.Add(this.label20);
+            this.grbPedido.Controls.Add(this.label19);
+            this.grbPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbPedido.Location = new System.Drawing.Point(336, 311);
+            this.grbPedido.Name = "grbPedido";
+            this.grbPedido.Size = new System.Drawing.Size(820, 356);
+            this.grbPedido.TabIndex = 2;
+            this.grbPedido.TabStop = false;
+            this.grbPedido.Text = "»   Pedido:   «";
+            this.grbPedido.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
             // 
-            // dgvPedidos
+            // txtTotal
             // 
-            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPedidos.Location = new System.Drawing.Point(3, 16);
-            this.dgvPedidos.Name = "dgvPedidos";
-            this.dgvPedidos.Size = new System.Drawing.Size(1146, 221);
-            this.dgvPedidos.TabIndex = 0;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(109, 312);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(194, 20);
+            this.txtTotal.TabIndex = 13;
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(51, 314);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(47, 16);
+            this.label41.TabIndex = 12;
+            this.label41.Text = "Total:";
+            // 
+            // btnGenerar
+            // 
+            this.btnGenerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerar.Location = new System.Drawing.Point(608, 307);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(180, 30);
+            this.btnGenerar.TabIndex = 10;
+            this.btnGenerar.Text = "Generar pedido";
+            this.btnGenerar.UseVisualStyleBackColor = true;
+            // 
+            // grbProducto
+            // 
+            this.grbProducto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbProducto.Controls.Add(this.btnAgregar);
+            this.grbProducto.Controls.Add(this.txtDescuento);
+            this.grbProducto.Controls.Add(this.txtCantidad);
+            this.grbProducto.Controls.Add(this.txtPrecio);
+            this.grbProducto.Controls.Add(this.label38);
+            this.grbProducto.Controls.Add(this.label39);
+            this.grbProducto.Controls.Add(this.label40);
+            this.grbProducto.Controls.Add(this.cboProducto);
+            this.grbProducto.Controls.Add(this.cboCategoria);
+            this.grbProducto.Controls.Add(this.label37);
+            this.grbProducto.Controls.Add(this.label36);
+            this.grbProducto.Location = new System.Drawing.Point(8, 224);
+            this.grbProducto.Name = "grbProducto";
+            this.grbProducto.Size = new System.Drawing.Size(804, 80);
+            this.grbProducto.TabIndex = 9;
+            this.grbProducto.TabStop = false;
+            this.grbProducto.Text = "»   Producto:   «";
+            this.grbProducto.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint2);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(672, 43);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(30, 30);
+            this.btnAgregar.TabIndex = 5;
+            this.btnAgregar.Text = "+";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            // 
+            // txtDescuento
+            // 
+            this.txtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescuento.Location = new System.Drawing.Point(504, 48);
+            this.txtDescuento.Name = "txtDescuento";
+            this.txtDescuento.Size = new System.Drawing.Size(124, 20);
+            this.txtDescuento.TabIndex = 4;
+            this.txtDescuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidad.Location = new System.Drawing.Point(296, 48);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(128, 20);
+            this.txtCantidad.TabIndex = 3;
+            this.txtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecio.Location = new System.Drawing.Point(96, 48);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.ReadOnly = true;
+            this.txtPrecio.Size = new System.Drawing.Size(128, 20);
+            this.txtPrecio.TabIndex = 2;
+            this.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(432, 52);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(72, 13);
+            this.label38.TabIndex = 7;
+            this.label38.Text = "Descuento:";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(232, 52);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(61, 13);
+            this.label39.TabIndex = 6;
+            this.label39.Text = "Cantidad:";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(45, 52);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(47, 13);
+            this.label40.TabIndex = 5;
+            this.label40.Text = "Precio:";
+            // 
+            // cboProducto
+            // 
+            this.cboProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProducto.FormattingEnabled = true;
+            this.cboProducto.Location = new System.Drawing.Point(504, 16);
+            this.cboProducto.Name = "cboProducto";
+            this.cboProducto.Size = new System.Drawing.Size(296, 21);
+            this.cboProducto.TabIndex = 1;
+            // 
+            // cboCategoria
+            // 
+            this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategoria.FormattingEnabled = true;
+            this.cboCategoria.Location = new System.Drawing.Point(96, 16);
+            this.cboCategoria.Name = "cboCategoria";
+            this.cboCategoria.Size = new System.Drawing.Size(296, 21);
+            this.cboCategoria.TabIndex = 0;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(442, 20);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(62, 13);
+            this.label37.TabIndex = 0;
+            this.label37.Text = "Producto:";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(25, 20);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(67, 13);
+            this.label36.TabIndex = 0;
+            this.label36.Text = "Categoría:";
+            // 
+            // grbTransportista
+            // 
+            this.grbTransportista.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbTransportista.Controls.Add(this.txtPais);
+            this.grbTransportista.Controls.Add(this.txtRegion);
+            this.grbTransportista.Controls.Add(this.txtDomicilio);
+            this.grbTransportista.Controls.Add(this.txtFlete);
+            this.grbTransportista.Controls.Add(this.txtCP);
+            this.grbTransportista.Controls.Add(this.txtCiudad);
+            this.grbTransportista.Controls.Add(this.txtNombre);
+            this.grbTransportista.Controls.Add(this.cboCompañia);
+            this.grbTransportista.Controls.Add(this.label31);
+            this.grbTransportista.Controls.Add(this.label30);
+            this.grbTransportista.Controls.Add(this.label29);
+            this.grbTransportista.Controls.Add(this.label35);
+            this.grbTransportista.Controls.Add(this.label34);
+            this.grbTransportista.Controls.Add(this.label33);
+            this.grbTransportista.Controls.Add(this.label32);
+            this.grbTransportista.Controls.Add(this.label28);
+            this.grbTransportista.Location = new System.Drawing.Point(8, 96);
+            this.grbTransportista.Name = "grbTransportista";
+            this.grbTransportista.Size = new System.Drawing.Size(804, 120);
+            this.grbTransportista.TabIndex = 8;
+            this.grbTransportista.TabStop = false;
+            this.grbTransportista.Text = "»   Transportista:   «";
+            this.grbTransportista.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint2);
+            // 
+            // txtPais
+            // 
+            this.txtPais.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPais.Location = new System.Drawing.Point(96, 88);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(168, 20);
+            this.txtPais.TabIndex = 6;
+            // 
+            // txtRegion
+            // 
+            this.txtRegion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegion.Location = new System.Drawing.Point(96, 64);
+            this.txtRegion.Name = "txtRegion";
+            this.txtRegion.Size = new System.Drawing.Size(168, 20);
+            this.txtRegion.TabIndex = 4;
+            // 
+            // txtDomicilio
+            // 
+            this.txtDomicilio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDomicilio.Location = new System.Drawing.Point(96, 40);
+            this.txtDomicilio.Name = "txtDomicilio";
+            this.txtDomicilio.Size = new System.Drawing.Size(296, 20);
+            this.txtDomicilio.TabIndex = 2;
+            // 
+            // txtFlete
+            // 
+            this.txtFlete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFlete.Location = new System.Drawing.Point(504, 88);
+            this.txtFlete.Name = "txtFlete";
+            this.txtFlete.Size = new System.Drawing.Size(108, 20);
+            this.txtFlete.TabIndex = 7;
+            // 
+            // txtCP
+            // 
+            this.txtCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCP.Location = new System.Drawing.Point(504, 64);
+            this.txtCP.Name = "txtCP";
+            this.txtCP.Size = new System.Drawing.Size(108, 20);
+            this.txtCP.TabIndex = 5;
+            // 
+            // txtCiudad
+            // 
+            this.txtCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCiudad.Location = new System.Drawing.Point(504, 40);
+            this.txtCiudad.Name = "txtCiudad";
+            this.txtCiudad.Size = new System.Drawing.Size(216, 20);
+            this.txtCiudad.TabIndex = 3;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Location = new System.Drawing.Point(504, 16);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(296, 20);
+            this.txtNombre.TabIndex = 1;
+            // 
+            // cboCompañia
+            // 
+            this.cboCompañia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCompañia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCompañia.FormattingEnabled = true;
+            this.cboCompañia.Location = new System.Drawing.Point(96, 16);
+            this.cboCompañia.Name = "cboCompañia";
+            this.cboCompañia.Size = new System.Drawing.Size(296, 21);
+            this.cboCompañia.TabIndex = 0;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(55, 92);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(37, 13);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "País:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(41, 68);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(51, 13);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Región:";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(30, 44);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(62, 13);
+            this.label29.TabIndex = 0;
+            this.label29.Text = "Domicilio:";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(465, 92);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(39, 13);
+            this.label35.TabIndex = 0;
+            this.label35.Text = "Flete:";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(416, 68);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(88, 13);
+            this.label34.TabIndex = 0;
+            this.label34.Text = "Código postal:";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(454, 44);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(50, 13);
+            this.label33.TabIndex = 0;
+            this.label33.Text = "Ciudad:";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(450, 20);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(54, 13);
+            this.label32.TabIndex = 0;
+            this.label32.Text = "Nombre:";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(24, 20);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(68, 13);
+            this.label28.TabIndex = 0;
+            this.label28.Text = "Compañía:";
+            // 
+            // dtpHoraEnvio
+            // 
+            this.dtpHoraEnvio.Checked = false;
+            this.dtpHoraEnvio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpHoraEnvio.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpHoraEnvio.Location = new System.Drawing.Point(695, 64);
+            this.dtpHoraEnvio.Name = "dtpHoraEnvio";
+            this.dtpHoraEnvio.ShowCheckBox = true;
+            this.dtpHoraEnvio.ShowUpDown = true;
+            this.dtpHoraEnvio.Size = new System.Drawing.Size(114, 20);
+            this.dtpHoraEnvio.TabIndex = 7;
+            // 
+            // dtpHoraRequerido
+            // 
+            this.dtpHoraRequerido.Checked = false;
+            this.dtpHoraRequerido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpHoraRequerido.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpHoraRequerido.Location = new System.Drawing.Point(695, 40);
+            this.dtpHoraRequerido.Name = "dtpHoraRequerido";
+            this.dtpHoraRequerido.ShowCheckBox = true;
+            this.dtpHoraRequerido.ShowUpDown = true;
+            this.dtpHoraRequerido.Size = new System.Drawing.Size(114, 20);
+            this.dtpHoraRequerido.TabIndex = 5;
+            // 
+            // dtpHoraPedido
+            // 
+            this.dtpHoraPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpHoraPedido.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpHoraPedido.Location = new System.Drawing.Point(695, 16);
+            this.dtpHoraPedido.Name = "dtpHoraPedido";
+            this.dtpHoraPedido.ShowCheckBox = true;
+            this.dtpHoraPedido.ShowUpDown = true;
+            this.dtpHoraPedido.Size = new System.Drawing.Size(114, 20);
+            this.dtpHoraPedido.TabIndex = 3;
+            // 
+            // dtpEnvio
+            // 
+            this.dtpEnvio.Checked = false;
+            this.dtpEnvio.CustomFormat = "dd/MMM/yyyy";
+            this.dtpEnvio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEnvio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEnvio.Location = new System.Drawing.Point(512, 64);
+            this.dtpEnvio.Name = "dtpEnvio";
+            this.dtpEnvio.ShowCheckBox = true;
+            this.dtpEnvio.Size = new System.Drawing.Size(134, 20);
+            this.dtpEnvio.TabIndex = 6;
+            // 
+            // dtpRequerido
+            // 
+            this.dtpRequerido.Checked = false;
+            this.dtpRequerido.CustomFormat = "dd/MMM/yyyy";
+            this.dtpRequerido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpRequerido.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpRequerido.Location = new System.Drawing.Point(512, 40);
+            this.dtpRequerido.Name = "dtpRequerido";
+            this.dtpRequerido.ShowCheckBox = true;
+            this.dtpRequerido.Size = new System.Drawing.Size(134, 20);
+            this.dtpRequerido.TabIndex = 4;
+            // 
+            // dtpPedido
+            // 
+            this.dtpPedido.CustomFormat = "dd/MMM/yyyy";
+            this.dtpPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpPedido.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPedido.Location = new System.Drawing.Point(512, 16);
+            this.dtpPedido.Name = "dtpPedido";
+            this.dtpPedido.ShowCheckBox = true;
+            this.dtpPedido.Size = new System.Drawing.Size(134, 20);
+            this.dtpPedido.TabIndex = 2;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(654, 67);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(38, 13);
+            this.label27.TabIndex = 4;
+            this.label27.Text = "Hora:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(427, 67);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(83, 13);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Fecha envío:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(654, 44);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(38, 13);
+            this.label26.TabIndex = 4;
+            this.label26.Text = "Hora:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(654, 18);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(38, 13);
+            this.label25.TabIndex = 4;
+            this.label25.Text = "Hora:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(407, 44);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(103, 13);
+            this.label23.TabIndex = 4;
+            this.label23.Text = "Fecha requerido:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(422, 18);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(88, 13);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "Fecha pedido:";
+            // 
+            // cboEmpleado
+            // 
+            this.cboEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboEmpleado.FormattingEnabled = true;
+            this.cboEmpleado.Location = new System.Drawing.Point(104, 64);
+            this.cboEmpleado.Name = "cboEmpleado";
+            this.cboEmpleado.Size = new System.Drawing.Size(296, 21);
+            this.cboEmpleado.TabIndex = 1;
+            // 
+            // cboCliente
+            // 
+            this.cboCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCliente.FormattingEnabled = true;
+            this.cboCliente.Location = new System.Drawing.Point(104, 40);
+            this.cboCliente.Name = "cboCliente";
+            this.cboCliente.Size = new System.Drawing.Size(296, 21);
+            this.cboCliente.TabIndex = 0;
+            // 
+            // txtId
+            // 
+            this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtId.Location = new System.Drawing.Point(104, 16);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(100, 20);
+            this.txtId.TabIndex = 11;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(36, 68);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(66, 13);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Empleado:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(52, 44);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(50, 13);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Cliente:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(80, 20);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(22, 13);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Id:";
             // 
             // grbBuscar
             // 
             this.grbBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.grbBuscar.AutoSize = true;
             this.grbBuscar.Controls.Add(this.chkBFEnvioNull);
             this.grbBuscar.Controls.Add(this.chkBFRequeridoNull);
             this.grbBuscar.Controls.Add(this.chkBFPedidoNull);
@@ -235,23 +748,61 @@
             this.grbBuscar.Controls.Add(this.txtBEmpleado);
             this.grbBuscar.Controls.Add(this.txtBCliente);
             this.grbBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbBuscar.Location = new System.Drawing.Point(16, 312);
+            this.grbBuscar.Location = new System.Drawing.Point(20, 311);
             this.grbBuscar.Name = "grbBuscar";
-            this.grbBuscar.Size = new System.Drawing.Size(304, 392);
-            this.grbBuscar.TabIndex = 2;
+            this.grbBuscar.Size = new System.Drawing.Size(304, 609);
+            this.grbBuscar.TabIndex = 1;
             this.grbBuscar.TabStop = false;
             this.grbBuscar.Text = "»   Buscar un pedido:   «";
             this.grbBuscar.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
+            // 
+            // chkBFEnvioNull
+            // 
+            this.chkBFEnvioNull.AutoSize = true;
+            this.chkBFEnvioNull.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBFEnvioNull.Location = new System.Drawing.Point(193, 159);
+            this.chkBFEnvioNull.Name = "chkBFEnvioNull";
+            this.chkBFEnvioNull.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chkBFEnvioNull.Size = new System.Drawing.Size(85, 16);
+            this.chkBFEnvioNull.TabIndex = 8;
+            this.chkBFEnvioNull.Text = "Fecha = null";
+            this.chkBFEnvioNull.UseVisualStyleBackColor = true;
+            this.chkBFEnvioNull.CheckedChanged += new System.EventHandler(this.chkBFEnvioNull_CheckedChanged);
+            // 
+            // chkBFRequeridoNull
+            // 
+            this.chkBFRequeridoNull.AutoSize = true;
+            this.chkBFRequeridoNull.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBFRequeridoNull.Location = new System.Drawing.Point(193, 117);
+            this.chkBFRequeridoNull.Name = "chkBFRequeridoNull";
+            this.chkBFRequeridoNull.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chkBFRequeridoNull.Size = new System.Drawing.Size(85, 16);
+            this.chkBFRequeridoNull.TabIndex = 5;
+            this.chkBFRequeridoNull.Text = "Fecha = null";
+            this.chkBFRequeridoNull.UseVisualStyleBackColor = true;
+            this.chkBFRequeridoNull.CheckedChanged += new System.EventHandler(this.chkBFRequeridoNull_CheckedChanged);
+            // 
+            // chkBFPedidoNull
+            // 
+            this.chkBFPedidoNull.AutoSize = true;
+            this.chkBFPedidoNull.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBFPedidoNull.Location = new System.Drawing.Point(193, 71);
+            this.chkBFPedidoNull.Name = "chkBFPedidoNull";
+            this.chkBFPedidoNull.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chkBFPedidoNull.Size = new System.Drawing.Size(85, 16);
+            this.chkBFPedidoNull.TabIndex = 2;
+            this.chkBFPedidoNull.Text = "Fecha = null";
+            this.chkBFPedidoNull.UseVisualStyleBackColor = true;
+            this.chkBFPedidoNull.CheckedChanged += new System.EventHandler(this.chkBFPedidoNull_CheckedChanged);
             // 
             // btnBuscar
             // 
             this.btnBuscar.Location = new System.Drawing.Point(216, 309);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 30;
+            this.btnBuscar.TabIndex = 14;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnLimpiar
             // 
@@ -259,10 +810,9 @@
             this.btnLimpiar.Location = new System.Drawing.Point(128, 309);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 30;
+            this.btnLimpiar.TabIndex = 15;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // txtBDirigidoa
             // 
@@ -271,7 +821,7 @@
             this.txtBDirigidoa.MaxLength = 40;
             this.txtBDirigidoa.Name = "txtBDirigidoa";
             this.txtBDirigidoa.Size = new System.Drawing.Size(200, 20);
-            this.txtBDirigidoa.TabIndex = 29;
+            this.txtBDirigidoa.TabIndex = 13;
             // 
             // txtBCompañiaT
             // 
@@ -280,7 +830,7 @@
             this.txtBCompañiaT.MaxLength = 40;
             this.txtBCompañiaT.Name = "txtBCompañiaT";
             this.txtBCompañiaT.Size = new System.Drawing.Size(200, 20);
-            this.txtBCompañiaT.TabIndex = 28;
+            this.txtBCompañiaT.TabIndex = 12;
             // 
             // dtpBFEnvioFin
             // 
@@ -291,7 +841,7 @@
             this.dtpBFEnvioFin.Name = "dtpBFEnvioFin";
             this.dtpBFEnvioFin.ShowCheckBox = true;
             this.dtpBFEnvioFin.Size = new System.Drawing.Size(96, 20);
-            this.dtpBFEnvioFin.TabIndex = 27;
+            this.dtpBFEnvioFin.TabIndex = 10;
             this.dtpBFEnvioFin.ValueChanged += new System.EventHandler(this.dtpBFEnvioFin_ValueChanged);
             // 
             // dtpBFRequeridoFin
@@ -303,7 +853,7 @@
             this.dtpBFRequeridoFin.Name = "dtpBFRequeridoFin";
             this.dtpBFRequeridoFin.ShowCheckBox = true;
             this.dtpBFRequeridoFin.Size = new System.Drawing.Size(96, 20);
-            this.dtpBFRequeridoFin.TabIndex = 27;
+            this.dtpBFRequeridoFin.TabIndex = 7;
             this.dtpBFRequeridoFin.ValueChanged += new System.EventHandler(this.dtpBFRequeridoFin_ValueChanged);
             // 
             // dtpBFPedidoFin
@@ -315,7 +865,7 @@
             this.dtpBFPedidoFin.Name = "dtpBFPedidoFin";
             this.dtpBFPedidoFin.ShowCheckBox = true;
             this.dtpBFPedidoFin.Size = new System.Drawing.Size(96, 20);
-            this.dtpBFPedidoFin.TabIndex = 27;
+            this.dtpBFPedidoFin.TabIndex = 4;
             this.dtpBFPedidoFin.ValueChanged += new System.EventHandler(this.dtpBFPedidoFin_ValueChanged);
             // 
             // label17
@@ -360,7 +910,7 @@
             this.dtpBFEnvioIni.Name = "dtpBFEnvioIni";
             this.dtpBFEnvioIni.ShowCheckBox = true;
             this.dtpBFEnvioIni.Size = new System.Drawing.Size(95, 20);
-            this.dtpBFEnvioIni.TabIndex = 25;
+            this.dtpBFEnvioIni.TabIndex = 9;
             this.dtpBFEnvioIni.ValueChanged += new System.EventHandler(this.dtpBFEnvioIni_ValueChanged);
             // 
             // dtpBFRequeridoIni
@@ -372,7 +922,7 @@
             this.dtpBFRequeridoIni.Name = "dtpBFRequeridoIni";
             this.dtpBFRequeridoIni.ShowCheckBox = true;
             this.dtpBFRequeridoIni.Size = new System.Drawing.Size(95, 20);
-            this.dtpBFRequeridoIni.TabIndex = 25;
+            this.dtpBFRequeridoIni.TabIndex = 6;
             this.dtpBFRequeridoIni.ValueChanged += new System.EventHandler(this.dtpBFRequeridoIni_ValueChanged);
             // 
             // dtpBFPedidoIni
@@ -384,7 +934,7 @@
             this.dtpBFPedidoIni.Name = "dtpBFPedidoIni";
             this.dtpBFPedidoIni.ShowCheckBox = true;
             this.dtpBFPedidoIni.Size = new System.Drawing.Size(95, 20);
-            this.dtpBFPedidoIni.TabIndex = 25;
+            this.dtpBFPedidoIni.TabIndex = 3;
             this.dtpBFPedidoIni.ValueChanged += new System.EventHandler(this.dtpBFPedidoIni_ValueChanged);
             // 
             // label16
@@ -492,7 +1042,7 @@
             this.txtBId.MaxLength = 10;
             this.txtBId.Name = "txtBId";
             this.txtBId.Size = new System.Drawing.Size(100, 20);
-            this.txtBId.TabIndex = 19;
+            this.txtBId.TabIndex = 0;
             // 
             // label8
             // 
@@ -510,7 +1060,7 @@
             this.txtBEmpleado.MaxLength = 40;
             this.txtBEmpleado.Name = "txtBEmpleado";
             this.txtBEmpleado.Size = new System.Drawing.Size(201, 20);
-            this.txtBEmpleado.TabIndex = 20;
+            this.txtBEmpleado.TabIndex = 11;
             // 
             // txtBCliente
             // 
@@ -519,76 +1069,148 @@
             this.txtBCliente.MaxLength = 40;
             this.txtBCliente.Name = "txtBCliente";
             this.txtBCliente.Size = new System.Drawing.Size(201, 20);
-            this.txtBCliente.TabIndex = 20;
+            this.txtBCliente.TabIndex = 1;
             // 
-            // grbPedido
+            // tabcOperacion
             // 
-            this.grbPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabcOperacion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grbPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbPedido.Location = new System.Drawing.Point(344, 312);
-            this.grbPedido.Name = "grbPedido";
-            this.grbPedido.Size = new System.Drawing.Size(824, 392);
-            this.grbPedido.TabIndex = 3;
-            this.grbPedido.TabStop = false;
-            this.grbPedido.Text = "»   Pedido:   «";
-            this.grbPedido.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
+            this.tabcOperacion.Controls.Add(this.tbpConsultar);
+            this.tabcOperacion.Controls.Add(this.tbpRegistrar);
+            this.tabcOperacion.Controls.Add(this.tbpModificar);
+            this.tabcOperacion.Controls.Add(this.tbpEliminar);
+            this.tabcOperacion.Location = new System.Drawing.Point(19, 8);
+            this.tabcOperacion.Name = "tabcOperacion";
+            this.tabcOperacion.SelectedIndex = 0;
+            this.tabcOperacion.Size = new System.Drawing.Size(1141, 56);
+            this.tabcOperacion.TabIndex = 0;
             // 
-            // chkBFPedidoNull
+            // tbpConsultar
             // 
-            this.chkBFPedidoNull.AutoSize = true;
-            this.chkBFPedidoNull.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBFPedidoNull.Location = new System.Drawing.Point(193, 71);
-            this.chkBFPedidoNull.Name = "chkBFPedidoNull";
-            this.chkBFPedidoNull.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.chkBFPedidoNull.Size = new System.Drawing.Size(85, 16);
-            this.chkBFPedidoNull.TabIndex = 31;
-            this.chkBFPedidoNull.Text = "Fecha = null";
-            this.chkBFPedidoNull.UseVisualStyleBackColor = true;
-            this.chkBFPedidoNull.CheckedChanged += new System.EventHandler(this.chkBFPedidoNull_CheckedChanged);
+            this.tbpConsultar.Controls.Add(this.label1);
+            this.tbpConsultar.Location = new System.Drawing.Point(4, 22);
+            this.tbpConsultar.Name = "tbpConsultar";
+            this.tbpConsultar.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpConsultar.Size = new System.Drawing.Size(1133, 30);
+            this.tbpConsultar.TabIndex = 0;
+            this.tbpConsultar.Text = "   Consultar pedido   ";
+            this.tbpConsultar.UseVisualStyleBackColor = true;
             // 
-            // chkBFRequeridoNull
+            // label1
             // 
-            this.chkBFRequeridoNull.AutoSize = true;
-            this.chkBFRequeridoNull.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBFRequeridoNull.Location = new System.Drawing.Point(193, 117);
-            this.chkBFRequeridoNull.Name = "chkBFRequeridoNull";
-            this.chkBFRequeridoNull.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.chkBFRequeridoNull.Size = new System.Drawing.Size(85, 16);
-            this.chkBFRequeridoNull.TabIndex = 31;
-            this.chkBFRequeridoNull.Text = "Fecha = null";
-            this.chkBFRequeridoNull.UseVisualStyleBackColor = true;
-            this.chkBFRequeridoNull.CheckedChanged += new System.EventHandler(this.chkBFRequeridoNull_CheckedChanged);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(368, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Busque el pedido y seleccionelo en la lista que se muesta para ver su detalle";
             // 
-            // chkBFEnvioNull
+            // tbpRegistrar
             // 
-            this.chkBFEnvioNull.AutoSize = true;
-            this.chkBFEnvioNull.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBFEnvioNull.Location = new System.Drawing.Point(193, 159);
-            this.chkBFEnvioNull.Name = "chkBFEnvioNull";
-            this.chkBFEnvioNull.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.chkBFEnvioNull.Size = new System.Drawing.Size(85, 16);
-            this.chkBFEnvioNull.TabIndex = 31;
-            this.chkBFEnvioNull.Text = "Fecha = null";
-            this.chkBFEnvioNull.UseVisualStyleBackColor = true;
-            this.chkBFEnvioNull.CheckedChanged += new System.EventHandler(this.chkBFEnvioNull_CheckedChanged);
+            this.tbpRegistrar.Controls.Add(this.label2);
+            this.tbpRegistrar.Location = new System.Drawing.Point(4, 22);
+            this.tbpRegistrar.Name = "tbpRegistrar";
+            this.tbpRegistrar.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpRegistrar.Size = new System.Drawing.Size(1133, 30);
+            this.tbpRegistrar.TabIndex = 1;
+            this.tbpRegistrar.Text = "   Registrar pedido   ";
+            this.tbpRegistrar.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(210, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Proporcione los datos del pedido a registrar";
+            // 
+            // tbpModificar
+            // 
+            this.tbpModificar.Controls.Add(this.label3);
+            this.tbpModificar.Location = new System.Drawing.Point(4, 22);
+            this.tbpModificar.Name = "tbpModificar";
+            this.tbpModificar.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpModificar.Size = new System.Drawing.Size(1133, 30);
+            this.tbpModificar.TabIndex = 2;
+            this.tbpModificar.Text = "   Modificar pedido   ";
+            this.tbpModificar.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(452, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Busque el pedido y seleccionelo en la lista que se muestra para que pueda modific" +
+    "ar sus datos";
+            // 
+            // tbpEliminar
+            // 
+            this.tbpEliminar.Controls.Add(this.label4);
+            this.tbpEliminar.Location = new System.Drawing.Point(4, 22);
+            this.tbpEliminar.Name = "tbpEliminar";
+            this.tbpEliminar.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpEliminar.Size = new System.Drawing.Size(1133, 30);
+            this.tbpEliminar.TabIndex = 3;
+            this.tbpEliminar.Text = "   Eliminar pedido   ";
+            this.tbpEliminar.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(328, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Busque el pedido a eliminar y seleccionelo en la lista que se muestra";
+            // 
+            // grbPedidos
+            // 
+            this.grbPedidos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbPedidos.Controls.Add(this.dgvPedidos);
+            this.grbPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbPedidos.Location = new System.Drawing.Point(20, 63);
+            this.grbPedidos.Name = "grbPedidos";
+            this.grbPedidos.Size = new System.Drawing.Size(1140, 240);
+            this.grbPedidos.TabIndex = 7;
+            this.grbPedidos.TabStop = false;
+            this.grbPedidos.Text = "»   Pedidos:   «";
+            this.grbPedidos.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
+            // 
+            // dgvPedidos
+            // 
+            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPedidos.Location = new System.Drawing.Point(3, 16);
+            this.dgvPedidos.Name = "dgvPedidos";
+            this.dgvPedidos.Size = new System.Drawing.Size(1134, 221);
+            this.dgvPedidos.TabIndex = 0;
             // 
             // FrmPedidosCrud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1184, 711);
+            this.ClientSize = new System.Drawing.Size(1184, 931);
             this.ControlBox = false;
-            this.Controls.Add(this.grbPedido);
-            this.Controls.Add(this.grbBuscar);
-            this.Controls.Add(this.grbPedidos);
-            this.Controls.Add(this.tabcOperacion);
+            this.Controls.Add(this.panel1);
             this.Name = "FrmPedidosCrud";
             this.Text = "Mantenimiento de pedidos";
             this.Load += new System.EventHandler(this.FrmPedidosCrud_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.grbDetalle.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.grbPedido.ResumeLayout(false);
+            this.grbPedido.PerformLayout();
+            this.grbProducto.ResumeLayout(false);
+            this.grbProducto.PerformLayout();
+            this.grbTransportista.ResumeLayout(false);
+            this.grbTransportista.PerformLayout();
+            this.grbBuscar.ResumeLayout(false);
+            this.grbBuscar.PerformLayout();
             this.tabcOperacion.ResumeLayout(false);
             this.tbpConsultar.ResumeLayout(false);
             this.tbpConsultar.PerformLayout();
@@ -600,57 +1222,107 @@
             this.tbpEliminar.PerformLayout();
             this.grbPedidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
-            this.grbBuscar.ResumeLayout(false);
-            this.grbBuscar.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tabcOperacion;
         private System.Windows.Forms.TabPage tbpConsultar;
-        private System.Windows.Forms.TabPage tbpRegistrar;
-        private System.Windows.Forms.TabPage tbpModificar;
-        private System.Windows.Forms.TabPage tbpEliminar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tbpRegistrar;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabPage tbpModificar;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tbpEliminar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox grbPedidos;
         private System.Windows.Forms.DataGridView dgvPedidos;
         private System.Windows.Forms.GroupBox grbBuscar;
-        private System.Windows.Forms.GroupBox grbPedido;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtBId;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtBCliente;
+        private System.Windows.Forms.CheckBox chkBFEnvioNull;
+        private System.Windows.Forms.CheckBox chkBFRequeridoNull;
+        private System.Windows.Forms.CheckBox chkBFPedidoNull;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.TextBox txtBDirigidoa;
+        private System.Windows.Forms.TextBox txtBCompañiaT;
+        private System.Windows.Forms.DateTimePicker dtpBFEnvioFin;
+        private System.Windows.Forms.DateTimePicker dtpBFRequeridoFin;
+        private System.Windows.Forms.DateTimePicker dtpBFPedidoFin;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker dtpBFEnvioIni;
+        private System.Windows.Forms.DateTimePicker dtpBFRequeridoIni;
+        private System.Windows.Forms.DateTimePicker dtpBFPedidoIni;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DateTimePicker dtpBFPedidoIni;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dtpBFPedidoFin;
-        private System.Windows.Forms.DateTimePicker dtpBFRequeridoFin;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.DateTimePicker dtpBFRequeridoIni;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker dtpBFEnvioFin;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DateTimePicker dtpBFEnvioIni;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtBDirigidoa;
-        private System.Windows.Forms.TextBox txtBCompañiaT;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtBId;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtBEmpleado;
-        private System.Windows.Forms.CheckBox chkBFPedidoNull;
-        private System.Windows.Forms.CheckBox chkBFEnvioNull;
-        private System.Windows.Forms.CheckBox chkBFRequeridoNull;
+        private System.Windows.Forms.TextBox txtBCliente;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.GroupBox grbPedido;
+        private System.Windows.Forms.GroupBox grbProducto;
+        private System.Windows.Forms.GroupBox grbTransportista;
+        private System.Windows.Forms.TextBox txtPais;
+        private System.Windows.Forms.TextBox txtRegion;
+        private System.Windows.Forms.TextBox txtDomicilio;
+        private System.Windows.Forms.TextBox txtFlete;
+        private System.Windows.Forms.TextBox txtCP;
+        private System.Windows.Forms.TextBox txtCiudad;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.ComboBox cboCompañia;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.DateTimePicker dtpHoraEnvio;
+        private System.Windows.Forms.DateTimePicker dtpHoraRequerido;
+        private System.Windows.Forms.DateTimePicker dtpHoraPedido;
+        private System.Windows.Forms.DateTimePicker dtpEnvio;
+        private System.Windows.Forms.DateTimePicker dtpRequerido;
+        private System.Windows.Forms.DateTimePicker dtpPedido;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox cboEmpleado;
+        private System.Windows.Forms.ComboBox cboCliente;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.GroupBox grbDetalle;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.ComboBox cboProducto;
+        private System.Windows.Forms.ComboBox cboCategoria;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox txtDescuento;
+        private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Button btnGenerar;
     }
 }

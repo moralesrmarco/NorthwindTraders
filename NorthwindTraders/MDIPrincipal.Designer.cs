@@ -83,6 +83,7 @@
             this.tsmiEliminarProductosRdr = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMantenimientoProductosCrudRdr = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPedidos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMantenimientoDePedidos = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +114,6 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tsmiMantenimientoDePedidos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -559,6 +559,13 @@
             this.tsmiPedidos.Size = new System.Drawing.Size(61, 20);
             this.tsmiPedidos.Text = "Pedidos";
             // 
+            // tsmiMantenimientoDePedidos
+            // 
+            this.tsmiMantenimientoDePedidos.Name = "tsmiMantenimientoDePedidos";
+            this.tsmiMantenimientoDePedidos.Size = new System.Drawing.Size(217, 22);
+            this.tsmiMantenimientoDePedidos.Text = "Mantenimiento de pedidos";
+            this.tsmiMantenimientoDePedidos.Click += new System.EventHandler(this.tsmiMantenimientoDePedidos_Click);
+            // 
             // toolsMenu
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -800,13 +807,6 @@
             this.tsslEstado.Name = "tsslEstado";
             this.tsslEstado.Size = new System.Drawing.Size(45, 19);
             this.tsslEstado.Text = "Activo";
-            // 
-            // tsmiMantenimientoDePedidos
-            // 
-            this.tsmiMantenimientoDePedidos.Name = "tsmiMantenimientoDePedidos";
-            this.tsmiMantenimientoDePedidos.Size = new System.Drawing.Size(217, 22);
-            this.tsmiMantenimientoDePedidos.Text = "Mantenimiento de pedidos";
-            this.tsmiMantenimientoDePedidos.Click += new System.EventHandler(this.tsmiMantenimientoDePedidos_Click);
             // 
             // MDIPrincipal
             // 
