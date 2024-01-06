@@ -30,7 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.grbDetalle = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvDetalle = new System.Windows.Forms.DataGridView();
             this.grbPedido = new System.Windows.Forms.GroupBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.txtFlete = new System.Windows.Forms.TextBox();
             this.txtCP = new System.Windows.Forms.TextBox();
             this.txtCiudad = new System.Windows.Forms.TextBox();
-            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtDirigidoa = new System.Windows.Forms.TextBox();
             this.cboCompañia = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -126,7 +126,7 @@
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.grbDetalle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.grbPedido.SuspendLayout();
             this.grbProducto.SuspendLayout();
             this.grbTransportista.SuspendLayout();
@@ -158,7 +158,7 @@
             // 
             this.grbDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grbDetalle.Controls.Add(this.dataGridView1);
+            this.grbDetalle.Controls.Add(this.dgvDetalle);
             this.grbDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbDetalle.Location = new System.Drawing.Point(336, 680);
             this.grbDetalle.Name = "grbDetalle";
@@ -168,14 +168,14 @@
             this.grbDetalle.Text = "»   Detalle del pedido:   «";
             this.grbDetalle.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
             // 
-            // dataGridView1
+            // dgvDetalle
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(826, 221);
-            this.dataGridView1.TabIndex = 10;
+            this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDetalle.Location = new System.Drawing.Point(3, 16);
+            this.dgvDetalle.Name = "dgvDetalle";
+            this.dgvDetalle.Size = new System.Drawing.Size(826, 221);
+            this.dgvDetalle.TabIndex = 10;
             // 
             // grbPedido
             // 
@@ -218,6 +218,7 @@
             // 
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.Location = new System.Drawing.Point(109, 312);
+            this.txtTotal.MaxLength = 30;
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(194, 20);
@@ -281,6 +282,7 @@
             // 
             this.txtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescuento.Location = new System.Drawing.Point(504, 48);
+            this.txtDescuento.MaxLength = 10;
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(124, 20);
             this.txtDescuento.TabIndex = 4;
@@ -290,6 +292,7 @@
             // 
             this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantidad.Location = new System.Drawing.Point(296, 48);
+            this.txtCantidad.MaxLength = 15;
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(128, 20);
             this.txtCantidad.TabIndex = 3;
@@ -299,6 +302,7 @@
             // 
             this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecio.Location = new System.Drawing.Point(96, 48);
+            this.txtPrecio.MaxLength = 15;
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.ReadOnly = true;
             this.txtPrecio.Size = new System.Drawing.Size(128, 20);
@@ -335,6 +339,7 @@
             // cboProducto
             // 
             this.cboProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboProducto.FormattingEnabled = true;
             this.cboProducto.Location = new System.Drawing.Point(504, 16);
             this.cboProducto.Name = "cboProducto";
@@ -344,6 +349,7 @@
             // cboCategoria
             // 
             this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCategoria.FormattingEnabled = true;
             this.cboCategoria.Location = new System.Drawing.Point(96, 16);
             this.cboCategoria.Name = "cboCategoria";
@@ -378,7 +384,7 @@
             this.grbTransportista.Controls.Add(this.txtFlete);
             this.grbTransportista.Controls.Add(this.txtCP);
             this.grbTransportista.Controls.Add(this.txtCiudad);
-            this.grbTransportista.Controls.Add(this.txtNombre);
+            this.grbTransportista.Controls.Add(this.txtDirigidoa);
             this.grbTransportista.Controls.Add(this.cboCompañia);
             this.grbTransportista.Controls.Add(this.label31);
             this.grbTransportista.Controls.Add(this.label30);
@@ -400,6 +406,7 @@
             // 
             this.txtPais.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPais.Location = new System.Drawing.Point(96, 88);
+            this.txtPais.MaxLength = 15;
             this.txtPais.Name = "txtPais";
             this.txtPais.Size = new System.Drawing.Size(168, 20);
             this.txtPais.TabIndex = 6;
@@ -408,6 +415,7 @@
             // 
             this.txtRegion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRegion.Location = new System.Drawing.Point(96, 64);
+            this.txtRegion.MaxLength = 15;
             this.txtRegion.Name = "txtRegion";
             this.txtRegion.Size = new System.Drawing.Size(168, 20);
             this.txtRegion.TabIndex = 4;
@@ -416,6 +424,7 @@
             // 
             this.txtDomicilio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDomicilio.Location = new System.Drawing.Point(96, 40);
+            this.txtDomicilio.MaxLength = 60;
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(296, 20);
             this.txtDomicilio.TabIndex = 2;
@@ -424,6 +433,7 @@
             // 
             this.txtFlete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFlete.Location = new System.Drawing.Point(504, 88);
+            this.txtFlete.MaxLength = 15;
             this.txtFlete.Name = "txtFlete";
             this.txtFlete.Size = new System.Drawing.Size(108, 20);
             this.txtFlete.TabIndex = 7;
@@ -432,6 +442,7 @@
             // 
             this.txtCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCP.Location = new System.Drawing.Point(504, 64);
+            this.txtCP.MaxLength = 10;
             this.txtCP.Name = "txtCP";
             this.txtCP.Size = new System.Drawing.Size(108, 20);
             this.txtCP.TabIndex = 5;
@@ -440,17 +451,19 @@
             // 
             this.txtCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCiudad.Location = new System.Drawing.Point(504, 40);
+            this.txtCiudad.MaxLength = 15;
             this.txtCiudad.Name = "txtCiudad";
             this.txtCiudad.Size = new System.Drawing.Size(216, 20);
             this.txtCiudad.TabIndex = 3;
             // 
-            // txtNombre
+            // txtDirigidoa
             // 
-            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(504, 16);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(296, 20);
-            this.txtNombre.TabIndex = 1;
+            this.txtDirigidoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDirigidoa.Location = new System.Drawing.Point(504, 16);
+            this.txtDirigidoa.MaxLength = 40;
+            this.txtDirigidoa.Name = "txtDirigidoa";
+            this.txtDirigidoa.Size = new System.Drawing.Size(296, 20);
+            this.txtDirigidoa.TabIndex = 1;
             // 
             // cboCompañia
             // 
@@ -519,11 +532,11 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(450, 20);
+            this.label32.Location = new System.Drawing.Point(439, 20);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(54, 13);
+            this.label32.Size = new System.Drawing.Size(65, 13);
             this.label32.TabIndex = 0;
-            this.label32.Text = "Nombre:";
+            this.label32.Text = "Dirigido a:";
             // 
             // label28
             // 
@@ -681,6 +694,7 @@
             // 
             this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtId.Location = new System.Drawing.Point(104, 16);
+            this.txtId.MaxLength = 10;
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(100, 20);
@@ -1202,7 +1216,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.grbDetalle.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
             this.grbPedido.ResumeLayout(false);
             this.grbPedido.PerformLayout();
             this.grbProducto.ResumeLayout(false);
@@ -1271,7 +1285,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtBEmpleado;
         private System.Windows.Forms.TextBox txtBCliente;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvDetalle;
         private System.Windows.Forms.GroupBox grbPedido;
         private System.Windows.Forms.GroupBox grbProducto;
         private System.Windows.Forms.GroupBox grbTransportista;
@@ -1281,7 +1295,7 @@
         private System.Windows.Forms.TextBox txtFlete;
         private System.Windows.Forms.TextBox txtCP;
         private System.Windows.Forms.TextBox txtCiudad;
-        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtDirigidoa;
         private System.Windows.Forms.ComboBox cboCompañia;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;

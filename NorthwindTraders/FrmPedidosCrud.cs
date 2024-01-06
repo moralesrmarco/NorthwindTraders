@@ -31,6 +31,7 @@ namespace NorthwindTraders
             label15.Text = "Fecha\nfinal:";
             label16.Text = "Fecha\ninicial:";
             label17.Text = "Fecha\nfinal:";
+            DeshabilitarControles();
             LlenarDgvPedidos(null);
         }
 
@@ -269,6 +270,16 @@ namespace NorthwindTraders
                 dtpBFEnvioIni.Checked = false;
                 dtpBFEnvioFin.Checked = false;
             }
+        }
+
+        private void DeshabilitarControles()
+        {
+            cboCliente.Enabled = cboEmpleado.Enabled = cboCompañia.Enabled = cboCategoria.Enabled = cboProducto.Enabled = false;
+            dtpPedido.Enabled = dtpHoraPedido.Enabled = dtpRequerido.Enabled = dtpHoraRequerido.Enabled = dtpEnvio.Enabled = dtpHoraEnvio.Enabled = false;
+            txtDirigidoa.ReadOnly = txtDomicilio.ReadOnly = txtCiudad.ReadOnly = txtRegion.ReadOnly = txtCP.ReadOnly = txtPais.ReadOnly = txtFlete.ReadOnly = true;
+            txtCantidad.ReadOnly = txtDescuento.ReadOnly = true;
+            btnAgregar.Enabled = btnGenerar.Enabled = false;
+            dgvDetalle.Enabled = false;
         }
     }
 }
