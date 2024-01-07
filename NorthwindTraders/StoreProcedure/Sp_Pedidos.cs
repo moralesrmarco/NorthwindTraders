@@ -70,6 +70,32 @@ BEGIN
 	--AND (@FPedido = '' OR Orders.OrderDate BETWEEN @FPedidoIni AND DATEADD(ms,1,@FPedidoFin))
 END
 -----------------------------------------------------------------------------------------------------
+CREATE OR ALTER PROCEDURE SP_CLIENTES_SELECCIONAR
+AS
+	SELECT '0' AS Id, '«--- Seleccione ---»' AS Cliente
+	UNION ALL
+	SELECT CustomerID AS Id, CompanyName AS Cliente FROM Customers
+-----------------------------------------------------------------------------------------------------
+CREATE OR ALTER PROCEDURE SP_EMPLEADOS_SELECCIONAR
+AS
+	SELECT 0 AS Id, '«--- Seleccione ---»' AS Empleado
+	UNION ALL
+	SELECT EmployeeID AS Id, LastName + ', ' + FirstName As Empleado FROM Employees
+-----------------------------------------------------------------------------------------------------
+CREATE OR ALTER PROCEDURE SP_TRANSPORTISTAS_SELECCIONAR
+AS
+	SELECT 0 AS Id, '«--- Seleccione ---»' AS Transportista
+	UNION ALL
+	SELECT ShipperId AS Id, CompanyName as Transportista from Shippers
+-----------------------------------------------------------------------------------------------------
+CREATE OR ALTER   PROCEDURE [dbo].[SP_CATEGORIAS_SELECCIONAR]
+AS
+	SELECT 0 AS Id, '«--- Seleccione ---»' AS Categoria
+	UNION ALL
+	Select CategoryId As Id, CategoryName + ', ' + Convert(nvarchar(30), Description) As Categoria From Categories
+-----------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------------------
 

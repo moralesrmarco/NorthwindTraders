@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grbDetalle = new System.Windows.Forms.GroupBox();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
@@ -55,7 +56,7 @@
             this.txtCP = new System.Windows.Forms.TextBox();
             this.txtCiudad = new System.Windows.Forms.TextBox();
             this.txtDirigidoa = new System.Windows.Forms.TextBox();
-            this.cboCompañia = new System.Windows.Forms.ComboBox();
+            this.cboTransportista = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -124,6 +125,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.grbPedidos = new System.Windows.Forms.GroupBox();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.grbDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
@@ -138,6 +140,7 @@
             this.tbpEliminar.SuspendLayout();
             this.grbPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -166,7 +169,7 @@
             this.grbDetalle.TabIndex = 3;
             this.grbDetalle.TabStop = false;
             this.grbDetalle.Text = "»   Detalle del pedido:   «";
-            this.grbDetalle.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
+            this.grbDetalle.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint2);
             // 
             // dgvDetalle
             // 
@@ -282,7 +285,7 @@
             // 
             this.txtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescuento.Location = new System.Drawing.Point(504, 48);
-            this.txtDescuento.MaxLength = 10;
+            this.txtDescuento.MaxLength = 4;
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(124, 20);
             this.txtDescuento.TabIndex = 4;
@@ -385,7 +388,7 @@
             this.grbTransportista.Controls.Add(this.txtCP);
             this.grbTransportista.Controls.Add(this.txtCiudad);
             this.grbTransportista.Controls.Add(this.txtDirigidoa);
-            this.grbTransportista.Controls.Add(this.cboCompañia);
+            this.grbTransportista.Controls.Add(this.cboTransportista);
             this.grbTransportista.Controls.Add(this.label31);
             this.grbTransportista.Controls.Add(this.label30);
             this.grbTransportista.Controls.Add(this.label29);
@@ -465,15 +468,15 @@
             this.txtDirigidoa.Size = new System.Drawing.Size(296, 20);
             this.txtDirigidoa.TabIndex = 1;
             // 
-            // cboCompañia
+            // cboTransportista
             // 
-            this.cboCompañia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCompañia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboCompañia.FormattingEnabled = true;
-            this.cboCompañia.Location = new System.Drawing.Point(96, 16);
-            this.cboCompañia.Name = "cboCompañia";
-            this.cboCompañia.Size = new System.Drawing.Size(296, 21);
-            this.cboCompañia.TabIndex = 0;
+            this.cboTransportista.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTransportista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTransportista.FormattingEnabled = true;
+            this.cboTransportista.Location = new System.Drawing.Point(96, 16);
+            this.cboTransportista.Name = "cboTransportista";
+            this.cboTransportista.Size = new System.Drawing.Size(296, 21);
+            this.cboTransportista.TabIndex = 0;
             // 
             // label31
             // 
@@ -817,6 +820,7 @@
             this.btnBuscar.TabIndex = 14;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnLimpiar
             // 
@@ -827,6 +831,7 @@
             this.btnLimpiar.TabIndex = 15;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // txtBDirigidoa
             // 
@@ -1203,6 +1208,10 @@
             this.dgvPedidos.Size = new System.Drawing.Size(1134, 221);
             this.dgvPedidos.TabIndex = 0;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FrmPedidosCrud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1212,6 +1221,8 @@
             this.Controls.Add(this.panel1);
             this.Name = "FrmPedidosCrud";
             this.Text = "Mantenimiento de pedidos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPedidosCrud_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPedidosCrud_FormClosed);
             this.Load += new System.EventHandler(this.FrmPedidosCrud_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1236,6 +1247,7 @@
             this.tbpEliminar.PerformLayout();
             this.grbPedidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1296,7 +1308,7 @@
         private System.Windows.Forms.TextBox txtCP;
         private System.Windows.Forms.TextBox txtCiudad;
         private System.Windows.Forms.TextBox txtDirigidoa;
-        private System.Windows.Forms.ComboBox cboCompañia;
+        private System.Windows.Forms.ComboBox cboTransportista;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
@@ -1338,5 +1350,6 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Button btnGenerar;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
