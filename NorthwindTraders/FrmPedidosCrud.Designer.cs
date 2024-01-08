@@ -126,6 +126,14 @@
             this.grbPedidos = new System.Windows.Forms.GroupBox();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ProductoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.grbDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
@@ -174,11 +182,22 @@
             // dgvDetalle
             // 
             this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Producto,
+            this.Precio,
+            this.Cantidad,
+            this.Descuento,
+            this.Importe,
+            this.Eliminar,
+            this.ProductoId});
             this.dgvDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDetalle.Location = new System.Drawing.Point(3, 16);
             this.dgvDetalle.Name = "dgvDetalle";
             this.dgvDetalle.Size = new System.Drawing.Size(826, 221);
             this.dgvDetalle.TabIndex = 10;
+            this.dgvDetalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalle_CellClick);
+            this.dgvDetalle.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDetalle_CellFormatting);
             // 
             // grbPedido
             // 
@@ -247,6 +266,7 @@
             this.btnGenerar.TabIndex = 10;
             this.btnGenerar.Text = "Generar pedido";
             this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
             // grbProducto
             // 
@@ -280,6 +300,7 @@
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "+";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // txtDescuento
             // 
@@ -290,6 +311,9 @@
             this.txtDescuento.Size = new System.Drawing.Size(124, 20);
             this.txtDescuento.TabIndex = 4;
             this.txtDescuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDescuento.Enter += new System.EventHandler(this.txtDescuento_Enter);
+            this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescuento_KeyPress);
+            this.txtDescuento.Leave += new System.EventHandler(this.txtDescuento_Leave);
             // 
             // txtCantidad
             // 
@@ -300,6 +324,8 @@
             this.txtCantidad.Size = new System.Drawing.Size(128, 20);
             this.txtCantidad.TabIndex = 3;
             this.txtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
+            this.txtCantidad.Leave += new System.EventHandler(this.txtCantidad_Leave);
             // 
             // txtPrecio
             // 
@@ -348,6 +374,7 @@
             this.cboProducto.Name = "cboProducto";
             this.cboProducto.Size = new System.Drawing.Size(296, 21);
             this.cboProducto.TabIndex = 1;
+            this.cboProducto.SelectedIndexChanged += new System.EventHandler(this.cboProducto_SelectedIndexChanged);
             // 
             // cboCategoria
             // 
@@ -358,6 +385,7 @@
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(296, 21);
             this.cboCategoria.TabIndex = 0;
+            this.cboCategoria.SelectedIndexChanged += new System.EventHandler(this.cboCategoria_SelectedIndexChanged);
             // 
             // label37
             // 
@@ -440,6 +468,9 @@
             this.txtFlete.Name = "txtFlete";
             this.txtFlete.Size = new System.Drawing.Size(108, 20);
             this.txtFlete.TabIndex = 7;
+            this.txtFlete.Enter += new System.EventHandler(this.txtFlete_Enter);
+            this.txtFlete.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFlete_KeyPress);
+            this.txtFlete.Leave += new System.EventHandler(this.txtFlete_Leave);
             // 
             // txtCP
             // 
@@ -561,6 +592,7 @@
             this.dtpHoraEnvio.ShowUpDown = true;
             this.dtpHoraEnvio.Size = new System.Drawing.Size(114, 20);
             this.dtpHoraEnvio.TabIndex = 7;
+            this.dtpHoraEnvio.ValueChanged += new System.EventHandler(this.dtpHoraEnvio_ValueChanged);
             // 
             // dtpHoraRequerido
             // 
@@ -573,6 +605,7 @@
             this.dtpHoraRequerido.ShowUpDown = true;
             this.dtpHoraRequerido.Size = new System.Drawing.Size(114, 20);
             this.dtpHoraRequerido.TabIndex = 5;
+            this.dtpHoraRequerido.ValueChanged += new System.EventHandler(this.dtpHoraRequerido_ValueChanged);
             // 
             // dtpHoraPedido
             // 
@@ -584,6 +617,7 @@
             this.dtpHoraPedido.ShowUpDown = true;
             this.dtpHoraPedido.Size = new System.Drawing.Size(114, 20);
             this.dtpHoraPedido.TabIndex = 3;
+            this.dtpHoraPedido.ValueChanged += new System.EventHandler(this.dtpHoraPedido_ValueChanged);
             // 
             // dtpEnvio
             // 
@@ -596,6 +630,7 @@
             this.dtpEnvio.ShowCheckBox = true;
             this.dtpEnvio.Size = new System.Drawing.Size(134, 20);
             this.dtpEnvio.TabIndex = 6;
+            this.dtpEnvio.ValueChanged += new System.EventHandler(this.dtpEnvio_ValueChanged);
             // 
             // dtpRequerido
             // 
@@ -608,6 +643,7 @@
             this.dtpRequerido.ShowCheckBox = true;
             this.dtpRequerido.Size = new System.Drawing.Size(134, 20);
             this.dtpRequerido.TabIndex = 4;
+            this.dtpRequerido.ValueChanged += new System.EventHandler(this.dtpRequerido_ValueChanged);
             // 
             // dtpPedido
             // 
@@ -619,6 +655,7 @@
             this.dtpPedido.ShowCheckBox = true;
             this.dtpPedido.Size = new System.Drawing.Size(134, 20);
             this.dtpPedido.TabIndex = 2;
+            this.dtpPedido.ValueChanged += new System.EventHandler(this.dtpPedido_ValueChanged);
             // 
             // label27
             // 
@@ -692,6 +729,7 @@
             this.cboCliente.Name = "cboCliente";
             this.cboCliente.Size = new System.Drawing.Size(296, 21);
             this.cboCliente.TabIndex = 0;
+            this.cboCliente.SelectedIndexChanged += new System.EventHandler(this.cboCliente_SelectedIndexChanged);
             // 
             // txtId
             // 
@@ -1212,6 +1250,62 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // Id
+            // 
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Width = 43;
+            // 
+            // Producto
+            // 
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.Name = "Producto";
+            // 
+            // Precio
+            // 
+            this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.Width = 68;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Width = 82;
+            // 
+            // Descuento
+            // 
+            this.Descuento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.Width = 93;
+            // 
+            // Importe
+            // 
+            this.Importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Importe.HeaderText = "Importe";
+            this.Importe.Name = "Importe";
+            this.Importe.Width = 74;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Eliminar.Width = 57;
+            // 
+            // ProductoId
+            // 
+            this.ProductoId.HeaderText = "ProductoId";
+            this.ProductoId.Name = "ProductoId";
+            this.ProductoId.Visible = false;
+            // 
             // FrmPedidosCrud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1351,5 +1445,13 @@
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductoId;
     }
 }
