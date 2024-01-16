@@ -88,11 +88,11 @@ AS
 	UNION ALL
 	SELECT ShipperId AS Id, CompanyName as Transportista from Shippers
 -----------------------------------------------------------------------------------------------------
-CREATE OR ALTER   PROCEDURE [dbo].[SP_CATEGORIAS_SELECCIONAR]
+CREATE OR ALTER PROCEDURE [dbo].[SP_CATEGORIAS_SELECCIONAR]
 AS
 	SELECT 0 AS Id, '«--- Seleccione ---»' AS Categoria
 	UNION ALL
-	Select CategoryId As Id, CategoryName + ', ' + Convert(nvarchar(30), Description) As Categoria From Categories
+	Select CategoryId As Id, CategoryName + '   --->>  ' + Convert(nvarchar(50), Description) As Categoria From Categories
 -----------------------------------------------------------------------------------------------------
 CREATE OR ALTER PROCEDURE [dbo].[SP_PRODUCTOS_SELECCIONAR]
 	@Categoria int
@@ -148,7 +148,81 @@ Create Type [dbo].[OrderDetails] As TABLE
 	Primary Key (Id)
 )
 -----------------------------------------------------------------------------------------------------
-
+CREATE OR ALTER PROCEDURE SP_PEDIDOS_LISTAR1
+	@PedidoId int
+AS
+	SELECT CustomerID, EmployeeID, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, 
+	ShipCity, ShipRegion, ShipPostalCode, ShipCountry
+	FROM Orders
+	WHERE OrderID = @PedidoId
+-----------------------------------------------------------------------------------------------------
+CREATE OR ALTER PROCEDURE SP_DETALLEPEDIDOS_PRODUCTOS_LISTAR1
+	@PedidoId int
+AS
+	SELECT [Order Details].ProductID AS [Id Producto], Products.ProductName AS Producto, [Order Details].UnitPrice AS Precio, 
+	[Order Details].Quantity AS Cantidad, [Order Details].Discount AS Descuento
+	FROM [Order Details] INNER JOIN Products ON [Order Details].ProductID = Products.ProductID
+	WHERE [Order Details].OrderID = @PedidoId
+-----------------------------------------------------------------------------------------------------
+CREATE OR ALTER PROCEDURE [dbo].[SP_PEDIDOS_ACTUALIZAR]
+	@OrderId int,
+	@CustomerId nchar(5),
+	@EmployeeId int,
+	@OrderDate datetime,
+	@RequiredDate datetime,
+	@ShippedDate datetime,
+	@ShipVia int,
+	@Freight money, 
+	@ShipName nvarchar(40),
+	@ShipAddress nvarchar(60),
+	@ShipCity nvarchar(15),
+	@ShipRegion nvarchar(15),
+	@ShipPostalCode nvarchar(10),
+	@ShipCountry nvarchar(15)
+As
+Begin
+	Begin try
+		Begin transaction
+			UPDATE Orders SET
+			CustomerID = @CustomerId,
+			EmployeeID = @EmployeeId,
+			OrderDate = @OrderDate,
+			RequiredDate =@RequiredDate,
+			ShippedDate = @ShippedDate,
+			ShipVia = @ShipVia,
+			Freight = @Freight,
+			ShipName = @ShipName,
+			ShipAddress = @ShipAddress,
+			ShipCity = @ShipCity,
+			ShipRegion = @ShipRegion,
+			ShipPostalCode = @ShipPostalCode,
+			ShipCountry = @ShipCountry
+			WHERE OrderID = @OrderId
+		Commit transaction
+	End try
+	Begin catch
+		--Debe llevar el punto y coma
+		Rollback transaction;
+		Throw;
+	End catch
+End
+-----------------------------------------------------------------------------------------------------
+CREATE OR ALTER PROCEDURE [dbo].[SP_PEDIDOS_ELIMINAR]
+	@OrderId int
+AS
+BEGIN
+	BEGIN TRY
+		BEGIN TRANSACTION
+			DELETE [Order Details] WHERE OrderID = @OrderId
+			DELETE Orders WHERE OrderID = @OrderId
+		COMMIT TRANSACTION
+	END TRY
+	BEGIN CATCH
+		-- Debe llevar el punto y coma
+		ROLLBACK TRANSACTION;
+		THROW;
+	END CATCH
+END
 -----------------------------------------------------------------------------------------------------
 
 */

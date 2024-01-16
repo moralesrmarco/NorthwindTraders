@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NorthwindTraders
@@ -15,7 +11,7 @@ namespace NorthwindTraders
     {
 
         SqlConnection cn = new SqlConnection(NorthwindTraders.Properties.Settings.Default.NWCn);
-        bool eventoCargardo = true;
+        bool eventoCargardo = true; // esta variable es necesaria para controlar el manejador de eventos de la celda del dgv, ojo no quitar
         int IdDetalle = 1;
 
         public FrmPedidosCrud()
@@ -41,7 +37,7 @@ namespace NorthwindTraders
             label15.Text = "Fecha\nfinal:";
             label16.Text = "Fecha\ninicial:";
             label17.Text = "Fecha\nfinal:";
-            //DeshabilitarControles();
+            DeshabilitarControles();
             LlenarCboCliente();
             LlenarCboEmpleado();
             LlenarCboTransportista();
@@ -51,9 +47,10 @@ namespace NorthwindTraders
             Utils.ConfDataGridView(dgvPedidos);
             ConfDgvPedidos(dgvPedidos);
             ConfDgvDetalle(dgvDetalle);
+            dgvDetalle.Columns["Eliminar"].Visible = false;
             txtPrecio.Text = "$0.00";
             txtDescuento.Text = "0.00";
-            txtFlete.Text = "0.00";
+            txtFlete.Text = "$0.00";
         }
 
         private void grbPaint(object sender, PaintEventArgs e)
@@ -308,7 +305,7 @@ namespace NorthwindTraders
             txtDirigidoa.ReadOnly = txtDomicilio.ReadOnly = txtCiudad.ReadOnly = txtRegion.ReadOnly = txtCP.ReadOnly = txtPais.ReadOnly = txtFlete.ReadOnly = true;
             txtCantidad.ReadOnly = txtDescuento.ReadOnly = true;
             btnAgregar.Enabled = btnGenerar.Enabled = false;
-            dgvDetalle.Enabled = false;
+            //dgvDetalle.Enabled = false;
         }
 
         private void LlenarCboCliente()
@@ -422,8 +419,11 @@ namespace NorthwindTraders
             cboProducto.DataSource = null;
             dtpPedido.Value = dtpRequerido.Value = dtpEnvio.Value = DateTime.Now;
             dtpHoraPedido.Value = dtpHoraRequerido.Value = dtpHoraEnvio.Value = DateTime.Now;
-            txtDirigidoa.Text = txtDomicilio.Text = txtCiudad.Text = txtRegion.Text = txtCP.Text = txtPais.Text = txtFlete.Text = "";
-            txtPrecio.Text = txtCantidad.Text = txtDescuento.Text = "";
+            dtpRequerido.Checked = dtpEnvio.Checked = dtpHoraRequerido.Checked = dtpHoraEnvio.Checked = false;
+            txtDirigidoa.Text = txtDomicilio.Text = txtCiudad.Text = txtRegion.Text = txtCP.Text = txtPais.Text = "";
+            txtFlete.Text = txtPrecio.Text = "$0.00";
+            txtCantidad.Text = "0";
+            txtDescuento.Text = "0.00";
             txtTotal.Text = "$0.00";
             dgvDetalle.Rows.Clear();
         }
@@ -431,6 +431,7 @@ namespace NorthwindTraders
         private void BorrarMensajesError()
         {
             errorProvider1.SetError(cboProducto, "");
+            errorProvider1.SetError(txtCantidad, "");
             errorProvider1.SetError(txtDescuento, "");
             errorProvider1.SetError(cboCliente, "");
             errorProvider1.SetError(cboEmpleado, "");
@@ -448,7 +449,7 @@ namespace NorthwindTraders
             txtDirigidoa.ReadOnly = txtDomicilio.ReadOnly = txtCiudad.ReadOnly = txtRegion.ReadOnly = txtCP.ReadOnly = txtPais.ReadOnly = txtFlete.ReadOnly = false;
             txtCantidad.ReadOnly = txtDescuento.ReadOnly = false;
             btnAgregar.Enabled = btnGenerar.Enabled = true;
-            dgvDetalle.Enabled = true;
+            //dgvDetalle.Enabled = true;
         }
 
         private bool ValidarControles()
@@ -498,7 +499,7 @@ namespace NorthwindTraders
         {
             if (txtId.Text.Trim() == "")
             {
-                if (cboCliente.SelectedIndex != 0 || cboEmpleado.SelectedIndex != 0 || cboTransportista.SelectedIndex != 0 || cboCategoria.SelectedIndex != 0 || cboProducto.SelectedIndex != 0)
+                if (cboCliente.SelectedIndex > 0 || cboEmpleado.SelectedIndex > 0 || cboTransportista.SelectedIndex > 0 || cboCategoria.SelectedIndex > 0 || cboProducto.SelectedIndex > 0)
                 {
                     DialogResult respuesta = MessageBox.Show("¿Esta seguro de querer cerrar el formulario?, se perderan los datos no guardados", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                     if (respuesta == DialogResult.No)
@@ -654,7 +655,7 @@ namespace NorthwindTraders
 
         private void txtCantidad_Leave(object sender, EventArgs e)
         {
-            if (txtCantidad.Text.Trim() == "") txtCantidad.Text = "1";
+            if (txtCantidad.Text.Trim() == "" || int.Parse(txtCantidad.Text) == 0) txtCantidad.Text = "1";
         }
 
         private void txtFlete_Enter(object sender, EventArgs e)
@@ -739,13 +740,21 @@ namespace NorthwindTraders
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (cboProducto.SelectedIndex == 0 || txtCantidad.Text.Trim() == "")
+            BorrarMensajesError();
+            if (cboProducto.SelectedIndex <= 0)
             {
                 errorProvider1.SetError(cboProducto, "Ingrese el producto");
                 return;
             }
             else
                 errorProvider1.SetError(cboProducto, "");
+            if (txtCantidad.Text.Trim() == "" || int.Parse(txtCantidad.Text) == 0)
+            {
+                errorProvider1.SetError(txtCantidad, "Ingrese la cantidad");
+                return;
+            }
+            else
+                errorProvider1.SetError(txtCantidad, "");
             if (decimal.Parse(txtDescuento.Text) > 1 || decimal.Parse(txtDescuento.Text) < 0)
             {
                 errorProvider1.SetError(txtDescuento, "El descuento no puede ser mayor que 1 o menor que 0");
@@ -758,7 +767,8 @@ namespace NorthwindTraders
             CalcularTotal();
             ++IdDetalle;
             cboCategoria.SelectedIndex = cboProducto.SelectedIndex = 0;
-            txtPrecio.Text = txtCantidad.Text = "";
+            txtPrecio.Text = "$0.00";
+            txtCantidad.Text = "0";
             txtDescuento.Text = "0.00";
             cboCategoria.Focus();
         }
@@ -789,36 +799,168 @@ namespace NorthwindTraders
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            try
+            int numRegs = 0;
+            BorrarMensajesError();
+            if (tabcOperacion.SelectedTab == tbpRegistrar)
+            {
+                try
+                {
+                    if (ValidarControles())
+                    {
+                        Utils.ActualizarBarraDeEstado("Actualizando la base de datos...", this);
+                        DeshabilitarControles();
+                        btnGenerar.Enabled = false;
+                        List<PedidoDetalle> lstDetalle = new List<PedidoDetalle>();
+                        // llenado de elementos hijos
+                        foreach (DataGridViewRow dgvr in dgvDetalle.Rows)
+                        {
+                            PedidoDetalle detalle = new PedidoDetalle();
+                            detalle.ProductId = int.Parse(dgvr.Cells["ProductoId"].Value.ToString());
+                            detalle.UnitPrice = decimal.Parse(dgvr.Cells["Precio"].Value.ToString());
+                            detalle.Quantity = short.Parse(dgvr.Cells["Cantidad"].Value.ToString());
+                            detalle.Discount = decimal.Parse(dgvr.Cells["Descuento"].Value.ToString());
+                            lstDetalle.Add(detalle);
+                        }
+                        Pedido pedido = new Pedido();
+                        pedido.CustomerId = cboCliente.SelectedValue.ToString();
+                        pedido.EmployeeId = (int)cboEmpleado.SelectedValue;
+                        if (!dtpPedido.Checked) pedido.OrderDate = null;
+                        else if (dtpHoraPedido.Checked) pedido.OrderDate = Convert.ToDateTime(dtpPedido.Value.ToShortDateString() + " " + dtpHoraPedido.Value.ToLongTimeString());
+                        else pedido.OrderDate = Convert.ToDateTime(dtpPedido.Value.ToShortDateString() + " 00:00:00.000");
+                        if (!dtpRequerido.Checked) pedido.RequiredDate = null;
+                        else if (dtpHoraRequerido.Checked) pedido.RequiredDate = Convert.ToDateTime(dtpRequerido.Value.ToShortDateString() + " " + dtpHoraRequerido.Value.ToLongTimeString());
+                        else pedido.RequiredDate = Convert.ToDateTime(dtpRequerido.Value.ToShortDateString() + " 00:00:00.000");
+                        if (!dtpEnvio.Checked) pedido.ShippedDate = null;
+                        else if (dtpHoraEnvio.Checked) pedido.ShippedDate = Convert.ToDateTime(dtpEnvio.Value.ToShortDateString() + " " + dtpHoraEnvio.Value.ToLongTimeString());
+                        else pedido.ShippedDate = Convert.ToDateTime(dtpEnvio.Value.ToShortDateString() + " 00:00:00.000");
+                        pedido.ShipVia = (int)cboTransportista.SelectedValue;
+                        pedido.ShipName = txtDirigidoa.Text;
+                        pedido.ShipAddress = txtDomicilio.Text;
+                        pedido.ShipCity = txtCiudad.Text;
+                        pedido.ShipRegion = txtRegion.Text;
+                        pedido.ShipPostalCode = txtCP.Text;
+                        pedido.ShipCountry = txtPais.Text;
+                        if (txtFlete.Text.Contains("$")) txtFlete.Text = txtFlete.Text.Replace("$", "");
+                        pedido.Freight = decimal.Parse(txtFlete.Text);
+                        PedidosDB pedidosDB = new PedidosDB();
+                        numRegs = pedidosDB.Add(pedido, lstDetalle, txtId, cboCliente.Text);
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Utils.ActualizarBarraDeEstado("Activo", this);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Utils.ActualizarBarraDeEstado("Activo", this);
+                }
+                HabilitarControles();
+                btnGenerar.Enabled = true;
+                if (numRegs > 0)
+                {
+                    IdDetalle = 1;
+                    BorrarDatosPedido();
+                    BorrarDatosBuqueda();
+                    LlenarDgvPedidos(null);
+                }
+            } 
+            else if (tabcOperacion.SelectedTab == tbpModificar)
             {
                 if (ValidarControles())
                 {
-                    List<PedidoDetalle> lstDetalle = new List<PedidoDetalle>();
-                    // llenado de elementos hijos
-                    foreach (DataGridViewRow dgvr in dgvDetalle.Rows)
+                    Utils.ActualizarBarraDeEstado("Actualizando la base de datos...", this);
+                    DeshabilitarControles();
+                    btnGenerar.Enabled = false;
+                    try
                     {
-                        PedidoDetalle detalle = new PedidoDetalle();
-                        detalle.ProductId = int.Parse(dgvr.Cells["ProductoId"].Value.ToString());
-                        detalle.UnitPrice = decimal.Parse(dgvr.Cells["Precio"].Value.ToString());
-                        detalle.Quantity = short.Parse(dgvr.Cells["Cantidad"].Value.ToString());
-                        detalle.Discount = decimal.Parse(dgvr.Cells["Descuento"].Value.ToString());
-                        lstDetalle.Add(detalle);
+                        Pedido pedido = new Pedido();
+                        pedido.OrderId = int.Parse(txtId.Text);
+                        pedido.CustomerId = cboCliente.SelectedValue.ToString();
+                        pedido.EmployeeId = (int)cboEmpleado.SelectedValue;
+                        if (!dtpPedido.Checked) pedido.OrderDate = null;
+                        else if (dtpHoraPedido.Checked) pedido.OrderDate = Convert.ToDateTime(dtpPedido.Value.ToShortDateString() + " " + dtpHoraPedido.Value.ToLongTimeString());
+                        else pedido.OrderDate = Convert.ToDateTime(dtpPedido.Value.ToShortDateString() + " 00:00:00.000");
+                        if (!dtpRequerido.Checked) pedido.RequiredDate = null;
+                        else if (dtpHoraRequerido.Checked) pedido.RequiredDate = Convert.ToDateTime(dtpRequerido.Value.ToShortDateString() + " " + dtpHoraRequerido.Value.ToLongTimeString());
+                        else pedido.RequiredDate = Convert.ToDateTime(dtpRequerido.Value.ToShortDateString() + " 00:00:00.000");
+                        if (!dtpEnvio.Checked) pedido.ShippedDate = null;
+                        else if (dtpHoraEnvio.Checked) pedido.ShippedDate = Convert.ToDateTime(dtpEnvio.Value.ToShortDateString() + " " + dtpHoraEnvio.Value.ToLongTimeString());
+                        else pedido.ShippedDate = Convert.ToDateTime(dtpEnvio.Value.ToShortDateString() + " 00:00:00.000");
+                        pedido.ShipVia = (int)cboTransportista.SelectedValue;
+                        pedido.ShipName = txtDirigidoa.Text;
+                        pedido.ShipAddress = txtDomicilio.Text;
+                        pedido.ShipCity = txtCiudad.Text;
+                        pedido.ShipRegion = txtRegion.Text;
+                        pedido.ShipPostalCode = txtCP.Text;
+                        pedido.ShipCountry = txtPais.Text;
+                        if (txtFlete.Text.Contains("$")) txtFlete.Text = txtFlete.Text.Replace("$", "");
+                        pedido.Freight = decimal.Parse(txtFlete.Text);
+                        PedidosDB pedidosDB = new PedidosDB();
+                        numRegs = pedidosDB.Update(pedido, cboCliente.Text);
                     }
-                    Pedido pedido = new Pedido();
-                    pedido.CustomerId = cboCliente.SelectedValue.ToString();
-                    pedido.EmployeeId = (int)cboEmpleado.SelectedValue;
-
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    if (numRegs > 0)
+                    {
+                        BorrarDatosBuqueda();
+                        txtBId.Text = txtId.Text;
+                        btnBuscar.PerformClick();
+                        btnLimpiar.PerformClick();
+                    }
                 }
             }
-            catch (SqlException ex)
+            else if (tabcOperacion.SelectedTab == tbpEliminar)
             {
-                MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Utils.ActualizarBarraDeEstado("Activo", this);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Utils.ActualizarBarraDeEstado("Activo", this);
+                if (txtId.Text == "")
+                {
+                    MessageBox.Show("Seleccione el pedido a eliminar", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                DialogResult respuesta = MessageBox.Show($"¿Esta seguro de eliminar el pedido con Id: {txtId.Text} del Cliente: {cboCliente.Text}?", "Northwind Traders", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (respuesta == DialogResult.Yes)
+                {
+                    Utils.ActualizarBarraDeEstado("Actualizando la base de datos...", this);
+                    btnGenerar.Enabled = false;
+                    try
+                    {
+                        Pedido pedido = new Pedido();
+                        pedido.OrderId = int.Parse(txtId.Text);
+                        PedidosDB pedidosDB = new PedidosDB();
+                        numRegs = pedidosDB.Delete(pedido, cboCliente.Text);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.ActualizarBarraDeEstado("Activo", this);
+                    }
+                    if (numRegs > 0)
+                    {
+                        BorrarDatosBuqueda();
+                        txtBId.Text = txtId.Text;
+                        btnBuscar.PerformClick();
+                        btnLimpiar.PerformClick();
+                    }
+                }
+                else
+                {
+                    BorrarDatosPedido();
+                    btnGenerar.Enabled = false;
+                }
             }
         }
 
@@ -836,93 +978,349 @@ namespace NorthwindTraders
         {
             Utils.ValidarDigitosConPunto(sender, e);
         }
-    }
 
-    public class PedidoDetalle
-    {
-        public int ProductId { get; set; }
-        public decimal UnitPrice { get; set; }
-        public short Quantity { get; set; }
-        public decimal Discount { get; set; }
-    }
-
-    public class Pedido
-    {
-        public string CustomerId { get; set; }
-        public int EmployeeId { get; set; }
-        public DateTime? OrderDate { get; set; }
-        public DateTime? RequiredDate { get; set; }
-        public DateTime? ShippedDate { get; set; }
-        public int ShipVia { get; set; }
-        public decimal Freight { get; set; }
-        public string ShipName { get; set; }
-        public string ShipAddress { get; set; }
-        public string ShipCity { get; set; }
-        public string ShipRegion { get; set; }
-        public string ShipPostalCode { get; set; }
-        public string ShipCountry { get; set; }
-    }
-
-    public class PedidosDB
-    {
-        public int PedidoId { get; set; }
-
-        public byte Add(Pedido pedido, List<PedidoDetalle> lst, TextBox textBox, string cliente)
+        // se anidan las clases para evitar interfieran con otro código similar del sistema, solo son accesibles desde su tipo contenedor
+        private class PedidoDetalle
         {
-            // las excepciones generadas en este segmento de código son capturadas en un nivel superior, por eso no uso bloque try
-            byte numRegs = 0;
-            using (SqlConnection cn = new SqlConnection(NorthwindTraders.Properties.Settings.Default.NWCn))
+            public int ProductId { get; set; }
+            public decimal UnitPrice { get; set; }
+            public short Quantity { get; set; }
+            public decimal Discount { get; set; }
+            public string ProductName { get; set; }
+        }
+
+        private class Pedido
+        {
+            public int OrderId { get; set; }
+            public string CustomerId { get; set; }
+            public int EmployeeId { get; set; }
+            public DateTime? OrderDate { get; set; }
+            public DateTime? RequiredDate { get; set; }
+            public DateTime? ShippedDate { get; set; }
+            public int ShipVia { get; set; }
+            public decimal Freight { get; set; }
+            public string ShipName { get; set; }
+            public string ShipAddress { get; set; }
+            public string ShipCity { get; set; }
+            public string ShipRegion { get; set; }
+            public string ShipPostalCode { get; set; }
+            public string ShipCountry { get; set; }
+        }
+
+        private class PedidosDB
+        {
+            public int PedidoId { get; set; }
+
+            public byte Add(Pedido pedido, List<PedidoDetalle> lst, TextBox textBox, string cliente)
             {
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Id");
-                dt.Columns.Add("ProductId");
-                dt.Columns.Add("UnitPrice");
-                dt.Columns.Add("Quantity");
-                dt.Columns.Add("Discount");
-                int i = 1;
-                foreach (var item in lst)
+                // las excepciones generadas en este segmento de código son capturadas en un nivel superior, por eso no uso bloque try
+                byte numRegs = 0;
+                using (SqlConnection cn = new SqlConnection(NorthwindTraders.Properties.Settings.Default.NWCn))
                 {
-                    dt.Rows.Add(i, item.ProductId, item.UnitPrice, item.Quantity, item.Discount);
-                    i++;
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Id");
+                    dt.Columns.Add("ProductId");
+                    dt.Columns.Add("UnitPrice");
+                    dt.Columns.Add("Quantity");
+                    dt.Columns.Add("Discount");
+                    int i = 1;
+                    foreach (var item in lst)
+                    {
+                        dt.Rows.Add(i, item.ProductId, item.UnitPrice, item.Quantity, item.Discount);
+                        i++;
+                    }
+                    SqlCommand cmd = new SqlCommand("Sp_Pedidos_Insertar", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("OrderId", 0);
+                    cmd.Parameters["OrderId"].Direction = ParameterDirection.Output;
+                    cmd.Parameters.AddWithValue("CustomerId", pedido.CustomerId);
+                    cmd.Parameters.AddWithValue("EmployeeId", pedido.EmployeeId);
+                    if (pedido.OrderDate == null) cmd.Parameters.AddWithValue("OrderDate", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("OrderDate", pedido.OrderDate);
+                    if (pedido.RequiredDate == null) cmd.Parameters.AddWithValue("RequiredDate", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("RequiredDate", pedido.RequiredDate);
+                    if (pedido.ShippedDate == null) cmd.Parameters.AddWithValue("ShippedDate", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShippedDate", pedido.ShippedDate);
+                    cmd.Parameters.AddWithValue("ShipVia", pedido.ShipVia);
+                    cmd.Parameters.AddWithValue("Freight", pedido.Freight);
+                    if (pedido.ShipName.Trim() == "") cmd.Parameters.AddWithValue("ShipName", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShipName", pedido.ShipName);
+                    if (pedido.ShipAddress.Trim() == "") cmd.Parameters.AddWithValue("ShipAddress", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShipAddress", pedido.ShipAddress);
+                    if (pedido.ShipCity.Trim() == "") cmd.Parameters.AddWithValue("ShipCity", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShipCity", pedido.ShipCity);
+                    if (pedido.ShipRegion.Trim() == "") cmd.Parameters.AddWithValue("ShipRegion", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShipRegion", pedido.ShipRegion);
+                    if (pedido.ShipPostalCode.Trim() == "") cmd.Parameters.AddWithValue("ShipPostalCode", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShipPostalCode", pedido.ShipPostalCode);
+                    if (pedido.ShipCountry.Trim() == "") cmd.Parameters.AddWithValue("ShipCountry", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShipCountry", pedido.ShipCountry);
+                    var sqlParameter = new SqlParameter("lstOrderDetails", SqlDbType.Structured);
+                    sqlParameter.TypeName = "dbo.OrderDetails";
+                    sqlParameter.Value = dt;
+                    cmd.Parameters.Add(sqlParameter);
+                    cn.Open();
+                    numRegs = (byte)cmd.ExecuteNonQuery();
+                    PedidoId = (int)cmd.Parameters["OrderId"].Value;
+                    textBox.Text = PedidoId.ToString();
+                    cn.Close();
+                    if (numRegs > 0) MessageBox.Show($"El pedido con Id: {PedidoId} del Cliente: {cliente}, se registró satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                SqlCommand cmd = new SqlCommand("Sp_Pedidos_Insertar", cn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("OrderId", 0);
-                cmd.Parameters["OrderId"].Direction = ParameterDirection.Output;
-                cmd.Parameters.AddWithValue("CustomerId", pedido.CustomerId);
-                cmd.Parameters.AddWithValue("EmployeeId", pedido.EmployeeId);
-                if (pedido.OrderDate == null) cmd.Parameters.AddWithValue("OrderDate", DBNull.Value);
-                else cmd.Parameters.AddWithValue("OrderDate", pedido.OrderDate);
-                if (pedido.RequiredDate == null) cmd.Parameters.AddWithValue("RequiredDate", DBNull.Value);
-                else cmd.Parameters.AddWithValue("RequiredDate", pedido.RequiredDate);
-                if (pedido.ShippedDate == null) cmd.Parameters.AddWithValue("ShippedDate", DBNull.Value);
-                else cmd.Parameters.AddWithValue("ShippedDate", pedido.ShippedDate);
-                cmd.Parameters.AddWithValue("ShipVia", pedido.ShipVia);
-                cmd.Parameters.AddWithValue("Freight", pedido.Freight);
-                if (pedido.ShipName.Trim() == "") cmd.Parameters.AddWithValue("ShipName", DBNull.Value);
-                else cmd.Parameters.AddWithValue("ShipName", pedido.ShipName);
-                if (pedido.ShipAddress.Trim() == "") cmd.Parameters.AddWithValue("ShipAddress", DBNull.Value);
-                else cmd.Parameters.AddWithValue("ShipAddres", pedido.ShipAddress);
-                if (pedido.ShipCity.Trim() == "") cmd.Parameters.AddWithValue("ShipCity", DBNull.Value);
-                else cmd.Parameters.AddWithValue("ShipCity", pedido.ShipCity);
-                if (pedido.ShipRegion.Trim() == "") cmd.Parameters.AddWithValue("ShipRegion", DBNull.Value);
-                else cmd.Parameters.AddWithValue("ShipRegion", pedido.ShipRegion);
-                if (pedido.ShipPostalCode.Trim() == "") cmd.Parameters.AddWithValue("ShipPostalCode", DBNull.Value);
-                else cmd.Parameters.AddWithValue("ShipPostalCode", pedido.ShipPostalCode);
-                if (pedido.ShipCountry.Trim() == "") cmd.Parameters.AddWithValue("ShipCountry", DBNull.Value);
-                else cmd.Parameters.AddWithValue("ShipCountry", pedido.ShipCountry);
-                var sqlParameter = new SqlParameter("lstOrderDetails", SqlDbType.Structured);
-                sqlParameter.TypeName = "dbo.OrderDetails";
-                sqlParameter.Value = dt;
-                cmd.Parameters.Add(sqlParameter);
-                cn.Open();
-                numRegs = (byte)cmd.ExecuteNonQuery();
-                PedidoId = (int)cmd.Parameters["OrderId"].Value;
-                textBox.Text = PedidoId.ToString();
-                cn.Close();
-                if (numRegs > 0) MessageBox.Show($"El pedido con Id: {PedidoId} del Cliente: {cliente}, se registró satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return numRegs;
             }
-            return numRegs;
+
+            public byte Update(Pedido pedido, string cliente)
+            {
+                // las excepciones generadas en este segmento de código son capturadas en un nivel superior, por eso no uso bloque try
+                byte numRegs = 0;
+                using (SqlConnection cn = new SqlConnection(NorthwindTraders.Properties.Settings.Default.NWCn))
+                {
+                    SqlCommand cmd = new SqlCommand("Sp_Pedidos_Actualizar", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("OrderId", pedido.OrderId);
+                    cmd.Parameters.AddWithValue("CustomerId", pedido.CustomerId);
+                    cmd.Parameters.AddWithValue("EmployeeId", pedido.EmployeeId);
+                    if (pedido.OrderDate == null) cmd.Parameters.AddWithValue("OrderDate", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("OrderDate", pedido.OrderDate);
+                    if (pedido.RequiredDate == null) cmd.Parameters.AddWithValue("RequiredDate", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("RequiredDate", pedido.RequiredDate);
+                    if (pedido.ShippedDate == null) cmd.Parameters.AddWithValue("ShippedDate", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShippedDate", pedido.ShippedDate);
+                    cmd.Parameters.AddWithValue("ShipVia", pedido.ShipVia);
+                    cmd.Parameters.AddWithValue("Freight", pedido.Freight);
+                    if (pedido.ShipName.Trim() == "") cmd.Parameters.AddWithValue("ShipName", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShipName", pedido.ShipName);
+                    if (pedido.ShipAddress.Trim() == "") cmd.Parameters.AddWithValue("ShipAddress", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShipAddress", pedido.ShipAddress);
+                    if (pedido.ShipCity.Trim() == "") cmd.Parameters.AddWithValue("ShipCity", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShipCity", pedido.ShipCity);
+                    if (pedido.ShipRegion.Trim() == "") cmd.Parameters.AddWithValue("ShipRegion", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShipRegion", pedido.ShipRegion);
+                    if (pedido.ShipPostalCode.Trim() == "") cmd.Parameters.AddWithValue("ShipPostalCode", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShipPostalCode", pedido.ShipPostalCode);
+                    if (pedido.ShipCountry.Trim() == "") cmd.Parameters.AddWithValue("ShipCountry", DBNull.Value);
+                    else cmd.Parameters.AddWithValue("ShipCountry", pedido.ShipCountry);
+                    cn.Open();
+                    numRegs = (byte)cmd.ExecuteNonQuery();
+                    cn.Close();
+                    if (numRegs > 0) MessageBox.Show($"El pedido con Id: {pedido.OrderId} del Cliente: {cliente}, se actualizó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                return numRegs;
+            }
+
+            public byte Delete(Pedido pedido, string cliente)
+            {
+                byte numRegs = 0;
+                using (SqlConnection cn = new SqlConnection(NorthwindTraders.Properties.Settings.Default.NWCn))
+                {
+                    SqlCommand cmd = new SqlCommand("Sp_Pedidos_Eliminar", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("OrderId", pedido.OrderId);
+                    cn.Open();
+                    numRegs = (byte)cmd.ExecuteNonQuery();
+                    cn.Close();
+                    if (numRegs > 0) MessageBox.Show($"El pedido con Id: {pedido.OrderId} del Cliente: {cliente}, se eliminó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                return numRegs;
+            }
+        }
+
+        private void tabcOperacion_Selected(object sender, TabControlEventArgs e)
+        {
+            BorrarDatosPedido();
+            BorrarMensajesError();
+            if (tabcOperacion.SelectedTab == tbpRegistrar)
+            {
+                if (eventoCargardo)
+                {
+                    dgvPedidos.CellClick -= new DataGridViewCellEventHandler(dgvPedidos_CellClick);
+                    eventoCargardo = false;
+                }
+                BorrarDatosBuqueda();
+                HabilitarControles();
+                btnGenerar.Text = "Generar pedido";
+                btnGenerar.Visible = true;
+                btnGenerar.Enabled = true;
+                btnAgregar.Visible = true;
+                btnAgregar.Enabled = true;
+                dgvDetalle.Columns["Eliminar"].Visible = true;
+                grbProducto.Enabled = true;
+            }
+            else
+            {
+                if (!eventoCargardo)
+                {
+                    dgvPedidos.CellClick += new DataGridViewCellEventHandler(dgvPedidos_CellClick);
+                    eventoCargardo = true;
+                }
+                DeshabilitarControles();
+                btnGenerar.Enabled = false;
+                dgvDetalle.Columns["Eliminar"].Visible = false;
+                grbProducto.Enabled = false;
+                if (tabcOperacion.SelectedTab == tbpConsultar)
+                {
+                    btnGenerar.Visible = false;
+                    btnAgregar.Visible = false;
+                } 
+                else if (tabcOperacion.SelectedTab == tbpModificar)
+                {
+                    btnGenerar.Text = "Modificar pedido";
+                    btnGenerar.Visible = true;
+                    btnAgregar.Visible = false;
+                }
+                else if (tabcOperacion.SelectedTab == tbpEliminar)
+                {
+                    btnGenerar.Text = "Eliminar pedido";
+                    btnGenerar.Visible = true;
+                    btnAgregar.Visible = false;
+                }
+            }
+        }
+
+        private void dgvPedidos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (tabcOperacion.SelectedTab != tbpRegistrar)
+            {
+                BorrarDatosPedido();
+                DataGridViewRow dgvr = dgvPedidos.CurrentRow;
+                txtId.Text = dgvr.Cells["Id"].Value.ToString();
+                LlenarDatosPedido();
+                LlenarDatosDetallePedido();
+                DeshabilitarControles();
+                if (tabcOperacion.SelectedTab == tbpModificar)
+                {
+                    HabilitarControles();
+                    btnGenerar.Enabled = true;
+                }
+                else if (tabcOperacion.SelectedTab == tbpEliminar)
+                    btnGenerar.Enabled = true;
+            }
+        }
+
+        private void LlenarDatosPedido()
+        {
+            Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
+            try
+            {
+                SqlCommand cmd = new SqlCommand("Sp_Pedidos_Listar1", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("PedidoId", txtId.Text);
+                cn.Open();
+                SqlDataReader rdr = cmd.ExecuteReader(CommandBehavior.SingleRow);
+                if (rdr.Read())
+                {
+                    cboCliente.SelectedIndexChanged -= new EventHandler(cboCliente_SelectedIndexChanged);
+                    cboCliente.SelectedValue = rdr["CustomerId"] == DBNull.Value ? 0 : rdr["CustomerId"];
+                    cboCliente.SelectedIndexChanged += new EventHandler(cboCliente_SelectedIndexChanged);
+                    cboEmpleado.SelectedValue = rdr["EmployeeId"] == DBNull.Value ? 0 : rdr["EmployeeId"];
+                    cboTransportista.SelectedValue = rdr["ShipVia"] == DBNull.Value ? 0 : rdr["ShipVia"];
+                    txtDirigidoa.Text = rdr["ShipName"] == DBNull.Value ? "" : rdr["ShipName"].ToString();
+                    txtDomicilio.Text = rdr["ShipAddress"] == DBNull.Value ? "" : rdr["ShipAddress"].ToString();
+                    txtCiudad.Text = rdr["ShipCity"] == DBNull.Value ? "" : rdr["ShipCity"].ToString();
+                    txtRegion.Text = rdr["ShipRegion"] == DBNull.Value ? "" : rdr["ShipRegion"].ToString();
+                    txtCP.Text = rdr["ShipPostalCode"] == DBNull.Value ? "" : rdr["ShipPostalCode"].ToString();
+                    txtPais.Text = rdr["ShipCountry"] == DBNull.Value ? "" : rdr["ShipCountry"].ToString();
+                    txtFlete.Text = rdr["Freight"] == DBNull.Value ? "" : rdr["Freight"].ToString();
+                    decimal flete;
+                    if (decimal.TryParse(txtFlete.Text, out flete))
+                        txtFlete.Text = flete.ToString("c");
+                    DateTime fecha;
+                    if (DateTime.TryParse(rdr["OrderDate"].ToString(), out fecha))
+                    {
+                        dtpPedido.Value = fecha;
+                        dtpHoraPedido.Value = fecha;
+                    }
+                    else
+                    {
+                        dtpPedido.Value = dtpPedido.MinDate;
+                        dtpPedido.Checked = false;
+                        dtpHoraPedido.Value = dtpPedido.MinDate;
+                        dtpHoraPedido.Checked = false;
+                    }
+                    if (DateTime.TryParse(rdr["RequiredDate"].ToString(), out fecha))
+                    {
+                        dtpRequerido.Value = fecha;
+                        dtpHoraRequerido.Value = fecha;
+                    }
+                    else
+                    {
+                        dtpRequerido.Value = dtpRequerido.MinDate;
+                        dtpRequerido.Checked = false;
+                        dtpHoraRequerido.Value = dtpHoraRequerido.MinDate;
+                        dtpHoraRequerido.Checked = false;
+                    }
+                    if (DateTime.TryParse(rdr["ShippedDate"].ToString(), out fecha))
+                    {
+                        dtpEnvio.Value = fecha;
+                        dtpHoraEnvio.Value = fecha;
+                    }
+                    else
+                    {
+                        dtpEnvio.Value = dtpEnvio.MinDate;
+                        dtpEnvio.Checked = false;
+                        dtpEnvio.Value = dtpHoraEnvio.MinDate;
+                        dtpHoraEnvio.Checked = false;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.ActualizarBarraDeEstado("Activo", this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.ActualizarBarraDeEstado("Activo", this);
+            }
+            finally
+            {
+                cn.Close();
+            }
+            Utils.ActualizarBarraDeEstado("Activo", this);
+        }
+
+        private void LlenarDatosDetallePedido()
+        {
+            Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
+            try
+            {
+                SqlCommand cmd = new SqlCommand("Sp_DetallePedidos_Productos_Listar1", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("PedidoId", txtId.Text);
+                cn.Open();
+                SqlDataReader rdr = cmd.ExecuteReader(CommandBehavior.SingleResult);
+                IdDetalle = 1;
+                PedidoDetalle pedidoDetalle;
+                while (rdr.Read())
+                {
+                    pedidoDetalle = new PedidoDetalle();
+                    pedidoDetalle.ProductId = (int)rdr["Id Producto"];
+                    pedidoDetalle.ProductName = rdr["Producto"].ToString();
+                    pedidoDetalle.UnitPrice = (decimal)rdr["Precio"];
+                    pedidoDetalle.Quantity = (short)rdr["Cantidad"];
+                    pedidoDetalle.Discount = decimal.Parse(rdr["Descuento"].ToString());
+                    dgvDetalle.Rows.Add(new object[] { IdDetalle, pedidoDetalle.ProductName, pedidoDetalle.UnitPrice, pedidoDetalle.Quantity, pedidoDetalle.Discount, (pedidoDetalle.UnitPrice * pedidoDetalle.Quantity) * (1 - pedidoDetalle.Discount), "Eliminar", pedidoDetalle.ProductId });
+                    ++IdDetalle;
+                }
+                CalcularTotal();
+                IdDetalle = 1;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.ActualizarBarraDeEstado("Activo", this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.ActualizarBarraDeEstado("Activo", this);
+            }
+            finally
+            {
+                cn.Close();
+            }
+            Utils.ActualizarBarraDeEstado($"Se muestran {dgvPedidos.RowCount} registros", this);
         }
     }
 }
