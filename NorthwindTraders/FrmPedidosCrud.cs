@@ -76,14 +76,15 @@ namespace NorthwindTraders
                 else
                 {
                     cmd = new SqlCommand("Sp_Pedidos_Buscar", cn);
-                    cmd.Parameters.AddWithValue("Id", txtBId.Text);
+                    cmd.Parameters.AddWithValue("IdInicial", txtBIdInicial.Text);
+                    cmd.Parameters.AddWithValue("IdFinal", txtBIdFinal.Text);
                     cmd.Parameters.AddWithValue("Cliente", txtBCliente.Text);
                     if (dtpBFPedidoIni.Checked && dtpBFPedidoFin.Checked)
                     {
                         cmd.Parameters.AddWithValue("FPedido", true); // este parametro es requerido para que funcione el store procedure con la misma logica que he venido usando en las demas busquedas
                         dtpBFPedidoIni.Value = Convert.ToDateTime(dtpBFPedidoIni.Value.ToShortDateString() + " 00:00:00.000");
                         cmd.Parameters.AddWithValue("FPedidoIni", dtpBFPedidoIni.Value);
-                        dtpBFPedidoFin.Value = Convert.ToDateTime(dtpBFPedidoFin.Value.ToShortDateString() + " 23:59:59.998"); // se usa .998 porque lo redondea a .997 por la presición de los campos tipo datetime de sql server, el cual es el maximo valor de milesimas de segunto que puede guardarse en la db. Si se usa .999 lo redondea al segundo 0.000 del siquiente dia e incluye los datos del siguiente día que es un comportamiento que no se quiere por que solo se deben mostrar los datos de la fecha indicada. Ya se comprobo el comportamiento en la base de datos.
+                        dtpBFPedidoFin.Value = Convert.ToDateTime(dtpBFPedidoFin.Value.ToShortDateString() + " 23:59:59.998"); // se usa .998 porque lo redondea a .997 por la presición de los campos tipo datetime de sql server, el cual es el maximo valor de milesimas de segundo que puede guardarse en la db. Si se usa .999 lo redondea al segundo 0.000 del siquiente dia e incluye los datos del siguiente día que es un comportamiento que no se quiere por que solo se deben mostrar los datos de la fecha indicada. Ya se comprobo el comportamiento en la base de datos.
                         cmd.Parameters.AddWithValue("FPedidoFin", dtpBFPedidoFin.Value);
                     }
                     else
@@ -197,9 +198,14 @@ namespace NorthwindTraders
 
         private void BorrarDatosBuqueda()
         {
-            txtBId.Text = txtBCliente.Text = txtBEmpleado.Text = txtBCompañiaT.Text = txtBDirigidoa.Text = "";
+            txtBIdInicial.Text = txtBIdFinal.Text = txtBCliente.Text = txtBEmpleado.Text = txtBCompañiaT.Text = txtBDirigidoa.Text = "";
             dtpBFPedidoIni.Checked = dtpBFPedidoFin.Checked = dtpBFRequeridoIni.Checked = dtpBFRequeridoFin.Checked = dtpBFEnvioIni.Checked = dtpBFEnvioFin.Checked = false;
             chkBFPedidoNull.Checked = chkBFRequeridoNull.Checked = chkBFEnvioNull.Checked = false;
+        }
+
+        private void txtBIdInicial_TextChanged(object sender, EventArgs e)
+        {
+            txtBIdFinal.Text = txtBIdInicial.Text;
         }
 
         private void dtpBFPedidoIni_ValueChanged(object sender, EventArgs e)
@@ -439,7 +445,6 @@ namespace NorthwindTraders
             errorProvider1.SetError(dtpHoraPedido, "");
             errorProvider1.SetError(cboTransportista, "");
             errorProvider1.SetError(btnAgregar, "");
-            errorProvider1.SetError(cboProducto, "");
         }
 
         private void HabilitarControles()
@@ -497,7 +502,7 @@ namespace NorthwindTraders
 
         private void FrmPedidosCrud_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (txtId.Text.Trim() == "")
+            if (tabcOperacion.SelectedTab != tbpConsultar)
             {
                 if (cboCliente.SelectedIndex > 0 || cboEmpleado.SelectedIndex > 0 || cboTransportista.SelectedIndex > 0 || cboCategoria.SelectedIndex > 0 || cboProducto.SelectedIndex > 0)
                 {
@@ -846,6 +851,10 @@ namespace NorthwindTraders
                         numRegs = pedidosDB.Add(pedido, lstDetalle, txtId, cboCliente.Text);
                     }
                 }
+                catch (SqlException ex) when (ex.Number == 2627)
+                {
+                    MessageBox.Show($"Error, existe un producto duplicado en el pedido, elimine el producto duplicado y modifique la cantidad del producto", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 catch (SqlException ex)
                 {
                     MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -913,7 +922,7 @@ namespace NorthwindTraders
                     if (numRegs > 0)
                     {
                         BorrarDatosBuqueda();
-                        txtBId.Text = txtId.Text;
+                        txtBIdInicial.Text = txtId.Text;
                         btnBuscar.PerformClick();
                         btnLimpiar.PerformClick();
                     }
@@ -951,7 +960,7 @@ namespace NorthwindTraders
                     if (numRegs > 0)
                     {
                         BorrarDatosBuqueda();
-                        txtBId.Text = txtId.Text;
+                        txtBIdInicial.Text = txtId.Text;
                         btnBuscar.PerformClick();
                         btnLimpiar.PerformClick();
                     }
@@ -1303,8 +1312,9 @@ namespace NorthwindTraders
                     dgvDetalle.Rows.Add(new object[] { IdDetalle, pedidoDetalle.ProductName, pedidoDetalle.UnitPrice, pedidoDetalle.Quantity, pedidoDetalle.Discount, (pedidoDetalle.UnitPrice * pedidoDetalle.Quantity) * (1 - pedidoDetalle.Discount), "Eliminar", pedidoDetalle.ProductId });
                     ++IdDetalle;
                 }
+                rdr.Close();
                 CalcularTotal();
-                IdDetalle = 1;
+                //IdDetalle = 1;
             }
             catch (SqlException ex)
             {
@@ -1321,6 +1331,16 @@ namespace NorthwindTraders
                 cn.Close();
             }
             Utils.ActualizarBarraDeEstado($"Se muestran {dgvPedidos.RowCount} registros", this);
+        }
+
+        private void txtBIdInicial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utils.ValidarDigitosSinPunto(sender, e);
+        }
+
+        private void txtBIdFinal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utils.ValidarDigitosSinPunto(sender, e);
         }
     }
 }

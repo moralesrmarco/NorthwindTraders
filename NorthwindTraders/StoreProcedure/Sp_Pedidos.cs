@@ -26,7 +26,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE OR ALTER PROCEDURE [dbo].[SP_PEDIDOS_BUSCAR]
-	@Id int, 
+	@IdInicial int,
+	@IdFinal int,
 	@Cliente nvarchar(40),
 	@FPedido bit,
 	@FPedidoNull bit,
@@ -34,12 +35,10 @@ CREATE OR ALTER PROCEDURE [dbo].[SP_PEDIDOS_BUSCAR]
 	@FPedidoFin datetime,
 	@FRequerido bit,
 	@FRequeridoNull bit,
-	--@FRequerido nvarchar(1),
 	@FRequeridoIni datetime,
 	@FRequeridoFin datetime,
 	@FEnvio bit,
 	@FEnvioNull bit,
-	--@FEnvio nvarchar(1),
 	@FEnvioIni datetime,
 	@FEnvioFin datetime,
 	@Empleado nvarchar(31),
@@ -55,7 +54,7 @@ BEGIN
 	INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID 
 	INNER JOIN Shippers ON Orders.ShipVia = Shippers.ShipperID 
 	WHERE
-	(@Id = 0 OR Orders.OrderID = @Id) 
+	(@IdInicial = 0 OR Orders.OrderID BETWEEN @IdInicial AND @IdFinal) 
 	AND (@Cliente = '' OR Customers.CompanyName LIKE '%' + @Cliente + '%') 
 	AND (@FPedido = 0 OR Orders.OrderDate BETWEEN @FPedidoIni AND @FPedidoFin)
 	AND (@FPedidoNull = 0 OR Orders.OrderDate IS NULL)

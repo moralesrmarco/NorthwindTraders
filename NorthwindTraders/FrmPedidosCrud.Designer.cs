@@ -118,8 +118,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtBId = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.txtBIdInicial = new System.Windows.Forms.TextBox();
             this.txtBEmpleado = new System.Windows.Forms.TextBox();
             this.txtBCliente = new System.Windows.Forms.TextBox();
             this.tabcOperacion = new System.Windows.Forms.TabControl();
@@ -134,6 +133,9 @@
             this.grbPedidos = new System.Windows.Forms.GroupBox();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.txtBIdFinal = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.grbDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
@@ -345,7 +347,7 @@
             this.grbProducto.Size = new System.Drawing.Size(804, 80);
             this.grbProducto.TabIndex = 9;
             this.grbProducto.TabStop = false;
-            this.grbProducto.Text = "»   Producto:   «";
+            this.grbProducto.Text = "»   Agregar producto:   «";
             this.grbProducto.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint2);
             // 
             // btnAgregar
@@ -830,6 +832,8 @@
             // 
             this.grbBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.grbBuscar.Controls.Add(this.label42);
+            this.grbBuscar.Controls.Add(this.label8);
             this.grbBuscar.Controls.Add(this.chkBFEnvioNull);
             this.grbBuscar.Controls.Add(this.chkBFRequeridoNull);
             this.grbBuscar.Controls.Add(this.chkBFPedidoNull);
@@ -856,8 +860,8 @@
             this.grbBuscar.Controls.Add(this.label5);
             this.grbBuscar.Controls.Add(this.label18);
             this.grbBuscar.Controls.Add(this.label9);
-            this.grbBuscar.Controls.Add(this.txtBId);
-            this.grbBuscar.Controls.Add(this.label8);
+            this.grbBuscar.Controls.Add(this.txtBIdFinal);
+            this.grbBuscar.Controls.Add(this.txtBIdInicial);
             this.grbBuscar.Controls.Add(this.txtBEmpleado);
             this.grbBuscar.Controls.Add(this.txtBCliente);
             this.grbBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -877,7 +881,7 @@
             this.chkBFEnvioNull.Name = "chkBFEnvioNull";
             this.chkBFEnvioNull.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkBFEnvioNull.Size = new System.Drawing.Size(85, 16);
-            this.chkBFEnvioNull.TabIndex = 8;
+            this.chkBFEnvioNull.TabIndex = 9;
             this.chkBFEnvioNull.Text = "Fecha = null";
             this.chkBFEnvioNull.UseVisualStyleBackColor = true;
             this.chkBFEnvioNull.CheckedChanged += new System.EventHandler(this.chkBFEnvioNull_CheckedChanged);
@@ -890,7 +894,7 @@
             this.chkBFRequeridoNull.Name = "chkBFRequeridoNull";
             this.chkBFRequeridoNull.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkBFRequeridoNull.Size = new System.Drawing.Size(85, 16);
-            this.chkBFRequeridoNull.TabIndex = 5;
+            this.chkBFRequeridoNull.TabIndex = 6;
             this.chkBFRequeridoNull.Text = "Fecha = null";
             this.chkBFRequeridoNull.UseVisualStyleBackColor = true;
             this.chkBFRequeridoNull.CheckedChanged += new System.EventHandler(this.chkBFRequeridoNull_CheckedChanged);
@@ -903,7 +907,7 @@
             this.chkBFPedidoNull.Name = "chkBFPedidoNull";
             this.chkBFPedidoNull.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkBFPedidoNull.Size = new System.Drawing.Size(85, 16);
-            this.chkBFPedidoNull.TabIndex = 2;
+            this.chkBFPedidoNull.TabIndex = 3;
             this.chkBFPedidoNull.Text = "Fecha = null";
             this.chkBFPedidoNull.UseVisualStyleBackColor = true;
             this.chkBFPedidoNull.CheckedChanged += new System.EventHandler(this.chkBFPedidoNull_CheckedChanged);
@@ -913,7 +917,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(216, 309);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 14;
+            this.btnBuscar.TabIndex = 15;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -924,7 +928,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(128, 309);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 15;
+            this.btnLimpiar.TabIndex = 16;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -936,7 +940,7 @@
             this.txtBDirigidoa.MaxLength = 40;
             this.txtBDirigidoa.Name = "txtBDirigidoa";
             this.txtBDirigidoa.Size = new System.Drawing.Size(200, 20);
-            this.txtBDirigidoa.TabIndex = 13;
+            this.txtBDirigidoa.TabIndex = 14;
             // 
             // txtBCompañiaT
             // 
@@ -945,7 +949,7 @@
             this.txtBCompañiaT.MaxLength = 40;
             this.txtBCompañiaT.Name = "txtBCompañiaT";
             this.txtBCompañiaT.Size = new System.Drawing.Size(200, 20);
-            this.txtBCompañiaT.TabIndex = 12;
+            this.txtBCompañiaT.TabIndex = 13;
             // 
             // dtpBFEnvioFin
             // 
@@ -956,7 +960,7 @@
             this.dtpBFEnvioFin.Name = "dtpBFEnvioFin";
             this.dtpBFEnvioFin.ShowCheckBox = true;
             this.dtpBFEnvioFin.Size = new System.Drawing.Size(96, 20);
-            this.dtpBFEnvioFin.TabIndex = 10;
+            this.dtpBFEnvioFin.TabIndex = 11;
             this.dtpBFEnvioFin.ValueChanged += new System.EventHandler(this.dtpBFEnvioFin_ValueChanged);
             // 
             // dtpBFRequeridoFin
@@ -968,7 +972,7 @@
             this.dtpBFRequeridoFin.Name = "dtpBFRequeridoFin";
             this.dtpBFRequeridoFin.ShowCheckBox = true;
             this.dtpBFRequeridoFin.Size = new System.Drawing.Size(96, 20);
-            this.dtpBFRequeridoFin.TabIndex = 7;
+            this.dtpBFRequeridoFin.TabIndex = 8;
             this.dtpBFRequeridoFin.ValueChanged += new System.EventHandler(this.dtpBFRequeridoFin_ValueChanged);
             // 
             // dtpBFPedidoFin
@@ -980,7 +984,7 @@
             this.dtpBFPedidoFin.Name = "dtpBFPedidoFin";
             this.dtpBFPedidoFin.ShowCheckBox = true;
             this.dtpBFPedidoFin.Size = new System.Drawing.Size(96, 20);
-            this.dtpBFPedidoFin.TabIndex = 4;
+            this.dtpBFPedidoFin.TabIndex = 5;
             this.dtpBFPedidoFin.ValueChanged += new System.EventHandler(this.dtpBFPedidoFin_ValueChanged);
             // 
             // label17
@@ -1025,7 +1029,7 @@
             this.dtpBFEnvioIni.Name = "dtpBFEnvioIni";
             this.dtpBFEnvioIni.ShowCheckBox = true;
             this.dtpBFEnvioIni.Size = new System.Drawing.Size(95, 20);
-            this.dtpBFEnvioIni.TabIndex = 9;
+            this.dtpBFEnvioIni.TabIndex = 10;
             this.dtpBFEnvioIni.ValueChanged += new System.EventHandler(this.dtpBFEnvioIni_ValueChanged);
             // 
             // dtpBFRequeridoIni
@@ -1037,7 +1041,7 @@
             this.dtpBFRequeridoIni.Name = "dtpBFRequeridoIni";
             this.dtpBFRequeridoIni.ShowCheckBox = true;
             this.dtpBFRequeridoIni.Size = new System.Drawing.Size(95, 20);
-            this.dtpBFRequeridoIni.TabIndex = 6;
+            this.dtpBFRequeridoIni.TabIndex = 7;
             this.dtpBFRequeridoIni.ValueChanged += new System.EventHandler(this.dtpBFRequeridoIni_ValueChanged);
             // 
             // dtpBFPedidoIni
@@ -1049,7 +1053,7 @@
             this.dtpBFPedidoIni.Name = "dtpBFPedidoIni";
             this.dtpBFPedidoIni.ShowCheckBox = true;
             this.dtpBFPedidoIni.Size = new System.Drawing.Size(95, 20);
-            this.dtpBFPedidoIni.TabIndex = 3;
+            this.dtpBFPedidoIni.TabIndex = 4;
             this.dtpBFPedidoIni.ValueChanged += new System.EventHandler(this.dtpBFPedidoIni_ValueChanged);
             // 
             // label16
@@ -1149,24 +1153,16 @@
             this.label9.TabIndex = 22;
             this.label9.Text = "Cliente:";
             // 
-            // txtBId
+            // txtBIdInicial
             // 
-            this.txtBId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtBId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBId.Location = new System.Drawing.Point(87, 24);
-            this.txtBId.MaxLength = 10;
-            this.txtBId.Name = "txtBId";
-            this.txtBId.Size = new System.Drawing.Size(100, 20);
-            this.txtBId.TabIndex = 0;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(62, 28);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(22, 13);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Id:";
+            this.txtBIdInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBIdInicial.Location = new System.Drawing.Point(54, 24);
+            this.txtBIdInicial.MaxLength = 10;
+            this.txtBIdInicial.Name = "txtBIdInicial";
+            this.txtBIdInicial.Size = new System.Drawing.Size(100, 20);
+            this.txtBIdInicial.TabIndex = 0;
+            this.txtBIdInicial.TextChanged += new System.EventHandler(this.txtBIdInicial_TextChanged);
+            this.txtBIdInicial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBIdInicial_KeyPress);
             // 
             // txtBEmpleado
             // 
@@ -1175,7 +1171,7 @@
             this.txtBEmpleado.MaxLength = 40;
             this.txtBEmpleado.Name = "txtBEmpleado";
             this.txtBEmpleado.Size = new System.Drawing.Size(201, 20);
-            this.txtBEmpleado.TabIndex = 11;
+            this.txtBEmpleado.TabIndex = 12;
             // 
             // txtBCliente
             // 
@@ -1184,7 +1180,7 @@
             this.txtBCliente.MaxLength = 40;
             this.txtBCliente.Name = "txtBCliente";
             this.txtBCliente.Size = new System.Drawing.Size(201, 20);
-            this.txtBCliente.TabIndex = 1;
+            this.txtBCliente.TabIndex = 2;
             // 
             // tabcOperacion
             // 
@@ -1310,6 +1306,36 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(14, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(40, 26);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "Id inicial:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label42
+            // 
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(157, 21);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(32, 26);
+            this.label42.TabIndex = 27;
+            this.label42.Text = "Id final:";
+            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtBIdFinal
+            // 
+            this.txtBIdFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBIdFinal.Location = new System.Drawing.Point(189, 24);
+            this.txtBIdFinal.MaxLength = 10;
+            this.txtBIdFinal.Name = "txtBIdFinal";
+            this.txtBIdFinal.Size = new System.Drawing.Size(100, 20);
+            this.txtBIdFinal.TabIndex = 1;
+            this.txtBIdFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBIdFinal_KeyPress);
+            // 
             // FrmPedidosCrud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1391,8 +1417,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtBId;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtBIdInicial;
         private System.Windows.Forms.TextBox txtBEmpleado;
         private System.Windows.Forms.TextBox txtBCliente;
         private System.Windows.Forms.DataGridView dgvDetalle;
@@ -1457,5 +1482,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductoId;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TextBox txtBIdFinal;
     }
 }

@@ -114,6 +114,7 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.tsmiMantenimientoDeDetalleDePedidos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -554,7 +555,8 @@
             // tsmiPedidos
             // 
             this.tsmiPedidos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiMantenimientoDePedidos});
+            this.tsmiMantenimientoDePedidos,
+            this.tsmiMantenimientoDeDetalleDePedidos});
             this.tsmiPedidos.Name = "tsmiPedidos";
             this.tsmiPedidos.Size = new System.Drawing.Size(61, 20);
             this.tsmiPedidos.Text = "Pedidos";
@@ -562,7 +564,7 @@
             // tsmiMantenimientoDePedidos
             // 
             this.tsmiMantenimientoDePedidos.Name = "tsmiMantenimientoDePedidos";
-            this.tsmiMantenimientoDePedidos.Size = new System.Drawing.Size(217, 22);
+            this.tsmiMantenimientoDePedidos.Size = new System.Drawing.Size(271, 22);
             this.tsmiMantenimientoDePedidos.Text = "Mantenimiento de pedidos";
             this.tsmiMantenimientoDePedidos.Click += new System.EventHandler(this.tsmiMantenimientoDePedidos_Click);
             // 
@@ -808,6 +810,13 @@
             this.tsslEstado.Size = new System.Drawing.Size(45, 19);
             this.tsslEstado.Text = "Activo";
             // 
+            // tsmiMantenimientoDeDetalleDePedidos
+            // 
+            this.tsmiMantenimientoDeDetalleDePedidos.Name = "tsmiMantenimientoDeDetalleDePedidos";
+            this.tsmiMantenimientoDeDetalleDePedidos.Size = new System.Drawing.Size(271, 22);
+            this.tsmiMantenimientoDeDetalleDePedidos.Text = "Mantenimiento de detalle de pedidos";
+            this.tsmiMantenimientoDeDetalleDePedidos.Click += new System.EventHandler(this.tsmiMantenimientoDeDetalleDePedidos_Click);
+            // 
             // MDIPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -919,6 +928,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiMantenimientoDeProductos;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tsmiMantenimientoDePedidos;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMantenimientoDeDetalleDePedidos;
     }
 }
 
