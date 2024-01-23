@@ -110,7 +110,7 @@ namespace NorthwindTraders
                     cn.Open();
                     numRegs = (byte)cmd.ExecuteNonQuery();
                     if (numRegs == 0)
-                        MessageBox.Show("Es posible que el registro se haya eliminado previamente por otro usuario de la red", "Developer .Net", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No se pudo realizar la modificación, es posible que el registro se haya eliminado previamente por otro usuario de la red", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (SqlException ex)
                 {

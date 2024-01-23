@@ -1113,6 +1113,8 @@ namespace NorthwindTraders
                     numRegs = (byte)cmd.ExecuteNonQuery();
                     cn.Close();
                     if (numRegs > 0) MessageBox.Show($"El pedido con Id: {pedido.OrderId} del Cliente: {cliente}, se actualizó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("No se pudo realizar la modificación, es posible que el registro se haya eliminado previamente por otro usuario de la red", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return numRegs;
             }
@@ -1129,6 +1131,8 @@ namespace NorthwindTraders
                     numRegs = (byte)cmd.ExecuteNonQuery();
                     cn.Close();
                     if (numRegs > 0) MessageBox.Show($"El pedido con Id: {pedido.OrderId} del Cliente: {cliente}, se eliminó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("No se pudo realizar la eliminación, es posible que el registro haya sido eliminado previamente por otro usuario de la red", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return numRegs;
             }
@@ -1341,6 +1345,20 @@ namespace NorthwindTraders
         private void txtBIdFinal_KeyPress(object sender, KeyPressEventArgs e)
         {
             Utils.ValidarDigitosSinPunto(sender, e);
+        }
+
+        private void txtCantidad_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (txtCantidad.Text.Trim() != "")
+            {
+                if (int.Parse(txtCantidad.Text.Replace(",", "")) > 32767)
+                {
+                    errorProvider1.SetError(txtCantidad, "La cantidad no puede ser mayor a 32767");
+                    e.Cancel = true;
+                }
+                else
+                    errorProvider1.SetError(txtCantidad, "");
+            }
         }
     }
 }

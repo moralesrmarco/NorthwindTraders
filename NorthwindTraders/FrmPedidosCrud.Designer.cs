@@ -92,6 +92,8 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.grbBuscar = new System.Windows.Forms.GroupBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.chkBFEnvioNull = new System.Windows.Forms.CheckBox();
             this.chkBFRequeridoNull = new System.Windows.Forms.CheckBox();
             this.chkBFPedidoNull = new System.Windows.Forms.CheckBox();
@@ -118,6 +120,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.txtBIdFinal = new System.Windows.Forms.TextBox();
             this.txtBIdInicial = new System.Windows.Forms.TextBox();
             this.txtBEmpleado = new System.Windows.Forms.TextBox();
             this.txtBCliente = new System.Windows.Forms.TextBox();
@@ -133,9 +136,6 @@
             this.grbPedidos = new System.Windows.Forms.GroupBox();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label8 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.txtBIdFinal = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.grbDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
@@ -386,6 +386,7 @@
             this.txtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             this.txtCantidad.Leave += new System.EventHandler(this.txtCantidad_Leave);
+            this.txtCantidad.Validating += new System.ComponentModel.CancelEventHandler(this.txtCantidad_Validating);
             // 
             // txtPrecio
             // 
@@ -873,6 +874,26 @@
             this.grbBuscar.Text = "»   Buscar un pedido:   «";
             this.grbBuscar.Paint += new System.Windows.Forms.PaintEventHandler(this.grbPaint);
             // 
+            // label42
+            // 
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(157, 21);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(32, 26);
+            this.label42.TabIndex = 27;
+            this.label42.Text = "Id final:";
+            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(14, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(40, 26);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "Id inicial:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // chkBFEnvioNull
             // 
             this.chkBFEnvioNull.AutoSize = true;
@@ -1153,6 +1174,16 @@
             this.label9.TabIndex = 22;
             this.label9.Text = "Cliente:";
             // 
+            // txtBIdFinal
+            // 
+            this.txtBIdFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBIdFinal.Location = new System.Drawing.Point(189, 24);
+            this.txtBIdFinal.MaxLength = 10;
+            this.txtBIdFinal.Name = "txtBIdFinal";
+            this.txtBIdFinal.Size = new System.Drawing.Size(100, 20);
+            this.txtBIdFinal.TabIndex = 1;
+            this.txtBIdFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBIdFinal_KeyPress);
+            // 
             // txtBIdInicial
             // 
             this.txtBIdInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1305,36 +1336,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(14, 21);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 26);
-            this.label8.TabIndex = 27;
-            this.label8.Text = "Id inicial:";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label42
-            // 
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(157, 21);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(32, 26);
-            this.label42.TabIndex = 27;
-            this.label42.Text = "Id final:";
-            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtBIdFinal
-            // 
-            this.txtBIdFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBIdFinal.Location = new System.Drawing.Point(189, 24);
-            this.txtBIdFinal.MaxLength = 10;
-            this.txtBIdFinal.Name = "txtBIdFinal";
-            this.txtBIdFinal.Size = new System.Drawing.Size(100, 20);
-            this.txtBIdFinal.TabIndex = 1;
-            this.txtBIdFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBIdFinal_KeyPress);
             // 
             // FrmPedidosCrud
             // 

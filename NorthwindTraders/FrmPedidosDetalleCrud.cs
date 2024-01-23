@@ -679,7 +679,7 @@ namespace NorthwindTraders
                     if (numRegs > 0)
                         MessageBox.Show($"El producto: {productName} del Pedido: {pedidoDetalleDb.PedidoId}, se eliminó satisfactoriamente", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
-                        MessageBox.Show($"El producto: {productName} del Pedido: {pedidoDetalleDb.PedidoId}, NO se eliminó en la base de datos", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"El producto: {productName} del Pedido: {pedidoDetalleDb.PedidoId}, NO se eliminó en la base de datos, es posible que el registro se haya eliminado previamente por otro usuario de la red", "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (SqlException ex)
