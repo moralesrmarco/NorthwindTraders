@@ -6,14 +6,14 @@ using System.Windows.Forms;
 
 namespace NorthwindTraders
 {
-    public partial class FrmCategoriasProductos : Form
+    public partial class FrmProveedoresProductos : Form
     {
 
         SqlConnection cn = new SqlConnection(NorthwindTraders.Properties.Settings.Default.NWCn);
-        BindingSource bsCategorias = new BindingSource();
+        BindingSource bsProveedores = new BindingSource();
         BindingSource bsProductos = new BindingSource();
 
-        public FrmCategoriasProductos()
+        public FrmProveedoresProductos()
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
@@ -25,20 +25,14 @@ namespace NorthwindTraders
             Utils.DrawGroupBox(groupBox, e.Graphics, Color.Black, Color.Black, this);
         }
 
-        private void FrmCategoriasProductos_Load(object sender, EventArgs e)
+        private void FrmProveedoresProductos_Load(object sender, EventArgs e)
         {
-            dgvCategorias.DataSource = bsCategorias;
+            dgvProveedores.DataSource = bsProveedores;
             dgvProductos.DataSource = bsProductos;
             GetData();
-            Utils.ConfDataGridView(dgvCategorias);
+            Utils.ConfDataGridView(dgvProveedores);
             Utils.ConfDataGridView(dgvProductos);
             Utils.ConfDgvProductos(dgvProductos);
-            dgvCategorias.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvCategorias.Columns["Categoría"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvCategorias.Columns["Foto"].Width = 50;
-            dgvCategorias.Columns["Foto"].DefaultCellStyle.Padding = new Padding(4, 4, 4, 4);
-            ((DataGridViewImageColumn)dgvCategorias.Columns["Foto"]).ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvCategorias.RowCount} registros en categorias y {dgvProductos.RowCount} registros de productos en la categoria {dgvCategorias.CurrentRow.Cells["Categoría"].Value}", this);
         }
 
         private void GetData()
@@ -47,17 +41,17 @@ namespace NorthwindTraders
             {
                 DataSet ds = new DataSet();
                 ds.Locale = System.Globalization.CultureInfo.InvariantCulture;
-                SqlDataAdapter dapCategorias = new SqlDataAdapter("Sp_Categorias_Listar", cn);
-                dapCategorias.Fill(ds, "Categorias");
+                SqlDataAdapter dapProveedores = new SqlDataAdapter("Sp_Proveedores_Listar", cn);
+                dapProveedores.Fill(ds, "Proveedores");
                 SqlDataAdapter dapProductos = new SqlDataAdapter("Sp_Productos_All", cn);
                 dapProductos.Fill(ds, "Productos");
                 // en la siguiente instrucción se deben de proporcionar los nombres de los campos (alias) que devuelve el store procedure
-                DataRelation dataRelation = new DataRelation("CategoriasProductos", ds.Tables["Categorias"].Columns["Id"], ds.Tables["Productos"].Columns["IdCategoria"]);
+                DataRelation dataRelation = new DataRelation("ProveedoresProductos", ds.Tables["Proveedores"].Columns["Id"], ds.Tables["Productos"].Columns["IdProveedor"]);
                 ds.Relations.Add(dataRelation);
-                bsCategorias.DataSource = ds;
-                bsCategorias.DataMember = "Categorias";
-                bsProductos.DataSource = bsCategorias;
-                bsProductos.DataMember = "CategoriasProductos";
+                bsProveedores.DataSource = ds;
+                bsProveedores.DataMember = "Proveedores";
+                bsProductos.DataSource = bsProveedores;
+                bsProductos.DataMember = "ProveedoresProductos";
             }
             catch (SqlException ex)
             {
@@ -71,14 +65,14 @@ namespace NorthwindTraders
             }
         }
 
-        private void FrmCategoriasProductos_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmProveedoresProductos_FormClosed(object sender, FormClosedEventArgs e)
         {
             Utils.ActualizarBarraDeEstado("Activo", this);
         }
 
-        private void dgvCategorias_SelectionChanged(object sender, EventArgs e)
+        private void dgvProveedores_SelectionChanged(object sender, EventArgs e)
         {
-            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvCategorias.RowCount} registros en categorias y {dgvProductos.RowCount} registros de productos en la categoria {dgvCategorias.CurrentRow.Cells["Categoría"].Value}", this);
+            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvProveedores.RowCount} registros en proveedores y {dgvProductos.RowCount} registros de productos del proveedor {dgvProveedores.CurrentRow.Cells["Nombre de compañía"].Value}", this);
         }
     }
 }
