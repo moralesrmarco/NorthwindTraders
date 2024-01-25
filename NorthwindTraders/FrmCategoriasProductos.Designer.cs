@@ -82,6 +82,7 @@
             this.dgvCategorias.Name = "dgvCategorias";
             this.dgvCategorias.Size = new System.Drawing.Size(978, 309);
             this.dgvCategorias.TabIndex = 0;
+            this.dgvCategorias.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvCategorias_DataBindingComplete);
             this.dgvCategorias.SelectionChanged += new System.EventHandler(this.dgvCategorias_SelectionChanged);
             // 
             // groupBox2
@@ -114,7 +115,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmCategoriasProductos";
-            this.Text = "Consulta productos por categoría";
+            this.Text = "Consulta de productos por categoría";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCategoriasProductos_FormClosed);
             this.Load += new System.EventHandler(this.FrmCategoriasProductos_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);

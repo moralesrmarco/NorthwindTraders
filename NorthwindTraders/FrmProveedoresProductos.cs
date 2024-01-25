@@ -39,6 +39,7 @@ namespace NorthwindTraders
         {
             try
             {
+                Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
                 DataSet ds = new DataSet();
                 ds.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 SqlDataAdapter dapProveedores = new SqlDataAdapter("Sp_Proveedores_Listar", cn);
@@ -72,7 +73,12 @@ namespace NorthwindTraders
 
         private void dgvProveedores_SelectionChanged(object sender, EventArgs e)
         {
-            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvProveedores.RowCount} registros en proveedores y {dgvProductos.RowCount} registros de productos del proveedor {dgvProveedores.CurrentRow.Cells["Nombre de compañía"].Value}", this);
+            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvProveedores.RowCount} registros en proveedores y {dgvProductos.RowCount} registros de productos; del proveedor {dgvProveedores.CurrentRow.Cells["Nombre de compañía"].Value}", this);
+        }
+
+        private void dgvProveedores_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvProveedores.RowCount} registros en proveedores", this);
         }
     }
 }

@@ -82,6 +82,7 @@
             this.dgvProveedores.Name = "dgvProveedores";
             this.dgvProveedores.Size = new System.Drawing.Size(978, 309);
             this.dgvProveedores.TabIndex = 0;
+            this.dgvProveedores.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProveedores_DataBindingComplete);
             this.dgvProveedores.SelectionChanged += new System.EventHandler(this.dgvProveedores_SelectionChanged);
             // 
             // grbProductos

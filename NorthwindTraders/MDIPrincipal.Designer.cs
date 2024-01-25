@@ -860,6 +860,7 @@
             this.tsmiConsultaDePedidosPorCliente.Name = "tsmiConsultaDePedidosPorCliente";
             this.tsmiConsultaDePedidosPorCliente.Size = new System.Drawing.Size(271, 22);
             this.tsmiConsultaDePedidosPorCliente.Text = "Consulta de pedidos por cliente";
+            this.tsmiConsultaDePedidosPorCliente.Click += new System.EventHandler(this.tsmiConsultaDePedidosPorCliente_Click);
             // 
             // MDIPrincipal
             // 

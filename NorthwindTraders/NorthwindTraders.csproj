@@ -94,6 +94,12 @@
     <Compile Include="FrmEmpleadosCrud.Designer.cs">
       <DependentUpon>FrmEmpleadosCrud.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPedidosCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPedidosCliente.Designer.cs">
+      <DependentUpon>FrmPedidosCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPedidosCrud.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,9 +208,11 @@
     <Compile Include="StoreProcedure\Sp_Clientes.cs" />
     <Compile Include="StoreProcedure\Sp_Empleados.cs" />
     <Compile Include="StoreProcedure\Sp_Pedidos.cs" />
+    <Compile Include="StoreProcedure\Sp_PedidosCliente.cs" />
     <Compile Include="StoreProcedure\Sp_PedidosDetalle.cs" />
     <Compile Include="StoreProcedure\Sp_Productos.cs" />
     <Compile Include="StoreProcedure\Sp_Proveedores.cs" />
+    <Compile Include="StoreProcedure\Vw_PedidosCliente.cs" />
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="EmpleadosListado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -221,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEmpleadosCrud.resx">
       <DependentUpon>FrmEmpleadosCrud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPedidosCliente.resx">
+      <DependentUpon>FrmPedidosCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPedidosCrud.resx">
       <DependentUpon>FrmPedidosCrud.cs</DependentUpon>

@@ -45,6 +45,7 @@ namespace NorthwindTraders
         {
             try
             {
+                Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
                 DataSet ds = new DataSet();
                 ds.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 SqlDataAdapter dapCategorias = new SqlDataAdapter("Sp_Categorias_Listar", cn);
@@ -78,7 +79,12 @@ namespace NorthwindTraders
 
         private void dgvCategorias_SelectionChanged(object sender, EventArgs e)
         {
-            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvCategorias.RowCount} registros en categorias y {dgvProductos.RowCount} registros de productos en la categoria {dgvCategorias.CurrentRow.Cells["Categoría"].Value}", this);
+            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvCategorias.RowCount} registros en categorias y {dgvProductos.RowCount} registros de productos, en la categoria {dgvCategorias.CurrentRow.Cells["Categoría"].Value}", this);
+        }
+
+        private void dgvCategorias_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvCategorias.RowCount} registros en categorías", this);
         }
     }
 }

@@ -151,5 +151,11 @@ namespace NorthwindTraders
                 g.DrawLine(borderPen, new Point(rect.X + box.Padding.Left + (int)(strSize.Width), rect.Y), new Point(rect.X + rect.Width, rect.Y));
             }
         }
+
+        public static void GrbPaint(object sender,  PaintEventArgs e, Form form)
+        {
+            GroupBox groupBox = sender as GroupBox;
+            Utils.DrawGroupBox(groupBox, e.Graphics, Color.Black, Color.Black, form);
+        }
     }
 }
