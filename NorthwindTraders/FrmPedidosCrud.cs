@@ -1140,6 +1140,7 @@ namespace NorthwindTraders
 
         private void tabcOperacion_Selected(object sender, TabControlEventArgs e)
         {
+            IdDetalle = 1;
             BorrarDatosPedido();
             BorrarMensajesError();
             if (tabcOperacion.SelectedTab == tbpRegistrar)

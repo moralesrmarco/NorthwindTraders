@@ -23,6 +23,9 @@ namespace NorthwindTraders
             dgv.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv.BackgroundColor = SystemColors.ControlLight;
+            dgv.RowHeadersVisible = false;
             dgv.AutoResizeColumns();
         }
 
