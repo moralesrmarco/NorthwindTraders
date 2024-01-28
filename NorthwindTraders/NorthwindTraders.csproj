@@ -100,6 +100,12 @@
     <Compile Include="FrmPedidosCliente.Designer.cs">
       <DependentUpon>FrmPedidosCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPedidosClienteDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPedidosClienteDetalle.Designer.cs">
+      <DependentUpon>FrmPedidosClienteDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPedidosCrud.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPedidosCliente.resx">
       <DependentUpon>FrmPedidosCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPedidosClienteDetalle.resx">
+      <DependentUpon>FrmPedidosClienteDetalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPedidosCrud.resx">
       <DependentUpon>FrmPedidosCrud.cs</DependentUpon>

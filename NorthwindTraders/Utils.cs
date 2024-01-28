@@ -18,14 +18,15 @@ namespace NorthwindTraders
             dgv.AlternatingRowsDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
             dgv.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.GradientActiveCaption;
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
-            dgv.DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Regular);
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold);
+            dgv.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Regular);
             dgv.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv.BackgroundColor = SystemColors.ControlLight;
+            dgv.BackgroundColor = SystemColors.Control;
             dgv.RowHeadersVisible = false;
+            dgv.BorderStyle = BorderStyle.FixedSingle;
             dgv.AutoResizeColumns();
         }
 
