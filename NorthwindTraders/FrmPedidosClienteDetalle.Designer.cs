@@ -31,10 +31,10 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.grbClientes = new System.Windows.Forms.GroupBox();
-            this.grbPedidos = new System.Windows.Forms.GroupBox();
-            this.grbDetallePedido = new System.Windows.Forms.GroupBox();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.grbPedidos = new System.Windows.Forms.GroupBox();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
+            this.grbDetallePedido = new System.Windows.Forms.GroupBox();
             this.dgvDetallePedido = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -45,10 +45,10 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.grbClientes.SuspendLayout();
-            this.grbPedidos.SuspendLayout();
-            this.grbDetallePedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
+            this.grbPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
+            this.grbDetallePedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePedido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,6 +102,16 @@
             this.grbClientes.Text = "»   Clientes:   «";
             this.grbClientes.Paint += new System.Windows.Forms.PaintEventHandler(this.GrbPaint);
             // 
+            // dgvClientes
+            // 
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClientes.Location = new System.Drawing.Point(3, 19);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.Size = new System.Drawing.Size(486, 288);
+            this.dgvClientes.TabIndex = 0;
+            this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
+            // 
             // grbPedidos
             // 
             this.grbPedidos.Controls.Add(this.dgvPedidos);
@@ -115,6 +125,16 @@
             this.grbPedidos.Text = "»   Pedidos:   «";
             this.grbPedidos.Paint += new System.Windows.Forms.PaintEventHandler(this.GrbPaint);
             // 
+            // dgvPedidos
+            // 
+            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPedidos.Location = new System.Drawing.Point(3, 19);
+            this.dgvPedidos.Name = "dgvPedidos";
+            this.dgvPedidos.Size = new System.Drawing.Size(482, 288);
+            this.dgvPedidos.TabIndex = 0;
+            this.dgvPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedidos_CellClick);
+            // 
             // grbDetallePedido
             // 
             this.grbDetallePedido.Controls.Add(this.dgvDetallePedido);
@@ -127,26 +147,6 @@
             this.grbDetallePedido.TabStop = false;
             this.grbDetallePedido.Text = "»   Detalle de pedido:   «";
             this.grbDetallePedido.Paint += new System.Windows.Forms.PaintEventHandler(this.GrbPaint);
-            // 
-            // dgvClientes
-            // 
-            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvClientes.Location = new System.Drawing.Point(3, 19);
-            this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(486, 288);
-            this.dgvClientes.TabIndex = 0;
-            this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
-            // 
-            // dgvPedidos
-            // 
-            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPedidos.Location = new System.Drawing.Point(3, 19);
-            this.dgvPedidos.Name = "dgvPedidos";
-            this.dgvPedidos.Size = new System.Drawing.Size(482, 288);
-            this.dgvPedidos.TabIndex = 0;
-            this.dgvPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedidos_CellClick);
             // 
             // dgvDetallePedido
             // 
@@ -166,6 +166,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmPedidosClienteDetalle";
             this.Text = "Consulta de detalle de pedidos por cliente";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPedidosClienteDetalle_FormClosed);
             this.Load += new System.EventHandler(this.FrmPedidosClienteDetalle_Load);
             this.Shown += new System.EventHandler(this.FrmPedidosClienteDetalle_Shown);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -177,10 +178,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.grbClientes.ResumeLayout(false);
-            this.grbPedidos.ResumeLayout(false);
-            this.grbDetallePedido.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
+            this.grbPedidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
+            this.grbDetallePedido.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePedido)).EndInit();
             this.ResumeLayout(false);
 

@@ -11,7 +11,7 @@ AS
 BEGIN
 	SELECT TOP 20 Orders.OrderID AS Id, Customers.CompanyName AS Cliente, Customers.ContactName AS [Nombre de contacto], 
 	Orders.OrderDate AS [Fecha de pedido], Orders.RequiredDate AS [Fecha requerido], Orders.ShippedDate AS [Fecha de envío],
-	Employees.LastName + ', ' + Employees.FirstName AS Empleado, Shippers.CompanyName AS [Compañía transportista], 
+	Employees.LastName + ', ' + Employees.FirstName AS Vendedor, Shippers.CompanyName AS [Compañía transportista], 
 	Orders.ShipName AS [Dirigido a] 
 	FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID 
 	INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID 
@@ -43,16 +43,18 @@ CREATE OR ALTER PROCEDURE [dbo].[SP_PEDIDOS_BUSCAR]
 	@FEnvioFin datetime,
 	@Empleado nvarchar(31),
 	@CompañiaT nvarchar(40),
-	@Dirigidoa nvarchar(40)
+	@Dirigidoa nvarchar(40),
+	@Producto nvarchar(40) = ''
 AS
 BEGIN
-	SELECT Orders.OrderID AS Id, Customers.CompanyName AS Cliente, Customers.ContactName AS [Nombre de contacto], 
-	Orders.OrderDate AS [Fecha de pedido], Orders.RequiredDate AS [Fecha requerido], Orders.ShippedDate AS [Fecha de envío],
-	Employees.LastName + ', ' + Employees.FirstName AS Empleado, Shippers.CompanyName AS [Compañía transportista], 
-	Orders.ShipName AS [Dirigido a] 
-	FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID 
-	INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID 
-	INNER JOIN Shippers ON Orders.ShipVia = Shippers.ShipperID 
+	SELECT DISTINCT Orders.OrderID AS Id, Customers.CompanyName AS Cliente, Customers.ContactName AS [Nombre de contacto], Orders.OrderDate AS [Fecha de pedido], Orders.RequiredDate AS [Fecha requerido], 
+                         Orders.ShippedDate AS [Fecha de envío], Employees.LastName + ', ' + Employees.FirstName AS Empleado, Shippers.CompanyName AS [Compañía transportista], Orders.ShipName AS [Dirigido a]
+	FROM Products RIGHT OUTER JOIN
+                         [Order Details] ON Products.ProductID = [Order Details].ProductID RIGHT OUTER JOIN
+                         Orders ON [Order Details].OrderID = Orders.OrderID LEFT OUTER JOIN
+                         Employees ON Orders.EmployeeID = Employees.EmployeeID LEFT OUTER JOIN
+                         Shippers ON Orders.ShipVia = Shippers.ShipperID LEFT OUTER JOIN
+                         Customers ON Orders.CustomerID = Customers.CustomerID
 	WHERE
 	(@IdInicial = 0 OR Orders.OrderID BETWEEN @IdInicial AND @IdFinal) 
 	AND (@Cliente = '' OR Customers.CompanyName LIKE '%' + @Cliente + '%') 
@@ -65,7 +67,8 @@ BEGIN
 	AND (@Empleado = '' OR Employees.LastName + ' ' + Employees.FirstName LIKE '%' + @Empleado + '%' ) 
 	AND (@CompañiaT = '' OR Shippers.CompanyName LIKE '%' + @CompañiaT + '%')
 	AND (@Dirigidoa = '' OR Orders.ShipName LIKE '%' + @Dirigidoa + '%')
-	ORDER BY OrderID DESC
+	AND (@Producto = '' OR Products.ProductName LIKE '%' + @Producto + '%')
+	ORDER BY Orders.OrderID DESC
 	--AND (@FPedido = '' OR Orders.OrderDate BETWEEN @FPedidoIni AND DATEADD(ms,1,@FPedidoFin))
 END
 -----------------------------------------------------------------------------------------------------

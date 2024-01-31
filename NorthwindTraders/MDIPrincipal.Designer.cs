@@ -90,6 +90,7 @@
             this.tsmiMantenimientoDePedidos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMantenimientoDeDetalleDePedidos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiConsultaDePedidosPorCliente = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiConsultaDeDetalleDePedidosPorCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,7 +121,7 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tsmiConsultaDeDetalleDePedidosPorCliente = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiConsultaDeDetalleDePedidos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -595,6 +596,7 @@
             this.tsmiPedidos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiMantenimientoDePedidos,
             this.tsmiMantenimientoDeDetalleDePedidos,
+            this.tsmiConsultaDeDetalleDePedidos,
             this.tsmiConsultaDePedidosPorCliente,
             this.tsmiConsultaDeDetalleDePedidosPorCliente});
             this.tsmiPedidos.Name = "tsmiPedidos";
@@ -621,6 +623,13 @@
             this.tsmiConsultaDePedidosPorCliente.Size = new System.Drawing.Size(295, 22);
             this.tsmiConsultaDePedidosPorCliente.Text = "Consulta de pedidos por cliente";
             this.tsmiConsultaDePedidosPorCliente.Click += new System.EventHandler(this.tsmiConsultaDePedidosPorCliente_Click);
+            // 
+            // tsmiConsultaDeDetalleDePedidosPorCliente
+            // 
+            this.tsmiConsultaDeDetalleDePedidosPorCliente.Name = "tsmiConsultaDeDetalleDePedidosPorCliente";
+            this.tsmiConsultaDeDetalleDePedidosPorCliente.Size = new System.Drawing.Size(295, 22);
+            this.tsmiConsultaDeDetalleDePedidosPorCliente.Text = "Consulta de detalle de pedidos por cliente";
+            this.tsmiConsultaDeDetalleDePedidosPorCliente.Click += new System.EventHandler(this.tsmiConsultaDeDetalleDePedidosPorCliente_Click);
             // 
             // toolsMenu
             // 
@@ -864,12 +873,12 @@
             this.tsslEstado.Size = new System.Drawing.Size(45, 19);
             this.tsslEstado.Text = "Activo";
             // 
-            // tsmiConsultaDeDetalleDePedidosPorCliente
+            // tsmiConsultaDeDetalleDePedidos
             // 
-            this.tsmiConsultaDeDetalleDePedidosPorCliente.Name = "tsmiConsultaDeDetalleDePedidosPorCliente";
-            this.tsmiConsultaDeDetalleDePedidosPorCliente.Size = new System.Drawing.Size(295, 22);
-            this.tsmiConsultaDeDetalleDePedidosPorCliente.Text = "Consulta de detalle de pedidos por cliente";
-            this.tsmiConsultaDeDetalleDePedidosPorCliente.Click += new System.EventHandler(this.tsmiConsultaDeDetalleDePedidosPorCliente_Click);
+            this.tsmiConsultaDeDetalleDePedidos.Name = "tsmiConsultaDeDetalleDePedidos";
+            this.tsmiConsultaDeDetalleDePedidos.Size = new System.Drawing.Size(295, 22);
+            this.tsmiConsultaDeDetalleDePedidos.Text = "Consulta de detalle de pedidos";
+            this.tsmiConsultaDeDetalleDePedidos.Click += new System.EventHandler(this.tsmiConsultaDeDetalleDePedidos_Click);
             // 
             // MDIPrincipal
             // 
@@ -989,6 +998,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiProveedoresProductos;
         private System.Windows.Forms.ToolStripMenuItem tsmiConsultaDePedidosPorCliente;
         private System.Windows.Forms.ToolStripMenuItem tsmiConsultaDeDetalleDePedidosPorCliente;
+        private System.Windows.Forms.ToolStripMenuItem tsmiConsultaDeDetalleDePedidos;
     }
 }
 

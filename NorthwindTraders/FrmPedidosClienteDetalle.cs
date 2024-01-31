@@ -252,5 +252,10 @@ namespace NorthwindTraders
             dgvDetallePedido.Columns ["Total"].DefaultCellStyle.Format = "c";
             dgvDetallePedido.Columns ["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
+
+        private void FrmPedidosClienteDetalle_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Utils.ActualizarBarraDeEstado("Activo", this);
+        }
     }
 }

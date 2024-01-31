@@ -743,11 +743,11 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(16, 211);
+            this.label18.Location = new System.Drawing.Point(21, 211);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(66, 13);
+            this.label18.Size = new System.Drawing.Size(65, 13);
             this.label18.TabIndex = 22;
-            this.label18.Text = "Empleado:";
+            this.label18.Text = "Vendedor:";
             // 
             // label9
             // 

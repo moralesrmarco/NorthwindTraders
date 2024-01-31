@@ -38,4 +38,12 @@ BEGIN
 		WHERE OrderID = @OrderId AND ProductID = @ProductId
 END
 ----------------------------------------------------------------------------------------------------
+CREATE OR ALTER PROCEDURE [dbo].[SP_PEDIDOSDETALLE_PRODUCTOS]
+	@PedidoId int
+AS
+	SELECT ROW_NUMBER() OVER(ORDER BY [Order Details].ProductID DESC) AS Id, [Order Details].ProductID AS [Id Producto], Products.ProductName AS Producto, [Order Details].UnitPrice AS Precio, 
+	[Order Details].Quantity AS Cantidad, [Order Details].Discount AS Descuento
+	FROM [Order Details] INNER JOIN Products ON [Order Details].ProductID = Products.ProductID
+	WHERE [Order Details].OrderID = @PedidoId
+
 */
