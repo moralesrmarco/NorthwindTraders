@@ -354,5 +354,15 @@ namespace NorthwindTraders
             };
             frmPedidosDetalleConsulta.Show();
         }
+
+        private void tsmiConsultaAlfabeticaDeProductos_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmProductosConsultaAlfabetica frmProductosConsultaAlfabetica = new FrmProductosConsultaAlfabetica
+            {
+                MdiParent = this
+            };
+            frmProductosConsultaAlfabetica.Show();
+        }
     }
 }

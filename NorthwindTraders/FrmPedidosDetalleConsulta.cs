@@ -159,12 +159,14 @@ namespace NorthwindTraders
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            dgvDetalle.DataSource = null;
             LlenarDgvPedidos(sender);
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             BorrarDatosBusqueda();
+            dgvDetalle.DataSource = null;
         }
 
         private void BorrarDatosBusqueda()
@@ -299,16 +301,35 @@ namespace NorthwindTraders
 
         private void LlenarDgvDetalle(int idPedido)
         {
-            Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
             try
             {
+                Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
                 SqlCommand cmd = new SqlCommand("Sp_PedidosDetalle_Productos", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("PedidoId", idPedido);
                 SqlDataAdapter dap = new SqlDataAdapter(cmd);
                 DataTable tbl = new DataTable();
                 dap.Fill(tbl);
+                DataColumn dc;
+                dc = new DataColumn("Subtotal", Type.GetType("System.Decimal"));
+                tbl.Columns.Add(dc);
+                dc = new DataColumn("Total", Type.GetType("System.Decimal"));
+                tbl.Columns.Add(dc);
+                decimal subTotal, total;
+                subTotal = 0;
+                foreach (DataRow dr in tbl.Rows)
+                {
+                    subTotal += Convert.ToDecimal(dr["Importe"]);
+                    dr["Subtotal"] = subTotal;
+                }
+                total = subTotal;
+                foreach(DataRow dr in tbl.Rows)
+                {
+                    dr["Total"] = total;
+                }
                 dgvDetalle.DataSource = tbl;
+                ConfDgvDetalle();
+                Utils.ActualizarBarraDeEstado("Activo", this);
             }
             catch (SqlException ex)
             {
@@ -320,6 +341,38 @@ namespace NorthwindTraders
                 MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Utils.ActualizarBarraDeEstado("Activo", this);
             }
+        }
+
+        private void FrmPedidosDetalleConsulta_Shown(object sender, EventArgs e)
+        {
+            DataGridViewRow dgvr = dgvPedidos.CurrentRow;
+            int idPedido = int.Parse(dgvr.Cells["Id"].Value.ToString());
+            LlenarDgvDetalle(idPedido);
+        }
+
+        private void ConfDgvDetalle()
+        {
+            dgvDetalle.Columns["Id Producto"].Visible = false;
+            dgvDetalle.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvDetalle.Columns["Precio"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvDetalle.Columns["Cantidad"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvDetalle.Columns["Descuento"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvDetalle.Columns["Importe"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvDetalle.Columns["Subtotal"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvDetalle.Columns["Total"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvDetalle.Columns["Precio"].DefaultCellStyle.Format = "c";
+            dgvDetalle.Columns["Cantidad"].DefaultCellStyle.Format = "n0";
+            dgvDetalle.Columns["Descuento"].DefaultCellStyle.Format = "n2";
+            dgvDetalle.Columns["Importe"].DefaultCellStyle.Format = "c";
+            dgvDetalle.Columns["Subtotal"].DefaultCellStyle.Format = "c";
+            dgvDetalle.Columns["Total"].DefaultCellStyle.Format = "c";
+            dgvDetalle.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDetalle.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDetalle.Columns["Cantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDetalle.Columns["Descuento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDetalle.Columns["Importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvDetalle.Columns["Subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvDetalle.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
     }
 }

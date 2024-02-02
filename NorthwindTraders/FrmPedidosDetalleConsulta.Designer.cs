@@ -37,6 +37,7 @@
             this.chkBFPedidoNull = new System.Windows.Forms.CheckBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.txtBProducto = new System.Windows.Forms.TextBox();
             this.txtBDirigidoa = new System.Windows.Forms.TextBox();
             this.txtBCompañiaT = new System.Windows.Forms.TextBox();
             this.dtpBFEnvioFin = new System.Windows.Forms.DateTimePicker();
@@ -50,6 +51,7 @@
             this.dtpBFPedidoIni = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -64,12 +66,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtBEmpleado = new System.Windows.Forms.TextBox();
             this.txtBCliente = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtBProducto = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.grbPedidos = new System.Windows.Forms.GroupBox();
-            this.grbDetalle = new System.Windows.Forms.GroupBox();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
+            this.grbDetalle = new System.Windows.Forms.GroupBox();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -81,8 +81,8 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.grbPedidos.SuspendLayout();
-            this.grbDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
+            this.grbDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -235,6 +235,15 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // txtBProducto
+            // 
+            this.txtBProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBProducto.Location = new System.Drawing.Point(88, 400);
+            this.txtBProducto.MaxLength = 40;
+            this.txtBProducto.Name = "txtBProducto";
+            this.txtBProducto.Size = new System.Drawing.Size(200, 20);
+            this.txtBProducto.TabIndex = 42;
+            // 
             // txtBDirigidoa
             // 
             this.txtBDirigidoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -375,6 +384,16 @@
             this.label14.Text = "Fecha inicial:";
             this.label14.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(17, 403);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 49;
+            this.label3.Text = "Producto:";
+            // 
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -514,25 +533,6 @@
             this.txtBCliente.Size = new System.Drawing.Size(201, 20);
             this.txtBCliente.TabIndex = 29;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 403);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 49;
-            this.label3.Text = "Producto:";
-            // 
-            // txtBProducto
-            // 
-            this.txtBProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBProducto.Location = new System.Drawing.Point(88, 400);
-            this.txtBProducto.MaxLength = 40;
-            this.txtBProducto.Name = "txtBProducto";
-            this.txtBProducto.Size = new System.Drawing.Size(200, 20);
-            this.txtBProducto.TabIndex = 42;
-            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -564,6 +564,16 @@
             this.grbPedidos.Text = "»   Pedidos:   «";
             this.grbPedidos.Paint += new System.Windows.Forms.PaintEventHandler(this.GrbPaint);
             // 
+            // dgvPedidos
+            // 
+            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPedidos.Location = new System.Drawing.Point(3, 18);
+            this.dgvPedidos.Name = "dgvPedidos";
+            this.dgvPedidos.Size = new System.Drawing.Size(842, 261);
+            this.dgvPedidos.TabIndex = 0;
+            this.dgvPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedidos_CellClick);
+            // 
             // grbDetalle
             // 
             this.grbDetalle.Controls.Add(this.dgvDetalle);
@@ -576,16 +586,6 @@
             this.grbDetalle.TabStop = false;
             this.grbDetalle.Text = "»   Detalle de pedido:   «";
             this.grbDetalle.Paint += new System.Windows.Forms.PaintEventHandler(this.GrbPaint);
-            // 
-            // dgvPedidos
-            // 
-            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPedidos.Location = new System.Drawing.Point(3, 18);
-            this.dgvPedidos.Name = "dgvPedidos";
-            this.dgvPedidos.Size = new System.Drawing.Size(842, 261);
-            this.dgvPedidos.TabIndex = 0;
-            this.dgvPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedidos_CellClick);
             // 
             // dgvDetalle
             // 
@@ -609,6 +609,7 @@
             this.Text = "Consulta de detalle de pedidos";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPedidosDetalleConsulta_FormClosed);
             this.Load += new System.EventHandler(this.FrmPedidosDetalleConsulta_Load);
+            this.Shown += new System.EventHandler(this.FrmPedidosDetalleConsulta_Shown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -620,8 +621,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.grbPedidos.ResumeLayout(false);
-            this.grbDetalle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
+            this.grbDetalle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
