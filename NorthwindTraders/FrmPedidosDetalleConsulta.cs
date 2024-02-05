@@ -161,6 +161,12 @@ namespace NorthwindTraders
         {
             dgvDetalle.DataSource = null;
             LlenarDgvPedidos(sender);
+            DataGridViewRow dgvr = dgvPedidos.CurrentRow;
+            if (dgvr != null)
+            {
+                int idPedido = int.Parse(dgvr.Cells["Id"].Value.ToString());
+                LlenarDgvDetalle(idPedido);
+            }
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -295,8 +301,11 @@ namespace NorthwindTraders
         private void dgvPedidos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow dgvr = dgvPedidos.CurrentRow;
-            int idPedido = int.Parse(dgvr.Cells["Id"].Value.ToString());
-            LlenarDgvDetalle(idPedido);
+            if (dgvr != null)
+            {
+                int idPedido = int.Parse(dgvr.Cells["Id"].Value.ToString());
+                LlenarDgvDetalle(idPedido);
+            }
         }
 
         private void LlenarDgvDetalle(int idPedido)
@@ -346,8 +355,11 @@ namespace NorthwindTraders
         private void FrmPedidosDetalleConsulta_Shown(object sender, EventArgs e)
         {
             DataGridViewRow dgvr = dgvPedidos.CurrentRow;
-            int idPedido = int.Parse(dgvr.Cells["Id"].Value.ToString());
-            LlenarDgvDetalle(idPedido);
+            if (dgvr != null)
+            {
+                int idPedido = int.Parse(dgvr.Cells["Id"].Value.ToString());
+                LlenarDgvDetalle(idPedido);
+            }
         }
 
         private void ConfDgvDetalle()
@@ -373,6 +385,16 @@ namespace NorthwindTraders
             dgvDetalle.Columns["Importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvDetalle.Columns["Subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvDetalle.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
+
+        private void dgvPedidos_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewRow dgvr = dgvPedidos.CurrentRow;
+            if (dgvr != null)
+            {
+                int idPedido = int.Parse(dgvr.Cells["Id"].Value.ToString());
+                LlenarDgvDetalle(idPedido);
+            }
         }
     }
 }

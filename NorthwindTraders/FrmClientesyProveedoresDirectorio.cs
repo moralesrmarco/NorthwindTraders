@@ -68,6 +68,12 @@ namespace NorthwindTraders
             dgvClientesProveedores.Columns["Región"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvClientesProveedores.Columns["Código postal"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvClientesProveedores.Columns["Fax"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvClientesProveedores.Columns["País"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvClientesProveedores.Columns["Relación"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvClientesProveedores.Columns["Teléfono"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvClientesProveedores.Columns["Región"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvClientesProveedores.Columns["Código postal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvClientesProveedores.Columns["Fax"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
     }
 }
