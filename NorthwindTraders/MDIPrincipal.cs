@@ -364,5 +364,15 @@ namespace NorthwindTraders
             };
             frmProductosConsultaAlfabetica.Show();
         }
+
+        private void tsmiDirectorioDeClientesYProveedoresPorCiudad_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmClientesyProveedoresDirectorio frmClientesyProveedoresDirectorio = new FrmClientesyProveedoresDirectorio
+            {
+                MdiParent = this
+            };
+            frmClientesyProveedoresDirectorio.Show();
+        }
     }
 }

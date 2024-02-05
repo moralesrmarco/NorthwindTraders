@@ -88,6 +88,12 @@
     <Compile Include="FrmClientesCrud.Designer.cs">
       <DependentUpon>FrmClientesCrud.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmClientesyProveedoresDirectorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClientesyProveedoresDirectorio.Designer.cs">
+      <DependentUpon>FrmClientesyProveedoresDirectorio.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEmpleadosCrud.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,7 @@
     <Compile Include="StoreProcedure\Sp_PedidosDetalle.cs" />
     <Compile Include="StoreProcedure\Sp_Productos.cs" />
     <Compile Include="StoreProcedure\Sp_Proveedores.cs" />
+    <Compile Include="StoreProcedure\Vw_ClientesProveedores_DirectorioPorCiudad.cs" />
     <Compile Include="StoreProcedure\Vw_PedidosCliente.cs" />
     <Compile Include="StoreProcedure\Vw_ProductosListaAlfabetica.cs" />
     <Compile Include="Utils.cs" />
@@ -245,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmClientesCrud.resx">
       <DependentUpon>FrmClientesCrud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClientesyProveedoresDirectorio.resx">
+      <DependentUpon>FrmClientesyProveedoresDirectorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEmpleadosCrud.resx">
       <DependentUpon>FrmEmpleadosCrud.cs</DependentUpon>
