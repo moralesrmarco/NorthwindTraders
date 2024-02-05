@@ -196,6 +196,12 @@
     <Compile Include="FrmProductosModificarRdr.Designer.cs">
       <DependentUpon>FrmProductosModificarRdr.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmProductosPorCategoriasListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProductosPorCategoriasListado.Designer.cs">
+      <DependentUpon>FrmProductosPorCategoriasListado.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProductosRegistrarDap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,7 @@
     <Compile Include="StoreProcedure\Vw_ClientesProveedores_DirectorioPorCiudad.cs" />
     <Compile Include="StoreProcedure\Vw_PedidosCliente.cs" />
     <Compile Include="StoreProcedure\Vw_ProductosListaAlfabetica.cs" />
+    <Compile Include="StoreProcedure\Vw_ProductosPorCategoriaListado.cs" />
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="EmpleadosListado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -306,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductosModificarRdr.resx">
       <DependentUpon>FrmProductosModificarRdr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProductosPorCategoriasListado.resx">
+      <DependentUpon>FrmProductosPorCategoriasListado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductosRegistrarDap.resx">
       <DependentUpon>FrmProductosRegistrarDap.cs</DependentUpon>

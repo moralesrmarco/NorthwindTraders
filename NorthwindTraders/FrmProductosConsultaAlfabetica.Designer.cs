@@ -67,6 +67,7 @@
             this.Controls.Add(this.grbProductos);
             this.Name = "FrmProductosConsultaAlfabetica";
             this.Text = "Consulta alfabetica de productos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductosConsultaAlfabetica_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductosConsultaAlfabetica_Load);
             this.grbProductos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();

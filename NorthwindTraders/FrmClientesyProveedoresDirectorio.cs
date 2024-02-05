@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NorthwindTraders
@@ -74,6 +68,11 @@ namespace NorthwindTraders
             dgvClientesProveedores.Columns["Región"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvClientesProveedores.Columns["Código postal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvClientesProveedores.Columns["Fax"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+
+        private void FrmClientesyProveedoresDirectorio_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Utils.ActualizarBarraDeEstado("Activo", this);
         }
     }
 }

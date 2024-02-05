@@ -67,6 +67,7 @@
             this.Controls.Add(this.grbClientesProveedores);
             this.Name = "FrmClientesyProveedoresDirectorio";
             this.Text = "Directorio de clientes y proveedores por ciudad";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmClientesyProveedoresDirectorio_FormClosed);
             this.Load += new System.EventHandler(this.FrmClientesyProveedoresDirectorio_Load);
             this.grbClientesProveedores.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientesProveedores)).EndInit();

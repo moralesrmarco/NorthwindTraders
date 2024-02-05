@@ -374,5 +374,15 @@ namespace NorthwindTraders
             };
             frmClientesyProveedoresDirectorio.Show();
         }
+
+        private void tsmiListadoDeProductosPorCategorias_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmProductosPorCategoriasListado frmProductosPorCategoriasListado = new FrmProductosPorCategoriasListado
+            {
+                MdiParent = this
+            };
+            frmProductosPorCategoriasListado.Show();
+        }
     }
 }
