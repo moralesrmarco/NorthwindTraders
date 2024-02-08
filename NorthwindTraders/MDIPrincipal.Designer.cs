@@ -75,6 +75,7 @@
             this.tsmiConsultaDeProductosPorProveedor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiConsultaAlfabeticaDeProductos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiListadoDeProductosPorCategorias = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiProductosPorEncimaPrecioProm = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.accesoConDataAdapterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
@@ -127,7 +128,7 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tsmiProductosPorEncimaPrecioProm = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiConsultaDePedidosPorVendedor = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -536,6 +537,13 @@
             this.tsmiListadoDeProductosPorCategorias.Text = "Listado de productos por categorías";
             this.tsmiListadoDeProductosPorCategorias.Click += new System.EventHandler(this.tsmiListadoDeProductosPorCategorias_Click);
             // 
+            // tsmiProductosPorEncimaPrecioProm
+            // 
+            this.tsmiProductosPorEncimaPrecioProm.Name = "tsmiProductosPorEncimaPrecioProm";
+            this.tsmiProductosPorEncimaPrecioProm.Size = new System.Drawing.Size(301, 22);
+            this.tsmiProductosPorEncimaPrecioProm.Text = "Productos por encima del precio promedio";
+            this.tsmiProductosPorEncimaPrecioProm.Click += new System.EventHandler(this.tsmiProductosPorEncimaPrecioProm_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -645,7 +653,8 @@
             this.tsmiMantenimientoDeDetalleDePedidos,
             this.tsmiConsultaDeDetalleDePedidos,
             this.tsmiConsultaDePedidosPorCliente,
-            this.tsmiConsultaDeDetalleDePedidosPorCliente});
+            this.tsmiConsultaDeDetalleDePedidosPorCliente,
+            this.tsmiConsultaDePedidosPorVendedor});
             this.tsmiPedidos.Name = "tsmiPedidos";
             this.tsmiPedidos.Size = new System.Drawing.Size(61, 20);
             this.tsmiPedidos.Text = "Pedidos";
@@ -927,12 +936,12 @@
             this.tsslEstado.Size = new System.Drawing.Size(45, 19);
             this.tsslEstado.Text = "Activo";
             // 
-            // tsmiProductosPorEncimaPrecioProm
+            // tsmiConsultaDePedidosPorVendedor
             // 
-            this.tsmiProductosPorEncimaPrecioProm.Name = "tsmiProductosPorEncimaPrecioProm";
-            this.tsmiProductosPorEncimaPrecioProm.Size = new System.Drawing.Size(301, 22);
-            this.tsmiProductosPorEncimaPrecioProm.Text = "Productos por encima del precio promedio";
-            this.tsmiProductosPorEncimaPrecioProm.Click += new System.EventHandler(this.tsmiProductosPorEncimaPrecioProm_Click);
+            this.tsmiConsultaDePedidosPorVendedor.Name = "tsmiConsultaDePedidosPorVendedor";
+            this.tsmiConsultaDePedidosPorVendedor.Size = new System.Drawing.Size(295, 22);
+            this.tsmiConsultaDePedidosPorVendedor.Text = "Consulta de pedidos por vendedor";
+            this.tsmiConsultaDePedidosPorVendedor.Click += new System.EventHandler(this.tsmiConsultaDePedidosPorVendedor_Click);
             // 
             // MDIPrincipal
             // 
@@ -1059,6 +1068,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiListadoDeProductosPorCategorias;
         private System.Windows.Forms.ToolStripMenuItem tsmi2ListadoDeProductosPorCategorías;
         private System.Windows.Forms.ToolStripMenuItem tsmiProductosPorEncimaPrecioProm;
+        private System.Windows.Forms.ToolStripMenuItem tsmiConsultaDePedidosPorVendedor;
     }
 }
 

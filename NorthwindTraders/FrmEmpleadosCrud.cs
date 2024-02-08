@@ -392,8 +392,14 @@ namespace NorthwindTraders
                 txtPais.Text = dgvr.Cells["País"].Value.ToString();
                 txtTelefono.Text = dgvr.Cells["Teléfono"].Value.ToString();
                 txtExtension.Text = dgvr.Cells["Extensión"].Value.ToString();
-                dtpFNacimiento.Value = DateTime.Parse(dgvr.Cells["Fecha de nacimiento"].Value.ToString());
-                dtpFContratacion.Value = DateTime.Parse(dgvr.Cells["Fecha de contratación"].Value.ToString());
+                if (dgvr.Cells["Fecha de nacimiento"].Value != DBNull.Value)
+                    dtpFNacimiento.Value = DateTime.Parse(dgvr.Cells["Fecha de nacimiento"].Value.ToString());
+                else
+                    dtpFNacimiento.Value = dtpFNacimiento.MinDate;
+                if (dgvr.Cells["Fecha de contratación"].Value != DBNull.Value)
+                    dtpFContratacion.Value = DateTime.Parse(dgvr.Cells["Fecha de contratación"].Value.ToString());
+                else
+                    dtpFContratacion.Value = dtpFContratacion.MinDate;
                 if (dgvr.Cells["Foto"].Value != DBNull.Value)
                 {
                     byte[] foto = (byte[])dgvr.Cells["Foto"].Value;
