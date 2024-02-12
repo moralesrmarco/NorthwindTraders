@@ -30,16 +30,16 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grbClientes = new System.Windows.Forms.GroupBox();
-            this.grbPedidos = new System.Windows.Forms.GroupBox();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.grbPedidos = new System.Windows.Forms.GroupBox();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.grbClientes.SuspendLayout();
-            this.grbPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
+            this.grbPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,10 +53,12 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.grbClientes);
+            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.grbPedidos);
+            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.splitContainer1.Size = new System.Drawing.Size(984, 621);
             this.splitContainer1.SplitterDistance = 328;
             this.splitContainer1.TabIndex = 0;
@@ -65,46 +67,46 @@
             // 
             this.grbClientes.Controls.Add(this.dgvClientes);
             this.grbClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grbClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbClientes.Location = new System.Drawing.Point(0, 0);
+            this.grbClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbClientes.Location = new System.Drawing.Point(10, 3);
             this.grbClientes.Name = "grbClientes";
-            this.grbClientes.Size = new System.Drawing.Size(984, 328);
+            this.grbClientes.Size = new System.Drawing.Size(964, 322);
             this.grbClientes.TabIndex = 0;
             this.grbClientes.TabStop = false;
             this.grbClientes.Text = "»   Clientes:   «";
             this.grbClientes.Paint += new System.Windows.Forms.PaintEventHandler(this.GrbPaint);
             // 
+            // dgvClientes
+            // 
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClientes.Location = new System.Drawing.Point(3, 18);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.Size = new System.Drawing.Size(958, 301);
+            this.dgvClientes.TabIndex = 0;
+            this.dgvClientes.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvClientes_DataBindingComplete);
+            this.dgvClientes.SelectionChanged += new System.EventHandler(this.dgvClientes_SelectionChanged);
+            // 
             // grbPedidos
             // 
             this.grbPedidos.Controls.Add(this.dgvPedidos);
             this.grbPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grbPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbPedidos.Location = new System.Drawing.Point(0, 0);
+            this.grbPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbPedidos.Location = new System.Drawing.Point(10, 3);
             this.grbPedidos.Name = "grbPedidos";
-            this.grbPedidos.Size = new System.Drawing.Size(984, 289);
+            this.grbPedidos.Size = new System.Drawing.Size(964, 283);
             this.grbPedidos.TabIndex = 0;
             this.grbPedidos.TabStop = false;
             this.grbPedidos.Text = "»   Pedidos:   «";
             this.grbPedidos.Paint += new System.Windows.Forms.PaintEventHandler(this.GrbPaint);
             // 
-            // dgvClientes
-            // 
-            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvClientes.Location = new System.Drawing.Point(3, 16);
-            this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(978, 309);
-            this.dgvClientes.TabIndex = 0;
-            this.dgvClientes.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvClientes_DataBindingComplete);
-            this.dgvClientes.SelectionChanged += new System.EventHandler(this.dgvClientes_SelectionChanged);
-            // 
             // dgvPedidos
             // 
             this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPedidos.Location = new System.Drawing.Point(3, 16);
+            this.dgvPedidos.Location = new System.Drawing.Point(3, 18);
             this.dgvPedidos.Name = "dgvPedidos";
-            this.dgvPedidos.Size = new System.Drawing.Size(978, 270);
+            this.dgvPedidos.Size = new System.Drawing.Size(958, 262);
             this.dgvPedidos.TabIndex = 0;
             // 
             // FrmPedidosCliente
@@ -123,8 +125,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.grbClientes.ResumeLayout(false);
-            this.grbPedidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
+            this.grbPedidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
             this.ResumeLayout(false);
 

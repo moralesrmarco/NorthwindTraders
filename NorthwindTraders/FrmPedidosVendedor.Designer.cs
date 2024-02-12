@@ -30,16 +30,16 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grbVendedores = new System.Windows.Forms.GroupBox();
-            this.grbPedidos = new System.Windows.Forms.GroupBox();
             this.dgvVendedores = new System.Windows.Forms.DataGridView();
+            this.grbPedidos = new System.Windows.Forms.GroupBox();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.grbVendedores.SuspendLayout();
-            this.grbPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendedores)).BeginInit();
+            this.grbPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,12 +54,12 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.grbVendedores);
-            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(5);
+            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.grbPedidos);
-            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(5);
+            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.splitContainer1.Size = new System.Drawing.Size(984, 621);
             this.splitContainer1.SplitterDistance = 250;
             this.splitContainer1.TabIndex = 0;
@@ -69,26 +69,13 @@
             this.grbVendedores.Controls.Add(this.dgvVendedores);
             this.grbVendedores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbVendedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbVendedores.Location = new System.Drawing.Point(5, 5);
+            this.grbVendedores.Location = new System.Drawing.Point(10, 3);
             this.grbVendedores.Name = "grbVendedores";
-            this.grbVendedores.Size = new System.Drawing.Size(974, 240);
+            this.grbVendedores.Size = new System.Drawing.Size(964, 244);
             this.grbVendedores.TabIndex = 0;
             this.grbVendedores.TabStop = false;
             this.grbVendedores.Text = "»   Vendedores:   «";
             this.grbVendedores.Paint += new System.Windows.Forms.PaintEventHandler(this.GrbPaint);
-            // 
-            // grbPedidos
-            // 
-            this.grbPedidos.Controls.Add(this.dgvPedidos);
-            this.grbPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grbPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbPedidos.Location = new System.Drawing.Point(5, 5);
-            this.grbPedidos.Name = "grbPedidos";
-            this.grbPedidos.Size = new System.Drawing.Size(974, 357);
-            this.grbPedidos.TabIndex = 0;
-            this.grbPedidos.TabStop = false;
-            this.grbPedidos.Text = "»   Pedidos:   «";
-            this.grbPedidos.Paint += new System.Windows.Forms.PaintEventHandler(this.GrbPaint);
             // 
             // dgvVendedores
             // 
@@ -96,8 +83,23 @@
             this.dgvVendedores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVendedores.Location = new System.Drawing.Point(3, 18);
             this.dgvVendedores.Name = "dgvVendedores";
-            this.dgvVendedores.Size = new System.Drawing.Size(968, 219);
+            this.dgvVendedores.Size = new System.Drawing.Size(958, 223);
             this.dgvVendedores.TabIndex = 0;
+            this.dgvVendedores.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvVendedores_DataBindingComplete);
+            this.dgvVendedores.SelectionChanged += new System.EventHandler(this.dgvVendedores_SelectionChanged);
+            // 
+            // grbPedidos
+            // 
+            this.grbPedidos.Controls.Add(this.dgvPedidos);
+            this.grbPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grbPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbPedidos.Location = new System.Drawing.Point(10, 3);
+            this.grbPedidos.Name = "grbPedidos";
+            this.grbPedidos.Size = new System.Drawing.Size(964, 361);
+            this.grbPedidos.TabIndex = 0;
+            this.grbPedidos.TabStop = false;
+            this.grbPedidos.Text = "»   Pedidos:   «";
+            this.grbPedidos.Paint += new System.Windows.Forms.PaintEventHandler(this.GrbPaint);
             // 
             // dgvPedidos
             // 
@@ -105,7 +107,7 @@
             this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPedidos.Location = new System.Drawing.Point(3, 18);
             this.dgvPedidos.Name = "dgvPedidos";
-            this.dgvPedidos.Size = new System.Drawing.Size(968, 336);
+            this.dgvPedidos.Size = new System.Drawing.Size(958, 340);
             this.dgvPedidos.TabIndex = 0;
             // 
             // FrmPedidosVendedor
@@ -116,14 +118,16 @@
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmPedidosVendedor";
-            this.Text = "FrmPedidosVendedor";
+            this.Text = "Consulta de pedidos por vendedor";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPedidosVendedor_FormClosed);
+            this.Load += new System.EventHandler(this.FrmPedidosVendedor_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.grbVendedores.ResumeLayout(false);
-            this.grbPedidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendedores)).EndInit();
+            this.grbPedidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
             this.ResumeLayout(false);
 

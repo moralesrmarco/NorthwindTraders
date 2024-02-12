@@ -252,8 +252,10 @@
     <Compile Include="StoreProcedure\Sp_Pedidos.cs" />
     <Compile Include="StoreProcedure\Sp_PedidosCliente.cs" />
     <Compile Include="StoreProcedure\Sp_PedidosDetalle.cs" />
+    <Compile Include="StoreProcedure\Sp_PedidosVendedor.cs" />
     <Compile Include="StoreProcedure\Sp_Productos.cs" />
     <Compile Include="StoreProcedure\Sp_Proveedores.cs" />
+    <Compile Include="StoreProcedure\Sp_Vendedores_Listar.cs" />
     <Compile Include="StoreProcedure\Vw_ClientesProveedores_DirectorioPorCiudad.cs" />
     <Compile Include="StoreProcedure\Vw_PedidosCliente.cs" />
     <Compile Include="StoreProcedure\Vw_ProductosListaAlfabetica.cs" />

@@ -53,10 +53,12 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.grbProveedores);
+            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.grbProductos);
+            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.splitContainer1.Size = new System.Drawing.Size(984, 621);
             this.splitContainer1.SplitterDistance = 328;
             this.splitContainer1.TabIndex = 0;
@@ -65,10 +67,10 @@
             // 
             this.grbProveedores.Controls.Add(this.dgvProveedores);
             this.grbProveedores.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grbProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbProveedores.Location = new System.Drawing.Point(0, 0);
+            this.grbProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbProveedores.Location = new System.Drawing.Point(10, 3);
             this.grbProveedores.Name = "grbProveedores";
-            this.grbProveedores.Size = new System.Drawing.Size(984, 328);
+            this.grbProveedores.Size = new System.Drawing.Size(964, 322);
             this.grbProveedores.TabIndex = 0;
             this.grbProveedores.TabStop = false;
             this.grbProveedores.Text = "»   Proveedores:   «";
@@ -78,9 +80,9 @@
             // 
             this.dgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProveedores.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProveedores.Location = new System.Drawing.Point(3, 16);
+            this.dgvProveedores.Location = new System.Drawing.Point(3, 18);
             this.dgvProveedores.Name = "dgvProveedores";
-            this.dgvProveedores.Size = new System.Drawing.Size(978, 309);
+            this.dgvProveedores.Size = new System.Drawing.Size(958, 301);
             this.dgvProveedores.TabIndex = 0;
             this.dgvProveedores.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvProveedores_DataBindingComplete);
             this.dgvProveedores.SelectionChanged += new System.EventHandler(this.dgvProveedores_SelectionChanged);
@@ -89,10 +91,10 @@
             // 
             this.grbProductos.Controls.Add(this.dgvProductos);
             this.grbProductos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grbProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbProductos.Location = new System.Drawing.Point(0, 0);
+            this.grbProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbProductos.Location = new System.Drawing.Point(10, 3);
             this.grbProductos.Name = "grbProductos";
-            this.grbProductos.Size = new System.Drawing.Size(984, 289);
+            this.grbProductos.Size = new System.Drawing.Size(964, 283);
             this.grbProductos.TabIndex = 0;
             this.grbProductos.TabStop = false;
             this.grbProductos.Text = "»   Productos:   «";
@@ -102,9 +104,9 @@
             // 
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProductos.Location = new System.Drawing.Point(3, 16);
+            this.dgvProductos.Location = new System.Drawing.Point(3, 18);
             this.dgvProductos.Name = "dgvProductos";
-            this.dgvProductos.Size = new System.Drawing.Size(978, 270);
+            this.dgvProductos.Size = new System.Drawing.Size(958, 262);
             this.dgvProductos.TabIndex = 0;
             // 
             // FrmProveedoresProductos

@@ -67,6 +67,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.grbDetallePedido);
+            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.splitContainer1.Size = new System.Drawing.Size(984, 621);
             this.splitContainer1.SplitterDistance = 310;
             this.splitContainer1.TabIndex = 0;
@@ -81,10 +82,12 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.grbClientes);
+            this.splitContainer2.Panel1.Padding = new System.Windows.Forms.Padding(10, 3, 5, 3);
             // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.grbPedidos);
+            this.splitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(5, 3, 10, 3);
             this.splitContainer2.Size = new System.Drawing.Size(984, 310);
             this.splitContainer2.SplitterDistance = 492;
             this.splitContainer2.TabIndex = 0;
@@ -94,9 +97,9 @@
             this.grbClientes.Controls.Add(this.dgvClientes);
             this.grbClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbClientes.Location = new System.Drawing.Point(0, 0);
+            this.grbClientes.Location = new System.Drawing.Point(10, 3);
             this.grbClientes.Name = "grbClientes";
-            this.grbClientes.Size = new System.Drawing.Size(492, 310);
+            this.grbClientes.Size = new System.Drawing.Size(477, 304);
             this.grbClientes.TabIndex = 0;
             this.grbClientes.TabStop = false;
             this.grbClientes.Text = "»   Clientes:   «";
@@ -108,7 +111,7 @@
             this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvClientes.Location = new System.Drawing.Point(3, 19);
             this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(486, 288);
+            this.dgvClientes.Size = new System.Drawing.Size(471, 282);
             this.dgvClientes.TabIndex = 0;
             this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
             // 
@@ -117,9 +120,9 @@
             this.grbPedidos.Controls.Add(this.dgvPedidos);
             this.grbPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbPedidos.Location = new System.Drawing.Point(0, 0);
+            this.grbPedidos.Location = new System.Drawing.Point(5, 3);
             this.grbPedidos.Name = "grbPedidos";
-            this.grbPedidos.Size = new System.Drawing.Size(488, 310);
+            this.grbPedidos.Size = new System.Drawing.Size(473, 304);
             this.grbPedidos.TabIndex = 0;
             this.grbPedidos.TabStop = false;
             this.grbPedidos.Text = "»   Pedidos:   «";
@@ -131,7 +134,7 @@
             this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPedidos.Location = new System.Drawing.Point(3, 19);
             this.dgvPedidos.Name = "dgvPedidos";
-            this.dgvPedidos.Size = new System.Drawing.Size(482, 288);
+            this.dgvPedidos.Size = new System.Drawing.Size(467, 282);
             this.dgvPedidos.TabIndex = 0;
             this.dgvPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedidos_CellClick);
             // 
@@ -140,9 +143,9 @@
             this.grbDetallePedido.Controls.Add(this.dgvDetallePedido);
             this.grbDetallePedido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbDetallePedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbDetallePedido.Location = new System.Drawing.Point(0, 0);
+            this.grbDetallePedido.Location = new System.Drawing.Point(10, 3);
             this.grbDetallePedido.Name = "grbDetallePedido";
-            this.grbDetallePedido.Size = new System.Drawing.Size(984, 307);
+            this.grbDetallePedido.Size = new System.Drawing.Size(964, 301);
             this.grbDetallePedido.TabIndex = 0;
             this.grbDetallePedido.TabStop = false;
             this.grbDetallePedido.Text = "»   Detalle de pedido:   «";
@@ -154,7 +157,7 @@
             this.dgvDetallePedido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDetallePedido.Location = new System.Drawing.Point(3, 19);
             this.dgvDetallePedido.Name = "dgvDetallePedido";
-            this.dgvDetallePedido.Size = new System.Drawing.Size(978, 285);
+            this.dgvDetallePedido.Size = new System.Drawing.Size(958, 279);
             this.dgvDetallePedido.TabIndex = 0;
             // 
             // FrmPedidosClienteDetalle
