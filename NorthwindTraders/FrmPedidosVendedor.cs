@@ -57,6 +57,7 @@ namespace NorthwindTraders
                 bsVendedores.DataMember = "Vendedores";
                 bsPedidos.DataSource = bsVendedores;
                 bsPedidos.DataMember = "PedidosVendedores";
+                Utils.ActualizarBarraDeEstado($"Se encontraron {dgvVendedores.RowCount} registros en vendedores y {dgvPedidos.RowCount} registros de pedidos del vendedor {dgvVendedores.CurrentRow.Cells["Nombres"].Value} {dgvVendedores.CurrentRow.Cells["Apellidos"].Value}", this);
             }
             catch (SqlException ex)
             {
@@ -80,19 +81,14 @@ namespace NorthwindTraders
             Utils.ActualizarBarraDeEstado($"Se encontraron {dgvVendedores.RowCount} registros en vendedores y {dgvPedidos.RowCount} registros de pedidos del vendedor {dgvVendedores.CurrentRow.Cells["Nombres"].Value} {dgvVendedores.CurrentRow.Cells["Apellidos"].Value}", this);
         }
 
-        private void dgvVendedores_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            Utils.ActualizarBarraDeEstado($"Se encontraron {dgvVendedores.RowCount} registros en vendedores", this);
-        }
-
         private void ConfDgvVendedores()
         {
             dgvVendedores.Columns["Reportaa"].Visible = false;
             dgvVendedores.Columns["Id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvVendedores.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvVendedores.Columns["Título de cortesia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvVendedores.Columns["Fecha de nacimiento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvVendedores.Columns["Fecha de contratación"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvVendedores.Columns["Fecha de nacimiento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvVendedores.Columns["Fecha de contratación"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvVendedores.Columns["Ciudad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvVendedores.Columns["Región"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvVendedores.Columns["Código postal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -104,6 +100,13 @@ namespace NorthwindTraders
             dgvVendedores.Columns["País"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvVendedores.Columns["Extensión"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvVendedores.Columns["Reporta a"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvVendedores.Columns["Fecha de contratación"].DefaultCellStyle.Format = "dd \"de\" MMM \"de\" yyyy";
+            dgvVendedores.Columns["Fecha de nacimiento"].DefaultCellStyle.Format = "dd \"de\" MMM \"de\" yyyy";
+            //dgvVendedores.Columns["Fecha de contratación"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //dgvVendedores.Columns["Fecha de nacimiento"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvVendedores.Columns["Fecha de contratación"].Width = 55;
+            dgvVendedores.Columns["Fecha de nacimiento"].Width = 55;
+            dgvVendedores.Columns["Título de cortesia"].Width = 40;
         }
 
         private void ConfDgvPedidos()
@@ -145,6 +148,16 @@ namespace NorthwindTraders
             dgvPedidos.Columns["Cliente Id"].DisplayIndex = 16;
             dgvPedidos.Columns["Nombre de contacto"].DisplayIndex = 17;
             dgvPedidos.Columns["Vendedor Id"].DisplayIndex = 18;
+            dgvPedidos.Columns["Fecha de pedido"].DefaultCellStyle.Format = "dd \"de\" MMM \"de\" yyyy\n hh:mm:ss tt";
+            dgvPedidos.Columns["Fecha requerido"].DefaultCellStyle.Format = "dd \"de\" MMM \"de\" yyyy\n hh:mm:ss tt";
+            dgvPedidos.Columns["Fecha de envío"].DefaultCellStyle.Format = "dd \"de\" MMM \"de\" yyyy\n hh:mm:ss tt";
+            dgvPedidos.Columns["Fecha de pedido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvPedidos.Columns["Fecha requerido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvPedidos.Columns["Fecha de envío"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvPedidos.Columns["Fecha de pedido"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvPedidos.Columns["Fecha requerido"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvPedidos.Columns["Fecha de envío"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
+
     }
 }

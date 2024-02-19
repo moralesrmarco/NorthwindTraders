@@ -85,7 +85,6 @@
             this.dgvVendedores.Name = "dgvVendedores";
             this.dgvVendedores.Size = new System.Drawing.Size(958, 223);
             this.dgvVendedores.TabIndex = 0;
-            this.dgvVendedores.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvVendedores_DataBindingComplete);
             this.dgvVendedores.SelectionChanged += new System.EventHandler(this.dgvVendedores_SelectionChanged);
             // 
             // grbPedidos
