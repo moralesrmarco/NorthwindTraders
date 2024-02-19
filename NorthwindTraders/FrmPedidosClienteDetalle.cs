@@ -274,6 +274,5 @@ namespace NorthwindTraders
         {
             Utils.ActualizarBarraDeEstado("Activo", this);
         }
-
     }
 }
