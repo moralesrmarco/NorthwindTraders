@@ -424,5 +424,15 @@ namespace NorthwindTraders
             };
             frmPedidosxClientes.Show();
         }
+
+        private void tsmiConsultaDeDetalleDePedidosPorClientes_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmPedidosxClienteDetalle frmPedidosxClienteDetalle = new FrmPedidosxClienteDetalle
+            {
+                MdiParent = this
+            };
+            frmPedidosxClienteDetalle.Show();
+        }
     }
 }

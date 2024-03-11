@@ -990,6 +990,7 @@
             this.tsmiConsultaDeDetalleDePedidosPorClientes.Name = "tsmiConsultaDeDetalleDePedidosPorClientes";
             this.tsmiConsultaDeDetalleDePedidosPorClientes.Size = new System.Drawing.Size(310, 22);
             this.tsmiConsultaDeDetalleDePedidosPorClientes.Text = "Consulta de detalle de pedidos por clientes";
+            this.tsmiConsultaDeDetalleDePedidosPorClientes.Click += new System.EventHandler(this.tsmiConsultaDeDetalleDePedidosPorClientes_Click);
             // 
             // tsmiConsultaDePedidosPorVendedor
             // 
