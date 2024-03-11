@@ -1,6 +1,6 @@
 ﻿namespace NorthwindTraders
 {
-    partial class FrmPedidosCliente
+    partial class FrmPedidosxClientes
     {
         /// <summary>
         /// Required designer variable.
@@ -30,16 +30,16 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grbClientes = new System.Windows.Forms.GroupBox();
-            this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.grbPedidos = new System.Windows.Forms.GroupBox();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.grbClientes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.grbPedidos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,17 +76,6 @@
             this.grbClientes.Text = "»   Clientes:   «";
             this.grbClientes.Paint += new System.Windows.Forms.PaintEventHandler(this.GrbPaint);
             // 
-            // dgvClientes
-            // 
-            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvClientes.Location = new System.Drawing.Point(3, 18);
-            this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(958, 283);
-            this.dgvClientes.TabIndex = 0;
-            this.dgvClientes.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvClientes_DataBindingComplete);
-            this.dgvClientes.SelectionChanged += new System.EventHandler(this.dgvClientes_SelectionChanged);
-            // 
             // grbPedidos
             // 
             this.grbPedidos.Controls.Add(this.dgvPedidos);
@@ -100,6 +89,18 @@
             this.grbPedidos.Text = "»   Pedidos:   «";
             this.grbPedidos.Paint += new System.Windows.Forms.PaintEventHandler(this.GrbPaint);
             // 
+            // dgvClientes
+            // 
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClientes.Location = new System.Drawing.Point(3, 18);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.Size = new System.Drawing.Size(958, 283);
+            this.dgvClientes.TabIndex = 0;
+            this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
+            this.dgvClientes.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvClientes_DataBindingComplete);
+            this.dgvClientes.SelectionChanged += new System.EventHandler(this.dgvClientes_SelectionChanged);
+            // 
             // dgvPedidos
             // 
             this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -109,24 +110,24 @@
             this.dgvPedidos.Size = new System.Drawing.Size(958, 280);
             this.dgvPedidos.TabIndex = 0;
             // 
-            // FrmPedidosCliente
+            // FrmPedidosxClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 621);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
-            this.Name = "FrmPedidosCliente";
+            this.Name = "FrmPedidosxClientes";
             this.Text = "Consulta de pedidos por cliente";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPedidosCliente_FormClosed);
-            this.Load += new System.EventHandler(this.FrmPedidosCliente_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPedidosxClientes_FormClosed);
+            this.Load += new System.EventHandler(this.FrmPedidosxClientes_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.grbClientes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.grbPedidos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
             this.ResumeLayout(false);
 

@@ -60,7 +60,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.splitContainer1.Size = new System.Drawing.Size(984, 621);
-            this.splitContainer1.SplitterDistance = 328;
+            this.splitContainer1.SplitterDistance = 310;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
@@ -70,7 +70,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(10, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(964, 322);
+            this.groupBox1.Size = new System.Drawing.Size(964, 304);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "»   Categorías:   «";
@@ -82,7 +82,7 @@
             this.dgvCategorias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCategorias.Location = new System.Drawing.Point(3, 18);
             this.dgvCategorias.Name = "dgvCategorias";
-            this.dgvCategorias.Size = new System.Drawing.Size(958, 301);
+            this.dgvCategorias.Size = new System.Drawing.Size(958, 283);
             this.dgvCategorias.TabIndex = 0;
             this.dgvCategorias.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvCategorias_DataBindingComplete);
             this.dgvCategorias.SelectionChanged += new System.EventHandler(this.dgvCategorias_SelectionChanged);
@@ -94,7 +94,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(10, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(964, 283);
+            this.groupBox2.Size = new System.Drawing.Size(964, 301);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "»   Productos:   «";
@@ -106,7 +106,7 @@
             this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProductos.Location = new System.Drawing.Point(3, 18);
             this.dgvProductos.Name = "dgvProductos";
-            this.dgvProductos.Size = new System.Drawing.Size(958, 262);
+            this.dgvProductos.Size = new System.Drawing.Size(958, 280);
             this.dgvProductos.TabIndex = 0;
             // 
             // FrmCategoriasProductos

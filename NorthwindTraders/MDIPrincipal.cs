@@ -325,36 +325,6 @@ namespace NorthwindTraders
             frmProveedoresProductos.Show();
         }
 
-        private void tsmiConsultaDePedidosPorCliente_Click(object sender, EventArgs e)
-        {
-            Utils.CerrarFormularios("MDIPrincipal");
-            FrmPedidosCliente frmPedidosCliente = new FrmPedidosCliente
-            {
-                MdiParent = this
-            };
-            frmPedidosCliente.Show();
-        }
-
-        private void tsmiConsultaDeDetalleDePedidosPorCliente_Click(object sender, EventArgs e)
-        {
-            Utils.CerrarFormularios("MDIPrincipal");
-            FrmPedidosClienteDetalle frmPedidosClienteDetalle = new FrmPedidosClienteDetalle
-            {
-                MdiParent = this
-            };
-            frmPedidosClienteDetalle.Show();
-        }
-
-        private void tsmiConsultaDeDetalleDePedidos_Click(object sender, EventArgs e)
-        {
-            Utils.CerrarFormularios("MDIPrincipal");
-            FrmPedidosDetalleConsulta frmPedidosDetalleConsulta = new FrmPedidosDetalleConsulta
-            {
-                MdiParent = this
-            };
-            frmPedidosDetalleConsulta.Show();
-        }
-
         private void tsmiConsultaAlfabeticaDeProductos_Click(object sender, EventArgs e)
         {
             Utils.CerrarFormularios("MDIPrincipal");
@@ -395,7 +365,27 @@ namespace NorthwindTraders
             frmProductosPorEncimaPrecioPromedio.Show();
         }
 
-        private void tsmiConsultaDePedidosPorVendedor_Click(object sender, EventArgs e)
+        private void tsmiConsultaDePedidosPorCliente_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmPedidosCliente frmPedidosCliente = new FrmPedidosCliente
+            {
+                MdiParent = this
+            };
+            frmPedidosCliente.Show();
+        }
+
+        private void tsmiConsultaDeDetalleDePedidosPorCliente_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmPedidosClienteDetalle frmPedidosClienteDetalle = new FrmPedidosClienteDetalle
+            {
+                MdiParent = this
+            };
+            frmPedidosClienteDetalle.Show();
+        }
+
+        private void tsmiConsultaDePedidoPorVendedor_Click(object sender, EventArgs e)
         {
             Utils.CerrarFormularios("MDIPrincipal");
             FrmPedidosVendedor frmPedidosVendedor = new FrmPedidosVendedor
@@ -413,6 +403,26 @@ namespace NorthwindTraders
                 MdiParent = this
             };
             frmPedidosVendedorDetalle.Show();
+        }
+
+        private void tsmiConsultaDetallePedidos_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmPedidosDetalleConsulta frmPedidosDetalleConsulta = new FrmPedidosDetalleConsulta
+            {
+                MdiParent = this
+            };
+            frmPedidosDetalleConsulta.Show();
+        }
+
+        private void tsmiConsultaDePedidosPorClientes_Click(object sender, EventArgs e)
+        {
+            Utils.CerrarFormularios("MDIPrincipal");
+            FrmPedidosxClientes frmPedidosxClientes = new FrmPedidosxClientes
+            {
+                MdiParent = this
+            };
+            frmPedidosxClientes.Show();
         }
     }
 }
