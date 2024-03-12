@@ -99,6 +99,7 @@
             this.grbClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbClientes.Location = new System.Drawing.Point(10, 3);
             this.grbClientes.Name = "grbClientes";
+            this.grbClientes.Padding = new System.Windows.Forms.Padding(10, 5, 10, 10);
             this.grbClientes.Size = new System.Drawing.Size(477, 304);
             this.grbClientes.TabIndex = 0;
             this.grbClientes.TabStop = false;
@@ -109,9 +110,9 @@
             // 
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvClientes.Location = new System.Drawing.Point(3, 19);
+            this.dgvClientes.Location = new System.Drawing.Point(10, 21);
             this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(471, 282);
+            this.dgvClientes.Size = new System.Drawing.Size(457, 273);
             this.dgvClientes.TabIndex = 0;
             this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
             // 
@@ -122,6 +123,7 @@
             this.grbPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbPedidos.Location = new System.Drawing.Point(5, 3);
             this.grbPedidos.Name = "grbPedidos";
+            this.grbPedidos.Padding = new System.Windows.Forms.Padding(10, 5, 10, 10);
             this.grbPedidos.Size = new System.Drawing.Size(473, 304);
             this.grbPedidos.TabIndex = 0;
             this.grbPedidos.TabStop = false;
@@ -132,9 +134,9 @@
             // 
             this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPedidos.Location = new System.Drawing.Point(3, 19);
+            this.dgvPedidos.Location = new System.Drawing.Point(10, 21);
             this.dgvPedidos.Name = "dgvPedidos";
-            this.dgvPedidos.Size = new System.Drawing.Size(467, 282);
+            this.dgvPedidos.Size = new System.Drawing.Size(453, 273);
             this.dgvPedidos.TabIndex = 0;
             this.dgvPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedidos_CellClick);
             // 
@@ -145,6 +147,7 @@
             this.grbDetallePedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbDetallePedido.Location = new System.Drawing.Point(10, 3);
             this.grbDetallePedido.Name = "grbDetallePedido";
+            this.grbDetallePedido.Padding = new System.Windows.Forms.Padding(10, 5, 10, 10);
             this.grbDetallePedido.Size = new System.Drawing.Size(964, 301);
             this.grbDetallePedido.TabIndex = 0;
             this.grbDetallePedido.TabStop = false;
@@ -155,9 +158,9 @@
             // 
             this.dgvDetallePedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetallePedido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDetallePedido.Location = new System.Drawing.Point(3, 19);
+            this.dgvDetallePedido.Location = new System.Drawing.Point(10, 21);
             this.dgvDetallePedido.Name = "dgvDetallePedido";
-            this.dgvDetallePedido.Size = new System.Drawing.Size(958, 279);
+            this.dgvDetallePedido.Size = new System.Drawing.Size(944, 270);
             this.dgvDetallePedido.TabIndex = 0;
             // 
             // FrmPedidosClienteDetalle
