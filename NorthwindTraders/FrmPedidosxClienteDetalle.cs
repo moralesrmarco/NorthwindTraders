@@ -28,9 +28,7 @@ namespace NorthwindTraders
             Utils.ConfDataGridView(DgvClientes);
             Utils.ConfDataGridView(DgvPedidos);
             Utils.ConfDataGridView(DgvDetalle);
-            DgvClientes.SelectionChanged -= new EventHandler(DgvClientes_SelectionChanged);
             LlenarDgvClientes();
-            DgvClientes.SelectionChanged += new EventHandler(DgvClientes_SelectionChanged);
             ConfDgvClientes();
             LlenarDgvPedidos();
             ConfDgvPedidos();
@@ -75,7 +73,6 @@ namespace NorthwindTraders
         {
             try
             {
-                //clienteId = DgvClientes.CurrentRow.Cells["Id"].Value.ToString();
                 Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
                 SqlCommand cmd = new SqlCommand($"SELECT Orders.OrderID AS Pedido, Orders.CustomerID AS Cliente, Orders.EmployeeID AS IdEmpleado, Customers.CompanyName AS [Nombre cliente], Employees.FirstName + N' ' + Employees.LastName AS Vendedor, Orders.OrderDate AS [Fecha de pedido], Orders.RequiredDate AS [Fecha requerido], Orders.ShippedDate AS [Fecha de envío], SUM(CONVERT(money, ([Order Details].UnitPrice * [Order Details].Quantity) * (1 - [Order Details].Discount))) AS Total FROM Orders LEFT OUTER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID LEFT OUTER JOIN [Order Details] ON Orders.OrderID = [Order Details].OrderID LEFT OUTER JOIN Customers ON Orders.CustomerID = Customers.CustomerID WHERE Orders.CustomerID = '{clienteId}' GROUP BY Orders.OrderID, Orders.CustomerID, Orders.EmployeeID, Customers.CompanyName, Employees.FirstName + N' ' + Employees.LastName, Orders.OrderDate, Orders.RequiredDate, Orders.ShippedDate Order By orders.OrderID Desc", cn);
                 cmd.CommandType = CommandType.Text;
@@ -190,14 +187,97 @@ namespace NorthwindTraders
 
         private void DgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            clienteId = DgvClientes.CurrentRow.Cells["Id"].Value.ToString();
+            DgvPedidos.DataSource = null;
+            DgvPedidos.Refresh();
+            DgvDetalle.DataSource = null;
+            DgvDetalle.Refresh();
             LlenarDgvPedidos();
+            ConfDgvPedidos();
+            pedidoId = (int)DgvPedidos.CurrentRow.Cells["Pedido"].Value;
             LlenarDgvDetalle();
+            ConfDgvDetalle();
         }
 
-        private void DgvClientes_SelectionChanged(object sender, EventArgs e)
-        {
+        private void DgvClientes_KeyDown(object sender, KeyEventArgs e)
+    {
+            if (!(e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.PageUp || e.KeyCode == Keys.PageDown || e.KeyCode == Keys.Tab || (e.KeyCode == Keys.Tab && e.Shift)))
+                return;
+            int rowInd = 0;
+            if (e.KeyCode == Keys.Up)
+            {
+                rowInd = DgvClientes.CurrentRow.Index - 1;
+                if (rowInd < 0)
+                    return;
+            } 
+            else if (e.KeyCode == Keys.Down)
+            {
+                rowInd = DgvClientes.CurrentRow.Index + 1;
+                if (rowInd >= DgvClientes.RowCount)
+                    return;
+            } 
+            else  if (e.KeyCode == Keys.PageUp)
+            {
+                // Obtén el índice de la fila actualmente seleccionada o con el foco
+                rowInd = DgvClientes.CurrentRow.Index;
+                // Calcula el índice de la primera fila visible después de Page Up
+                int visibleRowCount = DgvClientes.DisplayedRowCount(false); // false para contar solo las filas completamente visibles
+                int targetRowIndex = Math.Max(0, rowInd - visibleRowCount);
+                // Ahora puedes usar 'targetRowIndex' para acceder a la fila deseada
+                rowInd = targetRowIndex;
+            } 
+            else if (e.KeyCode == Keys.PageDown)
+            {
+                // Obtén el índice de la fila actualmente seleccionada o con el foco
+                rowInd = DgvClientes.CurrentRow.Index;
+                // Calcula el índice de la última fila visible después de Page Down
+                int visibleRowCount = DgvClientes.DisplayedRowCount(false); // false para contar solo las filas completamente visibles
+                int targetRowIndex = Math.Min(DgvClientes.RowCount - 1, rowInd + visibleRowCount);
+                // Ahora puedes usar 'targetRowIndex' para acceder a la fila deseada
+                rowInd = targetRowIndex;
+            } 
+            else if (e.KeyCode == Keys.Tab && e.Shift)
+            {
+                if (DgvClientes.CurrentCell.ColumnIndex == 1)
+                {
+                    rowInd = DgvClientes.CurrentRow.Index - 1;
+                }
+                else
+                    return;
+
+            } else if (e.KeyCode == Keys.Tab)
+            {
+                // Obtén el índice de la fila actualmente seleccionada o con el foco
+                rowInd = DgvClientes.CurrentRow.Index;
+                // Verifica si el foco está en la última celda de la fila actual
+                if (DgvClientes.CurrentCell.ColumnIndex == DgvClientes.Columns.Count - 1)
+                {
+                    rowInd++;
+                }
+                else
+                    // este es para que no haga nada si la fila no es la ultima
+                    return;
+            }
+            DataGridViewRow row = DgvClientes.Rows[rowInd];
+            clienteId = row.Cells["Id"].Value.ToString();
+            DgvPedidos.DataSource = null;
+            DgvPedidos.Refresh();
+            DgvDetalle.DataSource = null;
+            DgvDetalle.Refresh();
             LlenarDgvPedidos();
+            ConfDgvPedidos();
+            pedidoId = (int)DgvPedidos.CurrentRow.Cells["Pedido"].Value;
             LlenarDgvDetalle();
+            ConfDgvDetalle();
+        }
+
+        private void DgvPedidos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DgvDetalle.DataSource = null;
+            DgvDetalle.Refresh();
+            pedidoId = (int)DgvPedidos.CurrentRow.Cells["Pedido"].Value;
+            LlenarDgvDetalle();
+            ConfDgvDetalle();
         }
     }
 }

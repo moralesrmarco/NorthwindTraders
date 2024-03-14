@@ -113,7 +113,7 @@
             this.DgvClientes.Size = new System.Drawing.Size(457, 274);
             this.DgvClientes.TabIndex = 0;
             this.DgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvClientes_CellClick);
-            this.DgvClientes.SelectionChanged += new System.EventHandler(this.DgvClientes_SelectionChanged);
+            this.DgvClientes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvClientes_KeyDown);
             // 
             // GrbPedidos
             // 
@@ -137,6 +137,7 @@
             this.DgvPedidos.Name = "DgvPedidos";
             this.DgvPedidos.Size = new System.Drawing.Size(453, 274);
             this.DgvPedidos.TabIndex = 0;
+            this.DgvPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPedidos_CellClick);
             // 
             // GrbDetalle
             // 
