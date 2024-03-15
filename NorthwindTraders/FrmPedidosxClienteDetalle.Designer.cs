@@ -138,6 +138,7 @@
             this.DgvPedidos.Size = new System.Drawing.Size(453, 274);
             this.DgvPedidos.TabIndex = 0;
             this.DgvPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPedidos_CellClick);
+            this.DgvPedidos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvPedidos_KeyDown);
             // 
             // GrbDetalle
             // 

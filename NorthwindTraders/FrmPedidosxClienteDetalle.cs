@@ -238,10 +238,8 @@ namespace NorthwindTraders
             } 
             else if (e.KeyCode == Keys.Tab && e.Shift)
             {
-                if (DgvClientes.CurrentCell.ColumnIndex == 1)
-                {
+                if (DgvClientes.CurrentCell.ColumnIndex == 1) // el columnindex del campo nombre de compañía es 1, porque en el 0 esta el clienteid.
                     rowInd = DgvClientes.CurrentRow.Index - 1;
-                }
                 else
                     return;
 
@@ -251,9 +249,7 @@ namespace NorthwindTraders
                 rowInd = DgvClientes.CurrentRow.Index;
                 // Verifica si el foco está en la última celda de la fila actual
                 if (DgvClientes.CurrentCell.ColumnIndex == DgvClientes.Columns.Count - 1)
-                {
                     rowInd++;
-                }
                 else
                     // este es para que no haga nada si la fila no es la ultima
                     return;
@@ -276,6 +272,60 @@ namespace NorthwindTraders
             DgvDetalle.DataSource = null;
             DgvDetalle.Refresh();
             pedidoId = (int)DgvPedidos.CurrentRow.Cells["Pedido"].Value;
+            LlenarDgvDetalle();
+            ConfDgvDetalle();
+        }
+
+        private void DgvPedidos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!(e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.PageUp || e.KeyCode == Keys.PageDown || e.KeyCode == Keys.Tab || (e.KeyCode == Keys.Tab && e.Shift)))
+                return;
+            int rowInd = 0;
+            if (e.KeyCode == Keys.Up)
+            {
+                rowInd = DgvPedidos.CurrentRow.Index - 1;
+                if (rowInd < 0)
+                    return;
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                rowInd = DgvPedidos.CurrentRow.Index + 1;
+                if (rowInd >= DgvPedidos.RowCount)
+                    return;
+            }
+            else if (e.KeyCode == Keys.PageUp)
+            {
+                rowInd = DgvPedidos.CurrentRow.Index;
+                int visibleRowCount = DgvPedidos.DisplayedRowCount(false);
+                int targetRowIndex = Math.Max(0, rowInd - visibleRowCount);
+                rowInd = targetRowIndex;
+            }
+            else if (e.KeyCode == Keys.PageDown)
+            {
+                rowInd = DgvPedidos.CurrentRow.Index;
+                int visibleRowCount = DgvPedidos.DisplayedRowCount(false);
+                int targetRowIndex = Math.Min(DgvPedidos.RowCount - 1, rowInd + visibleRowCount);
+                rowInd = targetRowIndex;
+            }
+            else if (e.KeyCode == Keys.Tab && e.Shift)
+            {
+                if (DgvPedidos.CurrentCell.ColumnIndex == 0) // el columnindex del campo pedido es 0;
+                    rowInd = DgvPedidos.CurrentRow.Index - 1;
+                else
+                    return;
+            }
+            else if (e.KeyCode == Keys.Tab)
+            {
+                rowInd = DgvPedidos.CurrentRow.Index;
+                if (DgvPedidos.CurrentCell.ColumnIndex == DgvPedidos.Columns.Count - 1)
+                    rowInd++;
+                else
+                    return;
+            }
+            DataGridViewRow row = DgvPedidos.Rows[rowInd];
+            pedidoId = (int)row.Cells["Pedido"].Value;
+            DgvDetalle.DataSource = null;
+            DgvDetalle.Refresh();
             LlenarDgvDetalle();
             ConfDgvDetalle();
         }
