@@ -9,6 +9,8 @@ namespace NorthwindTraders
     {
 
         SqlConnection cn = new SqlConnection(NorthwindTraders.Properties.Settings.Default.NWCn);
+        string clienteId;
+        bool keyTab = false;
 
         public FrmPedidosxClientes()
         {
@@ -145,12 +147,70 @@ namespace NorthwindTraders
 
         private void dgvClientes_SelectionChanged(object sender, EventArgs e)
         {
+            if (keyTab)
+                return;
+            // esto si me funciona cuando se cambia de selección con las teclas Up, Down, pageUp y pageDown
+            // pero no funciona cuando se cambia de registro con las teclas tab y shifttab por lo que procedo a programar el evento keyDown
             LlenarDgvPedidos();
+            keyTab = false;
         }
 
         private void dgvClientes_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             Utils.ActualizarBarraDeEstado($"Se encontraron {dgvClientes.RowCount} registros de clientes y {dgvPedidos.RowCount} registros de pedidos del cliente", this);
+        }
+
+        private void dgvClientes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!(e.KeyCode == Keys.Tab || (e.KeyCode == Keys.Tab && e.Shift)))
+                return;
+            int rowIndex = 0;
+            if (e.KeyCode == Keys.Tab && e.Shift)
+            {
+                if (dgvClientes.CurrentCell.ColumnIndex == 0)
+                    rowIndex = dgvClientes.CurrentRow.Index - 1;
+                else
+                    return;
+            }
+            else if (e.KeyCode == Keys.Tab)
+            {
+                rowIndex = dgvClientes.CurrentRow.Index;
+                if (dgvClientes.CurrentCell.ColumnIndex == dgvClientes.Columns.Count - 1)
+                    rowIndex++;
+                else
+                    return;
+            }
+            keyTab = true;
+            DataGridViewRow row = dgvClientes.Rows[rowIndex];
+            clienteId = row.Cells["Id"].Value.ToString();
+            LlenarDgvPedidos2();
+            keyTab = false;
+        }
+
+        private void LlenarDgvPedidos2()
+        {
+            try
+            {
+                Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
+                SqlCommand cmd = new SqlCommand("Sp_PedidosxCliente", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("ClienteId", clienteId);
+                SqlDataAdapter dap = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                dap.Fill(dt);
+                dgvPedidos.DataSource = dt;
+                Utils.ActualizarBarraDeEstado($"Se encontraron {dgvClientes.RowCount} registros de clientes y {dgvPedidos.RowCount} registros de pedidos del cliente", this);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Ocurrio un error con la base de datos: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.ActualizarBarraDeEstado("Activo", this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error: " + ex.Message, "Northwind Traders", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utils.ActualizarBarraDeEstado("Activo", this);
+            }
         }
     }
 }
