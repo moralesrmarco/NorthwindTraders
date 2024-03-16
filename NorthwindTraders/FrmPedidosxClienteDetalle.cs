@@ -316,9 +316,8 @@ namespace NorthwindTraders
             }
             else if (e.KeyCode == Keys.Tab)
             {
-                rowInd = DgvPedidos.CurrentRow.Index;
                 if (DgvPedidos.CurrentCell.ColumnIndex == DgvPedidos.Columns.Count - 1)
-                    rowInd++;
+                    rowInd = DgvPedidos.CurrentRow.Index + 1;
                 else
                     return;
             }

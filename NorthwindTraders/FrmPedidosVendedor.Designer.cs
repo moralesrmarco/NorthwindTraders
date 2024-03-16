@@ -61,7 +61,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.grbPedidos);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.splitContainer1.Size = new System.Drawing.Size(984, 621);
-            this.splitContainer1.SplitterDistance = 250;
+            this.splitContainer1.SplitterDistance = 310;
             this.splitContainer1.TabIndex = 0;
             // 
             // grbVendedores
@@ -71,7 +71,7 @@
             this.grbVendedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbVendedores.Location = new System.Drawing.Point(10, 3);
             this.grbVendedores.Name = "grbVendedores";
-            this.grbVendedores.Size = new System.Drawing.Size(964, 244);
+            this.grbVendedores.Size = new System.Drawing.Size(964, 304);
             this.grbVendedores.TabIndex = 0;
             this.grbVendedores.TabStop = false;
             this.grbVendedores.Text = "»   Vendedores:   «";
@@ -83,7 +83,7 @@
             this.dgvVendedores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVendedores.Location = new System.Drawing.Point(3, 18);
             this.dgvVendedores.Name = "dgvVendedores";
-            this.dgvVendedores.Size = new System.Drawing.Size(958, 223);
+            this.dgvVendedores.Size = new System.Drawing.Size(958, 283);
             this.dgvVendedores.TabIndex = 0;
             this.dgvVendedores.SelectionChanged += new System.EventHandler(this.dgvVendedores_SelectionChanged);
             // 
@@ -94,7 +94,7 @@
             this.grbPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbPedidos.Location = new System.Drawing.Point(10, 3);
             this.grbPedidos.Name = "grbPedidos";
-            this.grbPedidos.Size = new System.Drawing.Size(964, 361);
+            this.grbPedidos.Size = new System.Drawing.Size(964, 301);
             this.grbPedidos.TabIndex = 0;
             this.grbPedidos.TabStop = false;
             this.grbPedidos.Text = "»   Pedidos:   «";
@@ -106,7 +106,7 @@
             this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPedidos.Location = new System.Drawing.Point(3, 18);
             this.dgvPedidos.Name = "dgvPedidos";
-            this.dgvPedidos.Size = new System.Drawing.Size(958, 340);
+            this.dgvPedidos.Size = new System.Drawing.Size(958, 280);
             this.dgvPedidos.TabIndex = 0;
             // 
             // FrmPedidosVendedor

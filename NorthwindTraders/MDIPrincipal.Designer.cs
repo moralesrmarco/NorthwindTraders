@@ -101,6 +101,11 @@
             this.tsmiConsultaDeDetalleDePedidosPorCliente = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiConsultaDePedidoPorVendedor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiConsultaDeDetalleDePedidosPorVendedor = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultasSinDataRelationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiConsultaDePedidosPorClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiConsultaDeDetalleDePedidosPorClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiConsultaDePedidosPorVendedor = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiConsultaDeDetalleDePedidosPorVendedor2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,11 +136,6 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.consultasSinDataRelationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiConsultaDePedidosPorClientes = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiConsultaDeDetalleDePedidosPorClientes = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiConsultaDePedidosPorVendedor = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiConsultaDeDetalleDePedidosPorVendedor2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -725,6 +725,44 @@
             this.tsmiConsultaDeDetalleDePedidosPorVendedor.Text = "Consulta de detalle de pedidos por vendedor";
             this.tsmiConsultaDeDetalleDePedidosPorVendedor.Click += new System.EventHandler(this.tsmiConsultaDeDetalleDePedidosPorVendedor_Click);
             // 
+            // consultasSinDataRelationsToolStripMenuItem
+            // 
+            this.consultasSinDataRelationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiConsultaDePedidosPorClientes,
+            this.tsmiConsultaDeDetalleDePedidosPorClientes,
+            this.tsmiConsultaDePedidosPorVendedor,
+            this.tsmiConsultaDeDetalleDePedidosPorVendedor2});
+            this.consultasSinDataRelationsToolStripMenuItem.Name = "consultasSinDataRelationsToolStripMenuItem";
+            this.consultasSinDataRelationsToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.consultasSinDataRelationsToolStripMenuItem.Text = "Consultas sin DataRelations";
+            // 
+            // tsmiConsultaDePedidosPorClientes
+            // 
+            this.tsmiConsultaDePedidosPorClientes.Name = "tsmiConsultaDePedidosPorClientes";
+            this.tsmiConsultaDePedidosPorClientes.Size = new System.Drawing.Size(310, 22);
+            this.tsmiConsultaDePedidosPorClientes.Text = "Consulta de pedidos por clientes";
+            this.tsmiConsultaDePedidosPorClientes.Click += new System.EventHandler(this.tsmiConsultaDePedidosPorClientes_Click);
+            // 
+            // tsmiConsultaDeDetalleDePedidosPorClientes
+            // 
+            this.tsmiConsultaDeDetalleDePedidosPorClientes.Name = "tsmiConsultaDeDetalleDePedidosPorClientes";
+            this.tsmiConsultaDeDetalleDePedidosPorClientes.Size = new System.Drawing.Size(310, 22);
+            this.tsmiConsultaDeDetalleDePedidosPorClientes.Text = "Consulta de detalle de pedidos por clientes";
+            this.tsmiConsultaDeDetalleDePedidosPorClientes.Click += new System.EventHandler(this.tsmiConsultaDeDetalleDePedidosPorClientes_Click);
+            // 
+            // tsmiConsultaDePedidosPorVendedor
+            // 
+            this.tsmiConsultaDePedidosPorVendedor.Name = "tsmiConsultaDePedidosPorVendedor";
+            this.tsmiConsultaDePedidosPorVendedor.Size = new System.Drawing.Size(310, 22);
+            this.tsmiConsultaDePedidosPorVendedor.Text = "Consulta de pedidos por vendedor";
+            this.tsmiConsultaDePedidosPorVendedor.Click += new System.EventHandler(this.tsmiConsultaDePedidosPorVendedor_Click);
+            // 
+            // tsmiConsultaDeDetalleDePedidosPorVendedor2
+            // 
+            this.tsmiConsultaDeDetalleDePedidosPorVendedor2.Name = "tsmiConsultaDeDetalleDePedidosPorVendedor2";
+            this.tsmiConsultaDeDetalleDePedidosPorVendedor2.Size = new System.Drawing.Size(310, 22);
+            this.tsmiConsultaDeDetalleDePedidosPorVendedor2.Text = "Consulta de detalle de pedidos por vendedor";
+            // 
             // toolsMenu
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -966,43 +1004,6 @@
             this.tsslEstado.Name = "tsslEstado";
             this.tsslEstado.Size = new System.Drawing.Size(45, 19);
             this.tsslEstado.Text = "Activo";
-            // 
-            // consultasSinDataRelationsToolStripMenuItem
-            // 
-            this.consultasSinDataRelationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiConsultaDePedidosPorClientes,
-            this.tsmiConsultaDeDetalleDePedidosPorClientes,
-            this.tsmiConsultaDePedidosPorVendedor,
-            this.tsmiConsultaDeDetalleDePedidosPorVendedor2});
-            this.consultasSinDataRelationsToolStripMenuItem.Name = "consultasSinDataRelationsToolStripMenuItem";
-            this.consultasSinDataRelationsToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
-            this.consultasSinDataRelationsToolStripMenuItem.Text = "Consultas sin DataRelations";
-            // 
-            // tsmiConsultaDePedidosPorClientes
-            // 
-            this.tsmiConsultaDePedidosPorClientes.Name = "tsmiConsultaDePedidosPorClientes";
-            this.tsmiConsultaDePedidosPorClientes.Size = new System.Drawing.Size(310, 22);
-            this.tsmiConsultaDePedidosPorClientes.Text = "Consulta de pedidos por clientes";
-            this.tsmiConsultaDePedidosPorClientes.Click += new System.EventHandler(this.tsmiConsultaDePedidosPorClientes_Click);
-            // 
-            // tsmiConsultaDeDetalleDePedidosPorClientes
-            // 
-            this.tsmiConsultaDeDetalleDePedidosPorClientes.Name = "tsmiConsultaDeDetalleDePedidosPorClientes";
-            this.tsmiConsultaDeDetalleDePedidosPorClientes.Size = new System.Drawing.Size(310, 22);
-            this.tsmiConsultaDeDetalleDePedidosPorClientes.Text = "Consulta de detalle de pedidos por clientes";
-            this.tsmiConsultaDeDetalleDePedidosPorClientes.Click += new System.EventHandler(this.tsmiConsultaDeDetalleDePedidosPorClientes_Click);
-            // 
-            // tsmiConsultaDePedidosPorVendedor
-            // 
-            this.tsmiConsultaDePedidosPorVendedor.Name = "tsmiConsultaDePedidosPorVendedor";
-            this.tsmiConsultaDePedidosPorVendedor.Size = new System.Drawing.Size(310, 22);
-            this.tsmiConsultaDePedidosPorVendedor.Text = "Consulta de pedidos por vendedor";
-            // 
-            // tsmiConsultaDeDetalleDePedidosPorVendedor2
-            // 
-            this.tsmiConsultaDeDetalleDePedidosPorVendedor2.Name = "tsmiConsultaDeDetalleDePedidosPorVendedor2";
-            this.tsmiConsultaDeDetalleDePedidosPorVendedor2.Size = new System.Drawing.Size(310, 22);
-            this.tsmiConsultaDeDetalleDePedidosPorVendedor2.Text = "Consulta de detalle de pedidos por vendedor";
             // 
             // MDIPrincipal
             // 
