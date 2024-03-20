@@ -166,6 +166,12 @@
     <Compile Include="FrmPedidosxVendedor.Designer.cs">
       <DependentUpon>FrmPedidosxVendedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPedidosxVendedorDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPedidosxVendedorDetalle.Designer.cs">
+      <DependentUpon>FrmPedidosxVendedorDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProductosConsultaAlfabetica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -338,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPedidosxVendedor.resx">
       <DependentUpon>FrmPedidosxVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPedidosxVendedorDetalle.resx">
+      <DependentUpon>FrmPedidosxVendedorDetalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductosConsultaAlfabetica.resx">
       <DependentUpon>FrmProductosConsultaAlfabetica.cs</DependentUpon>
