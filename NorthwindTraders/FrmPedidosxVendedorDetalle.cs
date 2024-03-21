@@ -229,9 +229,7 @@ namespace NorthwindTraders
                 else if (e.KeyCode == Keys.Up && e.Control)
                     rowIndex = 0;
                 else if (e.KeyCode == Keys.Down && e.Control)
-                {
                     rowIndex = DgvVendedores.RowCount - 1;
-                }
                 else if (e.KeyCode == Keys.Up)
                 {
                     rowIndex = DgvVendedores.CurrentRow.Index - 1;
@@ -308,9 +306,7 @@ namespace NorthwindTraders
                 else if (e.KeyCode == Keys.Up && e.Control)
                     rowIndex = 0;
                 else if (e.KeyCode == Keys.Down && e.Control)
-                {
                     rowIndex = DgvPedidos.RowCount - 1;
-                }
                 else if (e.KeyCode == Keys.Up)
                 {
                     rowIndex = DgvPedidos.CurrentRow.Index - 1;
