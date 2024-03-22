@@ -29,11 +29,8 @@ namespace NorthwindTraders
             Utils.ConfDataGridView(DgvPedidos);
             Utils.ConfDataGridView(DgvDetalle);
             LlenarDgvClientes();
-            //ConfDgvClientes();
             LlenarDgvPedidos();
-            //ConfDgvPedidos();
             LlenarDgvDetalle();
-            //ConfDgvDetalle();
         }
 
         private void LlenarDgvClientes()
@@ -208,13 +205,11 @@ namespace NorthwindTraders
             DgvDetalle.DataSource = null;
             DgvDetalle.Refresh();
             LlenarDgvPedidos();
-            //ConfDgvPedidos();
             if (pedidoId != 0)
             {
                 pedidoId = (int)DgvPedidos.CurrentRow.Cells["Pedido"].Value;
                 LlenarDgvDetalle();
             }
-            //ConfDgvDetalle();
         }
 
         private void DgvClientes_KeyDown(object sender, KeyEventArgs e)

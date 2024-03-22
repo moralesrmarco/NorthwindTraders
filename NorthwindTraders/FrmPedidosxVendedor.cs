@@ -34,7 +34,7 @@ namespace NorthwindTraders
         {
             try
             {
-                Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
+                Utils.ActualizarBarraDeEstado("Consultando la base de datos, obteniendo los vendedores...", this);
                 SqlCommand cmd = new SqlCommand("Sp_Vendedores_Listar", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter dap = new SqlDataAdapter(cmd);
@@ -89,7 +89,7 @@ namespace NorthwindTraders
         {
             try
             {
-                Utils.ActualizarBarraDeEstado("Consultando la base de datos...", this);
+                Utils.ActualizarBarraDeEstado("Consultando la base de datos, obteniendo los pedidos...", this);
                 DgvPedidos.DataSource = null;
                 DgvPedidos.Refresh();
                 SqlCommand cmd = new SqlCommand("Sp_PedidosxVendedor", cn);
@@ -180,16 +180,22 @@ namespace NorthwindTraders
 
         private void DgvVendedores_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!(e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.PageUp || e.KeyCode == Keys.PageDown || e.KeyCode == Keys.Tab || (e.KeyCode == Keys.Tab && e.Shift)))
+            if (!(e.KeyCode == Keys.Enter || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.PageUp || e.KeyCode == Keys.PageDown || e.KeyCode == Keys.Tab || (e.KeyCode == Keys.Tab && e.Shift) || (e.KeyCode == Keys.Up && e.Control) || (e.KeyCode == Keys.Down && e.Control) || (e.KeyCode == Keys.Enter && e.Control)))
                 return;
             int rowIndex = 0;
-            if (e.KeyCode == Keys.Up)
+            if (e.KeyCode == Keys.Enter && e.Control)
+                return;
+            else if (e.KeyCode == Keys.Up && e.Control)
+                rowIndex = 0;
+            else if (e.KeyCode == Keys.Down && e.Control)
+                rowIndex = DgvVendedores.RowCount - 1;
+            else if (e.KeyCode == Keys.Up)
             {
                 rowIndex = DgvVendedores.CurrentRow.Index - 1;
                 if (rowIndex < 0)
                     return;
             }
-            else if (e.KeyCode == Keys.Down)
+            else if (e.KeyCode == Keys.Down || e.KeyCode == Keys.Enter)
             {
                 rowIndex = DgvVendedores.CurrentRow.Index + 1;
                 if (rowIndex >= DgvVendedores.RowCount)
