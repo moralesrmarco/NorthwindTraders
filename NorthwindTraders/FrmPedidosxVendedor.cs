@@ -101,7 +101,7 @@ namespace NorthwindTraders
                 DgvPedidos.DataSource = dt;
                 ConfDgvPedidos();
                 int rowsPedidos = DgvPedidos.RowCount;
-                if (rowsPedidos == 1 & DgvPedidos.Rows[0].Cells["Id"].Value.ToString() == "")
+                if (rowsPedidos == 1 && DgvPedidos.Rows[0].Cells["Id"].Value.ToString() == "")
                     rowsPedidos = 0;
                 Utils.ActualizarBarraDeEstado($"Se encontraron {DgvVendedores.RowCount} registros en vendedores y {rowsPedidos} registros de pedidos del vendedor {DgvPedidos.Rows[0].Cells["Vendedor"].Value}", this);
             }
